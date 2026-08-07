@@ -24,6 +24,35 @@ Materials Evidence Reasoner 是一个面向材料研发的证据推理 Skill 和
         → PSPP 经验 / Mechanism Graph 更新
 ```
 
+## 图解：从资料到可复用经验
+
+下面这张总览图把项目的目标、输入、七个工作阶段和最终经验沉淀放在了一张图里：
+
+<p align="center">
+  <img src="docs/images/materials-evidence-overview.png" alt="Materials Evidence Reasoner 项目总览：从输入资料到可复用经验" width="1000">
+</p>
+<p align="center"><em>项目总览：先把“结果不一样”变成证据链，再把经过验证的经验沉淀下来。</em></p>
+
+<details>
+<summary>展开其他三张图解</summary>
+
+<p align="center">
+  <img src="docs/images/materials-goal-and-inputs.png" alt="项目目标与可处理的输入资料" width="1000">
+</p>
+<p align="center"><em>目标与输入：论文、表格、曲线、图像、仪器导出、仿真结果和自然语言都可以作为起点。</em></p>
+
+<p align="center">
+  <img src="docs/images/materials-quick-start-and-outputs.png" alt="最短使用流程与输出物分层" width="1000">
+</p>
+<p align="center"><em>最短使用流程：上传资料、说明判断目标、获得报告与下一步行动。</em></p>
+
+<p align="center">
+  <img src="docs/images/materials-complete-loop.png" alt="完整闭环、输出分层与最小验证实验" width="1000">
+</p>
+<p align="center"><em>完整闭环：核心交付稳定，辅助产物按任务生成，最小实验由信息缺口驱动。</em></p>
+
+</details>
+
 ## 什么时候使用
 
 ### 适合使用的任务
