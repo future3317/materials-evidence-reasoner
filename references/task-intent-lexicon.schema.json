@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/materials-evidence-reasoner/task-intent-lexicon.schema.json",
+  "title": "Materials Evidence Reasoner Task Intent Lexicon",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["lexicon_version", "matching_policy", "intents"],
+  "properties": {
+    "lexicon_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "matching_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["surface_terms_are_recall_only", "semantic_match_required", "multi_intent_allowed", "unresolved_intent_status"],
+      "properties": {
+        "surface_terms_are_recall_only": {"const": true},
+        "semantic_match_required": {"const": true},
+        "multi_intent_allowed": {"const": true},
+        "unresolved_intent_status": {"const": "clarify-or-proceed-with-limitations"}
+      }
+    },
+    "intents": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {"$ref": "#/$defs/intent"}
+    }
+  },
+  "$defs": {
+    "string_array": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "intent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label_zh", "concept", "terms_zh", "terms_en", "minimum_deliverables", "do_not_assume"],
+      "properties": {
+        "label_zh": {"type": "string", "minLength": 1},
+        "concept": {"type": "string", "minLength": 1},
+        "terms_zh": {"$ref": "#/$defs/string_array"},
+        "terms_en": {"$ref": "#/$defs/string_array"},
+        "minimum_deliverables": {"$ref": "#/$defs/string_array"},
+        "do_not_assume": {"$ref": "#/$defs/string_array"}
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "audit_type": "mechanism-graph-contract-audit",
+  "source_run_id": "RUN-SYNTHETIC-CE-001",
+  "schema_version": "4.6",
+  "counts": {
+    "graphs": 1,
+    "nodes": 5,
+    "edges": 4,
+    "updates": 1
+  },
+  "structural_coverage": {
+    "traceable_edge_fraction": 1.0,
+    "boundary_fraction": 1.0,
+    "falsifier_fraction": 1.0,
+    "transferability_assessed_fraction": 1.0,
+    "validation_evidence_consistency_fraction": 1.0,
+    "conflict_disclosure_fraction": 1.0,
+    "note": "These are contract-completeness metrics, not scientific confidence scores."
+  },
+  "edge_status_counts": {
+    "hypothesis": 4
+  },
+  "source_kind_counts": {
+    "combined": 2,
+    "domain-inference": 2
+  },
+  "transferability_counts": {
+    "same-regime": 4
+  },
+  "findings": [],
+  "pass": true
+}

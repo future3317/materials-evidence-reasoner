@@ -1,0 +1,277 @@
+{
+  "schema_version": "1.1",
+  "description": "Conservative cross-domain aliases for experiment intake, including repeat hierarchy and error-attribution provenance. Exact matches are preferred; ambiguous abbreviations require context.",
+  "fields": {
+    "sample_id": [
+      "sample_id",
+      "sample id",
+      "sample",
+      "样品编号",
+      "样品id"
+    ],
+    "specimen_id": [
+      "specimen_id",
+      "specimen id",
+      "coupon_id",
+      "coupon id",
+      "试样id",
+      "试样编号",
+      "试片编号"
+    ],
+    "measurement_repeat_id": [
+      "measurement_repeat_id",
+      "repeat_id",
+      "replicate_id",
+      "replicate id",
+      "measurement id",
+      "重复编号",
+      "平行样编号",
+      "测量重复编号"
+    ],
+    "batch_id": [
+      "batch_id",
+      "batch id",
+      "batch",
+      "lot",
+      "lot_id",
+      "批次",
+      "批号",
+      "炉次"
+    ],
+    "material_name": [
+      "material_name",
+      "material",
+      "material name",
+      "材料",
+      "材料名称",
+      "体系",
+      "样品名称"
+    ],
+    "composition": [
+      "composition",
+      "formula",
+      "chemical formula",
+      "chemistry",
+      "成分",
+      "组成",
+      "化学式",
+      "配方"
+    ],
+    "process_step": [
+      "process_step",
+      "process",
+      "processing",
+      "treatment",
+      "工艺",
+      "工艺步骤",
+      "处理",
+      "制备过程"
+    ],
+    "process_setpoint": [
+      "process_setpoint",
+      "setpoint",
+      "set point",
+      "设定值",
+      "工艺设定值"
+    ],
+    "process_actual_value": [
+      "process_actual_value",
+      "actual process value",
+      "controller reading",
+      "logged value",
+      "实测工艺值",
+      "控制器实测值",
+      "记录值"
+    ],
+    "process_temperature": [
+      "process_temperature",
+      "processing temperature",
+      "annealing temperature",
+      "sintering temperature",
+      "温度",
+      "处理温度",
+      "退火温度",
+      "烧结温度"
+    ],
+    "process_time": [
+      "process_time",
+      "duration",
+      "holding time",
+      "dwell time",
+      "时间",
+      "保温时间",
+      "处理时间"
+    ],
+    "atmosphere": [
+      "atmosphere",
+      "gas",
+      "environment",
+      "气氛",
+      "保护气",
+      "环境"
+    ],
+    "measurement_method": [
+      "measurement_method",
+      "test method",
+      "method",
+      "测试方法",
+      "测量方法",
+      "表征方法"
+    ],
+    "measurement_location": [
+      "measurement_location",
+      "location",
+      "position",
+      "field_of_view",
+      "roi",
+      "测试位置",
+      "测量位置",
+      "视场",
+      "区域"
+    ],
+    "instrument": [
+      "instrument",
+      "equipment",
+      "device",
+      "仪器",
+      "设备",
+      "设备型号"
+    ],
+    "instrument_id": [
+      "instrument_id",
+      "instrument id",
+      "equipment_id",
+      "equipment id",
+      "仪器编号",
+      "设备编号"
+    ],
+    "calibration_id": [
+      "calibration_id",
+      "calibration id",
+      "standard_id",
+      "reference_standard_id",
+      "校准编号",
+      "标准样编号",
+      "标样编号"
+    ],
+    "property_name": [
+      "property_name",
+      "property",
+      "metric",
+      "target",
+      "性能",
+      "指标",
+      "性质",
+      "测试项目"
+    ],
+    "property_value": [
+      "property_value",
+      "value",
+      "result",
+      "measurement",
+      "测试值",
+      "结果",
+      "数值",
+      "性能值"
+    ],
+    "unit": [
+      "unit",
+      "units",
+      "单位"
+    ],
+    "uncertainty": [
+      "uncertainty",
+      "error",
+      "std",
+      "sd",
+      "standard deviation",
+      "误差",
+      "不确定度",
+      "标准差"
+    ],
+    "replicate_count": [
+      "replicate_count",
+      "replicates",
+      "n",
+      "repeat",
+      "重复数",
+      "平行样",
+      "样本数"
+    ],
+    "measurement_temperature": [
+      "measurement_temperature",
+      "test temperature",
+      "temperature",
+      "测试温度",
+      "测量温度"
+    ],
+    "measurement_rate": [
+      "measurement_rate",
+      "rate",
+      "scan rate",
+      "strain rate",
+      "current density",
+      "倍率",
+      "扫描速率",
+      "应变速率",
+      "电流密度"
+    ],
+    "normalization_basis": [
+      "normalization_basis",
+      "basis",
+      "denominator",
+      "normalized by",
+      "归一化",
+      "分母",
+      "质量基准",
+      "面积基准"
+    ],
+    "timestamp": [
+      "timestamp",
+      "date",
+      "datetime",
+      "time",
+      "日期",
+      "时间戳",
+      "测试日期"
+    ],
+    "operator": [
+      "operator",
+      "analyst",
+      "researcher",
+      "操作员",
+      "实验员",
+      "测试人"
+    ],
+    "notes": [
+      "notes",
+      "comment",
+      "remarks",
+      "observation",
+      "备注",
+      "说明",
+      "现象",
+      "观察"
+    ],
+    "analysis_version": [
+      "analysis_version",
+      "analysis version",
+      "software_version",
+      "script_version",
+      "模型版本",
+      "分析版本",
+      "软件版本",
+      "脚本版本"
+    ]
+  },
+  "ambiguous_tokens": {
+    "n": "May mean replicate count, cycle number, composition stoichiometry, or another quantity; require context.",
+    "t": "May mean time, temperature, thickness, or transition temperature; require context.",
+    "rate": "May mean scan rate, strain rate, C-rate, flow rate, deposition rate, or heating rate; require context.",
+    "temperature": "May be processing, storage, or measurement temperature; infer only with nearby context.",
+    "value": "Requires a property/metric label and unit or explicit context.",
+    "温度": "可能是工艺温度、存储温度或测试温度；必须结合列邻域、工作表和任务语境决定。",
+    "时间": "可能是工艺持续时间、测试时间、时间戳或循环时间；必须结合上下文。",
+    "速率": "可能是扫描速率、应变速率、倍率、流量、沉积速率或升温速率；必须结合上下文。"
+  }
+}

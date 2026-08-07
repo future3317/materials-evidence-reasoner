@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "output-field-aliases.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["spec_version", "canonical_schema", "purpose", "rules", "collections", "hypotheses", "verification_plan"],
+  "properties": {
+    "spec_version": {"const": "1.0"},
+    "canonical_schema": {"const": "output-schema.json"},
+    "purpose": {"type": "string", "minLength": 1},
+    "rules": {"type": "object", "minProperties": 1, "additionalProperties": {"type": "string"}},
+    "collections": {"$ref": "#/$defs/alias_group"},
+    "hypotheses": {"$ref": "#/$defs/alias_group"},
+    "verification_plan": {"$ref": "#/$defs/alias_group"}
+  },
+  "$defs": {
+    "alias_group": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {"$ref": "#/$defs/alias_list"}
+    },
+    "alias_list": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    }
+  }
+}

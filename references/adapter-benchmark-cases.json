@@ -1,0 +1,3067 @@
+{
+  "benchmark_version": "2.0.0",
+  "purpose": "Synthetic routing regression; not a substitute for source-backed adjudicated gold.",
+  "gold_status": "not-gold",
+  "cases": [
+    {
+      "case_id": "superconductivity-load-1",
+      "adapter_id": "superconductivity",
+      "case_kind": "positive",
+      "synthetic_source_text": "The target pellet reaches zero resistance and shows diamagnetic shielding below 18 K.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "load",
+      "expected_signal_ids": [
+        "sc-zero-resistance",
+        "sc-diamagnetic-response"
+      ],
+      "expected_independence_groups": [
+        "sc-magnetic",
+        "sc-transport"
+      ],
+      "expected_reason_codes": [
+        "SC-LOAD-TARGET"
+      ],
+      "expected_target_binding": true,
+      "boundary_dimension": "target-bound-method-or-result",
+      "expected_record_types": [
+        "superconductivity-assessment"
+      ],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "superconductivity-load-2",
+      "adapter_id": "superconductivity",
+      "case_kind": "positive",
+      "synthetic_source_text": "For the named phase, electron-phonon calculations predict a superconducting state under 120 GPa.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "load",
+      "expected_signal_ids": [
+        "sc-superconducting-claim"
+      ],
+      "expected_independence_groups": [
+        "sc-claim"
+      ],
+      "expected_reason_codes": [
+        "SC-LOAD-TARGET"
+      ],
+      "expected_target_binding": true,
+      "boundary_dimension": "target-bound-method-or-result",
+      "expected_record_types": [
+        "superconducting-calculation"
+      ],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "superconductivity-skip-1",
+      "adapter_id": "superconductivity",
+      "case_kind": "negative",
+      "synthetic_source_text": "A superconducting magnet supplies the field; the target is a normal-state semiconductor.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "skip",
+      "expected_signal_ids": [
+        "sc-apparatus-or-other-tc"
+      ],
+      "expected_independence_groups": [
+        "sc-exclusion"
+      ],
+      "expected_reason_codes": [
+        "SC-SKIP-EXCLUDED"
+      ],
+      "expected_target_binding": false,
+      "boundary_dimension": "excluded-role-or-context",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "superconductivity-skip-2",
+      "adapter_id": "superconductivity",
+      "case_kind": "negative",
+      "synthetic_source_text": "Tc denotes the Curie temperature of the target ferromagnet.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "skip",
+      "expected_signal_ids": [
+        "sc-apparatus-or-other-tc"
+      ],
+      "expected_independence_groups": [
+        "sc-exclusion"
+      ],
+      "expected_reason_codes": [
+        "SC-SKIP-EXCLUDED"
+      ],
+      "expected_target_binding": false,
+      "boundary_dimension": "excluded-role-or-context",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "superconductivity-candidate-1",
+      "adapter_id": "superconductivity",
+      "case_kind": "ambiguous",
+      "synthetic_source_text": "A resistance drop approaches the noise floor, but no second signal or interpretation is available.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "candidate",
+      "expected_signal_ids": [
+        "sc-characteristic-property"
+      ],
+      "expected_independence_groups": [
+        "sc-property"
+      ],
+      "expected_reason_codes": [
+        "SC-CANDIDATE-UNRESOLVED"
+      ],
+      "expected_target_binding": null,
+      "boundary_dimension": "ambiguous-sense-binding-or-access",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "superconductivity-candidate-2",
+      "adapter_id": "superconductivity",
+      "case_kind": "ambiguous",
+      "synthetic_source_text": "The abstract calls the family superconducting without binding evidence to the studied composition.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "candidate",
+      "expected_signal_ids": [
+        "sc-characteristic-property"
+      ],
+      "expected_independence_groups": [
+        "sc-property"
+      ],
+      "expected_reason_codes": [
+        "SC-CANDIDATE-UNRESOLVED"
+      ],
+      "expected_target_binding": null,
+      "boundary_dimension": "ambiguous-sense-binding-or-access",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "metallic-materials-load-1",
+      "adapter_id": "metallic-materials",
+      "case_kind": "positive",
+      "synthetic_source_text": "The target alloy composition, solution treatment, aging schedule and tensile response are reported.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "load",
+      "expected_signal_ids": [
+        "met-alloy-identity",
+        "met-metallurgical-state"
+      ],
+      "expected_independence_groups": [
+        "met-identity",
+        "met-state"
+      ],
+      "expected_reason_codes": [
+        "MET-LOAD-TARGET"
+      ],
+      "expected_target_binding": true,
+      "boundary_dimension": "target-bound-method-or-result",
+      "expected_record_types": [
+        "metallic-identity"
+      ],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "metallic-materials-load-2",
+      "adapter_id": "metallic-materials",
+      "case_kind": "positive",
+      "synthetic_source_text": "Powder lot, additive build parameters and grain texture are resolved for the nickel alloy specimens.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "load",
+      "expected_signal_ids": [
+        "met-alloy-identity",
+        "met-metallurgical-state"
+      ],
+      "expected_independence_groups": [
+        "met-identity",
+        "met-state"
+      ],
+      "expected_reason_codes": [
+        "MET-LOAD-TARGET"
+      ],
+      "expected_target_binding": true,
+      "boundary_dimension": "target-bound-method-or-result",
+      "expected_record_types": [
+        "metal-feedstock-state"
+      ],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "metallic-materials-skip-1",
+      "adapter_id": "metallic-materials",
+      "case_kind": "negative",
+      "synthetic_source_text": "A stainless-steel sample holder supports the target ceramic and is not analyzed.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "skip",
+      "expected_signal_ids": [
+        "met-apparatus"
+      ],
+      "expected_independence_groups": [
+        "met-exclusion"
+      ],
+      "expected_reason_codes": [
+        "MET-SKIP-EXCLUDED"
+      ],
+      "expected_target_binding": false,
+      "boundary_dimension": "excluded-role-or-context",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "metallic-materials-skip-2",
+      "adapter_id": "metallic-materials",
+      "case_kind": "negative",
+      "synthetic_source_text": "Copper tape provides electrical contact but is outside the target scope.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "skip",
+      "expected_signal_ids": [
+        "met-apparatus"
+      ],
+      "expected_independence_groups": [
+        "met-exclusion"
+      ],
+      "expected_reason_codes": [
+        "MET-SKIP-EXCLUDED"
+      ],
+      "expected_target_binding": false,
+      "boundary_dimension": "excluded-role-or-context",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "metallic-materials-candidate-1",
+      "adapter_id": "metallic-materials",
+      "case_kind": "ambiguous",
+      "synthetic_source_text": "An unspecified commercial alloy was tested, but its role and grade are absent.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "candidate",
+      "expected_signal_ids": [
+        "met-alloy-identity",
+        "met-generic-metal"
+      ],
+      "expected_independence_groups": [
+        "met-generic",
+        "met-identity"
+      ],
+      "expected_reason_codes": [
+        "MET-CANDIDATE-UNRESOLVED"
+      ],
+      "expected_target_binding": null,
+      "boundary_dimension": "ambiguous-sense-binding-or-access",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "metallic-materials-candidate-2",
+      "adapter_id": "metallic-materials",
+      "case_kind": "ambiguous",
+      "synthetic_source_text": "The text names AA7075 only in a comparison sentence with no accessible method or result.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "candidate",
+      "expected_signal_ids": [
+        "met-generic-metal"
+      ],
+      "expected_independence_groups": [
+        "met-generic"
+      ],
+      "expected_reason_codes": [
+        "MET-CANDIDATE-UNRESOLVED"
+      ],
+      "expected_target_binding": null,
+      "boundary_dimension": "ambiguous-sense-binding-or-access",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "polymers-load-1",
+      "adapter_id": "polymers",
+      "case_kind": "positive",
+      "synthetic_source_text": "Monomer ratio, catalyst, conversion and molecular-weight distribution are reported for the target polymer.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "load",
+      "expected_signal_ids": [
+        "pol-polymer-identity",
+        "pol-polymerization"
+      ],
+      "expected_independence_groups": [
+        "pol-identity",
+        "pol-reaction"
+      ],
+      "expected_reason_codes": [
+        "POL-LOAD-TARGET"
+      ],
+      "expected_target_binding": true,
+      "boundary_dimension": "target-bound-method-or-result",
+      "expected_record_types": [
+        "polymerization-record"
+      ],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "polymers-load-2",
+      "adapter_id": "polymers",
+      "case_kind": "positive",
+      "synthetic_source_text": "The resin formulation, cure cycle, glass transition and tensile state are linked to cured specimens.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "load",
+      "expected_signal_ids": [
+        "pol-polymer-identity",
+        "pol-polymerization"
+      ],
+      "expected_independence_groups": [
+        "pol-identity",
+        "pol-reaction"
+      ],
+      "expected_reason_codes": [
+        "POL-LOAD-TARGET"
+      ],
+      "expected_target_binding": true,
+      "boundary_dimension": "target-bound-method-or-result",
+      "expected_record_types": [
+        "polymer-state"
+      ],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "polymers-skip-1",
+      "adapter_id": "polymers",
+      "case_kind": "negative",
+      "synthetic_source_text": "A polymer vial stores the target powder and is not part of the experiment.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "skip",
+      "expected_signal_ids": [
+        "pol-consumable"
+      ],
+      "expected_independence_groups": [
+        "pol-exclusion"
+      ],
+      "expected_reason_codes": [
+        "POL-SKIP-EXCLUDED"
+      ],
+      "expected_target_binding": false,
+      "boundary_dimension": "excluded-role-or-context",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "polymers-skip-2",
+      "adapter_id": "polymers",
+      "case_kind": "negative",
+      "synthetic_source_text": "PVDF is an incidental binder while only the active inorganic particles are studied.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "skip",
+      "expected_signal_ids": [
+        "pol-consumable"
+      ],
+      "expected_independence_groups": [
+        "pol-exclusion"
+      ],
+      "expected_reason_codes": [
+        "POL-SKIP-EXCLUDED"
+      ],
+      "expected_target_binding": false,
+      "boundary_dimension": "excluded-role-or-context",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "polymers-candidate-1",
+      "adapter_id": "polymers",
+      "case_kind": "ambiguous",
+      "synthetic_source_text": "A trade-name resin is mentioned without grade, composition or target role.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "candidate",
+      "expected_signal_ids": [
+        "pol-generic"
+      ],
+      "expected_independence_groups": [
+        "pol-generic"
+      ],
+      "expected_reason_codes": [
+        "POL-CANDIDATE-UNRESOLVED"
+      ],
+      "expected_target_binding": null,
+      "boundary_dimension": "ambiguous-sense-binding-or-access",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "polymers-candidate-2",
+      "adapter_id": "polymers",
+      "case_kind": "ambiguous",
+      "synthetic_source_text": "The sample is called a polymer composite, but the accessible abstract has no formulation or specimen identity.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "candidate",
+      "expected_signal_ids": [
+        "pol-polymer-identity",
+        "pol-generic"
+      ],
+      "expected_independence_groups": [
+        "pol-generic",
+        "pol-identity"
+      ],
+      "expected_reason_codes": [
+        "POL-CANDIDATE-UNRESOLVED"
+      ],
+      "expected_target_binding": null,
+      "boundary_dimension": "ambiguous-sense-binding-or-access",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "ceramics-glass-cement-load-1",
+      "adapter_id": "ceramics-glass-cement",
+      "case_kind": "positive",
+      "synthetic_source_text": "Batch oxides, powder forming, sintering schedule, phases and porosity are reported for the ceramic.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "load",
+      "expected_signal_ids": [
+        "cer-forming-firing-curing"
+      ],
+      "expected_independence_groups": [
+        "cer-process"
+      ],
+      "expected_reason_codes": [
+        "CER-LOAD-TARGET"
+      ],
+      "expected_target_binding": true,
+      "boundary_dimension": "target-bound-method-or-result",
+      "expected_record_types": [
+        "inorganic-batch-composition"
+      ],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "ceramics-glass-cement-load-2",
+      "adapter_id": "ceramics-glass-cement",
+      "case_kind": "positive",
+      "synthetic_source_text": "Water-binder ratio, curing humidity, age and compressive strength are linked to the cement paste.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "load",
+      "expected_signal_ids": [
+        "cer-inorganic-product"
+      ],
+      "expected_independence_groups": [
+        "cer-identity"
+      ],
+      "expected_reason_codes": [
+        "CER-LOAD-TARGET"
+      ],
+      "expected_target_binding": true,
+      "boundary_dimension": "target-bound-method-or-result",
+      "expected_record_types": [
+        "cementitious-state"
+      ],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "ceramics-glass-cement-skip-1",
+      "adapter_id": "ceramics-glass-cement",
+      "case_kind": "negative",
+      "synthetic_source_text": "An alumina crucible contains the target metal and is not analyzed.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "skip",
+      "expected_signal_ids": [
+        "cer-apparatus"
+      ],
+      "expected_independence_groups": [
+        "cer-exclusion"
+      ],
+      "expected_reason_codes": [
+        "CER-SKIP-EXCLUDED"
+      ],
+      "expected_target_binding": false,
+      "boundary_dimension": "excluded-role-or-context",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "ceramics-glass-cement-skip-2",
+      "adapter_id": "ceramics-glass-cement",
+      "case_kind": "negative",
+      "synthetic_source_text": "A glass slide is only the substrate for a polymer coating.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "skip",
+      "expected_signal_ids": [
+        "cer-apparatus"
+      ],
+      "expected_independence_groups": [
+        "cer-exclusion"
+      ],
+      "expected_reason_codes": [
+        "CER-SKIP-EXCLUDED"
+      ],
+      "expected_target_binding": false,
+      "boundary_dimension": "excluded-role-or-context",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "ceramics-glass-cement-candidate-1",
+      "adapter_id": "ceramics-glass-cement",
+      "case_kind": "ambiguous",
+      "synthetic_source_text": "The specimen is described only as a technical ceramic with no composition or role.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "candidate",
+      "expected_signal_ids": [
+        "cer-generic"
+      ],
+      "expected_independence_groups": [
+        "cer-generic"
+      ],
+      "expected_reason_codes": [
+        "CER-CANDIDATE-UNRESOLVED"
+      ],
+      "expected_target_binding": null,
+      "boundary_dimension": "ambiguous-sense-binding-or-access",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "ceramics-glass-cement-candidate-2",
+      "adapter_id": "ceramics-glass-cement",
+      "case_kind": "ambiguous",
+      "synthetic_source_text": "Concrete performance is cited from another paper but the source boundary is unresolved.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "candidate",
+      "expected_signal_ids": [
+        "cer-inorganic-product"
+      ],
+      "expected_independence_groups": [
+        "cer-identity"
+      ],
+      "expected_reason_codes": [
+        "CER-CANDIDATE-UNRESOLVED"
+      ],
+      "expected_target_binding": null,
+      "boundary_dimension": "ambiguous-sense-binding-or-access",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "liquid-materials-load-1",
+      "adapter_id": "liquid-materials",
+      "case_kind": "positive",
+      "synthetic_source_text": "Ionic-liquid composition, water content, temperature and viscosity are measured for the target mixture.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "load",
+      "expected_signal_ids": [
+        "liq-state-property"
+      ],
+      "expected_independence_groups": [
+        "liq-state"
+      ],
+      "expected_reason_codes": [
+        "LIQ-LOAD-TARGET"
+      ],
+      "expected_target_binding": true,
+      "boundary_dimension": "target-bound-method-or-result",
+      "expected_record_types": [
+        "liquid-composition-state"
+      ],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "liquid-materials-load-2",
+      "adapter_id": "liquid-materials",
+      "case_kind": "positive",
+      "synthetic_source_text": "The molten alloy oxygen activity, crucible, superheat and wetting behavior are reported.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "load",
+      "expected_signal_ids": [
+        "liq-composition",
+        "liq-state-property"
+      ],
+      "expected_independence_groups": [
+        "liq-composition",
+        "liq-state"
+      ],
+      "expected_reason_codes": [
+        "LIQ-LOAD-TARGET"
+      ],
+      "expected_target_binding": true,
+      "boundary_dimension": "target-bound-method-or-result",
+      "expected_record_types": [
+        "liquid-metal-state"
+      ],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "liquid-materials-skip-1",
+      "adapter_id": "liquid-materials",
+      "case_kind": "negative",
+      "synthetic_source_text": "A water bath controls temperature but water is not a target material.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "skip",
+      "expected_signal_ids": [
+        "liq-incidental-fluid"
+      ],
+      "expected_independence_groups": [
+        "liq-exclusion"
+      ],
+      "expected_reason_codes": [
+        "LIQ-SKIP-EXCLUDED"
+      ],
+      "expected_target_binding": false,
+      "boundary_dimension": "excluded-role-or-context",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "liquid-materials-skip-2",
+      "adapter_id": "liquid-materials",
+      "case_kind": "negative",
+      "synthetic_source_text": "Ethanol is used only to clean the specimen before testing.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "skip",
+      "expected_signal_ids": [
+        "liq-incidental-fluid"
+      ],
+      "expected_independence_groups": [
+        "liq-exclusion"
+      ],
+      "expected_reason_codes": [
+        "LIQ-SKIP-EXCLUDED"
+      ],
+      "expected_target_binding": false,
+      "boundary_dimension": "excluded-role-or-context",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "liquid-materials-candidate-1",
+      "adapter_id": "liquid-materials",
+      "case_kind": "ambiguous",
+      "synthetic_source_text": "The word solution appears without composition, target binding or physical state.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "candidate",
+      "expected_signal_ids": [
+        "liq-generic"
+      ],
+      "expected_independence_groups": [
+        "liq-generic"
+      ],
+      "expected_reason_codes": [
+        "LIQ-CANDIDATE-UNRESOLVED"
+      ],
+      "expected_target_binding": null,
+      "boundary_dimension": "ambiguous-sense-binding-or-access",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "liquid-materials-candidate-2",
+      "adapter_id": "liquid-materials",
+      "case_kind": "ambiguous",
+      "synthetic_source_text": "A commercial electrolyte is named but the accessible source does not identify formulation or role.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "candidate",
+      "expected_signal_ids": [
+        "liq-generic"
+      ],
+      "expected_independence_groups": [
+        "liq-generic"
+      ],
+      "expected_reason_codes": [
+        "LIQ-CANDIDATE-UNRESOLVED"
+      ],
+      "expected_target_binding": null,
+      "boundary_dimension": "ambiguous-sense-binding-or-access",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "two-dimensional-materials-load-1",
+      "adapter_id": "two-dimensional-materials",
+      "case_kind": "positive",
+      "synthetic_source_text": "Monolayer MoS2 thickness, substrate, transfer and device geometry are linked to the target channel.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "load",
+      "expected_signal_ids": [
+        "twod-layer-count"
+      ],
+      "expected_independence_groups": [
+        "twod-identity"
+      ],
+      "expected_reason_codes": [
+        "TWOD-LOAD-TARGET"
+      ],
+      "expected_target_binding": true,
+      "boundary_dimension": "target-bound-method-or-result",
+      "expected_record_types": [
+        "two-dimensional-identity"
+      ],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "two-dimensional-materials-load-2",
+      "adapter_id": "two-dimensional-materials",
+      "case_kind": "positive",
+      "synthetic_source_text": "Graphene flake size, layer distribution, defect mapping and assembled-film processing are reported.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "load",
+      "expected_signal_ids": [
+        "twod-layer-count",
+        "twod-production-stack"
+      ],
+      "expected_independence_groups": [
+        "twod-identity",
+        "twod-production"
+      ],
+      "expected_reason_codes": [
+        "TWOD-LOAD-TARGET"
+      ],
+      "expected_target_binding": true,
+      "boundary_dimension": "target-bound-method-or-result",
+      "expected_record_types": [
+        "two-dimensional-structure-quality"
+      ],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "two-dimensional-materials-skip-1",
+      "adapter_id": "two-dimensional-materials",
+      "case_kind": "negative",
+      "synthetic_source_text": "A two-dimensional plot displays bulk steel data; no 2D material is present.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "skip",
+      "expected_signal_ids": [
+        "twod-false-sense"
+      ],
+      "expected_independence_groups": [
+        "twod-exclusion"
+      ],
+      "expected_reason_codes": [
+        "TWOD-SKIP-EXCLUDED"
+      ],
+      "expected_target_binding": false,
+      "boundary_dimension": "excluded-role-or-context",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "two-dimensional-materials-skip-2",
+      "adapter_id": "two-dimensional-materials",
+      "case_kind": "negative",
+      "synthetic_source_text": "Bulk graphite is called layered, but no sheet, flake or 2D state is studied.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "skip",
+      "expected_signal_ids": [
+        "twod-false-sense"
+      ],
+      "expected_independence_groups": [
+        "twod-exclusion"
+      ],
+      "expected_reason_codes": [
+        "TWOD-SKIP-EXCLUDED"
+      ],
+      "expected_target_binding": false,
+      "boundary_dimension": "excluded-role-or-context",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "two-dimensional-materials-candidate-1",
+      "adapter_id": "two-dimensional-materials",
+      "case_kind": "ambiguous",
+      "synthetic_source_text": "The abstract says nanosheet without layer count, thickness or target-entity resolution.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "candidate",
+      "expected_signal_ids": [
+        "twod-generic"
+      ],
+      "expected_independence_groups": [
+        "twod-generic"
+      ],
+      "expected_reason_codes": [
+        "TWOD-CANDIDATE-UNRESOLVED"
+      ],
+      "expected_target_binding": null,
+      "boundary_dimension": "ambiguous-sense-binding-or-access",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "two-dimensional-materials-candidate-2",
+      "adapter_id": "two-dimensional-materials",
+      "case_kind": "ambiguous",
+      "synthetic_source_text": "A 2D heterostructure is claimed, but the layer sequence and source evidence are inaccessible.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "candidate",
+      "expected_signal_ids": [
+        "twod-layer-count",
+        "twod-generic"
+      ],
+      "expected_independence_groups": [
+        "twod-generic",
+        "twod-identity"
+      ],
+      "expected_reason_codes": [
+        "TWOD-CANDIDATE-UNRESOLVED"
+      ],
+      "expected_target_binding": null,
+      "boundary_dimension": "ambiguous-sense-binding-or-access",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "quantum-materials-load-1",
+      "adapter_id": "quantum-materials",
+      "case_kind": "positive",
+      "synthetic_source_text": "A topological invariant, band inversion and target-bound surface-state measurement support the claimed phase.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "load",
+      "expected_signal_ids": [
+        "qmat-signature"
+      ],
+      "expected_independence_groups": [
+        "qmat-signature"
+      ],
+      "expected_reason_codes": [
+        "QMAT-LOAD-TARGET"
+      ],
+      "expected_target_binding": true,
+      "boundary_dimension": "target-bound-method-or-result",
+      "expected_record_types": [
+        "topological-assessment"
+      ],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "quantum-materials-load-2",
+      "adapter_id": "quantum-materials",
+      "case_kind": "positive",
+      "synthetic_source_text": "Neutron and thermodynamic probes constrain a spin-liquid candidate and preserve competing explanations.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "load",
+      "expected_signal_ids": [
+        "qmat-emergent-phase",
+        "qmat-topological"
+      ],
+      "expected_independence_groups": [
+        "qmat-phase",
+        "qmat-topology"
+      ],
+      "expected_reason_codes": [
+        "QMAT-LOAD-TARGET"
+      ],
+      "expected_target_binding": true,
+      "boundary_dimension": "target-bound-method-or-result",
+      "expected_record_types": [
+        "ordered-state-assessment"
+      ],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "quantum-materials-skip-1",
+      "adapter_id": "quantum-materials",
+      "case_kind": "negative",
+      "synthetic_source_text": "Quantum chemistry is used only as a calculation method for an ordinary molecule.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "skip",
+      "expected_signal_ids": [
+        "qmat-other-quantum"
+      ],
+      "expected_independence_groups": [
+        "qmat-exclusion"
+      ],
+      "expected_reason_codes": [
+        "QMAT-SKIP-EXCLUDED"
+      ],
+      "expected_target_binding": false,
+      "boundary_dimension": "excluded-role-or-context",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "quantum-materials-skip-2",
+      "adapter_id": "quantum-materials",
+      "case_kind": "negative",
+      "synthetic_source_text": "Quantum efficiency refers to a photovoltaic device metric, not a quantum material phase.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "skip",
+      "expected_signal_ids": [
+        "qmat-other-quantum"
+      ],
+      "expected_independence_groups": [
+        "qmat-exclusion"
+      ],
+      "expected_reason_codes": [
+        "QMAT-SKIP-EXCLUDED"
+      ],
+      "expected_target_binding": false,
+      "boundary_dimension": "excluded-role-or-context",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "quantum-materials-candidate-1",
+      "adapter_id": "quantum-materials",
+      "case_kind": "ambiguous",
+      "synthetic_source_text": "A single low-temperature anomaly is called quantum critical without scaling or phase-boundary evidence.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "candidate",
+      "expected_signal_ids": [
+        "qmat-generic"
+      ],
+      "expected_independence_groups": [
+        "qmat-generic"
+      ],
+      "expected_reason_codes": [
+        "QMAT-CANDIDATE-UNRESOLVED"
+      ],
+      "expected_target_binding": null,
+      "boundary_dimension": "ambiguous-sense-binding-or-access",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "quantum-materials-candidate-2",
+      "adapter_id": "quantum-materials",
+      "case_kind": "ambiguous",
+      "synthetic_source_text": "The introduction labels the family topological, but no result is bound to the studied sample.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "candidate",
+      "expected_signal_ids": [
+        "qmat-generic"
+      ],
+      "expected_independence_groups": [
+        "qmat-generic"
+      ],
+      "expected_reason_codes": [
+        "QMAT-CANDIDATE-UNRESOLVED"
+      ],
+      "expected_target_binding": null,
+      "boundary_dimension": "ambiguous-sense-binding-or-access",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "materials-processing-load-1",
+      "adapter_id": "materials-processing",
+      "case_kind": "positive",
+      "synthetic_source_text": "The complete heating, hold, cooling and deformation sequence defines the target specimen state.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "load",
+      "expected_signal_ids": [
+        "proc-parameterized-step",
+        "proc-additive-or-joining"
+      ],
+      "expected_independence_groups": [
+        "proc-special",
+        "proc-step"
+      ],
+      "expected_reason_codes": [
+        "PROC-LOAD-TARGET"
+      ],
+      "expected_target_binding": true,
+      "boundary_dimension": "target-bound-method-or-result",
+      "expected_record_types": [
+        "thermal-history"
+      ],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "materials-processing-load-2",
+      "adapter_id": "materials-processing",
+      "case_kind": "positive",
+      "synthetic_source_text": "Machine, feedstock, build orientation, scan strategy and post-treatment are reported for the additive build.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "load",
+      "expected_signal_ids": [
+        "proc-lineage"
+      ],
+      "expected_independence_groups": [
+        "proc-lineage"
+      ],
+      "expected_reason_codes": [
+        "PROC-LOAD-TARGET"
+      ],
+      "expected_target_binding": true,
+      "boundary_dimension": "target-bound-method-or-result",
+      "expected_record_types": [
+        "additive-manufacturing-process"
+      ],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "materials-processing-skip-1",
+      "adapter_id": "materials-processing",
+      "case_kind": "negative",
+      "synthetic_source_text": "The purchased material is tested as received and no processing fact is reported.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "skip",
+      "expected_signal_ids": [
+        "proc-not-executed"
+      ],
+      "expected_independence_groups": [
+        "proc-exclusion"
+      ],
+      "expected_reason_codes": [
+        "PROC-SKIP-EXCLUDED"
+      ],
+      "expected_target_binding": false,
+      "boundary_dimension": "excluded-role-or-context",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "materials-processing-skip-2",
+      "adapter_id": "materials-processing",
+      "case_kind": "negative",
+      "synthetic_source_text": "A preparation method appears only in an external citation outside the accessible source.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "skip",
+      "expected_signal_ids": [
+        "proc-not-executed"
+      ],
+      "expected_independence_groups": [
+        "proc-exclusion"
+      ],
+      "expected_reason_codes": [
+        "PROC-SKIP-EXCLUDED"
+      ],
+      "expected_target_binding": false,
+      "boundary_dimension": "excluded-role-or-context",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "materials-processing-candidate-1",
+      "adapter_id": "materials-processing",
+      "case_kind": "ambiguous",
+      "synthetic_source_text": "Samples were prepared conventionally, with no ordered steps or referenced procedure.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "candidate",
+      "expected_signal_ids": [
+        "proc-additive-or-joining",
+        "proc-generic"
+      ],
+      "expected_independence_groups": [
+        "proc-generic",
+        "proc-special"
+      ],
+      "expected_reason_codes": [
+        "PROC-CANDIDATE-UNRESOLVED"
+      ],
+      "expected_target_binding": null,
+      "boundary_dimension": "ambiguous-sense-binding-or-access",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "materials-processing-candidate-2",
+      "adapter_id": "materials-processing",
+      "case_kind": "ambiguous",
+      "synthetic_source_text": "A heat treatment is mentioned but temperature, duration and target specimen are unresolved.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "candidate",
+      "expected_signal_ids": [
+        "proc-generic"
+      ],
+      "expected_independence_groups": [
+        "proc-generic"
+      ],
+      "expected_reason_codes": [
+        "PROC-CANDIDATE-UNRESOLVED"
+      ],
+      "expected_target_binding": null,
+      "boundary_dimension": "ambiguous-sense-binding-or-access",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "battery-load-1",
+      "adapter_id": "battery",
+      "case_kind": "positive",
+      "synthetic_source_text": "Coin-cell electrodes, loading, electrolyte, formation and cycling limits are linked to capacity retention.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "load",
+      "expected_signal_ids": [
+        "bat-cycling"
+      ],
+      "expected_independence_groups": [
+        "bat-cycling"
+      ],
+      "expected_reason_codes": [
+        "BAT-LOAD-TARGET"
+      ],
+      "expected_target_binding": true,
+      "boundary_dimension": "target-bound-method-or-result",
+      "expected_record_types": [
+        "battery-test-protocol"
+      ],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "battery-load-2",
+      "adapter_id": "battery",
+      "case_kind": "positive",
+      "synthetic_source_text": "Pouch-cell hierarchy, pressure, reference capacity and calendar-aging conditions are reported.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "load",
+      "expected_signal_ids": [
+        "bat-cell-hierarchy",
+        "bat-cycling"
+      ],
+      "expected_independence_groups": [
+        "bat-cell",
+        "bat-cycling"
+      ],
+      "expected_reason_codes": [
+        "BAT-LOAD-TARGET"
+      ],
+      "expected_target_binding": true,
+      "boundary_dimension": "target-bound-method-or-result",
+      "expected_record_types": [
+        "battery-component-hierarchy"
+      ],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "battery-skip-1",
+      "adapter_id": "battery",
+      "case_kind": "negative",
+      "synthetic_source_text": "A battery powers the field sensor but is not a studied material or device.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "skip",
+      "expected_signal_ids": [
+        "bat-other-use"
+      ],
+      "expected_independence_groups": [
+        "bat-exclusion"
+      ],
+      "expected_reason_codes": [
+        "BAT-SKIP-EXCLUDED"
+      ],
+      "expected_target_binding": false,
+      "boundary_dimension": "excluded-role-or-context",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "battery-skip-2",
+      "adapter_id": "battery",
+      "case_kind": "negative",
+      "synthetic_source_text": "The target catalyst is compared with a cited battery electrode outside source scope.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "skip",
+      "expected_signal_ids": [
+        "bat-other-use"
+      ],
+      "expected_independence_groups": [
+        "bat-exclusion"
+      ],
+      "expected_reason_codes": [
+        "BAT-SKIP-EXCLUDED"
+      ],
+      "expected_target_binding": false,
+      "boundary_dimension": "excluded-role-or-context",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "battery-candidate-1",
+      "adapter_id": "battery",
+      "case_kind": "ambiguous",
+      "synthetic_source_text": "The electrode shows good cycling, but cell type, counter electrode and protocol are unavailable.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "candidate",
+      "expected_signal_ids": [
+        "bat-generic"
+      ],
+      "expected_independence_groups": [
+        "bat-generic"
+      ],
+      "expected_reason_codes": [
+        "BAT-CANDIDATE-UNRESOLVED"
+      ],
+      "expected_target_binding": null,
+      "boundary_dimension": "ambiguous-sense-binding-or-access",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "battery-candidate-2",
+      "adapter_id": "battery",
+      "case_kind": "ambiguous",
+      "synthetic_source_text": "A battery-material claim appears in the abstract without target component hierarchy or result evidence.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "candidate",
+      "expected_signal_ids": [
+        "bat-generic"
+      ],
+      "expected_independence_groups": [
+        "bat-generic"
+      ],
+      "expected_reason_codes": [
+        "BAT-CANDIDATE-UNRESOLVED"
+      ],
+      "expected_target_binding": null,
+      "boundary_dimension": "ambiguous-sense-binding-or-access",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "photovoltaic-device-load-1",
+      "adapter_id": "photovoltaic-device",
+      "case_kind": "positive",
+      "synthetic_source_text": "Layer stack, active area, illumination calibration and stabilized efficiency are reported for the solar cell.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "load",
+      "expected_signal_ids": [
+        "pv-device",
+        "pv-jv-performance"
+      ],
+      "expected_independence_groups": [
+        "pv-device",
+        "pv-performance"
+      ],
+      "expected_reason_codes": [
+        "PV-LOAD-TARGET"
+      ],
+      "expected_target_binding": true,
+      "boundary_dimension": "target-bound-method-or-result",
+      "expected_record_types": [
+        "pv-device-stack"
+      ],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "photovoltaic-device-load-2",
+      "adapter_id": "photovoltaic-device",
+      "case_kind": "positive",
+      "synthetic_source_text": "The target module architecture and temperature-dependent J-V stability protocol are resolved.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "load",
+      "expected_signal_ids": [
+        "pv-device",
+        "pv-jv-performance"
+      ],
+      "expected_independence_groups": [
+        "pv-device",
+        "pv-performance"
+      ],
+      "expected_reason_codes": [
+        "PV-LOAD-TARGET"
+      ],
+      "expected_target_binding": true,
+      "boundary_dimension": "target-bound-method-or-result",
+      "expected_record_types": [
+        "pv-measurement-protocol"
+      ],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "photovoltaic-device-skip-1",
+      "adapter_id": "photovoltaic-device",
+      "case_kind": "negative",
+      "synthetic_source_text": "A photovoltaic panel powers the experiment and is not the target device.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "skip",
+      "expected_signal_ids": [
+        "pv-other-photo"
+      ],
+      "expected_independence_groups": [
+        "pv-exclusion"
+      ],
+      "expected_reason_codes": [
+        "PV-SKIP-EXCLUDED"
+      ],
+      "expected_target_binding": false,
+      "boundary_dimension": "excluded-role-or-context",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "photovoltaic-device-skip-2",
+      "adapter_id": "photovoltaic-device",
+      "case_kind": "negative",
+      "synthetic_source_text": "Optical absorption is discussed as future photovoltaic potential without fabricating a device.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "skip",
+      "expected_signal_ids": [
+        "pv-other-photo"
+      ],
+      "expected_independence_groups": [
+        "pv-exclusion"
+      ],
+      "expected_reason_codes": [
+        "PV-SKIP-EXCLUDED"
+      ],
+      "expected_target_binding": false,
+      "boundary_dimension": "excluded-role-or-context",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "photovoltaic-device-candidate-1",
+      "adapter_id": "photovoltaic-device",
+      "case_kind": "ambiguous",
+      "synthetic_source_text": "A high-efficiency solar cell is claimed without area, stack or measurement protocol.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "candidate",
+      "expected_signal_ids": [
+        "pv-device",
+        "pv-jv-performance"
+      ],
+      "expected_independence_groups": [
+        "pv-device",
+        "pv-performance"
+      ],
+      "expected_reason_codes": [
+        "PV-CANDIDATE-UNRESOLVED"
+      ],
+      "expected_target_binding": null,
+      "boundary_dimension": "ambiguous-sense-binding-or-access",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "photovoltaic-device-candidate-2",
+      "adapter_id": "photovoltaic-device",
+      "case_kind": "ambiguous",
+      "synthetic_source_text": "The material is screened for photovoltaics, but device fabrication and target centrality are unclear.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "candidate",
+      "expected_signal_ids": [
+        "pv-generic"
+      ],
+      "expected_independence_groups": [
+        "pv-generic"
+      ],
+      "expected_reason_codes": [
+        "PV-CANDIDATE-UNRESOLVED"
+      ],
+      "expected_target_binding": null,
+      "boundary_dimension": "ambiguous-sense-binding-or-access",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "electrochemical-energy-load-1",
+      "adapter_id": "electrochemical-energy",
+      "case_kind": "positive",
+      "synthetic_source_text": "Catalyst loading, three-electrode geometry, reference scale and OER activity are reported.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "load",
+      "expected_signal_ids": [
+        "ece-reaction",
+        "ece-performance"
+      ],
+      "expected_independence_groups": [
+        "ece-performance",
+        "ece-reaction"
+      ],
+      "expected_reason_codes": [
+        "ECE-LOAD-TARGET"
+      ],
+      "expected_target_binding": true,
+      "boundary_dimension": "target-bound-method-or-result",
+      "expected_record_types": [
+        "electrocatalyst-electrode"
+      ],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "electrochemical-energy-load-2",
+      "adapter_id": "electrochemical-energy",
+      "case_kind": "positive",
+      "synthetic_source_text": "Fuel-cell membrane, feeds, humidity, pressure and durability are linked to device performance.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "load",
+      "expected_signal_ids": [
+        "ece-performance"
+      ],
+      "expected_independence_groups": [
+        "ece-performance"
+      ],
+      "expected_reason_codes": [
+        "ECE-LOAD-TARGET"
+      ],
+      "expected_target_binding": true,
+      "boundary_dimension": "target-bound-method-or-result",
+      "expected_record_types": [
+        "electrochemical-reactor"
+      ],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "electrochemical-energy-skip-1",
+      "adapter_id": "electrochemical-energy",
+      "case_kind": "negative",
+      "synthetic_source_text": "Electrochemical polishing is only a specimen-preparation step and no energy conversion is studied.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "skip",
+      "expected_signal_ids": [
+        "ece-other-electrochem"
+      ],
+      "expected_independence_groups": [
+        "ece-exclusion"
+      ],
+      "expected_reason_codes": [
+        "ECE-SKIP-EXCLUDED"
+      ],
+      "expected_target_binding": false,
+      "boundary_dimension": "excluded-role-or-context",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "electrochemical-energy-skip-2",
+      "adapter_id": "electrochemical-energy",
+      "case_kind": "negative",
+      "synthetic_source_text": "Battery cycling is the sole application and is routed to the battery adapter.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "skip",
+      "expected_signal_ids": [
+        "ece-other-electrochem"
+      ],
+      "expected_independence_groups": [
+        "ece-exclusion"
+      ],
+      "expected_reason_codes": [
+        "ECE-SKIP-EXCLUDED"
+      ],
+      "expected_target_binding": false,
+      "boundary_dimension": "excluded-role-or-context",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "electrochemical-energy-candidate-1",
+      "adapter_id": "electrochemical-energy",
+      "case_kind": "ambiguous",
+      "synthetic_source_text": "The target is called an electrocatalyst without reaction, loading, reactor or result evidence.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "candidate",
+      "expected_signal_ids": [
+        "ece-generic"
+      ],
+      "expected_independence_groups": [
+        "ece-generic"
+      ],
+      "expected_reason_codes": [
+        "ECE-CANDIDATE-UNRESOLVED"
+      ],
+      "expected_target_binding": null,
+      "boundary_dimension": "ambiguous-sense-binding-or-access",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "electrochemical-energy-candidate-2",
+      "adapter_id": "electrochemical-energy",
+      "case_kind": "ambiguous",
+      "synthetic_source_text": "Energy conversion is mentioned, but the working entity and electrochemical configuration are unresolved.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "candidate",
+      "expected_signal_ids": [
+        "ece-generic"
+      ],
+      "expected_independence_groups": [
+        "ece-generic"
+      ],
+      "expected_reason_codes": [
+        "ECE-CANDIDATE-UNRESOLVED"
+      ],
+      "expected_target_binding": null,
+      "boundary_dimension": "ambiguous-sense-binding-or-access",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "hydrogen-storage-load-1",
+      "adapter_id": "hydrogen-storage",
+      "case_kind": "positive",
+      "synthetic_source_text": "Hydride activation, PCT isotherms, equilibrium criteria and reversible capacity are reported.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "load",
+      "expected_signal_ids": [
+        "h2s-sorption"
+      ],
+      "expected_independence_groups": [
+        "h2s-sorption"
+      ],
+      "expected_reason_codes": [
+        "H2S-LOAD-TARGET"
+      ],
+      "expected_target_binding": true,
+      "boundary_dimension": "target-bound-method-or-result",
+      "expected_record_types": [
+        "hydrogen-sorption-assessment"
+      ],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "hydrogen-storage-load-2",
+      "adapter_id": "hydrogen-storage",
+      "case_kind": "positive",
+      "synthetic_source_text": "Adsorbent packing density, temperature range and usable volumetric hydrogen capacity are linked.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "load",
+      "expected_signal_ids": [
+        "h2s-storage-material",
+        "h2s-sorption"
+      ],
+      "expected_independence_groups": [
+        "h2s-material",
+        "h2s-sorption"
+      ],
+      "expected_reason_codes": [
+        "H2S-LOAD-TARGET"
+      ],
+      "expected_target_binding": true,
+      "boundary_dimension": "target-bound-method-or-result",
+      "expected_record_types": [
+        "hydrogen-storage-material"
+      ],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "hydrogen-storage-skip-1",
+      "adapter_id": "hydrogen-storage",
+      "case_kind": "negative",
+      "synthetic_source_text": "Hydrogen is only the carrier gas during thermal processing.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "skip",
+      "expected_signal_ids": [
+        "h2s-other-hydrogen"
+      ],
+      "expected_independence_groups": [
+        "h2s-exclusion"
+      ],
+      "expected_reason_codes": [
+        "H2S-SKIP-EXCLUDED"
+      ],
+      "expected_target_binding": false,
+      "boundary_dimension": "excluded-role-or-context",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "hydrogen-storage-skip-2",
+      "adapter_id": "hydrogen-storage",
+      "case_kind": "negative",
+      "synthetic_source_text": "A structural alloy is used in a storage tank but hydrogen uptake is not investigated.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "skip",
+      "expected_signal_ids": [
+        "h2s-other-hydrogen"
+      ],
+      "expected_independence_groups": [
+        "h2s-exclusion"
+      ],
+      "expected_reason_codes": [
+        "H2S-SKIP-EXCLUDED"
+      ],
+      "expected_target_binding": false,
+      "boundary_dimension": "excluded-role-or-context",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "hydrogen-storage-candidate-1",
+      "adapter_id": "hydrogen-storage",
+      "case_kind": "ambiguous",
+      "synthetic_source_text": "Hydrogen uptake is stated without pressure, temperature, equilibrium rule or capacity basis.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "candidate",
+      "expected_signal_ids": [
+        "h2s-generic"
+      ],
+      "expected_independence_groups": [
+        "h2s-generic"
+      ],
+      "expected_reason_codes": [
+        "H2S-CANDIDATE-UNRESOLVED"
+      ],
+      "expected_target_binding": null,
+      "boundary_dimension": "ambiguous-sense-binding-or-access",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "hydrogen-storage-candidate-2",
+      "adapter_id": "hydrogen-storage",
+      "case_kind": "ambiguous",
+      "synthetic_source_text": "A storage-material family is cited, but the studied target and measurement are inaccessible.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "candidate",
+      "expected_signal_ids": [
+        "h2s-generic"
+      ],
+      "expected_independence_groups": [
+        "h2s-generic"
+      ],
+      "expected_reason_codes": [
+        "H2S-CANDIDATE-UNRESOLVED"
+      ],
+      "expected_target_binding": null,
+      "boundary_dimension": "ambiguous-sense-binding-or-access",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "thermoelectric-load-1",
+      "adapter_id": "thermoelectric",
+      "case_kind": "positive",
+      "synthetic_source_text": "Seebeck coefficient, conductivity and thermal conductivity on the same specimen yield ZT versus temperature.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "load",
+      "expected_signal_ids": [
+        "te-zt",
+        "te-coupled-transport"
+      ],
+      "expected_independence_groups": [
+        "te-figure",
+        "te-transport"
+      ],
+      "expected_reason_codes": [
+        "TE-LOAD-TARGET"
+      ],
+      "expected_target_binding": true,
+      "boundary_dimension": "target-bound-method-or-result",
+      "expected_record_types": [
+        "thermoelectric-performance"
+      ],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "thermoelectric-load-2",
+      "adapter_id": "thermoelectric",
+      "case_kind": "positive",
+      "synthetic_source_text": "Module contacts, orientation, power factor and stability are reported for the target thermoelectric leg.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "load",
+      "expected_signal_ids": [
+        "te-coupled-transport",
+        "te-device"
+      ],
+      "expected_independence_groups": [
+        "te-device",
+        "te-transport"
+      ],
+      "expected_reason_codes": [
+        "TE-LOAD-TARGET"
+      ],
+      "expected_target_binding": true,
+      "boundary_dimension": "target-bound-method-or-result",
+      "expected_record_types": [
+        "thermoelectric-state"
+      ],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "thermoelectric-skip-1",
+      "adapter_id": "thermoelectric",
+      "case_kind": "negative",
+      "synthetic_source_text": "A thermocouple measures furnace temperature and is not the target material.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "skip",
+      "expected_signal_ids": [
+        "te-instrument-or-other"
+      ],
+      "expected_independence_groups": [
+        "te-exclusion"
+      ],
+      "expected_reason_codes": [
+        "TE-SKIP-EXCLUDED"
+      ],
+      "expected_target_binding": false,
+      "boundary_dimension": "excluded-role-or-context",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "thermoelectric-skip-2",
+      "adapter_id": "thermoelectric",
+      "case_kind": "negative",
+      "synthetic_source_text": "Thermal conductivity alone is reported without a thermoelectric claim or device context.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "skip",
+      "expected_signal_ids": [
+        "te-instrument-or-other"
+      ],
+      "expected_independence_groups": [
+        "te-exclusion"
+      ],
+      "expected_reason_codes": [
+        "TE-SKIP-EXCLUDED"
+      ],
+      "expected_target_binding": false,
+      "boundary_dimension": "excluded-role-or-context",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "thermoelectric-candidate-1",
+      "adapter_id": "thermoelectric",
+      "case_kind": "ambiguous",
+      "synthetic_source_text": "A Seebeck value is shown, but specimen identity and the thermoelectric objective are unclear.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "candidate",
+      "expected_signal_ids": [
+        "te-coupled-transport",
+        "te-generic"
+      ],
+      "expected_independence_groups": [
+        "te-generic",
+        "te-transport"
+      ],
+      "expected_reason_codes": [
+        "TE-CANDIDATE-UNRESOLVED"
+      ],
+      "expected_target_binding": null,
+      "boundary_dimension": "ambiguous-sense-binding-or-access",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "thermoelectric-candidate-2",
+      "adapter_id": "thermoelectric",
+      "case_kind": "ambiguous",
+      "synthetic_source_text": "The abstract claims promising ZT without exposing derivation inputs or temperature conditions.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "candidate",
+      "expected_signal_ids": [
+        "te-zt",
+        "te-coupled-transport"
+      ],
+      "expected_independence_groups": [
+        "te-figure",
+        "te-transport"
+      ],
+      "expected_reason_codes": [
+        "TE-CANDIDATE-UNRESOLVED"
+      ],
+      "expected_target_binding": null,
+      "boundary_dimension": "ambiguous-sense-binding-or-access",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "diffraction-scattering-load-1",
+      "adapter_id": "diffraction-scattering",
+      "case_kind": "positive",
+      "synthetic_source_text": "Target powder XRD acquisition and Rietveld refinement parameters support the phase assignment.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "load",
+      "expected_signal_ids": [
+        "dif-actual-measurement",
+        "dif-analysis"
+      ],
+      "expected_independence_groups": [
+        "dif-analysis",
+        "dif-measurement"
+      ],
+      "expected_reason_codes": [
+        "DIF-LOAD-TARGET"
+      ],
+      "expected_target_binding": true,
+      "boundary_dimension": "target-bound-method-or-result",
+      "expected_record_types": [
+        "structure-refinement"
+      ],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "diffraction-scattering-load-2",
+      "adapter_id": "diffraction-scattering",
+      "case_kind": "positive",
+      "synthetic_source_text": "SAXS q-range, background, model and size distribution are reported for the target dispersion.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "load",
+      "expected_signal_ids": [
+        "dif-actual-measurement",
+        "dif-data-feature"
+      ],
+      "expected_independence_groups": [
+        "dif-data",
+        "dif-measurement"
+      ],
+      "expected_reason_codes": [
+        "DIF-LOAD-TARGET"
+      ],
+      "expected_target_binding": true,
+      "boundary_dimension": "target-bound-method-or-result",
+      "expected_record_types": [
+        "scattering-size-or-correlation-analysis"
+      ],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "diffraction-scattering-skip-1",
+      "adapter_id": "diffraction-scattering",
+      "case_kind": "negative",
+      "synthetic_source_text": "An optical diffraction grating is part of the spectrometer apparatus.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "skip",
+      "expected_signal_ids": [
+        "dif-nonmaterial"
+      ],
+      "expected_independence_groups": [
+        "dif-exclusion"
+      ],
+      "expected_reason_codes": [
+        "DIF-SKIP-EXCLUDED"
+      ],
+      "expected_target_binding": false,
+      "boundary_dimension": "excluded-role-or-context",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "diffraction-scattering-skip-2",
+      "adapter_id": "diffraction-scattering",
+      "case_kind": "negative",
+      "synthetic_source_text": "Diffraction-limited image resolution is discussed without a material scattering measurement.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "skip",
+      "expected_signal_ids": [
+        "dif-nonmaterial"
+      ],
+      "expected_independence_groups": [
+        "dif-exclusion"
+      ],
+      "expected_reason_codes": [
+        "DIF-SKIP-EXCLUDED"
+      ],
+      "expected_target_binding": false,
+      "boundary_dimension": "excluded-role-or-context",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "diffraction-scattering-candidate-1",
+      "adapter_id": "diffraction-scattering",
+      "case_kind": "ambiguous",
+      "synthetic_source_text": "The text says XRD confirmed the phase but provides no pattern, method or target-bound result.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "candidate",
+      "expected_signal_ids": [
+        "dif-actual-measurement",
+        "dif-generic"
+      ],
+      "expected_independence_groups": [
+        "dif-generic",
+        "dif-measurement"
+      ],
+      "expected_reason_codes": [
+        "DIF-CANDIDATE-UNRESOLVED"
+      ],
+      "expected_target_binding": null,
+      "boundary_dimension": "ambiguous-sense-binding-or-access",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "diffraction-scattering-candidate-2",
+      "adapter_id": "diffraction-scattering",
+      "case_kind": "ambiguous",
+      "synthetic_source_text": "Several peaks appear in an unlabeled figure whose sample identity cannot be resolved.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "candidate",
+      "expected_signal_ids": [
+        "dif-generic"
+      ],
+      "expected_independence_groups": [
+        "dif-generic"
+      ],
+      "expected_reason_codes": [
+        "DIF-CANDIDATE-UNRESOLVED"
+      ],
+      "expected_target_binding": null,
+      "boundary_dimension": "ambiguous-sense-binding-or-access",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "electron-microscopy-microanalysis-load-1",
+      "adapter_id": "electron-microscopy-microanalysis",
+      "case_kind": "positive",
+      "synthetic_source_text": "STEM-EDS maps, acquisition settings and quantified composition are linked to a target grain.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "load",
+      "expected_signal_ids": [
+        "em-imaging",
+        "em-microanalysis"
+      ],
+      "expected_independence_groups": [
+        "em-analysis",
+        "em-imaging"
+      ],
+      "expected_reason_codes": [
+        "EM-LOAD-TARGET"
+      ],
+      "expected_target_binding": true,
+      "boundary_dimension": "target-bound-method-or-result",
+      "expected_record_types": [
+        "eds-composition-analysis"
+      ],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "electron-microscopy-microanalysis-load-2",
+      "adapter_id": "electron-microscopy-microanalysis",
+      "case_kind": "positive",
+      "synthetic_source_text": "EBSD indexing, cleanup, map resolution and grain statistics are reported for the specimen.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "load",
+      "expected_signal_ids": [
+        "em-microanalysis"
+      ],
+      "expected_independence_groups": [
+        "em-analysis"
+      ],
+      "expected_reason_codes": [
+        "EM-LOAD-TARGET"
+      ],
+      "expected_target_binding": true,
+      "boundary_dimension": "target-bound-method-or-result",
+      "expected_record_types": [
+        "ebsd-analysis"
+      ],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "electron-microscopy-microanalysis-skip-1",
+      "adapter_id": "electron-microscopy-microanalysis",
+      "case_kind": "negative",
+      "synthetic_source_text": "The aluminum SEM stub is mounting hardware and not a target material.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "skip",
+      "expected_signal_ids": [
+        "em-support"
+      ],
+      "expected_independence_groups": [
+        "em-exclusion"
+      ],
+      "expected_reason_codes": [
+        "EM-SKIP-EXCLUDED"
+      ],
+      "expected_target_binding": false,
+      "boundary_dimension": "excluded-role-or-context",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "electron-microscopy-microanalysis-skip-2",
+      "adapter_id": "electron-microscopy-microanalysis",
+      "case_kind": "negative",
+      "synthetic_source_text": "A carbon TEM grid supports the specimen but is not analyzed.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "skip",
+      "expected_signal_ids": [
+        "em-support"
+      ],
+      "expected_independence_groups": [
+        "em-exclusion"
+      ],
+      "expected_reason_codes": [
+        "EM-SKIP-EXCLUDED"
+      ],
+      "expected_target_binding": false,
+      "boundary_dimension": "excluded-role-or-context",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "electron-microscopy-microanalysis-candidate-1",
+      "adapter_id": "electron-microscopy-microanalysis",
+      "case_kind": "ambiguous",
+      "synthetic_source_text": "An SEM image is mentioned with no accessible panel, scale or sample binding.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "candidate",
+      "expected_signal_ids": [
+        "em-imaging"
+      ],
+      "expected_independence_groups": [
+        "em-imaging"
+      ],
+      "expected_reason_codes": [
+        "EM-CANDIDATE-UNRESOLVED"
+      ],
+      "expected_target_binding": null,
+      "boundary_dimension": "ambiguous-sense-binding-or-access",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "electron-microscopy-microanalysis-candidate-2",
+      "adapter_id": "electron-microscopy-microanalysis",
+      "case_kind": "ambiguous",
+      "synthetic_source_text": "Local composition is claimed from EDS, but the region and target phase are unresolved.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "candidate",
+      "expected_signal_ids": [
+        "em-microanalysis"
+      ],
+      "expected_independence_groups": [
+        "em-analysis"
+      ],
+      "expected_reason_codes": [
+        "EM-CANDIDATE-UNRESOLVED"
+      ],
+      "expected_target_binding": null,
+      "boundary_dimension": "ambiguous-sense-binding-or-access",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "spectroscopy-load-1",
+      "adapter_id": "spectroscopy",
+      "case_kind": "positive",
+      "synthetic_source_text": "Raman excitation, spectral resolution, peak fit and target-mode assignments are reported.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "load",
+      "expected_signal_ids": [
+        "spec-actual-technique"
+      ],
+      "expected_independence_groups": [
+        "spec-measurement"
+      ],
+      "expected_reason_codes": [
+        "SPEC-LOAD-TARGET"
+      ],
+      "expected_target_binding": true,
+      "boundary_dimension": "target-bound-method-or-result",
+      "expected_record_types": [
+        "spectral-feature-analysis"
+      ],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "spectroscopy-load-2",
+      "adapter_id": "spectroscopy",
+      "case_kind": "positive",
+      "synthetic_source_text": "XPS calibration, background, line-shape constraints and oxidation-state alternatives are preserved.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "load",
+      "expected_signal_ids": [
+        "spec-actual-technique"
+      ],
+      "expected_independence_groups": [
+        "spec-measurement"
+      ],
+      "expected_reason_codes": [
+        "SPEC-LOAD-TARGET"
+      ],
+      "expected_target_binding": true,
+      "boundary_dimension": "target-bound-method-or-result",
+      "expected_record_types": [
+        "chemical-state-assessment"
+      ],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "spectroscopy-skip-1",
+      "adapter_id": "spectroscopy",
+      "case_kind": "negative",
+      "synthetic_source_text": "A quartz spectrometer window is named only as apparatus.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "skip",
+      "expected_signal_ids": [
+        "spec-apparatus"
+      ],
+      "expected_independence_groups": [
+        "spec-exclusion"
+      ],
+      "expected_reason_codes": [
+        "SPEC-SKIP-EXCLUDED"
+      ],
+      "expected_target_binding": false,
+      "boundary_dimension": "excluded-role-or-context",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "spectroscopy-skip-2",
+      "adapter_id": "spectroscopy",
+      "case_kind": "negative",
+      "synthetic_source_text": "A literature spectrum is cited without measurement or extraction from the current source.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "skip",
+      "expected_signal_ids": [
+        "spec-apparatus"
+      ],
+      "expected_independence_groups": [
+        "spec-exclusion"
+      ],
+      "expected_reason_codes": [
+        "SPEC-SKIP-EXCLUDED"
+      ],
+      "expected_target_binding": false,
+      "boundary_dimension": "excluded-role-or-context",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "spectroscopy-candidate-1",
+      "adapter_id": "spectroscopy",
+      "case_kind": "ambiguous",
+      "synthetic_source_text": "Spectroscopy confirms bonding, but no technique, spectrum or target-bound feature is accessible.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "candidate",
+      "expected_signal_ids": [
+        "spec-data",
+        "spec-generic"
+      ],
+      "expected_independence_groups": [
+        "spec-data",
+        "spec-generic"
+      ],
+      "expected_reason_codes": [
+        "SPEC-CANDIDATE-UNRESOLVED"
+      ],
+      "expected_target_binding": null,
+      "boundary_dimension": "ambiguous-sense-binding-or-access",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "spectroscopy-candidate-2",
+      "adapter_id": "spectroscopy",
+      "case_kind": "ambiguous",
+      "synthetic_source_text": "A peak assignment is stated without calibration, fit or sample identity.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "candidate",
+      "expected_signal_ids": [
+        "spec-generic"
+      ],
+      "expected_independence_groups": [
+        "spec-generic"
+      ],
+      "expected_reason_codes": [
+        "SPEC-CANDIDATE-UNRESOLVED"
+      ],
+      "expected_target_binding": null,
+      "boundary_dimension": "ambiguous-sense-binding-or-access",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "thermal-analysis-load-1",
+      "adapter_id": "thermal-analysis",
+      "case_kind": "positive",
+      "synthetic_source_text": "DSC cycle, rate, atmosphere, baseline and onset criterion define the target transition.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "load",
+      "expected_signal_ids": [
+        "ta-actual-technique"
+      ],
+      "expected_independence_groups": [
+        "ta-measurement"
+      ],
+      "expected_reason_codes": [
+        "TA-LOAD-TARGET"
+      ],
+      "expected_target_binding": true,
+      "boundary_dimension": "target-bound-method-or-result",
+      "expected_record_types": [
+        "thermal-transition-analysis"
+      ],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "thermal-analysis-load-2",
+      "adapter_id": "thermal-analysis",
+      "case_kind": "positive",
+      "synthetic_source_text": "TGA mass, gas program, blank correction and residue are reported for the specimen.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "load",
+      "expected_signal_ids": [
+        "ta-actual-technique"
+      ],
+      "expected_independence_groups": [
+        "ta-measurement"
+      ],
+      "expected_reason_codes": [
+        "TA-LOAD-TARGET"
+      ],
+      "expected_target_binding": true,
+      "boundary_dimension": "target-bound-method-or-result",
+      "expected_record_types": [
+        "mass-loss-analysis"
+      ],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "thermal-analysis-skip-1",
+      "adapter_id": "thermal-analysis",
+      "case_kind": "negative",
+      "synthetic_source_text": "A furnace heating schedule is a synthesis step, not a thermal-analysis measurement.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "skip",
+      "expected_signal_ids": [
+        "ta-process-heating"
+      ],
+      "expected_independence_groups": [
+        "ta-exclusion"
+      ],
+      "expected_reason_codes": [
+        "TA-SKIP-EXCLUDED"
+      ],
+      "expected_target_binding": false,
+      "boundary_dimension": "excluded-role-or-context",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "thermal-analysis-skip-2",
+      "adapter_id": "thermal-analysis",
+      "case_kind": "negative",
+      "synthetic_source_text": "A thermocouple calibration checks the reactor and produces no target-material analysis.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "skip",
+      "expected_signal_ids": [
+        "ta-process-heating"
+      ],
+      "expected_independence_groups": [
+        "ta-exclusion"
+      ],
+      "expected_reason_codes": [
+        "TA-SKIP-EXCLUDED"
+      ],
+      "expected_target_binding": false,
+      "boundary_dimension": "excluded-role-or-context",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "thermal-analysis-candidate-1",
+      "adapter_id": "thermal-analysis",
+      "case_kind": "ambiguous",
+      "synthetic_source_text": "A DSC glass-transition value is quoted without trace, cycle, rate or source boundary.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "candidate",
+      "expected_signal_ids": [
+        "ta-actual-technique"
+      ],
+      "expected_independence_groups": [
+        "ta-measurement"
+      ],
+      "expected_reason_codes": [
+        "TA-CANDIDATE-UNRESOLVED"
+      ],
+      "expected_target_binding": null,
+      "boundary_dimension": "ambiguous-sense-binding-or-access",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "thermal-analysis-candidate-2",
+      "adapter_id": "thermal-analysis",
+      "case_kind": "ambiguous",
+      "synthetic_source_text": "Mass loss is mentioned, but TGA use and target specimen are unresolved.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "candidate",
+      "expected_signal_ids": [
+        "ta-actual-technique",
+        "ta-generic"
+      ],
+      "expected_independence_groups": [
+        "ta-generic",
+        "ta-measurement"
+      ],
+      "expected_reason_codes": [
+        "TA-CANDIDATE-UNRESOLVED"
+      ],
+      "expected_target_binding": null,
+      "boundary_dimension": "ambiguous-sense-binding-or-access",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "mechanical-testing-load-1",
+      "adapter_id": "mechanical-testing",
+      "case_kind": "positive",
+      "synthetic_source_text": "Specimen geometry, strain measurement, rate and yield criterion are reported for tensile tests.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "load",
+      "expected_signal_ids": [
+        "mech-actual-test",
+        "mech-curve-property"
+      ],
+      "expected_independence_groups": [
+        "mech-data",
+        "mech-test"
+      ],
+      "expected_reason_codes": [
+        "MECH-LOAD-TARGET"
+      ],
+      "expected_target_binding": true,
+      "boundary_dimension": "target-bound-method-or-result",
+      "expected_record_types": [
+        "monotonic-mechanical-test"
+      ],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "mechanical-testing-load-2",
+      "adapter_id": "mechanical-testing",
+      "case_kind": "positive",
+      "synthetic_source_text": "Fatigue waveform, R ratio, runout rule and censored cycle counts are resolved.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "load",
+      "expected_signal_ids": [
+        "mech-curve-property"
+      ],
+      "expected_independence_groups": [
+        "mech-data"
+      ],
+      "expected_reason_codes": [
+        "MECH-LOAD-TARGET"
+      ],
+      "expected_target_binding": true,
+      "boundary_dimension": "target-bound-method-or-result",
+      "expected_record_types": [
+        "fatigue-test"
+      ],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "mechanical-testing-skip-1",
+      "adapter_id": "mechanical-testing",
+      "case_kind": "negative",
+      "synthetic_source_text": "A clamp applies pressure during another measurement and is not a mechanical property test.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "skip",
+      "expected_signal_ids": [
+        "mech-nontest"
+      ],
+      "expected_independence_groups": [
+        "mech-exclusion"
+      ],
+      "expected_reason_codes": [
+        "MECH-SKIP-EXCLUDED"
+      ],
+      "expected_target_binding": false,
+      "boundary_dimension": "excluded-role-or-context",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "mechanical-testing-skip-2",
+      "adapter_id": "mechanical-testing",
+      "case_kind": "negative",
+      "synthetic_source_text": "Elastic constants are computed by DFT only and belong to the simulation adapter.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "skip",
+      "expected_signal_ids": [
+        "mech-nontest"
+      ],
+      "expected_independence_groups": [
+        "mech-exclusion"
+      ],
+      "expected_reason_codes": [
+        "MECH-SKIP-EXCLUDED"
+      ],
+      "expected_target_binding": false,
+      "boundary_dimension": "excluded-role-or-context",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "mechanical-testing-candidate-1",
+      "adapter_id": "mechanical-testing",
+      "case_kind": "ambiguous",
+      "synthetic_source_text": "High strength is claimed without specimen geometry, test mode or result trace.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "candidate",
+      "expected_signal_ids": [
+        "mech-generic"
+      ],
+      "expected_independence_groups": [
+        "mech-generic"
+      ],
+      "expected_reason_codes": [
+        "MECH-CANDIDATE-UNRESOLVED"
+      ],
+      "expected_target_binding": null,
+      "boundary_dimension": "ambiguous-sense-binding-or-access",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "mechanical-testing-candidate-2",
+      "adapter_id": "mechanical-testing",
+      "case_kind": "ambiguous",
+      "synthetic_source_text": "Hardness is quoted from a supplier sheet whose method and target lot are unresolved.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "candidate",
+      "expected_signal_ids": [
+        "mech-generic"
+      ],
+      "expected_independence_groups": [
+        "mech-generic"
+      ],
+      "expected_reason_codes": [
+        "MECH-CANDIDATE-UNRESOLVED"
+      ],
+      "expected_target_binding": null,
+      "boundary_dimension": "ambiguous-sense-binding-or-access",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "electrical-magnetic-transport-load-1",
+      "adapter_id": "electrical-magnetic-transport",
+      "case_kind": "positive",
+      "synthetic_source_text": "Four-probe geometry, current, dimensions and resistivity versus field are reported for the target.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "load",
+      "expected_signal_ids": [
+        "emt-electrical-run",
+        "emt-magnetic-run"
+      ],
+      "expected_independence_groups": [
+        "emt-electrical",
+        "emt-magnetic"
+      ],
+      "expected_reason_codes": [
+        "EMT-LOAD-TARGET"
+      ],
+      "expected_target_binding": true,
+      "boundary_dimension": "target-bound-method-or-result",
+      "expected_record_types": [
+        "electrical-transport-analysis"
+      ],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "electrical-magnetic-transport-load-2",
+      "adapter_id": "electrical-magnetic-transport",
+      "case_kind": "positive",
+      "synthetic_source_text": "SQUID protocol, field direction, ZFC/FC history and magnetic moment normalization are resolved.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "load",
+      "expected_signal_ids": [
+        "emt-magnetic-run"
+      ],
+      "expected_independence_groups": [
+        "emt-magnetic"
+      ],
+      "expected_reason_codes": [
+        "EMT-LOAD-TARGET"
+      ],
+      "expected_target_binding": true,
+      "boundary_dimension": "target-bound-method-or-result",
+      "expected_record_types": [
+        "magnetic-measurement-analysis"
+      ],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "electrical-magnetic-transport-skip-1",
+      "adapter_id": "electrical-magnetic-transport",
+      "case_kind": "negative",
+      "synthetic_source_text": "Copper wire is used only as an electrical lead and is outside target scope.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "skip",
+      "expected_signal_ids": [
+        "emt-apparatus"
+      ],
+      "expected_independence_groups": [
+        "emt-exclusion"
+      ],
+      "expected_reason_codes": [
+        "EMT-SKIP-EXCLUDED"
+      ],
+      "expected_target_binding": false,
+      "boundary_dimension": "excluded-role-or-context",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "electrical-magnetic-transport-skip-2",
+      "adapter_id": "electrical-magnetic-transport",
+      "case_kind": "negative",
+      "synthetic_source_text": "A superconducting magnet supplies field but no magnetic property of the target is measured.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "skip",
+      "expected_signal_ids": [
+        "emt-apparatus"
+      ],
+      "expected_independence_groups": [
+        "emt-exclusion"
+      ],
+      "expected_reason_codes": [
+        "EMT-SKIP-EXCLUDED"
+      ],
+      "expected_target_binding": false,
+      "boundary_dimension": "excluded-role-or-context",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "electrical-magnetic-transport-candidate-1",
+      "adapter_id": "electrical-magnetic-transport",
+      "case_kind": "ambiguous",
+      "synthetic_source_text": "Resistance was measured, but contact geometry, target specimen and conditions are unavailable.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "candidate",
+      "expected_signal_ids": [
+        "emt-generic"
+      ],
+      "expected_independence_groups": [
+        "emt-generic"
+      ],
+      "expected_reason_codes": [
+        "EMT-CANDIDATE-UNRESOLVED"
+      ],
+      "expected_target_binding": null,
+      "boundary_dimension": "ambiguous-sense-binding-or-access",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "electrical-magnetic-transport-candidate-2",
+      "adapter_id": "electrical-magnetic-transport",
+      "case_kind": "ambiguous",
+      "synthetic_source_text": "A magnetic anomaly is shown without normalization, field history or entity binding.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "candidate",
+      "expected_signal_ids": [
+        "emt-generic"
+      ],
+      "expected_independence_groups": [
+        "emt-generic"
+      ],
+      "expected_reason_codes": [
+        "EMT-CANDIDATE-UNRESOLVED"
+      ],
+      "expected_target_binding": null,
+      "boundary_dimension": "ambiguous-sense-binding-or-access",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "electrochemical-testing-load-1",
+      "adapter_id": "electrochemical-testing",
+      "case_kind": "positive",
+      "synthetic_source_text": "CV potential scale, scan rate, electrode geometry and background correction are reported.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "load",
+      "expected_signal_ids": [
+        "echem-sweep-step",
+        "echem-cell-context"
+      ],
+      "expected_independence_groups": [
+        "echem-context",
+        "echem-dc"
+      ],
+      "expected_reason_codes": [
+        "ECHEM-LOAD-TARGET"
+      ],
+      "expected_target_binding": true,
+      "boundary_dimension": "target-bound-method-or-result",
+      "expected_record_types": [
+        "voltammetry-analysis"
+      ],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "electrochemical-testing-load-2",
+      "adapter_id": "electrochemical-testing",
+      "case_kind": "positive",
+      "synthetic_source_text": "EIS frequency range, amplitude, equilibration, raw impedance and equivalent-circuit fit are preserved.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "load",
+      "expected_signal_ids": [
+        "echem-impedance-pulse"
+      ],
+      "expected_independence_groups": [
+        "echem-impedance"
+      ],
+      "expected_reason_codes": [
+        "ECHEM-LOAD-TARGET"
+      ],
+      "expected_target_binding": true,
+      "boundary_dimension": "target-bound-method-or-result",
+      "expected_record_types": [
+        "eis-analysis"
+      ],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "electrochemical-testing-skip-1",
+      "adapter_id": "electrochemical-testing",
+      "case_kind": "negative",
+      "synthetic_source_text": "A potentiostat model is listed for future work but no measurement was run.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "skip",
+      "expected_signal_ids": [
+        "echem-not-test"
+      ],
+      "expected_independence_groups": [
+        "echem-exclusion"
+      ],
+      "expected_reason_codes": [
+        "ECHEM-SKIP-EXCLUDED"
+      ],
+      "expected_target_binding": false,
+      "boundary_dimension": "excluded-role-or-context",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "electrochemical-testing-skip-2",
+      "adapter_id": "electrochemical-testing",
+      "case_kind": "negative",
+      "synthetic_source_text": "Electrochemical cleaning is only specimen preparation and produces no test result.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "skip",
+      "expected_signal_ids": [
+        "echem-not-test"
+      ],
+      "expected_independence_groups": [
+        "echem-exclusion"
+      ],
+      "expected_reason_codes": [
+        "ECHEM-SKIP-EXCLUDED"
+      ],
+      "expected_target_binding": false,
+      "boundary_dimension": "excluded-role-or-context",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "electrochemical-testing-candidate-1",
+      "adapter_id": "electrochemical-testing",
+      "case_kind": "ambiguous",
+      "synthetic_source_text": "Impedance improved, but frequency, amplitude, circuit and target run are missing.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "candidate",
+      "expected_signal_ids": [
+        "echem-generic"
+      ],
+      "expected_independence_groups": [
+        "echem-generic"
+      ],
+      "expected_reason_codes": [
+        "ECHEM-CANDIDATE-UNRESOLVED"
+      ],
+      "expected_target_binding": null,
+      "boundary_dimension": "ambiguous-sense-binding-or-access",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "electrochemical-testing-candidate-2",
+      "adapter_id": "electrochemical-testing",
+      "case_kind": "ambiguous",
+      "synthetic_source_text": "A polarization curve is mentioned without potential scale or electrode configuration.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "candidate",
+      "expected_signal_ids": [
+        "echem-sweep-step",
+        "echem-cell-context"
+      ],
+      "expected_independence_groups": [
+        "echem-context",
+        "echem-dc"
+      ],
+      "expected_reason_codes": [
+        "ECHEM-CANDIDATE-UNRESOLVED"
+      ],
+      "expected_target_binding": null,
+      "boundary_dimension": "ambiguous-sense-binding-or-access",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "composition-particle-surface-load-1",
+      "adapter_id": "composition-particle-surface",
+      "case_kind": "positive",
+      "synthetic_source_text": "ICP digestion, standards, calibration, interferences and target composition are reported.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "load",
+      "expected_signal_ids": [
+        "cps-composition",
+        "cps-particle-surface"
+      ],
+      "expected_independence_groups": [
+        "cps-composition",
+        "cps-particle"
+      ],
+      "expected_reason_codes": [
+        "CPS-LOAD-TARGET"
+      ],
+      "expected_target_binding": true,
+      "boundary_dimension": "target-bound-method-or-result",
+      "expected_record_types": [
+        "elemental-composition-analysis"
+      ],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "composition-particle-surface-load-2",
+      "adapter_id": "composition-particle-surface",
+      "case_kind": "positive",
+      "synthetic_source_text": "BET degassing, isotherm range, consistency checks and surface area are linked to the powder.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "load",
+      "expected_signal_ids": [
+        "cps-particle-surface"
+      ],
+      "expected_independence_groups": [
+        "cps-particle"
+      ],
+      "expected_reason_codes": [
+        "CPS-LOAD-TARGET"
+      ],
+      "expected_target_binding": true,
+      "boundary_dimension": "target-bound-method-or-result",
+      "expected_record_types": [
+        "gas-adsorption-and-porosity-analysis"
+      ],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "composition-particle-surface-skip-1",
+      "adapter_id": "composition-particle-surface",
+      "case_kind": "negative",
+      "synthetic_source_text": "Carrier-gas composition is an instrument setting and not a target composition analysis.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "skip",
+      "expected_signal_ids": [
+        "cps-nontarget"
+      ],
+      "expected_independence_groups": [
+        "cps-exclusion"
+      ],
+      "expected_reason_codes": [
+        "CPS-SKIP-EXCLUDED"
+      ],
+      "expected_target_binding": false,
+      "boundary_dimension": "excluded-role-or-context",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "composition-particle-surface-skip-2",
+      "adapter_id": "composition-particle-surface",
+      "case_kind": "negative",
+      "synthetic_source_text": "A calibration standard is measured only to check the instrument and is outside target scope.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "skip",
+      "expected_signal_ids": [
+        "cps-nontarget"
+      ],
+      "expected_independence_groups": [
+        "cps-exclusion"
+      ],
+      "expected_reason_codes": [
+        "CPS-SKIP-EXCLUDED"
+      ],
+      "expected_target_binding": false,
+      "boundary_dimension": "excluded-role-or-context",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "composition-particle-surface-candidate-1",
+      "adapter_id": "composition-particle-surface",
+      "case_kind": "ambiguous",
+      "synthetic_source_text": "Elemental analysis agrees with nominal values, but method and quantitative results are inaccessible.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "candidate",
+      "expected_signal_ids": [
+        "cps-composition"
+      ],
+      "expected_independence_groups": [
+        "cps-composition"
+      ],
+      "expected_reason_codes": [
+        "CPS-CANDIDATE-UNRESOLVED"
+      ],
+      "expected_target_binding": null,
+      "boundary_dimension": "ambiguous-sense-binding-or-access",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "composition-particle-surface-candidate-2",
+      "adapter_id": "composition-particle-surface",
+      "case_kind": "ambiguous",
+      "synthetic_source_text": "Particle size is quoted without method, basis, dispersion state or target lot.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "candidate",
+      "expected_signal_ids": [
+        "cps-generic"
+      ],
+      "expected_independence_groups": [
+        "cps-generic"
+      ],
+      "expected_reason_codes": [
+        "CPS-CANDIDATE-UNRESOLVED"
+      ],
+      "expected_target_binding": null,
+      "boundary_dimension": "ambiguous-sense-binding-or-access",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "materials-simulation-load-1",
+      "adapter_id": "materials-simulation",
+      "case_kind": "positive",
+      "synthetic_source_text": "DFT code, functional, pseudopotentials, k mesh and convergence are reported for the target structure.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "load",
+      "expected_signal_ids": [
+        "sim-electronic-atomistic"
+      ],
+      "expected_independence_groups": [
+        "sim-atomistic"
+      ],
+      "expected_reason_codes": [
+        "SIM-LOAD-TARGET"
+      ],
+      "expected_target_binding": true,
+      "boundary_dimension": "target-bound-method-or-result",
+      "expected_record_types": [
+        "electronic-structure-method"
+      ],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "materials-simulation-load-2",
+      "adapter_id": "materials-simulation",
+      "case_kind": "positive",
+      "synthetic_source_text": "Phase-field geometry, mesh, boundary conditions, solver and convergence outputs are preserved.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "load",
+      "expected_signal_ids": [
+        "sim-provenance"
+      ],
+      "expected_independence_groups": [
+        "sim-provenance"
+      ],
+      "expected_reason_codes": [
+        "SIM-LOAD-TARGET"
+      ],
+      "expected_target_binding": true,
+      "boundary_dimension": "target-bound-method-or-result",
+      "expected_record_types": [
+        "continuum-and-mesoscale-method"
+      ],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "materials-simulation-skip-1",
+      "adapter_id": "materials-simulation",
+      "case_kind": "negative",
+      "synthetic_source_text": "Simulation is proposed as future work and no actual run or output exists.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "skip",
+      "expected_signal_ids": [
+        "sim-not-executed"
+      ],
+      "expected_independence_groups": [
+        "sim-exclusion"
+      ],
+      "expected_reason_codes": [
+        "SIM-SKIP-EXCLUDED"
+      ],
+      "expected_target_binding": false,
+      "boundary_dimension": "excluded-role-or-context",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "materials-simulation-skip-2",
+      "adapter_id": "materials-simulation",
+      "case_kind": "negative",
+      "synthetic_source_text": "A cited calculation is summarized without inputs, execution or current-source result.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "skip",
+      "expected_signal_ids": [
+        "sim-not-executed"
+      ],
+      "expected_independence_groups": [
+        "sim-exclusion"
+      ],
+      "expected_reason_codes": [
+        "SIM-SKIP-EXCLUDED"
+      ],
+      "expected_target_binding": false,
+      "boundary_dimension": "excluded-role-or-context",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "materials-simulation-candidate-1",
+      "adapter_id": "materials-simulation",
+      "case_kind": "ambiguous",
+      "synthetic_source_text": "The property was calculated, but method, target entity and execution details are unresolved.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "candidate",
+      "expected_signal_ids": [
+        "sim-generic"
+      ],
+      "expected_independence_groups": [
+        "sim-generic"
+      ],
+      "expected_reason_codes": [
+        "SIM-CANDIDATE-UNRESOLVED"
+      ],
+      "expected_target_binding": null,
+      "boundary_dimension": "ambiguous-sense-binding-or-access",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    },
+    {
+      "case_id": "materials-simulation-candidate-2",
+      "adapter_id": "materials-simulation",
+      "case_kind": "ambiguous",
+      "synthetic_source_text": "A model curve is shown without distinguishing a fitted analytic model from a simulation run.",
+      "source_type": "synthetic-regression",
+      "ruleset_version": "2.0.0",
+      "expected_status": "candidate",
+      "expected_signal_ids": [
+        "sim-generic"
+      ],
+      "expected_independence_groups": [
+        "sim-generic"
+      ],
+      "expected_reason_codes": [
+        "SIM-CANDIDATE-UNRESOLVED"
+      ],
+      "expected_target_binding": null,
+      "boundary_dimension": "ambiguous-sense-binding-or-access",
+      "expected_record_types": [],
+      "review_status": "provisional"
+    }
+  ]
+}

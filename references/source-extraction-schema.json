@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/materials-evidence-reasoner/source-extraction-schema.json",
+  "title": "Materials Source Extraction Bundle",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "created_at", "extractor_version", "path_base", "root_input", "environment", "policy", "documents", "summary"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "created_at": {"type": "string"},
+    "extractor_version": {"type": "string"},
+    "path_base": {"const": "."},
+    "root_input": {"type": "array", "items": {"type": "string"}},
+    "environment": {"type": "object"},
+    "policy": {
+      "type": "object",
+      "properties": {
+        "model_download": {
+          "type": "object",
+          "required": ["status"],
+          "properties": {
+            "status": {"enum": ["not-needed", "ready", "missing", "skipped", "unavailable", "download-failed", "incomplete", "inspection-failed"]},
+            "cache_dir": {"type": "string"},
+            "download_requested": {"type": "boolean"},
+            "download_performed": {"type": "boolean"},
+            "force": {"type": "boolean"},
+            "missing": {"type": "array", "items": {"type": "string"}},
+            "next_step": {"type": "string"},
+            "error": {"type": "string"}
+          }
+        }
+      }
+    },
+    "documents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["source_id", "name", "path", "sha256", "detected_kind", "extractor", "status", "warnings"],
+        "properties": {
+          "source_id": {"type": "string"},
+          "name": {"type": "string"},
+          "path": {"type": "string"},
+          "sha256": {"type": "string"},
+          "detected_kind": {"type": "string"},
+          "extractor": {"type": "string"},
+          "status": {"enum": ["extracted", "partial", "empty", "failed"]},
+          "warnings": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "summary": {"type": "object"}
+  }
+}

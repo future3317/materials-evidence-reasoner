@@ -1,0 +1,1759 @@
+{
+  "index_schema_version": "1.0",
+  "source_run_id": "RUN-SYNTHETIC-CE-001",
+  "source_sha256": "a47368a582c18affd406e26edad941b35a48be5e2e80e5f2a496f1d80c1ffbaf",
+  "generated_at": "2026-08-07T16:47:37.477669+00:00",
+  "summary": {
+    "schema_version": "4.6",
+    "run_id": "RUN-SYNTHETIC-CE-001",
+    "graph_count": 1,
+    "node_count": 5,
+    "edge_count": 4,
+    "update_count": 1,
+    "edge_status_counts": {
+      "hypothesis": 4
+    },
+    "node_type_counts": {
+      "processing": 1,
+      "structure": 1,
+      "mechanism": 1,
+      "property": 1,
+      "performance": 1
+    },
+    "graphs": [
+      {
+        "id": "MG1",
+        "title": "Synthetic Ion-Cu exposure and efficiency mechanism graph",
+        "material_system": "Ion-Cu sodium plating interface",
+        "version": "1.0",
+        "status": "draft",
+        "node_count": 5,
+        "edge_count": 4,
+        "evidence_count": 4,
+        "edge_statuses": {
+          "hypothesis": 4
+        },
+        "boundary_count": 3,
+        "pending_update_count": 1
+      }
+    ]
+  },
+  "postings": {
+    "0.1": {
+      "edges": [
+        "ME4"
+      ]
+    },
+    "1.0": {
+      "graphs": [
+        "MG1"
+      ],
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "3.1": {
+      "edges": [
+        "ME4"
+      ]
+    },
+    "a": {
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3"
+      ]
+    },
+    "after": {
+      "edges": [
+        "ME2",
+        "ME4"
+      ]
+    },
+    "air": {
+      "nodes": [
+        "MN1"
+      ],
+      "edges": [
+        "ME1"
+      ]
+    },
+    "alter": {
+      "edges": [
+        "ME1"
+      ]
+    },
+    "altered": {
+      "nodes": [
+        "MN2",
+        "MN3"
+      ]
+    },
+    "an": {
+      "nodes": [
+        "MN3"
+      ],
+      "edges": [
+        "ME2"
+      ]
+    },
+    "analysis": {
+      "edges": [
+        "ME1",
+        "ME3"
+      ]
+    },
+    "and": {
+      "graphs": [
+        "MG1"
+      ],
+      "nodes": [
+        "MN3",
+        "MN4"
+      ],
+      "edges": [
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "architecture": {
+      "nodes": [
+        "MN3"
+      ],
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "architecture.": {
+      "edges": [
+        "ME4"
+      ]
+    },
+    "are": {
+      "graphs": [
+        "MG1"
+      ]
+    },
+    "association": {
+      "edges": [
+        "ME4"
+      ]
+    },
+    "barrier": {
+      "edges": [
+        "ME3"
+      ]
+    },
+    "barrier.": {
+      "edges": [
+        "ME2"
+      ]
+    },
+    "batch.": {
+      "nodes": [
+        "MN5"
+      ]
+    },
+    "be": {
+      "nodes": [
+        "MN4"
+      ]
+    },
+    "before": {
+      "nodes": [
+        "MN1"
+      ],
+      "edges": [
+        "ME1"
+      ]
+    },
+    "below": {
+      "edges": [
+        "ME4"
+      ]
+    },
+    "boundary_conditions": {
+      "graphs": [
+        "MG1"
+      ],
+      "nodes": [
+        "MN1",
+        "MN2",
+        "MN3",
+        "MN4",
+        "MN5"
+      ],
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "canonical_term": {
+      "nodes": [
+        "MN1",
+        "MN2",
+        "MN3",
+        "MN4",
+        "MN5"
+      ]
+    },
+    "case.": {
+      "nodes": [
+        "MN5"
+      ]
+    },
+    "ce": {
+      "edges": [
+        "ME3",
+        "ME4"
+      ]
+    },
+    "cell": {
+      "nodes": [
+        "MN3"
+      ],
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "chain1": {
+      "graphs": [
+        "MG1"
+      ]
+    },
+    "change": {
+      "edges": [
+        "ME2"
+      ]
+    },
+    "changed": {
+      "edges": [
+        "ME2"
+      ]
+    },
+    "charge": {
+      "nodes": [
+        "MN3",
+        "MN4"
+      ]
+    },
+    "chemical": {
+      "edges": [
+        "ME1"
+      ]
+    },
+    "chemistry": {
+      "graphs": [
+        "MG1"
+      ],
+      "edges": [
+        "ME1"
+      ]
+    },
+    "combined": {
+      "graphs": [
+        "MG1"
+      ],
+      "edges": [
+        "ME1",
+        "ME4"
+      ]
+    },
+    "comparable": {
+      "edges": [
+        "ME3"
+      ]
+    },
+    "cond-a": {
+      "graphs": [
+        "MG1"
+      ],
+      "nodes": [
+        "MN1",
+        "MN2",
+        "MN3",
+        "MN4",
+        "MN5"
+      ],
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "cond-a.": {
+      "graphs": [
+        "MG1"
+      ],
+      "nodes": [
+        "MN5"
+      ],
+      "edges": [
+        "ME1"
+      ]
+    },
+    "condition_ids": {
+      "graphs": [
+        "MG1"
+      ],
+      "nodes": [
+        "MN1",
+        "MN2",
+        "MN3",
+        "MN4",
+        "MN5"
+      ],
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "conflict_evidence_ids": {
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "considered.": {
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "contaminant": {
+      "nodes": [
+        "MN2"
+      ]
+    },
+    "control.": {
+      "edges": [
+        "ME1"
+      ]
+    },
+    "coulombic": {
+      "nodes": [
+        "MN5"
+      ]
+    },
+    "coverage": {
+      "nodes": [
+        "MN2"
+      ]
+    },
+    "create": {
+      "edges": [
+        "ME2"
+      ]
+    },
+    "created_from_run_ids": {
+      "graphs": [
+        "MG1"
+      ]
+    },
+    "current": {
+      "edges": [
+        "ME2"
+      ]
+    },
+    "decreases": {
+      "edges": [
+        "ME4"
+      ]
+    },
+    "demo/project": {
+      "graphs": [
+        "MG1"
+      ]
+    },
+    "density.": {
+      "edges": [
+        "ME2"
+      ]
+    },
+    "differ": {
+      "nodes": [
+        "MN2"
+      ]
+    },
+    "difference": {
+      "edges": [
+        "ME1"
+      ]
+    },
+    "difference.": {
+      "edges": [
+        "ME3"
+      ]
+    },
+    "different": {
+      "edges": [
+        "ME2"
+      ]
+    },
+    "direct": {
+      "edges": [
+        "ME1"
+      ]
+    },
+    "directly": {
+      "graphs": [
+        "MG1"
+      ]
+    },
+    "does": {
+      "edges": [
+        "ME4"
+      ]
+    },
+    "domain-inference": {
+      "graphs": [
+        "MG1"
+      ],
+      "edges": [
+        "ME2",
+        "ME3"
+      ]
+    },
+    "draft": {
+      "graphs": [
+        "MG1"
+      ]
+    },
+    "e1": {
+      "graphs": [
+        "MG1"
+      ],
+      "nodes": [
+        "MN5"
+      ],
+      "edges": [
+        "ME4"
+      ]
+    },
+    "e2": {
+      "graphs": [
+        "MG1"
+      ],
+      "nodes": [
+        "MN5"
+      ],
+      "edges": [
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "e3": {
+      "graphs": [
+        "MG1"
+      ],
+      "nodes": [
+        "MN1"
+      ],
+      "edges": [
+        "ME1",
+        "ME2"
+      ]
+    },
+    "e4": {
+      "graphs": [
+        "MG1"
+      ],
+      "nodes": [
+        "MN5"
+      ],
+      "edges": [
+        "ME3",
+        "ME4"
+      ]
+    },
+    "edge_ids": {
+      "graphs": [
+        "MG1"
+      ]
+    },
+    "effect": {
+      "edges": [
+        "ME3"
+      ]
+    },
+    "efficiency": {
+      "graphs": [
+        "MG1"
+      ],
+      "nodes": [
+        "MN5"
+      ]
+    },
+    "efficiency.": {
+      "edges": [
+        "ME4"
+      ]
+    },
+    "eis": {
+      "nodes": [
+        "MN4"
+      ],
+      "edges": [
+        "ME3"
+      ]
+    },
+    "electrolyte": {
+      "edges": [
+        "ME2"
+      ]
+    },
+    "electrolyte.": {
+      "nodes": [
+        "MN3"
+      ]
+    },
+    "elevated.": {
+      "nodes": [
+        "MN4"
+      ]
+    },
+    "enables": {
+      "edges": [
+        "ME2"
+      ]
+    },
+    "entity_ids": {
+      "nodes": [
+        "MN1",
+        "MN2",
+        "MN3",
+        "MN4",
+        "MN5"
+      ]
+    },
+    "equivalent": {
+      "nodes": [
+        "MN4"
+      ],
+      "edges": [
+        "ME3"
+      ]
+    },
+    "evidence": {
+      "edges": [
+        "ME2"
+      ]
+    },
+    "evidence.": {
+      "edges": [
+        "ME1"
+      ]
+    },
+    "evidence_ids": {
+      "graphs": [
+        "MG1"
+      ],
+      "nodes": [
+        "MN1",
+        "MN2",
+        "MN3",
+        "MN4",
+        "MN5"
+      ]
+    },
+    "exceeds": {
+      "edges": [
+        "ME3"
+      ]
+    },
+    "exposure": {
+      "graphs": [
+        "MG1"
+      ],
+      "nodes": [
+        "MN1"
+      ],
+      "edges": [
+        "ME1",
+        "ME2"
+      ]
+    },
+    "exposure.": {
+      "edges": [
+        "ME2"
+      ]
+    },
+    "falsifiers": {
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "fixture": {
+      "graphs": [
+        "MG1"
+      ]
+    },
+    "followed": {
+      "edges": [
+        "ME2"
+      ]
+    },
+    "fresh": {
+      "nodes": [
+        "MN2"
+      ],
+      "edges": [
+        "ME1"
+      ]
+    },
+    "from": {
+      "nodes": [
+        "MN2"
+      ],
+      "edges": [
+        "ME1"
+      ]
+    },
+    "from_node_id": {
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "geometry": {
+      "edges": [
+        "ME2"
+      ]
+    },
+    "geometry.": {
+      "nodes": [
+        "MN4"
+      ]
+    },
+    "graph": {
+      "graphs": [
+        "MG1"
+      ]
+    },
+    "graph_id": {
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "graph_ids": {
+      "nodes": [
+        "MN1",
+        "MN2",
+        "MN3",
+        "MN4",
+        "MN5"
+      ]
+    },
+    "h1": {
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "handling": {
+      "graphs": [
+        "MG1"
+      ],
+      "nodes": [
+        "MN1"
+      ],
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "higher": {
+      "edges": [
+        "ME4"
+      ]
+    },
+    "history.": {
+      "edges": [
+        "ME2"
+      ]
+    },
+    "hypothesis": {
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "hypothesized": {
+      "nodes": [
+        "MN2",
+        "MN3",
+        "MN4"
+      ]
+    },
+    "id": {
+      "graphs": [
+        "MG1"
+      ],
+      "nodes": [
+        "MN1",
+        "MN2",
+        "MN3",
+        "MN4",
+        "MN5"
+      ],
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "impedance": {
+      "nodes": [
+        "MN3"
+      ],
+      "edges": [
+        "ME3"
+      ]
+    },
+    "impede": {
+      "nodes": [
+        "MN3"
+      ]
+    },
+    "increase": {
+      "edges": [
+        "ME3"
+      ]
+    },
+    "increases": {
+      "edges": [
+        "ME3"
+      ]
+    },
+    "indirect": {
+      "edges": [
+        "ME2"
+      ]
+    },
+    "induces": {
+      "edges": [
+        "ME1"
+      ]
+    },
+    "inferred.": {
+      "nodes": [
+        "MN3"
+      ]
+    },
+    "interface": {
+      "graphs": [
+        "MG1"
+      ]
+    },
+    "interfacial": {
+      "graphs": [
+        "MG1"
+      ],
+      "nodes": [
+        "MN3",
+        "MN4"
+      ],
+      "edges": [
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "ion": {
+      "nodes": [
+        "MN3"
+      ]
+    },
+    "ion-cu": {
+      "graphs": [
+        "MG1"
+      ],
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "is": {
+      "graphs": [
+        "MG1"
+      ],
+      "nodes": [
+        "MN3",
+        "MN5"
+      ],
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "known_mismatches": {
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "layer": {
+      "nodes": [
+        "MN3"
+      ],
+      "edges": [
+        "ME2"
+      ]
+    },
+    "leaving": {
+      "edges": [
+        "ME3"
+      ]
+    },
+    "level": {
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "limitations": {
+      "graphs": [
+        "MG1"
+      ],
+      "nodes": [
+        "MN1",
+        "MN2",
+        "MN3",
+        "MN4",
+        "MN5"
+      ],
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "linked_hypothesis_ids": {
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "linked_pspp_relationship_ids": {
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "local": {
+      "nodes": [
+        "MN1"
+      ],
+      "edges": [
+        "ME4"
+      ]
+    },
+    "low": {
+      "edges": [
+        "ME4"
+      ]
+    },
+    "low-ce": {
+      "edges": [
+        "ME1",
+        "ME2"
+      ]
+    },
+    "lower": {
+      "nodes": [
+        "MN5"
+      ]
+    },
+    "matched": {
+      "nodes": [
+        "MN4",
+        "MN5"
+      ],
+      "edges": [
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "matched.": {
+      "edges": [
+        "ME4"
+      ]
+    },
+    "material": {
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "material_system": {
+      "graphs": [
+        "MG1"
+      ]
+    },
+    "may": {
+      "nodes": [
+        "MN2",
+        "MN3",
+        "MN4"
+      ],
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "me1": {
+      "graphs": [
+        "MG1"
+      ],
+      "edges": [
+        "ME1"
+      ]
+    },
+    "me2": {
+      "graphs": [
+        "MG1"
+      ],
+      "edges": [
+        "ME2"
+      ]
+    },
+    "me3": {
+      "graphs": [
+        "MG1"
+      ],
+      "edges": [
+        "ME3"
+      ]
+    },
+    "me4": {
+      "graphs": [
+        "MG1"
+      ],
+      "edges": [
+        "ME4"
+      ]
+    },
+    "measured.": {
+      "graphs": [
+        "MG1"
+      ],
+      "edges": [
+        "ME3"
+      ]
+    },
+    "measurement": {
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "measurement.": {
+      "nodes": [
+        "MN2",
+        "MN4"
+      ]
+    },
+    "measurements": {
+      "edges": [
+        "ME2"
+      ]
+    },
+    "mechanism": {
+      "graphs": [
+        "MG1"
+      ],
+      "nodes": [
+        "MN3"
+      ]
+    },
+    "mechanism_description": {
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "mechanistic": {
+      "nodes": [
+        "MN3"
+      ]
+    },
+    "mediator": {
+      "nodes": [
+        "MN3"
+      ],
+      "edges": [
+        "ME3"
+      ]
+    },
+    "mediator.": {
+      "edges": [
+        "ME4"
+      ]
+    },
+    "mg1": {
+      "graphs": [
+        "MG1"
+      ],
+      "nodes": [
+        "MN1",
+        "MN2",
+        "MN3",
+        "MN4",
+        "MN5"
+      ],
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "mn1": {
+      "graphs": [
+        "MG1"
+      ],
+      "nodes": [
+        "MN1"
+      ],
+      "edges": [
+        "ME1"
+      ]
+    },
+    "mn2": {
+      "graphs": [
+        "MG1"
+      ],
+      "nodes": [
+        "MN2"
+      ],
+      "edges": [
+        "ME1",
+        "ME2"
+      ]
+    },
+    "mn3": {
+      "graphs": [
+        "MG1"
+      ],
+      "nodes": [
+        "MN3"
+      ],
+      "edges": [
+        "ME2",
+        "ME3"
+      ]
+    },
+    "mn4": {
+      "graphs": [
+        "MG1"
+      ],
+      "nodes": [
+        "MN4"
+      ],
+      "edges": [
+        "ME3",
+        "ME4"
+      ]
+    },
+    "mn5": {
+      "graphs": [
+        "MG1"
+      ],
+      "nodes": [
+        "MN5"
+      ],
+      "edges": [
+        "ME4"
+      ]
+    },
+    "model.": {
+      "edges": [
+        "ME3"
+      ]
+    },
+    "mu1": {
+      "graphs": [
+        "MG1"
+      ]
+    },
+    "namespace": {
+      "graphs": [
+        "MG1"
+      ]
+    },
+    "no": {
+      "nodes": [
+        "MN2",
+        "MN4"
+      ],
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3"
+      ]
+    },
+    "node_ids": {
+      "graphs": [
+        "MG1"
+      ]
+    },
+    "node_type": {
+      "nodes": [
+        "MN1",
+        "MN2",
+        "MN3",
+        "MN4",
+        "MN5"
+      ]
+    },
+    "not": {
+      "graphs": [
+        "MG1"
+      ],
+      "edges": [
+        "ME3",
+        "ME4"
+      ]
+    },
+    "observed": {
+      "nodes": [
+        "MN1",
+        "MN5"
+      ]
+    },
+    "occurred": {
+      "nodes": [
+        "MN1"
+      ]
+    },
+    "of": {
+      "graphs": [
+        "MG1"
+      ],
+      "nodes": [
+        "MN4"
+      ]
+    },
+    "only": {
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "only.": {
+      "graphs": [
+        "MG1"
+      ]
+    },
+    "or": {
+      "nodes": [
+        "MN2",
+        "MN3",
+        "MN4"
+      ],
+      "edges": [
+        "ME3",
+        "ME4"
+      ]
+    },
+    "oxide": {
+      "nodes": [
+        "MN2"
+      ]
+    },
+    "part": {
+      "graphs": [
+        "MG1"
+      ]
+    },
+    "percentage": {
+      "edges": [
+        "ME4"
+      ]
+    },
+    "performance": {
+      "nodes": [
+        "MN5"
+      ]
+    },
+    "persistent": {
+      "edges": [
+        "ME3"
+      ]
+    },
+    "plating": {
+      "graphs": [
+        "MG1"
+      ]
+    },
+    "plating/stripping": {
+      "edges": [
+        "ME4"
+      ]
+    },
+    "points": {
+      "edges": [
+        "ME4"
+      ]
+    },
+    "points.": {
+      "edges": [
+        "ME4"
+      ]
+    },
+    "pr2": {
+      "nodes": [
+        "MN5"
+      ]
+    },
+    "pre-test": {
+      "graphs": [
+        "MG1"
+      ],
+      "nodes": [
+        "MN1",
+        "MN2"
+      ],
+      "edges": [
+        "ME1"
+      ]
+    },
+    "prl1": {
+      "edges": [
+        "ME1"
+      ]
+    },
+    "prl2": {
+      "edges": [
+        "ME2",
+        "ME3"
+      ]
+    },
+    "prl3": {
+      "edges": [
+        "ME4"
+      ]
+    },
+    "process_run_ids": {
+      "nodes": [
+        "MN1"
+      ]
+    },
+    "processing": {
+      "nodes": [
+        "MN1"
+      ]
+    },
+    "property": {
+      "nodes": [
+        "MN4"
+      ]
+    },
+    "property_record_ids": {
+      "nodes": [
+        "MN4",
+        "MN5"
+      ]
+    },
+    "protocol": {
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "prove": {
+      "edges": [
+        "ME4"
+      ]
+    },
+    "pspp1": {
+      "graphs": [
+        "MG1"
+      ]
+    },
+    "rationale": {
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "reduce": {
+      "edges": [
+        "ME4"
+      ]
+    },
+    "reference": {
+      "nodes": [
+        "MN5"
+      ],
+      "edges": [
+        "ME4"
+      ]
+    },
+    "reference.": {
+      "nodes": [
+        "MN2"
+      ]
+    },
+    "regime": {
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "regime.": {
+      "graphs": [
+        "MG1"
+      ]
+    },
+    "related_anomaly_chain_ids": {
+      "graphs": [
+        "MG1"
+      ]
+    },
+    "related_pspp_map_ids": {
+      "graphs": [
+        "MG1"
+      ]
+    },
+    "relation_type": {
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "remains": {
+      "edges": [
+        "ME4"
+      ]
+    },
+    "repeatability": {
+      "edges": [
+        "ME3",
+        "ME4"
+      ]
+    },
+    "reported": {
+      "edges": [
+        "ME1"
+      ]
+    },
+    "required_matches": {
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "resistance": {
+      "graphs": [
+        "MG1"
+      ],
+      "nodes": [
+        "MN4"
+      ],
+      "edges": [
+        "ME3",
+        "ME4"
+      ]
+    },
+    "resistance.": {
+      "edges": [
+        "ME3"
+      ]
+    },
+    "restored": {
+      "edges": [
+        "ME4"
+      ]
+    },
+    "run": {
+      "edges": [
+        "ME2"
+      ]
+    },
+    "run-synthetic-ce-001": {
+      "graphs": [
+        "MG1"
+      ]
+    },
+    "run.": {
+      "edges": [
+        "ME1"
+      ]
+    },
+    "same": {
+      "nodes": [
+        "MN3"
+      ],
+      "edges": [
+        "ME2"
+      ]
+    },
+    "same-regime": {
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "sample1": {
+      "nodes": [
+        "MN1",
+        "MN2",
+        "MN3",
+        "MN4",
+        "MN5"
+      ]
+    },
+    "show": {
+      "edges": [
+        "ME2"
+      ]
+    },
+    "shows": {
+      "edges": [
+        "ME1",
+        "ME3"
+      ]
+    },
+    "single": {
+      "nodes": [
+        "MN5"
+      ]
+    },
+    "sodium": {
+      "graphs": [
+        "MG1"
+      ]
+    },
+    "source_kind": {
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "source_kinds": {
+      "graphs": [
+        "MG1"
+      ]
+    },
+    "state": {
+      "nodes": [
+        "MN4"
+      ],
+      "edges": [
+        "ME3"
+      ]
+    },
+    "state.": {
+      "nodes": [
+        "MN2"
+      ],
+      "edges": [
+        "ME1"
+      ]
+    },
+    "statement": {
+      "nodes": [
+        "MN1",
+        "MN2",
+        "MN3",
+        "MN4",
+        "MN5"
+      ]
+    },
+    "status": {
+      "graphs": [
+        "MG1"
+      ],
+      "nodes": [
+        "MN1",
+        "MN2",
+        "MN3",
+        "MN4",
+        "MN5"
+      ]
+    },
+    "structure": {
+      "nodes": [
+        "MN2"
+      ]
+    },
+    "support_evidence_ids": {
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "supporting_observations": {
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "surface": {
+      "graphs": [
+        "MG1"
+      ],
+      "nodes": [
+        "MN2",
+        "MN3"
+      ],
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "surface-layer": {
+      "nodes": [
+        "MN3"
+      ]
+    },
+    "surface-sensitive": {
+      "nodes": [
+        "MN2"
+      ],
+      "edges": [
+        "ME1"
+      ]
+    },
+    "synthetic": {
+      "graphs": [
+        "MG1"
+      ],
+      "nodes": [
+        "MN5"
+      ],
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "synthetic.": {
+      "edges": [
+        "ME2"
+      ]
+    },
+    "system": {
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "test.": {
+      "edges": [
+        "ME3"
+      ]
+    },
+    "testing.": {
+      "nodes": [
+        "MN1"
+      ]
+    },
+    "than": {
+      "nodes": [
+        "MN5"
+      ]
+    },
+    "the": {
+      "graphs": [
+        "MG1"
+      ],
+      "nodes": [
+        "MN2",
+        "MN5"
+      ],
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "title": {
+      "graphs": [
+        "MG1"
+      ]
+    },
+    "to": {
+      "edges": [
+        "ME3"
+      ]
+    },
+    "to_node_id": {
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "transferability": {
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "transport": {
+      "nodes": [
+        "MN3"
+      ],
+      "edges": [
+        "ME2",
+        "ME3"
+      ]
+    },
+    "transport.": {
+      "nodes": [
+        "MN3"
+      ]
+    },
+    "under": {
+      "graphs": [
+        "MG1"
+      ],
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "update_ids": {
+      "graphs": [
+        "MG1"
+      ]
+    },
+    "validation_evidence_ids": {
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "validation_status": {
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "version": {
+      "graphs": [
+        "MG1"
+      ],
+      "edges": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ]
+    },
+    "was": {
+      "edges": [
+        "ME1"
+      ]
+    },
+    "while": {
+      "edges": [
+        "ME4"
+      ]
+    },
+    "within-run": {
+      "edges": [
+        "ME3"
+      ]
+    },
+    "workflow.": {
+      "nodes": [
+        "MN1"
+      ]
+    }
+  }
+}

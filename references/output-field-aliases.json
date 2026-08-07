@@ -1,0 +1,49 @@
+{
+  "spec_version": "1.0",
+  "canonical_schema": "output-schema.json",
+  "purpose": "Explicit compatibility aliases for reading or migrating older result files. This is not an alternative output schema.",
+  "rules": {
+    "canonical_output": "Agents must emit only fields declared by canonical_schema.",
+    "legacy_input": "Legacy fields may be read through this table and must be marked as compatibility input.",
+    "unmapped_fields": "Preserve unmapped fields for audit, but do not infer scientific values or identifiers.",
+    "free_text_evidence": "Text evidence is displayable legacy content; it is not converted into evidence IDs without an explicit evidence record."
+  },
+  "collections": {
+    "sources": {"id": ["id", "source_id"]},
+    "evidence": {"id": ["id", "evidence_id"], "raw_content": ["raw_content", "raw_representation", "original_evidence"]},
+    "entities": {"id": ["id", "entity_id"]},
+    "measurement_runs": {"id": ["id", "measurement_id"]},
+    "property_records": {"id": ["id", "property_id"], "property_raw": ["property_raw", "property_name"]},
+    "baseline_packages": {"id": ["id", "baseline_id"]},
+    "comparability_assessments": {"id": ["id", "comparability_id"]},
+    "deviation_episodes": {"id": ["id", "deviation_id"]},
+    "models": {"id": ["id", "model_id"]},
+    "experience_updates": {"id": ["id", "update_id"]}
+  },
+  "hypotheses": {
+    "id": ["id", "hypothesis_id"],
+    "statement": ["statement", "title", "hypothesis"],
+    "support_evidence_ids": ["support_evidence_ids"],
+    "counterevidence_ids": ["counterevidence_ids"],
+    "falsifiers": ["falsifiers"],
+    "status": ["status", "validation_status"],
+    "legacy_supporting_evidence": ["supporting_evidence"],
+    "legacy_contradicting_evidence": ["contradicting_evidence"],
+    "legacy_falsifier": ["falsifier"],
+    "legacy_evidence_status": ["evidence_status", "evidence_strength"]
+  },
+  "verification_plan": {
+    "id": ["id", "experiment_id", "plan_id"],
+    "action": ["action", "title", "description"],
+    "description": ["description"],
+    "hypothesis_ids": ["hypothesis_ids", "target_hypotheses"],
+    "minimal_change": ["minimal_change", "minimal_variation"],
+    "controls": ["controls"],
+    "expected_outcomes": ["expected_outcomes"],
+    "decision_rule": ["decision_rule", "decision_rules"],
+    "cost": ["cost", "cost_estimate"],
+    "risk": ["risk", "risk_assessment"],
+    "repeats": ["repeats", "replicates"],
+    "stop_rule": ["stop_rule"]
+  }
+}

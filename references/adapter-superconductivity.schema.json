@@ -1,0 +1,932 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/materials-evidence-reasoner/4.3/adapter-superconductivity.schema.json",
+  "title": "Superconductivity Domain Record",
+  "x-adapter-id": "superconductivity",
+  "type": "object",
+  "required": [
+    "adapter_id",
+    "record_type",
+    "fields"
+  ],
+  "properties": {
+    "adapter_id": {
+      "const": "superconductivity"
+    },
+    "record_type": {
+      "enum": [
+        "superconductivity-assessment",
+        "superconducting-transition",
+        "magnetic-superconducting-response",
+        "thermodynamic-superconducting-response",
+        "critical-field",
+        "critical-current-density",
+        "superconducting-gap",
+        "superconducting-length-scale",
+        "vortex-and-pinning",
+        "superconducting-phase-diagram",
+        "pairing-and-mechanism",
+        "competing-or-coexisting-order",
+        "superconducting-calculation"
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "record_type": {
+            "const": "superconductivity-assessment"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "fields": {
+            "$ref": "#/$defs/assessment_fields"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "record_type": {
+            "const": "superconducting-transition"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "property_record_ids": {
+            "minItems": 1
+          },
+          "fields": {
+            "$ref": "#/$defs/transition_fields"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "record_type": {
+            "const": "magnetic-superconducting-response"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "property_record_ids": {
+            "minItems": 1
+          },
+          "fields": {
+            "$ref": "#/$defs/magnetic_fields"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "record_type": {
+            "const": "thermodynamic-superconducting-response"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "property_record_ids": {
+            "minItems": 1
+          },
+          "fields": {
+            "$ref": "#/$defs/thermodynamic_fields"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "record_type": {
+            "const": "critical-field"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "property_record_ids": {
+            "minItems": 1
+          },
+          "fields": {
+            "$ref": "#/$defs/critical_field_fields"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "record_type": {
+            "const": "critical-current-density"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "property_record_ids": {
+            "minItems": 1
+          },
+          "fields": {
+            "$ref": "#/$defs/critical_current_fields"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "record_type": {
+            "const": "superconducting-gap"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "fields": {
+            "$ref": "#/$defs/gap_fields"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "record_type": {
+            "const": "superconducting-length-scale"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "property_record_ids": {
+            "minItems": 1
+          },
+          "fields": {
+            "$ref": "#/$defs/length_scale_fields"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "record_type": {
+            "const": "vortex-and-pinning"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "fields": {
+            "$ref": "#/$defs/vortex_fields"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "record_type": {
+            "const": "superconducting-phase-diagram"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "fields": {
+            "$ref": "#/$defs/phase_diagram_fields"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "record_type": {
+            "const": "pairing-and-mechanism"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "fields": {
+            "$ref": "#/$defs/mechanism_fields"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "record_type": {
+            "const": "competing-or-coexisting-order"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "fields": {
+            "$ref": "#/$defs/competing_order_fields"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "record_type": {
+            "const": "superconducting-calculation"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "fields": {
+            "$ref": "#/$defs/calculation_fields"
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "string_array": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "id_array": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "free_value": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "array"
+        },
+        {
+          "type": "object"
+        }
+      ]
+    },
+    "assessment_fields": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "classification",
+        "evidence_channel_count",
+        "evidence_channels",
+        "limitations"
+      ],
+      "properties": {
+        "classification": {
+          "enum": [
+            "reported-superconducting",
+            "candidate-superconducting",
+            "non-superconducting-in-measured-range",
+            "predicted-superconducting",
+            "conflicting",
+            "not-assessable"
+          ]
+        },
+        "evidence_channel_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "evidence_channels": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "transport",
+              "magnetic",
+              "thermodynamic",
+              "spectroscopic",
+              "phase-coherence",
+              "theoretical",
+              "other"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "transition_consistency": {
+          "enum": [
+            "consistent",
+            "partially-consistent",
+            "inconsistent",
+            "not-assessable"
+          ]
+        },
+        "bulk_or_nonbulk_claim": {
+          "enum": [
+            "bulk",
+            "filamentary",
+            "interface",
+            "proximity-induced",
+            "unspecified",
+            "conflicting"
+          ]
+        },
+        "measurement_lower_bound": {
+          "$ref": "#/$defs/free_value"
+        },
+        "limitations": {
+          "$ref": "#/$defs/string_array"
+        }
+      }
+    },
+    "transition_fields": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "transition_role",
+        "measurement_channel"
+      ],
+      "properties": {
+        "transition_role": {
+          "enum": [
+            "onset",
+            "midpoint",
+            "zero-resistance",
+            "magnetic-onset",
+            "thermodynamic",
+            "gap-closing",
+            "author-defined",
+            "unknown"
+          ]
+        },
+        "measurement_channel": {
+          "enum": [
+            "resistance",
+            "resistivity",
+            "conductivity",
+            "susceptibility",
+            "magnetization",
+            "specific-heat",
+            "spectroscopy",
+            "microwave",
+            "mutual-inductance",
+            "other"
+          ]
+        },
+        "criterion_raw": {
+          "type": "string"
+        },
+        "criterion_canonical": {
+          "type": "string"
+        },
+        "applied_field": {
+          "$ref": "#/$defs/free_value"
+        },
+        "field_direction": {
+          "$ref": "#/$defs/free_value"
+        },
+        "pressure": {
+          "$ref": "#/$defs/free_value"
+        },
+        "current": {
+          "$ref": "#/$defs/free_value"
+        },
+        "current_density": {
+          "$ref": "#/$defs/free_value"
+        },
+        "frequency": {
+          "$ref": "#/$defs/free_value"
+        },
+        "heating_or_cooling": {
+          "enum": [
+            "heating",
+            "cooling",
+            "both",
+            "not-reported"
+          ]
+        },
+        "transition_width_property_id": {
+          "type": "string"
+        },
+        "figure_or_table_evidence_ids": {
+          "$ref": "#/$defs/id_array"
+        },
+        "author_interpretation": {
+          "type": "string"
+        },
+        "limitations": {
+          "$ref": "#/$defs/string_array"
+        }
+      }
+    },
+    "magnetic_fields": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "response_type"
+      ],
+      "properties": {
+        "response_type": {
+          "enum": [
+            "Meissner",
+            "diamagnetic-screening",
+            "shielding",
+            "ZFC-FC-transition",
+            "reversible-magnetization",
+            "other"
+          ]
+        },
+        "protocol": {
+          "$ref": "#/$defs/free_value"
+        },
+        "field_condition": {
+          "$ref": "#/$defs/free_value"
+        },
+        "volume_fraction_basis": {
+          "type": "string"
+        },
+        "background_subtraction": {
+          "type": "string"
+        },
+        "same_transition_as": {
+          "type": "string"
+        },
+        "limitations": {
+          "$ref": "#/$defs/string_array"
+        }
+      }
+    },
+    "thermodynamic_fields": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "response_type"
+      ],
+      "properties": {
+        "response_type": {
+          "enum": [
+            "specific-heat-jump",
+            "entropy-anomaly",
+            "condensation-energy",
+            "other"
+          ]
+        },
+        "background_model": {
+          "type": "string"
+        },
+        "normalization_basis": {
+          "type": "string"
+        },
+        "field_condition": {
+          "$ref": "#/$defs/free_value"
+        },
+        "same_transition_as": {
+          "type": "string"
+        },
+        "limitations": {
+          "$ref": "#/$defs/string_array"
+        }
+      }
+    },
+    "critical_field_fields": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "field_type",
+        "measured_or_extrapolated"
+      ],
+      "properties": {
+        "field_type": {
+          "enum": [
+            "Hc",
+            "Hc1",
+            "Hc2",
+            "Hc3",
+            "irreversibility-field",
+            "other"
+          ]
+        },
+        "temperature_condition": {
+          "$ref": "#/$defs/free_value"
+        },
+        "field_direction": {
+          "$ref": "#/$defs/free_value"
+        },
+        "measurement_channel": {
+          "type": "string"
+        },
+        "criterion_raw": {
+          "type": "string"
+        },
+        "derivation_model": {
+          "type": "string"
+        },
+        "measured_or_extrapolated": {
+          "enum": [
+            "measured",
+            "fitted",
+            "extrapolated",
+            "author-defined",
+            "unknown"
+          ]
+        },
+        "fit_range": {
+          "$ref": "#/$defs/free_value"
+        },
+        "limitations": {
+          "$ref": "#/$defs/string_array"
+        }
+      }
+    },
+    "critical_current_fields": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "method"
+      ],
+      "properties": {
+        "method": {
+          "enum": [
+            "transport",
+            "magnetic-Bean-model",
+            "magneto-optical",
+            "other"
+          ]
+        },
+        "criterion_raw": {
+          "type": "string"
+        },
+        "temperature_condition": {
+          "$ref": "#/$defs/free_value"
+        },
+        "field_condition": {
+          "$ref": "#/$defs/free_value"
+        },
+        "field_direction": {
+          "$ref": "#/$defs/free_value"
+        },
+        "current_direction": {
+          "$ref": "#/$defs/free_value"
+        },
+        "sample_geometry": {
+          "$ref": "#/$defs/free_value"
+        },
+        "cross_section_basis": {
+          "type": "string"
+        },
+        "model_or_formula": {
+          "type": "string"
+        },
+        "limitations": {
+          "$ref": "#/$defs/string_array"
+        }
+      }
+    },
+    "gap_fields": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "measurement_or_calculation_method",
+        "author_claim_strength"
+      ],
+      "properties": {
+        "gap_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "gap_symmetry": {
+          "$ref": "#/$defs/string_array"
+        },
+        "node_status": {
+          "enum": [
+            "full",
+            "nodal",
+            "anisotropic",
+            "mixed",
+            "unknown"
+          ]
+        },
+        "measurement_or_calculation_method": {
+          "type": "string"
+        },
+        "fit_model": {
+          "type": "string"
+        },
+        "temperature_condition": {
+          "$ref": "#/$defs/free_value"
+        },
+        "momentum_or_direction": {
+          "$ref": "#/$defs/free_value"
+        },
+        "author_claim_strength": {
+          "enum": [
+            "measured",
+            "fitted",
+            "inferred",
+            "proposed",
+            "predicted"
+          ]
+        },
+        "limitations": {
+          "$ref": "#/$defs/string_array"
+        }
+      }
+    },
+    "length_scale_fields": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "quantity",
+        "measured_or_derived"
+      ],
+      "properties": {
+        "quantity": {
+          "enum": [
+            "penetration-depth",
+            "coherence-length",
+            "GL-parameter",
+            "mean-free-path",
+            "other"
+          ]
+        },
+        "direction": {
+          "$ref": "#/$defs/free_value"
+        },
+        "temperature_condition": {
+          "$ref": "#/$defs/free_value"
+        },
+        "method": {
+          "type": "string"
+        },
+        "measured_or_derived": {
+          "enum": [
+            "measured",
+            "derived",
+            "fitted",
+            "predicted"
+          ]
+        },
+        "input_property_record_ids": {
+          "$ref": "#/$defs/id_array"
+        },
+        "limitations": {
+          "$ref": "#/$defs/string_array"
+        }
+      }
+    },
+    "vortex_fields": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "phenomenon",
+        "mechanism_status"
+      ],
+      "properties": {
+        "phenomenon": {
+          "enum": [
+            "flux-pinning",
+            "vortex-lattice",
+            "vortex-liquid",
+            "vortex-melting",
+            "creep",
+            "irreversibility",
+            "peak-effect",
+            "other"
+          ]
+        },
+        "pinning_centers": {
+          "$ref": "#/$defs/string_array"
+        },
+        "temperature_condition": {
+          "$ref": "#/$defs/free_value"
+        },
+        "field_condition": {
+          "$ref": "#/$defs/free_value"
+        },
+        "field_direction": {
+          "$ref": "#/$defs/free_value"
+        },
+        "measurement_method": {
+          "type": "string"
+        },
+        "mechanism_status": {
+          "enum": [
+            "observed",
+            "fitted",
+            "inferred",
+            "proposed"
+          ]
+        },
+        "limitations": {
+          "$ref": "#/$defs/string_array"
+        }
+      }
+    },
+    "phase_diagram_fields": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "figure_evidence_ids",
+        "control_variables",
+        "raw_data_available",
+        "digitization_status"
+      ],
+      "properties": {
+        "figure_evidence_ids": {
+          "$ref": "#/$defs/id_array"
+        },
+        "control_variables": {
+          "$ref": "#/$defs/string_array"
+        },
+        "phase_boundaries": {
+          "type": "array"
+        },
+        "superconducting_dome_status": {
+          "enum": [
+            "reported",
+            "digitized",
+            "schematic",
+            "not-present"
+          ]
+        },
+        "raw_data_available": {
+          "enum": [
+            "yes",
+            "no",
+            "unknown"
+          ]
+        },
+        "digitization_status": {
+          "enum": [
+            "not-needed",
+            "not-attempted",
+            "digitized",
+            "blocked"
+          ]
+        },
+        "limitations": {
+          "$ref": "#/$defs/string_array"
+        }
+      }
+    },
+    "mechanism_fields": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mechanism_chain",
+        "support_evidence_ids",
+        "counterevidence_ids",
+        "unique_predictions",
+        "falsifiers",
+        "claim_status"
+      ],
+      "properties": {
+        "pairing_mechanism": {
+          "type": [
+            "string",
+            "array"
+          ]
+        },
+        "gap_symmetry_claims": {
+          "$ref": "#/$defs/string_array"
+        },
+        "mechanism_chain": {
+          "$ref": "#/$defs/string_array"
+        },
+        "support_evidence_ids": {
+          "$ref": "#/$defs/id_array"
+        },
+        "counterevidence_ids": {
+          "$ref": "#/$defs/id_array"
+        },
+        "unique_predictions": {
+          "$ref": "#/$defs/string_array"
+        },
+        "falsifiers": {
+          "$ref": "#/$defs/string_array"
+        },
+        "claim_status": {
+          "enum": [
+            "measured-support",
+            "calculation-support",
+            "inferred",
+            "proposed",
+            "speculative",
+            "conflicting"
+          ]
+        },
+        "applicability": {
+          "type": "string"
+        },
+        "limitations": {
+          "$ref": "#/$defs/string_array"
+        }
+      }
+    },
+    "competing_order_fields": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "order_type",
+        "relationship",
+        "support_evidence_ids",
+        "claim_status"
+      ],
+      "properties": {
+        "order_type": {
+          "type": "string"
+        },
+        "relationship": {
+          "enum": [
+            "competing",
+            "coexisting",
+            "preceding",
+            "induced",
+            "uncertain"
+          ]
+        },
+        "support_evidence_ids": {
+          "$ref": "#/$defs/id_array"
+        },
+        "claim_status": {
+          "enum": [
+            "measured",
+            "calculated",
+            "inferred",
+            "proposed",
+            "conflicting"
+          ]
+        },
+        "limitations": {
+          "$ref": "#/$defs/string_array"
+        }
+      }
+    },
+    "calculation_fields": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "method",
+        "assumptions",
+        "prediction_status",
+        "limitations"
+      ],
+      "properties": {
+        "method": {
+          "type": [
+            "string",
+            "array"
+          ]
+        },
+        "software_and_version": {
+          "type": "string"
+        },
+        "model_parameters": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "training_or_calibration_domain": {
+          "type": "string"
+        },
+        "validation_evidence_ids": {
+          "$ref": "#/$defs/id_array"
+        },
+        "assumptions": {
+          "$ref": "#/$defs/string_array"
+        },
+        "prediction_status": {
+          "enum": [
+            "calculated",
+            "validated-locally",
+            "unvalidated",
+            "extrapolated",
+            "conflicting"
+          ]
+        },
+        "limitations": {
+          "$ref": "#/$defs/string_array"
+        }
+      }
+    }
+  }
+}

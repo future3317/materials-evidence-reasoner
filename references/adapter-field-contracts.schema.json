@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/materials-evidence-reasoner/4.3/adapter-field-contracts.schema.json",
+  "title": "Materials Evidence Reasoner Adapter Field Contract Catalog",
+  "type": "object",
+  "required": ["contract_version", "field_conventions", "adapters"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "contract_version": {"type": "string"},
+    "generated_from": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "field_conventions": {"type": "object", "minProperties": 5},
+    "adapters": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {"$ref": "#/$defs/adapter_contract"}
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "adapter_contract": {
+      "type": "object",
+      "required": ["ruleset_version", "record_types"],
+      "properties": {
+        "ruleset_version": {"type": "string"},
+        "record_types": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {"$ref": "#/$defs/record_contract"}
+        }
+      },
+      "additionalProperties": false
+    },
+    "record_contract": {
+      "type": "object",
+      "required": ["description", "create_when", "do_not_create_when", "required_fields", "required_any_of", "allowed_fields", "field_count", "fields"],
+      "properties": {
+        "description": {"type": "string", "minLength": 1},
+        "create_when": {"type": "array", "minItems": 3, "items": {"type": "string"}},
+        "do_not_create_when": {"type": "array", "minItems": 3, "items": {"type": "string"}},
+        "required_fields": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "required_any_of": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "array", "minItems": 1, "items": {"type": "string"}, "uniqueItems": true}
+        },
+        "allowed_fields": {"type": "array", "minItems": 1, "items": {"type": "string"}, "uniqueItems": true},
+        "field_count": {"type": "integer", "minimum": 1},
+        "fields": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {"$ref": "#/$defs/field_contract"}
+        }
+      },
+      "additionalProperties": false
+    },
+    "field_contract": {
+      "type": "object",
+      "required": ["semantic_role", "expected_shape", "requiredness", "evidence_rule", "missing_policy", "forbidden_inference"],
+      "properties": {
+        "semantic_role": {"type": "string"},
+        "expected_shape": {"type": "object", "required": ["json_types"]},
+        "requiredness": {"enum": ["required", "conditional", "optional"]},
+        "evidence_rule": {"type": "string"},
+        "missing_policy": {"type": "string"},
+        "forbidden_inference": {"type": "array", "minItems": 2, "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    }
+  }
+}

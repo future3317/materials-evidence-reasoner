@@ -1,0 +1,44 @@
+{
+  "spec_version": "1.0",
+  "description": "Candidate semantic hints for active-learning and Bayesian-optimization artifacts. These hints classify roles; they do not establish physical units, material identity, or experimental validation.",
+  "column_hints": {
+    "x": {
+      "role": "design_variable",
+      "status": "candidate",
+      "note": "A design coordinate or feature; its physical meaning and unit must be supplied by the researcher."
+    },
+    "y": {
+      "role": "design_variable",
+      "status": "candidate",
+      "note": "A design coordinate or feature; its physical meaning and unit must be supplied by the researcher."
+    },
+    "z": {
+      "role": "target_value",
+      "status": "provenance-required",
+      "note": "A target/objective column. Determine whether it is measured, simulated, or a benchmark function before treating it as material evidence."
+    },
+    "acquisition_value": {
+      "role": "acquisition_score",
+      "status": "model-derived",
+      "note": "An acquisition-function score used to rank candidates; it is not a predicted property value or a measurement."
+    },
+    "qbc_variance": {
+      "role": "ensemble_disagreement_score",
+      "status": "model-derived",
+      "note": "Disagreement among model acquisition scores; it is not experimental uncertainty."
+    }
+  },
+  "file_rules": [
+    {"pattern": "^labeled\\.csv$", "role": "observed_or_simulated_labels", "caution": "The presence of z does not prove that z is experimentally measured."},
+    {"pattern": "^(init_)?unlabeled\\.csv$", "role": "candidate_pool", "caution": "Candidate coordinates have no observed target until an experiment or trusted simulation is recorded."},
+    {"pattern": "^curr_unlabeled\\.csv$", "role": "current_acquisition_pool", "caution": "This is a pool assembled for selection, not a validated result."},
+    {"pattern": "^recommended_[0-9]+\\.csv$", "role": "model_recommendation", "caution": "Recommendations are proposed experiments until measured or independently simulated."},
+    {"pattern": "^qbc_recommended\\.csv$", "role": "qbc_model_recommendation", "caution": "QBC variance ranks disagreement; it does not quantify laboratory uncertainty."},
+    {"pattern": "^sample_distribution_[0-9]+\\.png$", "role": "selection_diagnostic_plot", "caution": "A plot is a visual diagnostic and cannot replace the source table or measurement record."}
+  ],
+  "code_signals": {
+    "model_libraries": ["botorch", "gpytorch", "torch", "sklearn", "scipy", "numpy", "pandas"],
+    "model_terms": ["bayesian optimization", "active learning", "query-by-committee", "expected improvement", "probability of improvement", "upper confidence bound", "matern", "rbf"],
+    "unsafe_for_reproduction": ["writes_in_place", "missing_local_import", "hard_coded_relative_input", "hard_coded_relative_output"]
+  }
+}

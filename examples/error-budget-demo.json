@@ -1,0 +1,274 @@
+{
+  "id": "EB-DRAFT-1",
+  "target_property_record_ids": [],
+  "method": "variance-components",
+  "replicate_structure": {
+    "n_rows": 27,
+    "n_batches": 3,
+    "n_samples": 9,
+    "min_repeats_per_sample": 3,
+    "max_repeats_per_sample": 3,
+    "balanced": true,
+    "nesting": "measurement repeats nested in samples nested in batches"
+  },
+  "assumptions": [
+    "Rows are independent conditional on the declared nested IDs.",
+    "Samples are nested in batches; crossed instrument/operator effects are not separated.",
+    "Component estimates are descriptive method-of-moments approximations.",
+    "Covariance and process-condition effects are included in unallocated variance unless modeled separately."
+  ],
+  "components": [
+    {
+      "id": "EC-DRAFT-1",
+      "category": "measurement-repeatability",
+      "label": "Pooled within-sample repeatability",
+      "contribution_basis": "variance",
+      "estimate_status": "quantified",
+      "estimate": {
+        "raw_value": 0.0018037037037037806,
+        "raw_unit": "percentage_points^2",
+        "normalized_value": 0.0018037037037037806,
+        "normalized_unit": "percentage_points^2",
+        "value_status": "derived",
+        "extraction_method": "analyze_error_budget.py",
+        "derivation": {
+          "input_evidence_ids": [],
+          "operation": "nested descriptive variance component",
+          "formula": "see analyze_error_budget.py"
+        },
+        "evidence_ids": [],
+        "confidence": {
+          "level": "low",
+          "basis": [
+            "descriptive-method-of-moments",
+            "requires-design-review"
+          ]
+        },
+        "notes": [
+          "Generated from repeat-level CSV by a deterministic descriptive helper.",
+          "Review balance, nesting, independence, covariance, and units before scientific use."
+        ]
+      },
+      "fraction_of_total": 0.015356908857114797,
+      "source_entity_ids": [],
+      "measurement_run_ids": [],
+      "model_ids": [],
+      "correlation_notes": "Covariance is not identified by this helper.",
+      "limitations": [],
+      "evidence_ids": []
+    },
+    {
+      "id": "EC-DRAFT-2",
+      "category": "sample-within-batch",
+      "label": "Between-sample variance within batch",
+      "contribution_basis": "variance",
+      "estimate_status": "quantified",
+      "estimate": {
+        "raw_value": 0.010969135802468902,
+        "raw_unit": "percentage_points^2",
+        "normalized_value": 0.010969135802468902,
+        "normalized_unit": "percentage_points^2",
+        "value_status": "derived",
+        "extraction_method": "analyze_error_budget.py",
+        "derivation": {
+          "input_evidence_ids": [],
+          "operation": "nested descriptive variance component",
+          "formula": "see analyze_error_budget.py"
+        },
+        "evidence_ids": [],
+        "confidence": {
+          "level": "low",
+          "basis": [
+            "descriptive-method-of-moments",
+            "requires-design-review"
+          ]
+        },
+        "notes": [
+          "Generated from repeat-level CSV by a deterministic descriptive helper.",
+          "Review balance, nesting, independence, covariance, and units before scientific use."
+        ]
+      },
+      "fraction_of_total": 0.09339228966150324,
+      "source_entity_ids": [],
+      "measurement_run_ids": [],
+      "model_ids": [],
+      "correlation_notes": "Covariance is not identified by this helper.",
+      "limitations": [
+        "Method-of-moments adjustment assumes nested samples and comparable repeat counts."
+      ],
+      "evidence_ids": []
+    },
+    {
+      "id": "EC-DRAFT-3",
+      "category": "batch-between",
+      "label": "Between-batch variance",
+      "contribution_basis": "variance",
+      "estimate_status": "quantified",
+      "estimate": {
+        "raw_value": 0.1046794238683105,
+        "raw_unit": "percentage_points^2",
+        "normalized_value": 0.1046794238683105,
+        "normalized_unit": "percentage_points^2",
+        "value_status": "derived",
+        "extraction_method": "analyze_error_budget.py",
+        "derivation": {
+          "input_evidence_ids": [],
+          "operation": "nested descriptive variance component",
+          "formula": "see analyze_error_budget.py"
+        },
+        "evidence_ids": [],
+        "confidence": {
+          "level": "low",
+          "basis": [
+            "descriptive-method-of-moments",
+            "requires-design-review"
+          ]
+        },
+        "notes": [
+          "Generated from repeat-level CSV by a deterministic descriptive helper.",
+          "Review balance, nesting, independence, covariance, and units before scientific use."
+        ]
+      },
+      "fraction_of_total": 0.8912508014813819,
+      "source_entity_ids": [],
+      "measurement_run_ids": [],
+      "model_ids": [],
+      "correlation_notes": "Covariance is not identified by this helper.",
+      "limitations": [
+        "Requires at least two batches; estimate is approximate for unbalanced designs."
+      ],
+      "evidence_ids": []
+    },
+    {
+      "id": "EC-DRAFT-4",
+      "category": "unallocated",
+      "label": "Unallocated/designer-unidentified variance",
+      "contribution_basis": "variance",
+      "estimate_status": "bounded",
+      "estimate": {
+        "raw_value": 0.0,
+        "raw_unit": "percentage_points^2",
+        "normalized_value": 0.0,
+        "normalized_unit": "percentage_points^2",
+        "value_status": "derived",
+        "extraction_method": "analyze_error_budget.py",
+        "derivation": {
+          "input_evidence_ids": [],
+          "operation": "nested descriptive variance component",
+          "formula": "see analyze_error_budget.py"
+        },
+        "evidence_ids": [],
+        "confidence": {
+          "level": "low",
+          "basis": [
+            "descriptive-method-of-moments",
+            "requires-design-review"
+          ]
+        },
+        "notes": [
+          "Generated from repeat-level CSV by a deterministic descriptive helper.",
+          "Review balance, nesting, independence, covariance, and units before scientific use."
+        ]
+      },
+      "fraction_of_total": 0.0,
+      "source_entity_ids": [],
+      "measurement_run_ids": [],
+      "model_ids": [],
+      "correlation_notes": "Covariance is not identified by this helper.",
+      "limitations": [
+        "May contain covariance, condition drift, data processing, operator, instrument, or model effects."
+      ],
+      "evidence_ids": []
+    }
+  ],
+  "combined_uncertainty": {
+    "raw_value": 0.581031600515602,
+    "raw_unit": "percentage_points",
+    "normalized_value": 0.581031600515602,
+    "normalized_unit": "percentage_points",
+    "value_status": "derived",
+    "extraction_method": "analyze_error_budget.py",
+    "derivation": {
+      "input_evidence_ids": [],
+      "operation": "coverage-factor times total observed standard deviation",
+      "formula": "2.0 * sqrt(total variance)"
+    },
+    "evidence_ids": [],
+    "confidence": {
+      "level": "low",
+      "basis": [
+        "descriptive-method-of-moments",
+        "requires-design-review"
+      ]
+    },
+    "notes": [
+      "Generated from repeat-level CSV by a deterministic descriptive helper.",
+      "Review balance, nesting, independence, covariance, and units before scientific use."
+    ]
+  },
+  "dominant_component_ids": [
+    "EC-DRAFT-3"
+  ],
+  "quantitative_fraction_complete": true,
+  "effect_comparison": {
+    "relation": "uncertainty-smaller",
+    "effect_value": {
+      "raw_value": 3.1,
+      "raw_unit": "percentage_points",
+      "normalized_value": 3.1,
+      "normalized_unit": "percentage_points",
+      "value_status": "derived",
+      "extraction_method": "analyze_error_budget.py",
+      "derivation": {
+        "input_evidence_ids": [],
+        "operation": "absolute user-supplied effect",
+        "formula": "abs(effect)"
+      },
+      "evidence_ids": [],
+      "confidence": {
+        "level": "low",
+        "basis": [
+          "descriptive-method-of-moments",
+          "requires-design-review"
+        ]
+      },
+      "notes": [
+        "Generated from repeat-level CSV by a deterministic descriptive helper.",
+        "Review balance, nesting, independence, covariance, and units before scientific use."
+      ]
+    },
+    "uncertainty_value": {
+      "raw_value": 0.581031600515602,
+      "raw_unit": "percentage_points",
+      "normalized_value": 0.581031600515602,
+      "normalized_unit": "percentage_points",
+      "value_status": "derived",
+      "extraction_method": "analyze_error_budget.py",
+      "derivation": {
+        "input_evidence_ids": [],
+        "operation": "coverage-factor times observed standard deviation",
+        "formula": "2.0 * sqrt(total variance)"
+      },
+      "evidence_ids": [],
+      "confidence": {
+        "level": "low",
+        "basis": [
+          "descriptive-method-of-moments",
+          "requires-design-review"
+        ]
+      },
+      "notes": [
+        "Generated from repeat-level CSV by a deterministic descriptive helper.",
+        "Review balance, nesting, independence, covariance, and units before scientific use."
+      ]
+    },
+    "rationale": "Descriptive comparison only: |effect|=3.1 and k·SD=0.581032 with k=2. This is not a significance test or accredited uncertainty statement."
+  },
+  "conclusion": "This draft separates repeatability, within-batch sample, between-batch, and unallocated variance. Review the experimental design and add calibration, processing, environment, analysis, and model components before final use.",
+  "limitations": [
+    "Not a GUM-compliant or accreditation-grade uncertainty budget.",
+    "Unbalanced or crossed designs require a more appropriate statistical model.",
+    "No automatic causal attribution is made from variance components."
+  ],
+  "evidence_ids": []
+}

@@ -1,0 +1,6 @@
+﻿id,graph_ids,node_type,canonical_term,statement,status,entity_ids,condition_ids,evidence_ids,boundary_conditions,limitations
+MN1,"[""MG1""]",processing,pre-test air exposure,Air exposure occurred before testing.,observed,"[""SAMPLE1""]","[""COND-A""]","[""E3""]","[""Local handling workflow.""]",[]
+MN2,"[""MG1""]",structure,altered surface coverage,Surface oxide or contaminant coverage may differ from the fresh reference.,hypothesized,"[""SAMPLE1""]","[""COND-A""]",[],"[""Pre-test surface state.""]","[""No surface-sensitive measurement.""]"
+MN3,"[""MG1""]",mechanism,surface-layer transport impedance,An altered surface layer may impede interfacial charge or ion transport.,hypothesized,"[""SAMPLE1""]","[""COND-A""]",[],"[""Same cell architecture and electrolyte.""]","[""Mechanistic mediator is inferred.""]"
+MN4,"[""MG1""]",property,interfacial resistance,Interfacial resistance may be elevated.,hypothesized,"[""SAMPLE1""]","[""COND-A""]",[],"[""Matched state of charge and geometry.""]","[""No EIS or equivalent measurement.""]"
+MN5,"[""MG1""]",performance,coulombic efficiency,Coulombic efficiency is lower than the matched reference case.,observed,"[""SAMPLE1""]","[""COND-A""]","[""E1"",""E2"",""E4""]","[""Cond-A.""]","[""Single synthetic batch.""]"

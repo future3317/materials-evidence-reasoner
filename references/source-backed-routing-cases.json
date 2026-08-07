@@ -1,0 +1,687 @@
+{
+  "catalog_version": "1.0.0",
+  "created_at": "2026-08-06",
+  "gold_status": "not-gold",
+  "text_policy": "auditor paraphrase with source locators; consult the source for extraction",
+  "adapter_coverage": [
+    "battery",
+    "ceramics-glass-cement",
+    "composition-particle-surface",
+    "diffraction-scattering",
+    "electrical-magnetic-transport",
+    "electrochemical-energy",
+    "electrochemical-testing",
+    "electron-microscopy-microanalysis",
+    "hydrogen-storage",
+    "liquid-materials",
+    "materials-processing",
+    "materials-simulation",
+    "mechanical-testing",
+    "metallic-materials",
+    "photovoltaic-device",
+    "polymers",
+    "quantum-materials",
+    "spectroscopy",
+    "superconductivity",
+    "thermal-analysis",
+    "thermoelectric",
+    "two-dimensional-materials"
+  ],
+  "cases": [
+    {
+      "case_id": "source-sc-ruthenate-eutectic",
+      "source": {
+        "title": "Superconductivity in Sr2RuO4-Sr3Ru2O7 eutectic crystals",
+        "url": "https://arxiv.org/abs/0712.1847",
+        "source_kind": "primary-research-preprint",
+        "audit_locators": [
+          "title",
+          "page 1 abstract",
+          "pages 1-2 methods"
+        ]
+      },
+      "audited_text": "Source-grounded synopsis: superconducting behavior and supercurrent are tested by current-voltage measurements; SEM, TEM, EDS and WDS resolve the eutectic domains.",
+      "decisions": [
+        {
+          "adapter_id": "superconductivity",
+          "ruleset_version": "2.0.0",
+          "expected_status": "load",
+          "expected_signal_ids": [
+            "sc-superconducting-claim"
+          ],
+          "expected_reason_codes": [
+            "SC-LOAD-TARGET"
+          ]
+        },
+        {
+          "adapter_id": "electrical-magnetic-transport",
+          "ruleset_version": "2.0.0",
+          "expected_status": "load",
+          "expected_signal_ids": [
+            "emt-electrical-run"
+          ],
+          "expected_reason_codes": [
+            "EMT-LOAD-TARGET"
+          ]
+        },
+        {
+          "adapter_id": "electron-microscopy-microanalysis",
+          "ruleset_version": "2.0.0",
+          "expected_status": "load",
+          "expected_signal_ids": [
+            "em-imaging",
+            "em-microanalysis"
+          ],
+          "expected_reason_codes": [
+            "EM-LOAD-TARGET"
+          ]
+        }
+      ],
+      "review_status": "source-backed",
+      "review_note": "Audited by the package authoring agent against accessible source text; not independently human-adjudicated gold."
+    },
+    {
+      "case_id": "source-metal-microscale-am",
+      "source": {
+        "title": "Metals by micro-scale additive manufacturing: comparison of microstructure and mechanical properties",
+        "url": "https://arxiv.org/abs/1912.03581",
+        "source_kind": "primary-research-preprint",
+        "audit_locators": [
+          "title",
+          "abstract"
+        ]
+      },
+      "audited_text": "Source-grounded synopsis: metallic materials made by micro-scale additive manufacturing are compared using electron microscopy, nanoindentation and microcompression.",
+      "decisions": [
+        {
+          "adapter_id": "metallic-materials",
+          "ruleset_version": "2.0.0",
+          "expected_status": "load",
+          "expected_signal_ids": [
+            "met-alloy-identity"
+          ],
+          "expected_reason_codes": [
+            "MET-LOAD-TARGET"
+          ]
+        },
+        {
+          "adapter_id": "materials-processing",
+          "ruleset_version": "2.0.0",
+          "expected_status": "load",
+          "expected_signal_ids": [
+            "proc-additive-or-joining"
+          ],
+          "expected_reason_codes": [
+            "PROC-LOAD-TARGET"
+          ]
+        },
+        {
+          "adapter_id": "electron-microscopy-microanalysis",
+          "ruleset_version": "2.0.0",
+          "expected_status": "load",
+          "expected_signal_ids": [
+            "em-imaging"
+          ],
+          "expected_reason_codes": [
+            "EM-LOAD-TARGET"
+          ]
+        },
+        {
+          "adapter_id": "mechanical-testing",
+          "ruleset_version": "2.0.0",
+          "expected_status": "load",
+          "expected_signal_ids": [
+            "mech-actual-test"
+          ],
+          "expected_reason_codes": [
+            "MECH-LOAD-TARGET"
+          ]
+        }
+      ],
+      "review_status": "source-backed",
+      "review_note": "Audited by the package authoring agent against accessible source text; not independently human-adjudicated gold."
+    },
+    {
+      "case_id": "source-polymer-nanocomposite-multimodal",
+      "source": {
+        "title": "Silver-titanium polymeric nanocomposite non ecotoxic with bactericide activity",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8753336/",
+        "source_kind": "primary-research-article",
+        "audit_locators": [
+          "methods: DSC/TG",
+          "methods: Raman",
+          "methods: mechanical properties"
+        ]
+      },
+      "audited_text": "Source-grounded synopsis: polymeric nanocomposite films undergo DSC, thermogravimetric analysis, Raman spectroscopy and tensile testing with reported specimen replication.",
+      "decisions": [
+        {
+          "adapter_id": "polymers",
+          "ruleset_version": "2.0.0",
+          "expected_status": "load",
+          "expected_signal_ids": [
+            "pol-polymer-identity"
+          ],
+          "expected_reason_codes": [
+            "POL-LOAD-TARGET"
+          ]
+        },
+        {
+          "adapter_id": "thermal-analysis",
+          "ruleset_version": "2.0.0",
+          "expected_status": "load",
+          "expected_signal_ids": [
+            "ta-actual-technique"
+          ],
+          "expected_reason_codes": [
+            "TA-LOAD-TARGET"
+          ]
+        },
+        {
+          "adapter_id": "spectroscopy",
+          "ruleset_version": "2.0.0",
+          "expected_status": "load",
+          "expected_signal_ids": [
+            "spec-actual-technique"
+          ],
+          "expected_reason_codes": [
+            "SPEC-LOAD-TARGET"
+          ]
+        },
+        {
+          "adapter_id": "mechanical-testing",
+          "ruleset_version": "2.0.0",
+          "expected_status": "load",
+          "expected_signal_ids": [
+            "mech-actual-test"
+          ],
+          "expected_reason_codes": [
+            "MECH-LOAD-TARGET"
+          ]
+        }
+      ],
+      "review_status": "source-backed",
+      "review_note": "Audited by the package authoring agent against accessible source text; not independently human-adjudicated gold."
+    },
+    {
+      "case_id": "source-b4c-sps-multimodal",
+      "source": {
+        "title": "Spark Plasma Sintered B4C - Structural, Thermal, Electrical and Mechanical Properties",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7178422/",
+        "source_kind": "primary-research-article",
+        "audit_locators": [
+          "abstract",
+          "conclusions"
+        ]
+      },
+      "audited_text": "Source-grounded synopsis: B4C ceramic is made by spark plasma sintering and analyzed by XRD, Raman, SEM, nanoindentation and electrical transport measurements.",
+      "decisions": [
+        {
+          "adapter_id": "ceramics-glass-cement",
+          "ruleset_version": "2.0.0",
+          "expected_status": "load",
+          "expected_signal_ids": [
+            "cer-forming-firing-curing"
+          ],
+          "expected_reason_codes": [
+            "CER-LOAD-TARGET"
+          ]
+        },
+        {
+          "adapter_id": "materials-processing",
+          "ruleset_version": "2.0.0",
+          "expected_status": "load",
+          "expected_signal_ids": [
+            "proc-parameterized-step"
+          ],
+          "expected_reason_codes": [
+            "PROC-LOAD-TARGET"
+          ]
+        },
+        {
+          "adapter_id": "diffraction-scattering",
+          "ruleset_version": "2.0.0",
+          "expected_status": "load",
+          "expected_signal_ids": [
+            "dif-actual-measurement"
+          ],
+          "expected_reason_codes": [
+            "DIF-LOAD-TARGET"
+          ]
+        },
+        {
+          "adapter_id": "spectroscopy",
+          "ruleset_version": "2.0.0",
+          "expected_status": "load",
+          "expected_signal_ids": [
+            "spec-actual-technique"
+          ],
+          "expected_reason_codes": [
+            "SPEC-LOAD-TARGET"
+          ]
+        },
+        {
+          "adapter_id": "electron-microscopy-microanalysis",
+          "ruleset_version": "2.0.0",
+          "expected_status": "load",
+          "expected_signal_ids": [
+            "em-imaging"
+          ],
+          "expected_reason_codes": [
+            "EM-LOAD-TARGET"
+          ]
+        },
+        {
+          "adapter_id": "mechanical-testing",
+          "ruleset_version": "2.0.0",
+          "expected_status": "load",
+          "expected_signal_ids": [
+            "mech-actual-test"
+          ],
+          "expected_reason_codes": [
+            "MECH-LOAD-TARGET"
+          ]
+        },
+        {
+          "adapter_id": "thermal-analysis",
+          "ruleset_version": "2.0.0",
+          "expected_status": "skip",
+          "expected_signal_ids": [
+            "ta-process-heating"
+          ],
+          "expected_reason_codes": [
+            "TA-SKIP-EXCLUDED"
+          ]
+        }
+      ],
+      "review_status": "source-backed",
+      "review_note": "Audited by the package authoring agent against accessible source text; not independently human-adjudicated gold."
+    },
+    {
+      "case_id": "source-battery-electrolyte-formulation",
+      "source": {
+        "title": "From Additive to Cosolvent: How Fluoroethylene Carbonate Concentrations Influence Solid-Electrolyte Interphase Properties and Electrochemical Performance of Si/Gr Anodes",
+        "url": "https://pubs.acs.org/doi/10.1021/acsaem.2c01454",
+        "source_kind": "primary-research-article",
+        "audit_locators": [
+          "materials and methods",
+          "electrode preparation",
+          "cycling protocol"
+        ]
+      },
+      "audited_text": "Source-grounded synopsis: lithium-ion battery electrodes are slurry-prepared; liquid electrolyte formulations vary FEC concentration; formation and charge-discharge cycling are reported.",
+      "decisions": [
+        {
+          "adapter_id": "battery",
+          "ruleset_version": "2.0.0",
+          "expected_status": "load",
+          "expected_signal_ids": [
+            "bat-cell-hierarchy",
+            "bat-cycling"
+          ],
+          "expected_reason_codes": [
+            "BAT-LOAD-TARGET"
+          ]
+        },
+        {
+          "adapter_id": "liquid-materials",
+          "ruleset_version": "2.0.0",
+          "expected_status": "load",
+          "expected_signal_ids": [
+            "liq-composition"
+          ],
+          "expected_reason_codes": [
+            "LIQ-LOAD-TARGET"
+          ]
+        },
+        {
+          "adapter_id": "materials-processing",
+          "ruleset_version": "2.0.0",
+          "expected_status": "load",
+          "expected_signal_ids": [
+            "proc-parameterized-step"
+          ],
+          "expected_reason_codes": [
+            "PROC-LOAD-TARGET"
+          ]
+        },
+        {
+          "adapter_id": "electrochemical-energy",
+          "ruleset_version": "2.0.0",
+          "expected_status": "skip",
+          "expected_signal_ids": [
+            "ece-other-electrochem"
+          ],
+          "expected_reason_codes": [
+            "ECE-SKIP-EXCLUDED"
+          ]
+        }
+      ],
+      "review_status": "source-backed",
+      "review_note": "Audited by the package authoring agent against accessible source text; not independently human-adjudicated gold."
+    },
+    {
+      "case_id": "source-battery-eis-cell-design",
+      "source": {
+        "title": "Cell Design for Electrochemical Characterizations of Metal-Ion Batteries in Organic and Aqueous Electrolyte",
+        "url": "https://pubs.acs.org/doi/10.1021/acs.analchem.6b02138",
+        "source_kind": "primary-research-article",
+        "audit_locators": [
+          "abstract",
+          "cell design",
+          "electrochemical methods"
+        ]
+      },
+      "audited_text": "Source-grounded synopsis: a metal-ion battery cell is designed for electrochemical impedance spectroscopy and differential electrochemical mass spectrometry.",
+      "decisions": [
+        {
+          "adapter_id": "battery",
+          "ruleset_version": "2.0.0",
+          "expected_status": "load",
+          "expected_signal_ids": [
+            "bat-cell-hierarchy"
+          ],
+          "expected_reason_codes": [
+            "BAT-LOAD-TARGET"
+          ]
+        },
+        {
+          "adapter_id": "electrochemical-testing",
+          "ruleset_version": "2.0.0",
+          "expected_status": "load",
+          "expected_signal_ids": [
+            "echem-impedance-pulse"
+          ],
+          "expected_reason_codes": [
+            "ECHEM-LOAD-TARGET"
+          ]
+        }
+      ],
+      "review_status": "source-backed",
+      "review_note": "Audited by the package authoring agent against accessible source text; not independently human-adjudicated gold."
+    },
+    {
+      "case_id": "source-tellurene-quantum-transport",
+      "source": {
+        "title": "Quantum Transport and Band Structure Evolution under High Magnetic Field in Few-Layer Tellurene",
+        "url": "https://arxiv.org/abs/1806.08229",
+        "source_kind": "primary-research-preprint",
+        "audit_locators": [
+          "title",
+          "abstract"
+        ]
+      },
+      "audited_text": "Source-grounded synopsis: few-layer tellurene exhibits quantum Hall and Shubnikov-de-Haas transport; density functional theory calculations support band-structure interpretation.",
+      "decisions": [
+        {
+          "adapter_id": "two-dimensional-materials",
+          "ruleset_version": "2.0.0",
+          "expected_status": "load",
+          "expected_signal_ids": [
+            "twod-layer-count"
+          ],
+          "expected_reason_codes": [
+            "TWOD-LOAD-TARGET"
+          ]
+        },
+        {
+          "adapter_id": "quantum-materials",
+          "ruleset_version": "2.0.0",
+          "expected_status": "load",
+          "expected_signal_ids": [
+            "qmat-quantized-transport"
+          ],
+          "expected_reason_codes": [
+            "QMAT-LOAD-TARGET"
+          ]
+        },
+        {
+          "adapter_id": "electrical-magnetic-transport",
+          "ruleset_version": "2.0.0",
+          "expected_status": "load",
+          "expected_signal_ids": [
+            "emt-electrical-run"
+          ],
+          "expected_reason_codes": [
+            "EMT-LOAD-TARGET"
+          ]
+        },
+        {
+          "adapter_id": "materials-simulation",
+          "ruleset_version": "2.0.0",
+          "expected_status": "load",
+          "expected_signal_ids": [
+            "sim-electronic-atomistic"
+          ],
+          "expected_reason_codes": [
+            "SIM-LOAD-TARGET"
+          ]
+        }
+      ],
+      "review_status": "source-backed",
+      "review_note": "Audited by the package authoring agent against accessible source text; not independently human-adjudicated gold."
+    },
+    {
+      "case_id": "source-photoanode-water-oxidation",
+      "source": {
+        "title": "Performance and Failure Modes of Si Anodes Patterned with Thin-Film Ni Catalyst Islands for Water Oxidation",
+        "url": "https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=923743",
+        "doi": "10.1039/C7SE00583K",
+        "source_kind": "primary-research-article",
+        "audit_locators": [
+          "abstract",
+          "pages 11-13 methods",
+          "results"
+        ]
+      },
+      "audited_text": "Source-grounded synopsis: oxygen-evolution photoanodes are evaluated by cyclic voltammetry and Faradaic efficiency, with SEM, TEM and XPS failure analysis.",
+      "decisions": [
+        {
+          "adapter_id": "electrochemical-energy",
+          "ruleset_version": "2.0.0",
+          "expected_status": "load",
+          "expected_signal_ids": [
+            "ece-reaction",
+            "ece-performance"
+          ],
+          "expected_reason_codes": [
+            "ECE-LOAD-TARGET"
+          ]
+        },
+        {
+          "adapter_id": "electrochemical-testing",
+          "ruleset_version": "2.0.0",
+          "expected_status": "load",
+          "expected_signal_ids": [
+            "echem-sweep-step"
+          ],
+          "expected_reason_codes": [
+            "ECHEM-LOAD-TARGET"
+          ]
+        },
+        {
+          "adapter_id": "electron-microscopy-microanalysis",
+          "ruleset_version": "2.0.0",
+          "expected_status": "load",
+          "expected_signal_ids": [
+            "em-imaging"
+          ],
+          "expected_reason_codes": [
+            "EM-LOAD-TARGET"
+          ]
+        },
+        {
+          "adapter_id": "spectroscopy",
+          "ruleset_version": "2.0.0",
+          "expected_status": "load",
+          "expected_signal_ids": [
+            "spec-actual-technique"
+          ],
+          "expected_reason_codes": [
+            "SPEC-LOAD-TARGET"
+          ]
+        },
+        {
+          "adapter_id": "photovoltaic-device",
+          "ruleset_version": "2.0.0",
+          "expected_status": "skip",
+          "expected_signal_ids": [
+            "pv-other-photo"
+          ],
+          "expected_reason_codes": [
+            "PV-SKIP-EXCLUDED"
+          ]
+        }
+      ],
+      "review_status": "source-backed",
+      "review_note": "Audited by the package authoring agent against accessible source text; not independently human-adjudicated gold."
+    },
+    {
+      "case_id": "source-mof-hydrogen-storage",
+      "source": {
+        "title": "Record High Hydrogen Storage Capacity in the Metal-Organic Framework Ni2(m-dobdc) at Near-Ambient Temperatures",
+        "url": "https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=925465",
+        "doi": "10.1021/acs.chemmater.8b03276",
+        "source_kind": "primary-research-article",
+        "audit_locators": [
+          "results: high-pressure isotherms",
+          "usable capacity definition",
+          "methods"
+        ]
+      },
+      "audited_text": "Source-grounded synopsis: hydrogen storage capacity is determined from calibrated high-pressure gas adsorption isotherms with temperature, pressure and usable-capacity bases.",
+      "decisions": [
+        {
+          "adapter_id": "hydrogen-storage",
+          "ruleset_version": "2.0.0",
+          "expected_status": "load",
+          "expected_signal_ids": [
+            "h2s-storage-material",
+            "h2s-performance"
+          ],
+          "expected_reason_codes": [
+            "H2S-LOAD-TARGET"
+          ]
+        },
+        {
+          "adapter_id": "composition-particle-surface",
+          "ruleset_version": "2.0.0",
+          "expected_status": "load",
+          "expected_signal_ids": [
+            "cps-particle-surface",
+            "cps-quantification"
+          ],
+          "expected_reason_codes": [
+            "CPS-LOAD-TARGET"
+          ]
+        },
+        {
+          "adapter_id": "electrochemical-energy",
+          "ruleset_version": "2.0.0",
+          "expected_status": "skip",
+          "expected_signal_ids": [
+            "ece-other-electrochem"
+          ],
+          "expected_reason_codes": [
+            "ECE-SKIP-EXCLUDED"
+          ]
+        }
+      ],
+      "review_status": "source-backed",
+      "review_note": "Audited by the package authoring agent against accessible source text; not independently human-adjudicated gold."
+    },
+    {
+      "case_id": "source-thermoelectric-multitransport-metrology",
+      "source": {
+        "title": "Apparatus for the measurement of electrical resistivity, Seebeck coefficient, and thermal conductivity of thermoelectric materials between 300 K and 12 K",
+        "url": "https://www.nist.gov/publications/apparatus-measurement-electrical-resistivity-seebeck-coefficient-and-thermal",
+        "doi": "10.1063/1.4939555",
+        "source_kind": "primary-metrology-article",
+        "audit_locators": [
+          "abstract",
+          "measurement protocol"
+        ]
+      },
+      "audited_text": "Source-grounded synopsis: thermoelectric materials undergo four-probe resistivity, Seebeck coefficient and thermal conductivity measurements with uncertainty assessment.",
+      "decisions": [
+        {
+          "adapter_id": "thermoelectric",
+          "ruleset_version": "2.0.0",
+          "expected_status": "load",
+          "expected_signal_ids": [
+            "te-coupled-transport"
+          ],
+          "expected_reason_codes": [
+            "TE-LOAD-TARGET"
+          ]
+        },
+        {
+          "adapter_id": "electrical-magnetic-transport",
+          "ruleset_version": "2.0.0",
+          "expected_status": "load",
+          "expected_signal_ids": [
+            "emt-electrical-run",
+            "emt-transport-result"
+          ],
+          "expected_reason_codes": [
+            "EMT-LOAD-TARGET"
+          ]
+        },
+        {
+          "adapter_id": "thermal-analysis",
+          "ruleset_version": "2.0.0",
+          "expected_status": "skip",
+          "expected_signal_ids": [
+            "ta-process-heating"
+          ],
+          "expected_reason_codes": [
+            "TA-SKIP-EXCLUDED"
+          ]
+        }
+      ],
+      "review_status": "source-backed",
+      "review_note": "Audited by the package authoring agent against accessible source text; not independently human-adjudicated gold."
+    },
+    {
+      "case_id": "source-pv-performance-metrology",
+      "source": {
+        "title": "PV Cell and Module Performance Measurement Capabilities at NREL",
+        "url": "https://www.nrel.gov/docs/legosti/old/25411.pdf",
+        "source_kind": "primary-metrology-conference-paper",
+        "audit_locators": [
+          "abstract",
+          "I-V measurements",
+          "spectral responsivity methods"
+        ]
+      },
+      "audited_text": "Source-grounded synopsis: photovoltaic cells and modules are calibrated by current-voltage and spectral-responsivity measurements under controlled temperature and irradiance.",
+      "decisions": [
+        {
+          "adapter_id": "photovoltaic-device",
+          "ruleset_version": "2.0.0",
+          "expected_status": "load",
+          "expected_signal_ids": [
+            "pv-device",
+            "pv-calibration-stability"
+          ],
+          "expected_reason_codes": [
+            "PV-LOAD-TARGET"
+          ]
+        },
+        {
+          "adapter_id": "electrical-magnetic-transport",
+          "ruleset_version": "2.0.0",
+          "expected_status": "load",
+          "expected_signal_ids": [
+            "emt-electrical-run"
+          ],
+          "expected_reason_codes": [
+            "EMT-LOAD-TARGET"
+          ]
+        }
+      ],
+      "review_status": "source-backed",
+      "review_note": "Audited by the package authoring agent against accessible source text; not independently human-adjudicated gold."
+    }
+  ]
+}

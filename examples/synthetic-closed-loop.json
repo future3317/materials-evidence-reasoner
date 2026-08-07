@@ -1,0 +1,2022 @@
+{
+  "schema_version": "4.6",
+  "run_id": "RUN-SYNTHETIC-CE-001",
+  "loop_state": "design-verification",
+  "decision_profile": "hybrid",
+  "decision": {
+    "question": "Why is the local Ion-Cu coulombic efficiency lower than the matched literature reference?",
+    "status": "partially-answerable",
+    "summary": "The local result is lower under matched nominal conditions; surface re-oxidation is the leading testable explanation, but contamination remains plausible.",
+    "evidence_strength": "medium",
+    "limitations": [
+      "Synthetic demonstration fixture; not a real scientific result."
+    ]
+  },
+  "input_assessment": {
+    "readiness": "ready-with-caveats",
+    "received_inputs": [
+      {
+        "id": "IN1",
+        "name": "literature.pdf",
+        "kind": "paper",
+        "path": null,
+        "sha256": null,
+        "access_scope": "full",
+        "parse_status": "parsed",
+        "warnings": []
+      },
+      {
+        "id": "IN2",
+        "name": "local_results.csv",
+        "kind": "csv",
+        "path": null,
+        "sha256": null,
+        "access_scope": "full",
+        "parse_status": "parsed",
+        "warnings": []
+      }
+    ],
+    "normalized_item_count": 6,
+    "blockers": [],
+    "analysis_limitations": [
+      {
+        "field": "surface_composition",
+        "reason": "No direct surface chemistry measurement is available.",
+        "impact": "Oxidation and contamination cannot yet be separated.",
+        "suggested_input": "Run a paired surface-sensitive measurement before and after the recovery treatment.",
+        "entity_ids": [
+          "SAMPLE1"
+        ]
+      }
+    ],
+    "optional_enrichment": [],
+    "recommended_next_inputs": [
+      {
+        "field": "paired_surface_measurement",
+        "reason": "It directly distinguishes the two leading mechanisms.",
+        "impact": "Can upgrade or reject the oxidation hypothesis.",
+        "suggested_input": "Provide paired XPS or validated equivalent surface chemistry data.",
+        "entity_ids": [
+          "SAMPLE1"
+        ]
+      }
+    ],
+    "notes": [
+      "Synthetic data are clearly labeled."
+    ]
+  },
+  "condition_registry": [
+    {
+      "id": "COND-A",
+      "alias": "Cond-A",
+      "label": "Matched high-rate CE condition",
+      "condition_signature": {
+        "current_density_mA_cm2": 5.0,
+        "electrolyte": "matched",
+        "temperature_C": 25,
+        "normalization": "coulombic efficiency percent"
+      },
+      "entity_ids": [
+        "MAT1",
+        "SAMPLE1"
+      ],
+      "measurement_run_ids": [
+        "MR1",
+        "MR2"
+      ],
+      "process_run_ids": [],
+      "missing_conditions": [],
+      "evidence_ids": [
+        "E1",
+        "E2"
+      ],
+      "notes": []
+    }
+  ],
+  "sources": [
+    {
+      "id": "S1",
+      "source_type": "primary-experiment",
+      "title": "Synthetic literature anchor",
+      "authors": [
+        "Fixture"
+      ],
+      "year": 2026,
+      "payload_status": "verified",
+      "notes": [
+        "Synthetic test fixture, not a published source."
+      ]
+    },
+    {
+      "id": "S2",
+      "source_type": "user-record",
+      "title": "Synthetic local experiment",
+      "payload_status": "verified",
+      "notes": [
+        "Synthetic test fixture."
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E1",
+      "source_id": "S1",
+      "entity_ids": [
+        "MAT1"
+      ],
+      "modality": "table",
+      "locator": {
+        "table": "Synthetic Table 1"
+      },
+      "raw_content": "Ion-Cu CE = 95.6% at 5 mA cm-2.",
+      "directness": "direct-primary",
+      "extraction_method": "table",
+      "interpretation": "Literature reference case under Cond-A.",
+      "limitations": [
+        "Synthetic fixture."
+      ],
+      "confidence": {
+        "level": "high",
+        "basis": [
+          "direct-text",
+          "entity-explicit"
+        ]
+      }
+    },
+    {
+      "id": "E2",
+      "source_id": "S2",
+      "entity_ids": [
+        "SAMPLE1"
+      ],
+      "modality": "raw-data",
+      "locator": {
+        "section": "local_results.csv",
+        "row": "1"
+      },
+      "raw_content": "Local CE = 92.5% at 5 mA cm-2.",
+      "directness": "direct-user",
+      "extraction_method": "spreadsheet",
+      "interpretation": "Local observation under Cond-A.",
+      "limitations": [
+        "Single synthetic run."
+      ],
+      "confidence": {
+        "level": "high",
+        "basis": [
+          "direct-text",
+          "entity-explicit"
+        ]
+      }
+    },
+    {
+      "id": "E3",
+      "source_id": "S2",
+      "entity_ids": [
+        "SAMPLE1"
+      ],
+      "modality": "user-observation",
+      "locator": {
+        "section": "Lab note"
+      },
+      "raw_content": "Surface exposure occurred before testing.",
+      "directness": "direct-user",
+      "extraction_method": "user-provided",
+      "interpretation": "Supports possible surface re-oxidation.",
+      "limitations": [
+        "No direct surface chemistry measurement."
+      ],
+      "confidence": {
+        "level": "medium",
+        "basis": [
+          "direct-user-report"
+        ]
+      }
+    },
+    {
+      "id": "E4",
+      "source_id": "S2",
+      "entity_ids": [
+        "SAMPLE1"
+      ],
+      "modality": "raw-data",
+      "locator": {
+        "section": "local_results.csv",
+        "row": "2-4"
+      },
+      "raw_content": "Synthetic repeat CE values: 92.4%, 92.5%, 92.6%; SD = 0.10 percentage points.",
+      "directness": "direct-user",
+      "extraction_method": "spreadsheet",
+      "interpretation": "Repeatability is much smaller than the 3.1 percentage-point deviation.",
+      "limitations": [
+        "Synthetic fixture; within-run repeatability does not quantify batch-to-batch variation."
+      ],
+      "confidence": {
+        "level": "high",
+        "basis": [
+          "direct-text",
+          "entity-explicit"
+        ]
+      }
+    }
+  ],
+  "entities": [
+    {
+      "id": "MAT1",
+      "entity_type": "material",
+      "names": [
+        {
+          "raw_term": "Ion-Cu",
+          "canonical_term": "Ion-Cu",
+          "mapping_status": "exact",
+          "evidence_ids": [
+            "E1"
+          ]
+        }
+      ],
+      "parent_ids": [],
+      "scope_status": "resolved",
+      "evidence_ids": [
+        "E1"
+      ]
+    },
+    {
+      "id": "SAMPLE1",
+      "entity_type": "sample",
+      "names": [
+        {
+          "raw_term": "Local Ion-Cu batch A",
+          "canonical_term": "Local Ion-Cu batch A",
+          "mapping_status": "exact",
+          "evidence_ids": [
+            "E2"
+          ]
+        }
+      ],
+      "parent_ids": [
+        "MAT1"
+      ],
+      "state": {
+        "surface_exposure": "reported"
+      },
+      "scope_status": "resolved",
+      "evidence_ids": [
+        "E2",
+        "E3"
+      ]
+    }
+  ],
+  "process_runs": [],
+  "data_artifacts": [],
+  "analysis_steps": [],
+  "measurement_runs": [
+    {
+      "id": "MR1",
+      "entity_ids": [
+        "MAT1"
+      ],
+      "method_raw": "Coulombic efficiency test",
+      "method_canonical": "electrochemical coulombic efficiency",
+      "technique_family": "electrochemical-testing",
+      "conditions": [],
+      "data_artifact_ids": [],
+      "analysis_step_ids": [],
+      "source_ids": [
+        "S1"
+      ],
+      "limitations": [
+        "Synthetic reference."
+      ],
+      "evidence_ids": [
+        "E1"
+      ],
+      "status": "valid"
+    },
+    {
+      "id": "MR2",
+      "entity_ids": [
+        "SAMPLE1"
+      ],
+      "method_raw": "Coulombic efficiency test",
+      "method_canonical": "electrochemical coulombic efficiency",
+      "technique_family": "electrochemical-testing",
+      "conditions": [],
+      "data_artifact_ids": [],
+      "analysis_step_ids": [],
+      "source_ids": [
+        "S2"
+      ],
+      "limitations": [
+        "Single run."
+      ],
+      "evidence_ids": [
+        "E2"
+      ],
+      "status": "valid"
+    }
+  ],
+  "simulation_jobs": [],
+  "property_records": [
+    {
+      "id": "PR1",
+      "entity_id": "MAT1",
+      "measurement_run_id": "MR1",
+      "property_raw": "Coulombic efficiency",
+      "property_canonical": "coulombic_efficiency",
+      "value": {
+        "raw_value": 95.6,
+        "raw_unit": "%",
+        "normalized_value": 95.6,
+        "normalized_unit": "%",
+        "value_status": "reported",
+        "extraction_method": "table",
+        "condition_signature": {
+          "condition_id": "COND-A"
+        },
+        "evidence_ids": [
+          "E1"
+        ],
+        "confidence": {
+          "level": "high",
+          "basis": [
+            "direct-text",
+            "entity-explicit"
+          ]
+        },
+        "notes": []
+      },
+      "determination": "reported",
+      "conditions": [],
+      "reporting_role": "single-case",
+      "directionality": "higher-better",
+      "applicability": "Cond-A",
+      "limitations": [
+        "Synthetic reference case."
+      ],
+      "evidence_ids": [
+        "E1"
+      ]
+    },
+    {
+      "id": "PR2",
+      "entity_id": "SAMPLE1",
+      "measurement_run_id": "MR2",
+      "property_raw": "Coulombic efficiency",
+      "property_canonical": "coulombic_efficiency",
+      "value": {
+        "raw_value": 92.5,
+        "raw_unit": "%",
+        "normalized_value": 92.5,
+        "normalized_unit": "%",
+        "value_status": "reported",
+        "extraction_method": "spreadsheet",
+        "condition_signature": {
+          "condition_id": "COND-A"
+        },
+        "evidence_ids": [
+          "E2"
+        ],
+        "confidence": {
+          "level": "high",
+          "basis": [
+            "direct-text",
+            "entity-explicit"
+          ]
+        },
+        "notes": [],
+        "uncertainty": {
+          "raw": "SD 0.10 percentage points, n=3",
+          "kind": "standard-deviation",
+          "lower": 92.4,
+          "upper": 92.6,
+          "unit": "%"
+        }
+      },
+      "determination": "reported",
+      "conditions": [],
+      "reporting_role": "single-case",
+      "directionality": "higher-better",
+      "applicability": "Cond-A",
+      "limitations": [
+        "Synthetic n=3 repeat series; between-batch uncertainty remains unmeasured."
+      ],
+      "evidence_ids": [
+        "E2",
+        "E4"
+      ]
+    }
+  ],
+  "baseline_packages": [
+    {
+      "id": "BASE1",
+      "property_canonical": "coulombic_efficiency",
+      "baseline_kind": "literature-prior",
+      "status": "reference-case",
+      "property_record_ids": [
+        "PR1"
+      ],
+      "condition_signature": {
+        "condition_id": "COND-A"
+      },
+      "statistics": {
+        "reference_value": 95.6,
+        "unit": "%"
+      },
+      "independent_source_count": 1,
+      "applicability": "Cond-A only",
+      "limitations": [
+        "Single synthetic reference case; no population distribution."
+      ],
+      "evidence_ids": [
+        "E1"
+      ]
+    }
+  ],
+  "comparability_assessments": [
+    {
+      "id": "COMP1",
+      "target_property_record_ids": [
+        "PR2"
+      ],
+      "baseline_package_id": "BASE1",
+      "result": "comparable",
+      "issues": [],
+      "evidence_ids": [
+        "E1",
+        "E2"
+      ]
+    }
+  ],
+  "deviation_episodes": [
+    {
+      "id": "DEV1",
+      "comparability_assessment_id": "COMP1",
+      "classification": "material-process-deviation",
+      "target_property_record_ids": [
+        "PR2"
+      ],
+      "baseline_package_id": "BASE1",
+      "residual": {
+        "raw_value": -3.1,
+        "raw_unit": "percentage points",
+        "normalized_value": -3.1,
+        "normalized_unit": "percentage points",
+        "value_status": "derived",
+        "extraction_method": "calculated",
+        "derivation": {
+          "input_evidence_ids": [
+            "E1",
+            "E2"
+          ],
+          "operation": "subtract reference from local observation",
+          "formula": "92.5 - 95.6"
+        },
+        "evidence_ids": [
+          "E1",
+          "E2"
+        ],
+        "confidence": {
+          "level": "medium",
+          "basis": [
+            "matched-nominal-condition",
+            "single-reference"
+          ]
+        },
+        "notes": []
+      },
+      "method": "Direct difference against a single matched reference case.",
+      "engineering_meaning": "A notable negative difference that requires verification; statistical significance is not claimed.",
+      "blockers": [],
+      "evidence_ids": [
+        "E1",
+        "E2",
+        "E3",
+        "E4"
+      ],
+      "error_budget_ids": [
+        "EB1"
+      ],
+      "anomaly_propagation_chain_ids": [
+        "CHAIN1",
+        "CHAIN2"
+      ]
+    }
+  ],
+  "models": [],
+  "hypotheses": [
+    {
+      "id": "H1",
+      "statement": "Surface re-oxidation increased interfacial resistance and reduced CE.",
+      "mechanism_chain": [
+        "air exposure",
+        "surface re-oxidation",
+        "higher interfacial resistance",
+        "lower CE"
+      ],
+      "support_evidence_ids": [
+        "E3"
+      ],
+      "counterevidence_ids": [],
+      "unique_predictions": [
+        "A controlled surface-recovery intervention should restore both surface indicator and CE."
+      ],
+      "falsifiers": [
+        "CE remains low after validated surface recovery while contamination is excluded."
+      ],
+      "status": "plausible",
+      "applicability": "Local Ion-Cu under Cond-A.",
+      "limitations": [
+        "No direct surface chemistry evidence yet."
+      ],
+      "anomaly_propagation_chain_ids": [
+        "CHAIN1"
+      ],
+      "information_gap_ids": [
+        "IG1",
+        "IG2"
+      ],
+      "linked_mechanism_edge_ids": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ],
+      "mechanism_match_status": "partial-condition-match",
+      "mechanism_transferability": {
+        "level": "same-regime",
+        "rationale": "Only the synthetic Ion-Cu regime under Cond-A is considered.",
+        "required_matches": [
+          "material system",
+          "surface handling",
+          "cell architecture",
+          "measurement protocol"
+        ],
+        "known_mismatches": []
+      },
+      "boundary_conditions": [
+        "Synthetic Ion-Cu under Cond-A."
+      ],
+      "graph_retrieval_notes": [
+        "Matched by material system, handling state, and CE endpoint; two mediator nodes remain unmeasured."
+      ]
+    },
+    {
+      "id": "H2",
+      "statement": "Contact contamination reduced CE independently of oxidation.",
+      "mechanism_chain": [
+        "handling contamination",
+        "blocked interface",
+        "lower CE"
+      ],
+      "support_evidence_ids": [],
+      "counterevidence_ids": [],
+      "unique_predictions": [
+        "Cleaning without changing oxidation state should improve CE."
+      ],
+      "falsifiers": [
+        "A clean-handling control remains low while oxidation recovery restores CE."
+      ],
+      "status": "speculative",
+      "applicability": "Local sample handling.",
+      "limitations": [
+        "No contamination assay."
+      ],
+      "anomaly_propagation_chain_ids": [
+        "CHAIN2"
+      ],
+      "information_gap_ids": [
+        "IG1"
+      ],
+      "linked_mechanism_edge_ids": [],
+      "mechanism_match_status": "no-match",
+      "mechanism_transferability": {
+        "level": "not-assessed",
+        "rationale": "No reusable graph edge currently represents the contamination alternative.",
+        "required_matches": [],
+        "known_mismatches": []
+      },
+      "boundary_conditions": [
+        "Synthetic local handling workflow."
+      ],
+      "graph_retrieval_notes": [
+        "No graph match; retain as a run-scoped competing hypothesis."
+      ]
+    }
+  ],
+  "verification_plan": [
+    {
+      "id": "V1",
+      "hypothesis_ids": [
+        "H1",
+        "H2"
+      ],
+      "action": "Run a paired, approved surface-recovery intervention with untreated and clean-handling controls, then repeat the same CE protocol.",
+      "minimal_change": "Change only surface recovery/handling while keeping Cond-A fixed.",
+      "controls": [
+        "Untreated exposed sample",
+        "Fresh reference",
+        "Clean-handling control"
+      ],
+      "repeats": 3,
+      "expected_outcomes": [
+        "Oxidation hypothesis: surface indicator and CE recover together.",
+        "Contamination hypothesis: cleaning improves CE without oxidation change."
+      ],
+      "decision_rule": "Upgrade H1 only if the paired intervention restores the surface indicator and CE beyond repeat variability while the clean-handling control does not explain the change.",
+      "cost": "Low to moderate; three paired groups.",
+      "risk": "Requires approved handling and no unreviewed chemical procedure.",
+      "safety": "Follow the existing laboratory SOP and SDS; no executable treatment parameters are supplied.",
+      "status": "proposed",
+      "information_gap_ids": [
+        "IG1",
+        "IG2"
+      ],
+      "experiment_set_id": "SET1",
+      "priority_tier": "high",
+      "priority_rationale": "One paired intervention and two measurements address both leading chains while keeping Cond-A fixed.",
+      "information_gain": {
+        "resolves_unknowns": [
+          "Surface chemical state",
+          "Interfacial resistance"
+        ],
+        "hypotheses_discriminated": [
+          "H1",
+          "H2"
+        ],
+        "decision_change": "Can upgrade one surface-state pathway, reject both, or stop material optimization and return to data-quality review.",
+        "basis": "Coverage of the two unresolved mediator nodes with paired controls.",
+        "confidence": "medium"
+      },
+      "feasibility": "not-confirmed",
+      "cost_band": "medium",
+      "sample_consumption": "Three paired groups with three repeats each.",
+      "stop_rule": "Stop mechanism escalation if measurement repeatability is inadequate or neither surface state nor resistance changes with the intervention."
+    }
+  ],
+  "adapter_decisions": [],
+  "domain_records": [],
+  "experience_updates": [
+    {
+      "id": "EXP1",
+      "action": "add",
+      "namespace": "demo/project",
+      "status": "proposed",
+      "facts": [
+        "Air exposure is associated with lower CE under Cond-A in this synthetic fixture; the structure and interfacial-property mediators remain unmeasured."
+      ],
+      "applicability": "Synthetic fixture only.",
+      "conflicts": [],
+      "evidence_ids": [
+        "E2",
+        "E3"
+      ],
+      "version": "1",
+      "review_trigger": "Update after V1 is executed.",
+      "persistence_status": "proposed-not-written",
+      "pspp_map_ids": [
+        "PSPP1"
+      ],
+      "mechanism_update_ids": [
+        "MU1"
+      ],
+      "graph_operation_summary": "Propose support-edge update after the paired intervention; do not apply before validation evidence exists."
+    }
+  ],
+  "missing_information": [
+    {
+      "field_path": "sample.surface_composition",
+      "entity_ids": [
+        "SAMPLE1"
+      ],
+      "reason": "not-measured",
+      "impact": "Cannot distinguish oxidation from contamination.",
+      "expected_source_parts": [
+        "surface-sensitive measurement"
+      ],
+      "resolution": "Execute V1 and provide paired surface data.",
+      "evidence_ids": [
+        "E3"
+      ]
+    }
+  ],
+  "artifact_manifest": [
+    {
+      "id": "ART1",
+      "artifact_type": "machine-json",
+      "path": "synthetic-closed-loop.json",
+      "description": "Validated 4.6 synthetic closed-loop example with error budget, anomaly chains, information gaps, and PSPP map.",
+      "generation_status": "generated",
+      "validation_status": "validated",
+      "depends_on": [],
+      "notes": [
+        "Synthetic fixture."
+      ]
+    },
+    {
+      "id": "ART2",
+      "artifact_type": "dashboard-html",
+      "path": "synthetic-closed-loop-dashboard.html",
+      "description": "Offline rendered view of ART1.",
+      "generation_status": "generated",
+      "validation_status": "validated",
+      "depends_on": [
+        "ART1"
+      ],
+      "notes": []
+    },
+    {
+      "id": "ART3",
+      "artifact_type": "mechanism-nodes-csv",
+      "path": "synthetic-mechanism-nodes.csv",
+      "description": "Mechanism graph node export.",
+      "generation_status": "planned",
+      "validation_status": "not-validated",
+      "depends_on": [
+        "ART1"
+      ],
+      "notes": []
+    },
+    {
+      "id": "ART4",
+      "artifact_type": "mechanism-edges-csv",
+      "path": "synthetic-mechanism-edges.csv",
+      "description": "Mechanism graph edge export.",
+      "generation_status": "planned",
+      "validation_status": "not-validated",
+      "depends_on": [
+        "ART1"
+      ],
+      "notes": []
+    },
+    {
+      "id": "ART5",
+      "artifact_type": "mechanism-graph-dot",
+      "path": "synthetic-mechanism-graph.dot",
+      "description": "Graphviz DOT export for the evidence-grounded mechanism graph.",
+      "generation_status": "planned",
+      "validation_status": "not-validated",
+      "depends_on": [
+        "ART1"
+      ],
+      "notes": []
+    }
+  ],
+  "quality": {
+    "traceability": "pass",
+    "entity_and_scope": "pass",
+    "data_integrity": "pass",
+    "comparability": "pass",
+    "normalization": "pass",
+    "adapter_routing": "not-applicable",
+    "counterevidence": "pass",
+    "memory_governance": "pass",
+    "safety": "pass",
+    "json_valid": "tool-validated",
+    "notes": [
+      "Synthetic demonstration fixture.",
+      "Error-budget fractions are synthetic workflow test values, not metrology claims.",
+      "Mechanism graph is a synthetic, evidence-linked retrieval fixture; its mediator edges remain hypotheses."
+    ],
+    "error_attribution": "partial",
+    "anomaly_chain": "pass",
+    "information_gap_coverage": "pass",
+    "pspp_consistency": "pass",
+    "mechanism_graph_consistency": "partial"
+  },
+  "decision_perspective": "balanced",
+  "error_budgets": [
+    {
+      "id": "EB1",
+      "target_property_record_ids": [
+        "PR2"
+      ],
+      "deviation_episode_id": "DEV1",
+      "method": "variance-components",
+      "replicate_structure": {
+        "within_run_repeats": 3,
+        "batches": 1,
+        "balance": "insufficient for independent batch component"
+      },
+      "assumptions": [
+        "Component fractions are synthetic for workflow testing and share a variance basis.",
+        "Covariance terms were not estimated."
+      ],
+      "components": [
+        {
+          "id": "EC1",
+          "category": "measurement-repeatability",
+          "label": "Within-run CE repeatability",
+          "contribution_basis": "variance",
+          "estimate_status": "quantified",
+          "estimate": {
+            "raw_value": 0.01,
+            "raw_unit": "percentage-points^2",
+            "normalized_value": 0.01,
+            "normalized_unit": "percentage-points^2",
+            "value_status": "derived",
+            "extraction_method": "synthetic-calculation",
+            "evidence_ids": [
+              "E4"
+            ],
+            "confidence": {
+              "level": "medium",
+              "basis": [
+                "synthetic-calculation"
+              ]
+            },
+            "notes": [
+              "Synthetic fixture."
+            ],
+            "derivation": {
+              "input_evidence_ids": [
+                "E4"
+              ],
+              "operation": "synthetic error-budget calculation",
+              "formula": "SD^2 = 0.10^2"
+            }
+          },
+          "fraction_of_total": 0.2,
+          "measurement_run_ids": [
+            "MR2"
+          ],
+          "limitations": [],
+          "evidence_ids": [
+            "E4"
+          ]
+        },
+        {
+          "id": "EC2",
+          "category": "sample-within-batch",
+          "label": "Sample heterogeneity",
+          "contribution_basis": "variance",
+          "estimate_status": "bounded",
+          "estimate": {
+            "raw_value": 0.015,
+            "raw_unit": "percentage-points^2",
+            "normalized_value": 0.015,
+            "normalized_unit": "percentage-points^2",
+            "value_status": "derived",
+            "extraction_method": "synthetic-calculation",
+            "evidence_ids": [
+              "E4"
+            ],
+            "confidence": {
+              "level": "medium",
+              "basis": [
+                "synthetic-calculation"
+              ]
+            },
+            "notes": [
+              "Synthetic fixture."
+            ],
+            "derivation": {
+              "input_evidence_ids": [
+                "E4"
+              ],
+              "operation": "synthetic error-budget calculation",
+              "formula": "synthetic bounded fixture"
+            }
+          },
+          "fraction_of_total": 0.3,
+          "source_entity_ids": [
+            "SAMPLE1"
+          ],
+          "limitations": [
+            "Not independently identified from n=3 repeats."
+          ],
+          "evidence_ids": [
+            "E4"
+          ]
+        },
+        {
+          "id": "EC3",
+          "category": "process-control",
+          "label": "Handling/exposure variation",
+          "contribution_basis": "variance",
+          "estimate_status": "qualitative",
+          "fraction_of_total": 0.2,
+          "source_entity_ids": [
+            "SAMPLE1"
+          ],
+          "limitations": [
+            "Synthetic allocation; no process-control log."
+          ],
+          "evidence_ids": [
+            "E3"
+          ]
+        },
+        {
+          "id": "EC4",
+          "category": "unallocated",
+          "label": "Unallocated between-run/batch contribution",
+          "contribution_basis": "variance",
+          "estimate_status": "qualitative",
+          "fraction_of_total": 0.3,
+          "limitations": [
+            "Only one synthetic batch is available."
+          ],
+          "evidence_ids": [
+            "E2",
+            "E4"
+          ]
+        }
+      ],
+      "combined_uncertainty": {
+        "raw_value": 0.4,
+        "raw_unit": "percentage points",
+        "normalized_value": 0.4,
+        "normalized_unit": "percentage points",
+        "value_status": "derived",
+        "extraction_method": "synthetic-calculation",
+        "evidence_ids": [
+          "E4"
+        ],
+        "confidence": {
+          "level": "medium",
+          "basis": [
+            "synthetic-calculation"
+          ]
+        },
+        "notes": [
+          "Synthetic fixture."
+        ],
+        "derivation": {
+          "input_evidence_ids": [
+            "E4"
+          ],
+          "operation": "synthetic error-budget calculation",
+          "formula": "synthetic expanded uncertainty fixture"
+        }
+      },
+      "dominant_component_ids": [
+        "EC2",
+        "EC4"
+      ],
+      "quantitative_fraction_complete": true,
+      "effect_comparison": {
+        "relation": "uncertainty-smaller",
+        "effect_value": {
+          "raw_value": 3.1,
+          "raw_unit": "percentage points",
+          "normalized_value": 3.1,
+          "normalized_unit": "percentage points",
+          "value_status": "derived",
+          "extraction_method": "synthetic-calculation",
+          "evidence_ids": [
+            "E1",
+            "E2"
+          ],
+          "confidence": {
+            "level": "medium",
+            "basis": [
+              "synthetic-calculation"
+            ]
+          },
+          "notes": [
+            "Synthetic fixture."
+          ],
+          "derivation": {
+            "input_evidence_ids": [
+              "E1",
+              "E2"
+            ],
+            "operation": "synthetic error-budget calculation",
+            "formula": "95.6 - 92.5"
+          }
+        },
+        "uncertainty_value": {
+          "raw_value": 0.4,
+          "raw_unit": "percentage points",
+          "normalized_value": 0.4,
+          "normalized_unit": "percentage points",
+          "value_status": "derived",
+          "extraction_method": "synthetic-calculation",
+          "evidence_ids": [
+            "E4"
+          ],
+          "confidence": {
+            "level": "medium",
+            "basis": [
+              "synthetic-calculation"
+            ]
+          },
+          "notes": [
+            "Synthetic fixture."
+          ],
+          "derivation": {
+            "input_evidence_ids": [
+              "E4"
+            ],
+            "operation": "synthetic error-budget calculation",
+            "formula": "synthetic expanded uncertainty fixture"
+          }
+        },
+        "rationale": "The synthetic 3.1 percentage-point effect is materially larger than the 0.40-point expanded uncertainty estimate."
+      },
+      "conclusion": "Known repeatability and the synthetic uncertainty budget do not explain the full observed effect; between-batch uncertainty remains a limitation.",
+      "limitations": [
+        "Synthetic variance allocation; not a metrology-grade uncertainty statement.",
+        "Only one batch is represented."
+      ],
+      "evidence_ids": [
+        "E1",
+        "E2",
+        "E3",
+        "E4"
+      ]
+    }
+  ],
+  "anomaly_propagation_chains": [
+    {
+      "id": "CHAIN1",
+      "deviation_episode_id": "DEV1",
+      "hypothesis_ids": [
+        "H1"
+      ],
+      "title": "Exposure-driven surface-state pathway",
+      "nodes": [
+        {
+          "node_id": "C1N1",
+          "stage": "processing",
+          "statement": "The sample experienced air exposure before testing.",
+          "status": "observed",
+          "entity_ids": [
+            "SAMPLE1"
+          ],
+          "evidence_ids": [
+            "E3"
+          ],
+          "limitations": []
+        },
+        {
+          "node_id": "C1N2",
+          "stage": "structure",
+          "statement": "Surface oxide coverage increased.",
+          "status": "hypothesized",
+          "entity_ids": [
+            "SAMPLE1"
+          ],
+          "evidence_ids": [],
+          "limitations": [
+            "No direct surface chemistry measurement."
+          ]
+        },
+        {
+          "node_id": "C1N3",
+          "stage": "properties",
+          "statement": "Interfacial resistance increased.",
+          "status": "hypothesized",
+          "entity_ids": [
+            "SAMPLE1"
+          ],
+          "property_record_ids": [],
+          "evidence_ids": [],
+          "limitations": [
+            "No EIS or equivalent measurement."
+          ]
+        },
+        {
+          "node_id": "C1N4",
+          "stage": "performance",
+          "statement": "Coulombic efficiency decreased under Cond-A.",
+          "status": "observed",
+          "entity_ids": [
+            "SAMPLE1"
+          ],
+          "property_record_ids": [
+            "PR2"
+          ],
+          "evidence_ids": [
+            "E2",
+            "E4"
+          ],
+          "limitations": []
+        }
+      ],
+      "edges": [
+        {
+          "edge_id": "C1E1",
+          "from_node_id": "C1N1",
+          "to_node_id": "C1N2",
+          "mechanism": "Air exposure can alter the surface state.",
+          "evidence_strength": "indirect",
+          "evidence_ids": [
+            "E3"
+          ],
+          "counterevidence_ids": [],
+          "assumptions": [
+            "Exposure duration was sufficient."
+          ],
+          "falsifiers": [
+            "Surface-sensitive analysis shows no change relative to a fresh control."
+          ],
+          "boundary_conditions": [
+            "Ion-Cu handling before Cond-A testing."
+          ],
+          "linked_mechanism_edge_ids": [
+            "ME1"
+          ]
+        },
+        {
+          "edge_id": "C1E2",
+          "from_node_id": "C1N2",
+          "to_node_id": "C1N3",
+          "mechanism": "A changed surface layer may increase interfacial transport resistance.",
+          "evidence_strength": "none",
+          "evidence_ids": [],
+          "counterevidence_ids": [],
+          "assumptions": [
+            "The surface layer is electronically or ionically blocking."
+          ],
+          "falsifiers": [
+            "Matched EIS shows no interfacial resistance change."
+          ],
+          "boundary_conditions": [
+            "Same cell and measurement protocol."
+          ],
+          "linked_mechanism_edge_ids": [
+            "ME2"
+          ]
+        },
+        {
+          "edge_id": "C1E3",
+          "from_node_id": "C1N3",
+          "to_node_id": "C1N4",
+          "mechanism": "Higher interfacial resistance can reduce plating/stripping efficiency.",
+          "evidence_strength": "inferred",
+          "evidence_ids": [],
+          "counterevidence_ids": [],
+          "assumptions": [
+            "Other loss channels remain matched."
+          ],
+          "falsifiers": [
+            "CE remains low despite restored interfacial resistance."
+          ],
+          "boundary_conditions": [
+            "Cond-A only."
+          ],
+          "linked_mechanism_edge_ids": [
+            "ME4"
+          ]
+        }
+      ],
+      "status": "leading",
+      "ranking_basis": {
+        "evidence_coverage": "medium",
+        "boundary_fit": "high",
+        "falsifiability": "high",
+        "parsimony": "medium",
+        "rationale": "The path fits the reported exposure and observed CE change, but two mediator nodes are unmeasured."
+      },
+      "unresolved_node_ids": [
+        "C1N2",
+        "C1N3"
+      ],
+      "chain_evidence_gaps": [
+        "Surface chemistry",
+        "Interfacial resistance"
+      ],
+      "evidence_ids": [
+        "E2",
+        "E3",
+        "E4"
+      ],
+      "limitations": [
+        "Leading synthetic explanation, not validated causality."
+      ]
+    },
+    {
+      "id": "CHAIN2",
+      "deviation_episode_id": "DEV1",
+      "hypothesis_ids": [
+        "H2"
+      ],
+      "title": "Handling-contamination pathway",
+      "nodes": [
+        {
+          "node_id": "C2N1",
+          "stage": "processing",
+          "statement": "Sample handling may have introduced contamination.",
+          "status": "hypothesized",
+          "entity_ids": [
+            "SAMPLE1"
+          ],
+          "evidence_ids": [],
+          "limitations": [
+            "No contamination log or assay."
+          ]
+        },
+        {
+          "node_id": "C2N2",
+          "stage": "structure",
+          "statement": "Contaminant coverage blocked active interface area.",
+          "status": "hypothesized",
+          "entity_ids": [
+            "SAMPLE1"
+          ],
+          "evidence_ids": [],
+          "limitations": [
+            "No direct assay."
+          ]
+        },
+        {
+          "node_id": "C2N3",
+          "stage": "performance",
+          "statement": "Coulombic efficiency decreased under Cond-A.",
+          "status": "observed",
+          "entity_ids": [
+            "SAMPLE1"
+          ],
+          "property_record_ids": [
+            "PR2"
+          ],
+          "evidence_ids": [
+            "E2",
+            "E4"
+          ],
+          "limitations": []
+        }
+      ],
+      "edges": [
+        {
+          "edge_id": "C2E1",
+          "from_node_id": "C2N1",
+          "to_node_id": "C2N2",
+          "mechanism": "Handling contamination may cover active interface sites.",
+          "evidence_strength": "none",
+          "evidence_ids": [],
+          "counterevidence_ids": [],
+          "assumptions": [
+            "A contaminant source was present."
+          ],
+          "falsifiers": [
+            "Surface assay and clean-handling control exclude contamination."
+          ],
+          "boundary_conditions": [
+            "Local handling workflow."
+          ],
+          "linked_mechanism_edge_ids": []
+        },
+        {
+          "edge_id": "C2E2",
+          "from_node_id": "C2N2",
+          "to_node_id": "C2N3",
+          "mechanism": "Blocked interface area may lower plating/stripping efficiency.",
+          "evidence_strength": "inferred",
+          "evidence_ids": [],
+          "counterevidence_ids": [],
+          "assumptions": [
+            "Blocked area is performance-limiting."
+          ],
+          "falsifiers": [
+            "Cleaning changes contamination marker without improving CE."
+          ],
+          "boundary_conditions": [
+            "Cond-A only."
+          ],
+          "linked_mechanism_edge_ids": []
+        }
+      ],
+      "status": "candidate",
+      "ranking_basis": {
+        "evidence_coverage": "low",
+        "boundary_fit": "medium",
+        "falsifiability": "high",
+        "parsimony": "high",
+        "rationale": "The chain is simple and testable but currently lacks direct supporting evidence."
+      },
+      "unresolved_node_ids": [
+        "C2N1",
+        "C2N2"
+      ],
+      "chain_evidence_gaps": [
+        "Contamination identity and coverage"
+      ],
+      "evidence_ids": [
+        "E2",
+        "E4"
+      ],
+      "limitations": [
+        "Alternative synthetic explanation."
+      ]
+    }
+  ],
+  "mechanism_graphs": [
+    {
+      "id": "MG1",
+      "title": "Synthetic Ion-Cu exposure and efficiency mechanism graph",
+      "namespace": "demo/project",
+      "material_system": "Ion-Cu sodium plating interface",
+      "version": "1.0",
+      "status": "draft",
+      "node_ids": [
+        "MN1",
+        "MN2",
+        "MN3",
+        "MN4",
+        "MN5"
+      ],
+      "edge_ids": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ],
+      "condition_ids": [
+        "COND-A"
+      ],
+      "boundary_conditions": [
+        "Synthetic fixture only.",
+        "Ion-Cu under Cond-A.",
+        "Pre-test handling is part of the regime."
+      ],
+      "source_kinds": [
+        "combined",
+        "domain-inference"
+      ],
+      "created_from_run_ids": [
+        "RUN-SYNTHETIC-CE-001"
+      ],
+      "related_pspp_map_ids": [
+        "PSPP1"
+      ],
+      "related_anomaly_chain_ids": [
+        "CHAIN1"
+      ],
+      "evidence_ids": [
+        "E1",
+        "E2",
+        "E3",
+        "E4"
+      ],
+      "update_ids": [
+        "MU1"
+      ],
+      "limitations": [
+        "Surface chemistry and interfacial resistance are not directly measured."
+      ]
+    }
+  ],
+  "mechanism_nodes": [
+    {
+      "id": "MN1",
+      "graph_ids": [
+        "MG1"
+      ],
+      "node_type": "processing",
+      "statement": "Air exposure occurred before testing.",
+      "canonical_term": "pre-test air exposure",
+      "status": "observed",
+      "entity_ids": [
+        "SAMPLE1"
+      ],
+      "process_run_ids": [],
+      "condition_ids": [
+        "COND-A"
+      ],
+      "evidence_ids": [
+        "E3"
+      ],
+      "boundary_conditions": [
+        "Local handling workflow."
+      ],
+      "limitations": []
+    },
+    {
+      "id": "MN2",
+      "graph_ids": [
+        "MG1"
+      ],
+      "node_type": "structure",
+      "statement": "Surface oxide or contaminant coverage may differ from the fresh reference.",
+      "canonical_term": "altered surface coverage",
+      "status": "hypothesized",
+      "entity_ids": [
+        "SAMPLE1"
+      ],
+      "condition_ids": [
+        "COND-A"
+      ],
+      "evidence_ids": [],
+      "boundary_conditions": [
+        "Pre-test surface state."
+      ],
+      "limitations": [
+        "No surface-sensitive measurement."
+      ]
+    },
+    {
+      "id": "MN3",
+      "graph_ids": [
+        "MG1"
+      ],
+      "node_type": "mechanism",
+      "statement": "An altered surface layer may impede interfacial charge or ion transport.",
+      "canonical_term": "surface-layer transport impedance",
+      "status": "hypothesized",
+      "entity_ids": [
+        "SAMPLE1"
+      ],
+      "condition_ids": [
+        "COND-A"
+      ],
+      "evidence_ids": [],
+      "boundary_conditions": [
+        "Same cell architecture and electrolyte."
+      ],
+      "limitations": [
+        "Mechanistic mediator is inferred."
+      ]
+    },
+    {
+      "id": "MN4",
+      "graph_ids": [
+        "MG1"
+      ],
+      "node_type": "property",
+      "statement": "Interfacial resistance may be elevated.",
+      "canonical_term": "interfacial resistance",
+      "status": "hypothesized",
+      "entity_ids": [
+        "SAMPLE1"
+      ],
+      "property_record_ids": [],
+      "condition_ids": [
+        "COND-A"
+      ],
+      "evidence_ids": [],
+      "boundary_conditions": [
+        "Matched state of charge and geometry."
+      ],
+      "limitations": [
+        "No EIS or equivalent measurement."
+      ]
+    },
+    {
+      "id": "MN5",
+      "graph_ids": [
+        "MG1"
+      ],
+      "node_type": "performance",
+      "statement": "Coulombic efficiency is lower than the matched reference case.",
+      "canonical_term": "coulombic efficiency",
+      "status": "observed",
+      "entity_ids": [
+        "SAMPLE1"
+      ],
+      "property_record_ids": [
+        "PR2"
+      ],
+      "condition_ids": [
+        "COND-A"
+      ],
+      "evidence_ids": [
+        "E1",
+        "E2",
+        "E4"
+      ],
+      "boundary_conditions": [
+        "Cond-A."
+      ],
+      "limitations": [
+        "Single synthetic batch."
+      ]
+    }
+  ],
+  "mechanism_edges": [
+    {
+      "id": "ME1",
+      "graph_id": "MG1",
+      "from_node_id": "MN1",
+      "to_node_id": "MN2",
+      "relation_type": "induces",
+      "mechanism_description": "Air exposure may alter the surface chemical state.",
+      "validation_status": "hypothesis",
+      "source_kind": "combined",
+      "support_evidence_ids": [
+        "E3"
+      ],
+      "conflict_evidence_ids": [],
+      "validation_evidence_ids": [],
+      "supporting_observations": [
+        "Air exposure was reported before the low-CE run."
+      ],
+      "falsifiers": [
+        "Surface-sensitive analysis shows no difference from a fresh control."
+      ],
+      "condition_ids": [
+        "COND-A"
+      ],
+      "boundary_conditions": [
+        "Ion-Cu pre-test handling under Cond-A."
+      ],
+      "transferability": {
+        "level": "same-regime",
+        "rationale": "Only the synthetic Ion-Cu regime under Cond-A is considered.",
+        "required_matches": [
+          "material system",
+          "surface handling",
+          "cell architecture",
+          "measurement protocol"
+        ],
+        "known_mismatches": []
+      },
+      "version": "1.0",
+      "linked_hypothesis_ids": [
+        "H1"
+      ],
+      "linked_pspp_relationship_ids": [
+        "PRL1"
+      ],
+      "limitations": [
+        "No direct surface chemistry evidence."
+      ]
+    },
+    {
+      "id": "ME2",
+      "graph_id": "MG1",
+      "from_node_id": "MN2",
+      "to_node_id": "MN3",
+      "relation_type": "enables",
+      "mechanism_description": "A changed surface layer may create an interfacial transport barrier.",
+      "validation_status": "hypothesis",
+      "source_kind": "domain-inference",
+      "support_evidence_ids": [
+        "E2",
+        "E3"
+      ],
+      "conflict_evidence_ids": [],
+      "validation_evidence_ids": [],
+      "supporting_observations": [
+        "The low-CE run followed a different exposure history."
+      ],
+      "falsifiers": [
+        "Matched transport measurements show no change after exposure."
+      ],
+      "condition_ids": [
+        "COND-A"
+      ],
+      "boundary_conditions": [
+        "Same electrolyte, geometry, and current density."
+      ],
+      "transferability": {
+        "level": "same-regime",
+        "rationale": "Only the synthetic Ion-Cu regime under Cond-A is considered.",
+        "required_matches": [
+          "material system",
+          "surface handling",
+          "cell architecture",
+          "measurement protocol"
+        ],
+        "known_mismatches": []
+      },
+      "version": "1.0",
+      "linked_hypothesis_ids": [
+        "H1"
+      ],
+      "linked_pspp_relationship_ids": [
+        "PRL2"
+      ],
+      "limitations": [
+        "Evidence is indirect and synthetic."
+      ]
+    },
+    {
+      "id": "ME3",
+      "graph_id": "MG1",
+      "from_node_id": "MN3",
+      "to_node_id": "MN4",
+      "relation_type": "increases",
+      "mechanism_description": "The transport barrier may increase interfacial resistance.",
+      "validation_status": "hypothesis",
+      "source_kind": "domain-inference",
+      "support_evidence_ids": [
+        "E2",
+        "E4"
+      ],
+      "conflict_evidence_ids": [],
+      "validation_evidence_ids": [],
+      "supporting_observations": [
+        "The CE effect exceeds within-run repeatability, leaving a persistent mediator to test."
+      ],
+      "falsifiers": [
+        "Matched EIS or equivalent analysis shows no resistance difference."
+      ],
+      "condition_ids": [
+        "COND-A"
+      ],
+      "boundary_conditions": [
+        "Comparable cell state and impedance model."
+      ],
+      "transferability": {
+        "level": "same-regime",
+        "rationale": "Only the synthetic Ion-Cu regime under Cond-A is considered.",
+        "required_matches": [
+          "material system",
+          "surface handling",
+          "cell architecture",
+          "measurement protocol"
+        ],
+        "known_mismatches": []
+      },
+      "version": "1.0",
+      "linked_hypothesis_ids": [
+        "H1"
+      ],
+      "linked_pspp_relationship_ids": [
+        "PRL2"
+      ],
+      "limitations": [
+        "Resistance is not measured."
+      ]
+    },
+    {
+      "id": "ME4",
+      "graph_id": "MG1",
+      "from_node_id": "MN4",
+      "to_node_id": "MN5",
+      "relation_type": "decreases",
+      "mechanism_description": "Higher interfacial resistance may reduce plating/stripping efficiency.",
+      "validation_status": "hypothesis",
+      "source_kind": "combined",
+      "support_evidence_ids": [
+        "E1",
+        "E2",
+        "E4"
+      ],
+      "conflict_evidence_ids": [],
+      "validation_evidence_ids": [],
+      "supporting_observations": [
+        "The local CE is 3.1 percentage points below the reference while repeatability is 0.1 points."
+      ],
+      "falsifiers": [
+        "CE remains low after resistance is restored or matched."
+      ],
+      "condition_ids": [
+        "COND-A"
+      ],
+      "boundary_conditions": [
+        "Cond-A and matched cell architecture."
+      ],
+      "transferability": {
+        "level": "same-regime",
+        "rationale": "Only the synthetic Ion-Cu regime under Cond-A is considered.",
+        "required_matches": [
+          "material system",
+          "surface handling",
+          "cell architecture",
+          "measurement protocol"
+        ],
+        "known_mismatches": []
+      },
+      "version": "1.0",
+      "linked_hypothesis_ids": [
+        "H1"
+      ],
+      "linked_pspp_relationship_ids": [
+        "PRL3"
+      ],
+      "limitations": [
+        "Association does not prove the mediator."
+      ]
+    }
+  ],
+  "mechanism_updates": [
+    {
+      "id": "MU1",
+      "operation": "support-edge",
+      "target_graph_id": "MG1",
+      "target_edge_id": "ME1",
+      "status": "proposed",
+      "rationale": "After the planned paired surface-recovery experiment, update ME1 only if surface state and CE move together while the contamination alternative is controlled.",
+      "evidence_ids": [
+        "E2",
+        "E3",
+        "E4"
+      ],
+      "new_node_ids": [],
+      "new_edge_ids": [],
+      "proposed_validation_status": "supported",
+      "proposed_support_evidence_ids": [
+        "E2",
+        "E3",
+        "E4"
+      ],
+      "proposed_conflict_evidence_ids": [],
+      "proposed_boundary_conditions": [
+        "Synthetic Ion-Cu under Cond-A with the paired recovery protocol."
+      ],
+      "created_from_experience_update_ids": [
+        "EXP1"
+      ],
+      "persistence_status": "proposed-not-written",
+      "limitations": [
+        "The verification experiment has not been executed."
+      ]
+    }
+  ],
+  "information_gaps": [
+    {
+      "id": "IG1",
+      "decision_question": "Is oxidation or contamination the primary surface-state cause of the CE deviation?",
+      "unknown_variable": "Surface chemical state and contaminant identity",
+      "stage": "structure",
+      "current_state": "unmeasured",
+      "impact": "high",
+      "affected_hypothesis_ids": [
+        "H1",
+        "H2"
+      ],
+      "affected_deviation_episode_ids": [
+        "DEV1"
+      ],
+      "minimal_measurement": {
+        "target": "Paired surface-state marker before and after approved recovery/clean handling",
+        "candidate_method": "XPS or a validated equivalent available to the laboratory",
+        "required_conditions": [
+          "Paired locations and matched handling history"
+        ],
+        "controls": [
+          "Fresh reference",
+          "Exposed untreated",
+          "Clean-handling control"
+        ],
+        "resolution_or_detection_requirement": "Must distinguish oxide-state change from non-oxide contamination at a decision-relevant level.",
+        "decision_use": "A coupled surface-state and CE recovery supports H1; contamination change without oxide change supports H2.",
+        "alternatives": [
+          "Validated surface-sensitive spectroscopy with equivalent specificity."
+        ]
+      },
+      "discrimination_scope": "Directly separates H1 from H2 and closes the structure-node gap.",
+      "disposition": "plan-measurement",
+      "resolution_evidence_ids": [],
+      "evidence_ids": [
+        "E3"
+      ],
+      "limitations": [
+        "Method choice requires local instrument capability review."
+      ]
+    },
+    {
+      "id": "IG2",
+      "decision_question": "Does the surface-state change alter the performance-limiting interfacial resistance?",
+      "unknown_variable": "Interfacial resistance under matched cell state",
+      "stage": "properties",
+      "current_state": "unmeasured",
+      "impact": "medium",
+      "affected_hypothesis_ids": [
+        "H1"
+      ],
+      "affected_deviation_episode_ids": [
+        "DEV1"
+      ],
+      "minimal_measurement": {
+        "target": "Paired interfacial resistance indicator",
+        "candidate_method": "EIS or a validated equivalent",
+        "required_conditions": [
+          "Matched SOC/state",
+          "Same geometry and temperature"
+        ],
+        "controls": [
+          "Fresh reference",
+          "Exposed untreated",
+          "Recovered surface"
+        ],
+        "resolution_or_detection_requirement": "Repeatability must be smaller than the between-condition difference used in the decision.",
+        "decision_use": "No resistance difference weakens the middle link in H1.",
+        "alternatives": []
+      },
+      "discrimination_scope": "Tests the structure-to-property mediator in CHAIN1.",
+      "disposition": "plan-measurement",
+      "resolution_evidence_ids": [],
+      "evidence_ids": [
+        "E2",
+        "E3"
+      ],
+      "limitations": [
+        "Equivalent-circuit non-uniqueness must be reported."
+      ]
+    }
+  ],
+  "experiment_sets": [
+    {
+      "id": "SET1",
+      "objective": "Resolve the minimum surface-state and resistance information needed to choose between H1 and H2.",
+      "verification_item_ids": [
+        "V1"
+      ],
+      "information_gap_ids": [
+        "IG1",
+        "IG2"
+      ],
+      "coverage_matrix": [
+        {
+          "verification_item_id": "V1",
+          "information_gap_ids": [
+            "IG1",
+            "IG2"
+          ],
+          "hypothesis_ids": [
+            "H1",
+            "H2"
+          ]
+        }
+      ],
+      "selection_rationale": "A single paired design covers two high-value unknowns and avoids unconstrained process optimization.",
+      "resource_summary": "One approved intervention workflow, paired surface analysis, matched EIS, and repeated CE.",
+      "stop_rules": [
+        "Stop if the paired design cannot preserve Cond-A.",
+        "Stop if expected decision value is lower than sample or external-service cost."
+      ],
+      "status": "proposed"
+    }
+  ],
+  "pspp_maps": [
+    {
+      "id": "PSPP1",
+      "title": "Synthetic exposure–surface state–interfacial property–CE map",
+      "entity_ids": [
+        "SAMPLE1"
+      ],
+      "nodes": [
+        {
+          "node_id": "P1",
+          "stage": "material-attributes",
+          "statement": "Ion-Cu surface is sensitive to pre-test exposure history.",
+          "status": "inferred",
+          "entity_ids": [
+            "SAMPLE1"
+          ],
+          "evidence_ids": [
+            "E3"
+          ],
+          "boundary_conditions": [
+            "Synthetic Ion-Cu fixture."
+          ],
+          "limitations": [
+            "Sensitivity magnitude is not measured."
+          ]
+        },
+        {
+          "node_id": "P2",
+          "stage": "processing",
+          "statement": "Air exposure occurred before the CE test.",
+          "status": "observed",
+          "entity_ids": [
+            "SAMPLE1"
+          ],
+          "evidence_ids": [
+            "E3"
+          ],
+          "boundary_conditions": [
+            "Local handling workflow."
+          ],
+          "limitations": []
+        },
+        {
+          "node_id": "P3",
+          "stage": "structure",
+          "statement": "Surface oxide or contaminant coverage may differ from the fresh reference.",
+          "status": "inferred",
+          "entity_ids": [
+            "SAMPLE1"
+          ],
+          "evidence_ids": [],
+          "boundary_conditions": [
+            "Pre-test surface."
+          ],
+          "limitations": [
+            "Direct surface measurement is missing."
+          ]
+        },
+        {
+          "node_id": "P4",
+          "stage": "properties",
+          "statement": "Interfacial resistance may be elevated.",
+          "status": "unknown",
+          "entity_ids": [
+            "SAMPLE1"
+          ],
+          "evidence_ids": [],
+          "boundary_conditions": [
+            "Matched cell state."
+          ],
+          "limitations": [
+            "EIS is missing."
+          ]
+        },
+        {
+          "node_id": "P5",
+          "stage": "performance",
+          "statement": "CE is 92.5% under Cond-A, below the 95.6% synthetic reference case.",
+          "status": "observed",
+          "entity_ids": [
+            "SAMPLE1"
+          ],
+          "property_record_ids": [
+            "PR2"
+          ],
+          "evidence_ids": [
+            "E1",
+            "E2",
+            "E4"
+          ],
+          "boundary_conditions": [
+            "Cond-A."
+          ],
+          "limitations": [
+            "Single batch."
+          ]
+        }
+      ],
+      "relationships": [
+        {
+          "relation_id": "PRL1",
+          "from_node_id": "P2",
+          "to_node_id": "P3",
+          "statement": "Exposure history may change surface chemistry.",
+          "relation_status": "hypothesis",
+          "evidence_ids": [
+            "E3"
+          ],
+          "counterevidence_ids": [],
+          "falsifiers": [
+            "Surface chemistry matches fresh reference."
+          ],
+          "modifiers": [
+            "Exposure duration and atmosphere."
+          ],
+          "boundary_conditions": [
+            "Synthetic fixture only."
+          ],
+          "linked_mechanism_edge_ids": [
+            "ME1"
+          ]
+        },
+        {
+          "relation_id": "PRL2",
+          "from_node_id": "P3",
+          "to_node_id": "P4",
+          "statement": "A changed surface layer may increase interfacial resistance.",
+          "relation_status": "hypothesis",
+          "evidence_ids": [],
+          "counterevidence_ids": [],
+          "falsifiers": [
+            "Matched EIS shows no resistance change."
+          ],
+          "modifiers": [
+            "Layer chemistry and thickness."
+          ],
+          "boundary_conditions": [
+            "Same cell state and geometry."
+          ],
+          "linked_mechanism_edge_ids": [
+            "ME2",
+            "ME3"
+          ]
+        },
+        {
+          "relation_id": "PRL3",
+          "from_node_id": "P4",
+          "to_node_id": "P5",
+          "statement": "Higher interfacial resistance may reduce CE.",
+          "relation_status": "hypothesis",
+          "evidence_ids": [],
+          "counterevidence_ids": [],
+          "falsifiers": [
+            "CE remains low after resistance is restored."
+          ],
+          "modifiers": [
+            "Current density and electrolyte."
+          ],
+          "boundary_conditions": [
+            "Cond-A."
+          ],
+          "linked_mechanism_edge_ids": [
+            "ME4"
+          ]
+        }
+      ],
+      "coverage": {
+        "processing": "present",
+        "structure": "present",
+        "properties": "missing",
+        "performance": "present",
+        "material_attributes": "present"
+      },
+      "status": "draft",
+      "missing_stages": [
+        "properties"
+      ],
+      "evidence_ids": [
+        "E1",
+        "E2",
+        "E3",
+        "E4"
+      ],
+      "limitations": [
+        "Relationships are hypotheses pending V1."
+      ]
+    }
+  ]
+}

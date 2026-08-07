@@ -1,0 +1,18 @@
+digraph MechanismGraph {
+  rankdir=LR;
+  graph [fontname="Helvetica", bgcolor="transparent"];
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fillcolor="#f5f5f7", color="#c7c7cc"];
+  edge [fontname="Helvetica", color="#6e6e73"];
+  subgraph "cluster_MG1" {
+    label="Synthetic Ion-Cu exposure and efficiency mechanism graph";
+    "MN1" [label="MN1\\npre-test air exposure\\n[observed]"];
+    "MN2" [label="MN2\\naltered surface coverage\\n[hypothesized]"];
+    "MN3" [label="MN3\\nsurface-layer transport impedance\\n[hypothesized]"];
+    "MN4" [label="MN4\\ninterfacial resistance\\n[hypothesized]"];
+    "MN5" [label="MN5\\ncoulombic efficiency\\n[observed]"];
+    "MN1" -> "MN2" [label="ME1: induces [hypothesis]", style="dashed"];
+    "MN2" -> "MN3" [label="ME2: enables [hypothesis]", style="dashed"];
+    "MN3" -> "MN4" [label="ME3: increases [hypothesis]", style="dashed"];
+    "MN4" -> "MN5" [label="ME4: decreases [hypothesis]", style="dashed"];
+  }
+}

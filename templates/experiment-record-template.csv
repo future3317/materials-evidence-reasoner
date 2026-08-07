@@ -1,0 +1,2 @@
+sample_id,specimen_id,batch_id,measurement_repeat_id,material_name,composition,process_step,process_setpoint,process_actual_value,process_temperature,process_time,atmosphere,measurement_method,instrument,instrument_id,calibration_id,measurement_location,property_name,property_value,unit,normalization_basis,measurement_temperature,measurement_rate,replicate_count,uncertainty,timestamp,operator,analysis_version,notes
+SAMPLE-001,SPECIMEN-001,BATCH-001,REP-001,,,,,,,,,,,,,,,,,,,,,,,,,

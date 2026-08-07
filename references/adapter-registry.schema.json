@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/materials-evidence-reasoner/4.3/adapter-registry.schema.json",
+  "title": "Materials Evidence Reasoner Adapter Registry",
+  "type": "object",
+  "required": [
+    "registry_version",
+    "updated_at",
+    "execution_standard",
+    "routing_lexicon",
+    "routing_lexicon_schema",
+    "field_contract_catalog",
+    "field_contract_schema",
+    "source_backed_catalog",
+    "standards_and_sources",
+    "routing_order",
+    "status_definitions",
+    "verification_status_definitions",
+    "adapters"
+  ],
+  "properties": {
+    "$schema": {"type": "string"},
+    "registry_version": {"type": "string"},
+    "updated_at": {"type": "string", "format": "date"},
+    "execution_standard": {"type": "string"},
+    "routing_lexicon": {"type": "string"},
+    "routing_lexicon_schema": {"type": "string"},
+    "field_contract_catalog": {"type": "string"},
+    "field_contract_schema": {"type": "string"},
+    "source_backed_catalog": {"type": "string"},
+    "standards_and_sources": {"type": "string"},
+    "registry_schema": {"type": "string"},
+    "benchmark_catalog": {"type": "string"},
+    "routing_order": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"enum": ["material-family", "physical-form", "process", "application", "measurement-technique", "simulation-method", "phenomenon"]},
+      "uniqueItems": true
+    },
+    "status_definitions": {"type": "object", "required": ["implemented", "specified", "planned"]},
+    "verification_status_definitions": {"type": "object", "required": ["provisional", "source-backed", "human-adjudicated"]},
+    "adapters": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/adapter"}
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "adapter": {
+      "type": "object",
+      "required": ["adapter_id", "layer", "status", "verification_status", "ruleset_version", "reference", "routing_lexicon_ref"],
+      "properties": {
+        "adapter_id": {"type": "string", "pattern": "^[a-z][a-z0-9-]+$"},
+        "layer": {"enum": ["material-family", "physical-form", "process", "application", "measurement-technique", "simulation-method", "phenomenon"]},
+        "status": {"enum": ["implemented", "specified", "planned"]},
+        "verification_status": {"enum": ["provisional", "source-backed", "human-adjudicated"]},
+        "ruleset_version": {"type": "string"},
+        "reference": {"type": "string"},
+        "payload_schema": {"type": ["string", "null"]},
+        "field_contract_ref": {"type": "string"},
+        "routing_lexicon_ref": {"type": "string"},
+        "may_compose_with": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+      },
+      "additionalProperties": false
+    }
+  }
+}

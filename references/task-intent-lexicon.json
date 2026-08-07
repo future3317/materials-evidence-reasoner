@@ -1,0 +1,67 @@
+{
+  "lexicon_version": "1.0.0",
+  "matching_policy": {
+    "surface_terms_are_recall_only": true,
+    "semantic_match_required": true,
+    "multi_intent_allowed": true,
+    "unresolved_intent_status": "clarify-or-proceed-with-limitations"
+  },
+  "intents": {
+    "extract": {
+      "label_zh": "文献/数据提取",
+      "concept": "把文件、论文、表格、图像或仪器输出转成可回查的结构化候选证据",
+      "terms_zh": ["提取", "抽取", "整理文献", "读论文", "抓取表格", "解析 PDF", "整理数据"],
+      "terms_en": ["extract", "parse", "literature mining", "read paper", "table extraction", "PDF parsing"],
+      "minimum_deliverables": ["source identity", "extraction environment", "source locator", "limitations"],
+      "do_not_assume": ["converted text is scientific evidence", "OCR is correct", "a chart value is exact"]
+    },
+    "compare": {
+      "label_zh": "条件化比较",
+      "concept": "在材料、工艺、测量和归一化条件可比时比较文献、本地基线、规格和实验值",
+      "terms_zh": ["比较", "对比", "基准", "优于", "低于", "复现", "差异多大"],
+      "terms_en": ["compare", "benchmark", "versus", "better than", "reproduce", "difference"],
+      "minimum_deliverables": ["condition signature", "comparability assessment", "baseline separation"],
+      "do_not_assume": ["best reported equals acceptance limit", "different protocols are directly comparable"]
+    },
+    "diagnose": {
+      "label_zh": "偏差/异常诊断",
+      "concept": "解释异常、偏差、失败或不一致的可能来源并区分竞争假设",
+      "terms_zh": ["诊断", "排查", "异常", "偏差", "失败原因", "为什么", "归因", "误差来源"],
+      "terms_en": ["diagnose", "troubleshoot", "anomaly", "deviation", "root cause", "why", "failure analysis"],
+      "minimum_deliverables": ["error budget", "anomaly propagation chain", "information gaps", "falsifiers"],
+      "do_not_assume": ["a residual proves a mechanism", "a single abnormal property proves material failure"]
+    },
+    "reproduce": {
+      "label_zh": "复现与迁移",
+      "concept": "判断文献或历史实验能否在当前材料、设备和协议边界内复现或迁移",
+      "terms_zh": ["复现", "重现", "迁移", "照着做", "重复实验", "可重复"],
+      "terms_en": ["reproduce", "replicate", "transfer", "port", "repeatability", "reproducibility"],
+      "minimum_deliverables": ["protocol lineage", "condition mismatch list", "minimum experiment set", "stop rule"],
+      "do_not_assume": ["same composition means same state", "a published recipe includes unreported details"]
+    },
+    "validate": {
+      "label_zh": "验证假设/机理",
+      "concept": "用最小实验或额外证据检验机理、模型、性质关系或解释边界",
+      "terms_zh": ["验证", "证伪", "机理", "假设", "区分原因", "实验设计"],
+      "terms_en": ["validate", "falsify", "mechanism", "hypothesis", "discriminate", "experiment design"],
+      "minimum_deliverables": ["hypothesis predictions", "falsifiers", "coverage matrix", "decision rule"],
+      "do_not_assume": ["correlation proves mechanism", "one confirmatory result closes all alternatives"]
+    },
+    "optimize": {
+      "label_zh": "工艺/配方优化",
+      "concept": "在明确目标、约束和证据边界下选择下一步工艺或配方变化",
+      "terms_zh": ["优化", "调参", "配方", "工艺窗口", "提高性能", "降低成本", "放大"],
+      "terms_en": ["optimize", "tune", "formulation", "process window", "improve performance", "scale-up"],
+      "minimum_deliverables": ["objective and constraints", "current baseline", "dominant uncertainty", "minimal next experiment"],
+      "do_not_assume": ["model optimum is experimentally feasible", "higher property is always the decision objective"]
+    },
+    "report": {
+      "label_zh": "报告/可视化交付",
+      "concept": "把已验证的记录、限制、结论和下一步行动组织成可审计报告或离线可视化",
+      "terms_zh": ["报告", "汇报", "仪表盘", "可视化", "图表", "展示", "交付"],
+      "terms_en": ["report", "dashboard", "visualize", "plot", "presentation", "deliverable"],
+      "minimum_deliverables": ["answer-first narrative", "source links", "limitations", "validated JSON/CSV"],
+      "do_not_assume": ["a polished chart validates the data", "visual similarity implies scientific equivalence"]
+    }
+  }
+}

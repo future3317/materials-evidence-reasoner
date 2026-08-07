@@ -1,0 +1,15 @@
+{
+  "decision_question": "判断该批次是否偏离本地稳定工艺，并找出下一项验证实验",
+  "material_domain": "polymer-composite",
+  "files": [
+    "literature-1.pdf",
+    "local-experiments.xlsx",
+    "sem-images/"
+  ],
+  "context": {
+    "target_property": "thermal_conductivity",
+    "requirement": ">= 3.0 W m-1 K-1",
+    "known_change": "new filler batch",
+    "constraints": ["one week", "limited SEM access"]
+  }
+}

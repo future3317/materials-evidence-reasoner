@@ -1,0 +1,285 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "registry_version": "2.0.0",
+  "updated_at": "2026-08-06",
+  "field_contract_catalog": "adapter-field-contracts.json",
+  "benchmark_catalog": "adapter-benchmark-cases.json",
+  "routing_order": [
+    "material-family",
+    "physical-form",
+    "process",
+    "application",
+    "measurement-technique",
+    "simulation-method",
+    "phenomenon"
+  ],
+  "status_definitions": {
+    "implemented": "The reference, routing lexicon, semantic field or payload contract, package validation, and regression cases are present. Domain records may be emitted after a load decision.",
+    "specified": "The scope is documented but one or more executable assets are incomplete; do not emit domain records.",
+    "planned": "Candidate scope only; do not emit domain records."
+  },
+  "adapters": [
+    {
+      "adapter_id": "superconductivity",
+      "layer": "phenomenon",
+      "status": "implemented",
+      "ruleset_version": "2.0.0",
+      "reference": "adapter-superconductivity.md",
+      "payload_schema": "adapter-superconductivity.schema.json",
+      "may_compose_with": [
+        "metallic-materials",
+        "ceramics-glass-cement",
+        "two-dimensional-materials",
+        "quantum-materials",
+        "electrical-magnetic-transport",
+        "thermal-analysis",
+        "diffraction-scattering"
+      ],
+      "verification_status": "source-backed",
+      "routing_lexicon_ref": "adapter-routing-lexicon.json#/adapters/superconductivity"
+    },
+    {
+      "adapter_id": "metallic-materials",
+      "layer": "material-family",
+      "status": "implemented",
+      "ruleset_version": "2.0.0",
+      "reference": "adapter-metallic-materials.md",
+      "payload_schema": null,
+      "verification_status": "source-backed",
+      "routing_lexicon_ref": "adapter-routing-lexicon.json#/adapters/metallic-materials",
+      "field_contract_ref": "adapter-field-contracts.json#/adapters/metallic-materials"
+    },
+    {
+      "adapter_id": "polymers",
+      "layer": "material-family",
+      "status": "implemented",
+      "ruleset_version": "2.0.0",
+      "reference": "adapter-polymers.md",
+      "payload_schema": null,
+      "verification_status": "source-backed",
+      "routing_lexicon_ref": "adapter-routing-lexicon.json#/adapters/polymers",
+      "field_contract_ref": "adapter-field-contracts.json#/adapters/polymers"
+    },
+    {
+      "adapter_id": "ceramics-glass-cement",
+      "layer": "material-family",
+      "status": "implemented",
+      "ruleset_version": "2.0.0",
+      "reference": "adapter-ceramics-glass-cement.md",
+      "payload_schema": null,
+      "verification_status": "source-backed",
+      "routing_lexicon_ref": "adapter-routing-lexicon.json#/adapters/ceramics-glass-cement",
+      "field_contract_ref": "adapter-field-contracts.json#/adapters/ceramics-glass-cement"
+    },
+    {
+      "adapter_id": "liquid-materials",
+      "layer": "physical-form",
+      "status": "implemented",
+      "ruleset_version": "2.0.0",
+      "reference": "adapter-liquid-materials.md",
+      "payload_schema": null,
+      "verification_status": "source-backed",
+      "routing_lexicon_ref": "adapter-routing-lexicon.json#/adapters/liquid-materials",
+      "field_contract_ref": "adapter-field-contracts.json#/adapters/liquid-materials"
+    },
+    {
+      "adapter_id": "two-dimensional-materials",
+      "layer": "material-family",
+      "status": "implemented",
+      "ruleset_version": "2.0.0",
+      "reference": "adapter-two-dimensional-materials.md",
+      "payload_schema": null,
+      "verification_status": "source-backed",
+      "routing_lexicon_ref": "adapter-routing-lexicon.json#/adapters/two-dimensional-materials",
+      "field_contract_ref": "adapter-field-contracts.json#/adapters/two-dimensional-materials"
+    },
+    {
+      "adapter_id": "quantum-materials",
+      "layer": "phenomenon",
+      "status": "implemented",
+      "ruleset_version": "2.0.0",
+      "reference": "adapter-quantum-materials.md",
+      "payload_schema": null,
+      "verification_status": "source-backed",
+      "routing_lexicon_ref": "adapter-routing-lexicon.json#/adapters/quantum-materials",
+      "field_contract_ref": "adapter-field-contracts.json#/adapters/quantum-materials"
+    },
+    {
+      "adapter_id": "materials-processing",
+      "layer": "process",
+      "status": "implemented",
+      "ruleset_version": "2.0.0",
+      "reference": "adapter-materials-processing.md",
+      "payload_schema": null,
+      "verification_status": "source-backed",
+      "routing_lexicon_ref": "adapter-routing-lexicon.json#/adapters/materials-processing",
+      "field_contract_ref": "adapter-field-contracts.json#/adapters/materials-processing"
+    },
+    {
+      "adapter_id": "battery",
+      "layer": "application",
+      "status": "implemented",
+      "ruleset_version": "2.0.0",
+      "reference": "adapter-energy-applications.md",
+      "payload_schema": null,
+      "verification_status": "source-backed",
+      "routing_lexicon_ref": "adapter-routing-lexicon.json#/adapters/battery",
+      "field_contract_ref": "adapter-field-contracts.json#/adapters/battery"
+    },
+    {
+      "adapter_id": "photovoltaic-device",
+      "layer": "application",
+      "status": "implemented",
+      "ruleset_version": "2.0.0",
+      "reference": "adapter-energy-applications.md",
+      "payload_schema": null,
+      "verification_status": "source-backed",
+      "routing_lexicon_ref": "adapter-routing-lexicon.json#/adapters/photovoltaic-device",
+      "field_contract_ref": "adapter-field-contracts.json#/adapters/photovoltaic-device"
+    },
+    {
+      "adapter_id": "electrochemical-energy",
+      "layer": "application",
+      "status": "implemented",
+      "ruleset_version": "2.0.0",
+      "reference": "adapter-energy-applications.md",
+      "payload_schema": null,
+      "verification_status": "source-backed",
+      "routing_lexicon_ref": "adapter-routing-lexicon.json#/adapters/electrochemical-energy",
+      "field_contract_ref": "adapter-field-contracts.json#/adapters/electrochemical-energy"
+    },
+    {
+      "adapter_id": "hydrogen-storage",
+      "layer": "application",
+      "status": "implemented",
+      "ruleset_version": "2.0.0",
+      "reference": "adapter-energy-applications.md",
+      "payload_schema": null,
+      "verification_status": "source-backed",
+      "routing_lexicon_ref": "adapter-routing-lexicon.json#/adapters/hydrogen-storage",
+      "field_contract_ref": "adapter-field-contracts.json#/adapters/hydrogen-storage"
+    },
+    {
+      "adapter_id": "thermoelectric",
+      "layer": "application",
+      "status": "implemented",
+      "ruleset_version": "2.0.0",
+      "reference": "adapter-energy-applications.md",
+      "payload_schema": null,
+      "verification_status": "source-backed",
+      "routing_lexicon_ref": "adapter-routing-lexicon.json#/adapters/thermoelectric",
+      "field_contract_ref": "adapter-field-contracts.json#/adapters/thermoelectric"
+    },
+    {
+      "adapter_id": "diffraction-scattering",
+      "layer": "measurement-technique",
+      "status": "implemented",
+      "ruleset_version": "2.0.0",
+      "reference": "adapter-diffraction-scattering.md",
+      "payload_schema": null,
+      "verification_status": "source-backed",
+      "routing_lexicon_ref": "adapter-routing-lexicon.json#/adapters/diffraction-scattering",
+      "field_contract_ref": "adapter-field-contracts.json#/adapters/diffraction-scattering"
+    },
+    {
+      "adapter_id": "electron-microscopy-microanalysis",
+      "layer": "measurement-technique",
+      "status": "implemented",
+      "ruleset_version": "2.0.0",
+      "reference": "adapter-electron-microscopy-microanalysis.md",
+      "payload_schema": null,
+      "verification_status": "source-backed",
+      "routing_lexicon_ref": "adapter-routing-lexicon.json#/adapters/electron-microscopy-microanalysis",
+      "field_contract_ref": "adapter-field-contracts.json#/adapters/electron-microscopy-microanalysis"
+    },
+    {
+      "adapter_id": "spectroscopy",
+      "layer": "measurement-technique",
+      "status": "implemented",
+      "ruleset_version": "2.0.0",
+      "reference": "adapter-spectroscopy.md",
+      "payload_schema": null,
+      "verification_status": "source-backed",
+      "routing_lexicon_ref": "adapter-routing-lexicon.json#/adapters/spectroscopy",
+      "field_contract_ref": "adapter-field-contracts.json#/adapters/spectroscopy"
+    },
+    {
+      "adapter_id": "thermal-analysis",
+      "layer": "measurement-technique",
+      "status": "implemented",
+      "ruleset_version": "2.0.0",
+      "reference": "adapter-thermal-analysis.md",
+      "payload_schema": null,
+      "verification_status": "source-backed",
+      "routing_lexicon_ref": "adapter-routing-lexicon.json#/adapters/thermal-analysis",
+      "field_contract_ref": "adapter-field-contracts.json#/adapters/thermal-analysis"
+    },
+    {
+      "adapter_id": "mechanical-testing",
+      "layer": "measurement-technique",
+      "status": "implemented",
+      "ruleset_version": "2.0.0",
+      "reference": "adapter-mechanical-testing.md",
+      "payload_schema": null,
+      "verification_status": "source-backed",
+      "routing_lexicon_ref": "adapter-routing-lexicon.json#/adapters/mechanical-testing",
+      "field_contract_ref": "adapter-field-contracts.json#/adapters/mechanical-testing"
+    },
+    {
+      "adapter_id": "electrical-magnetic-transport",
+      "layer": "measurement-technique",
+      "status": "implemented",
+      "ruleset_version": "2.0.0",
+      "reference": "adapter-electrical-magnetic-transport.md",
+      "payload_schema": null,
+      "verification_status": "source-backed",
+      "routing_lexicon_ref": "adapter-routing-lexicon.json#/adapters/electrical-magnetic-transport",
+      "field_contract_ref": "adapter-field-contracts.json#/adapters/electrical-magnetic-transport"
+    },
+    {
+      "adapter_id": "electrochemical-testing",
+      "layer": "measurement-technique",
+      "status": "implemented",
+      "ruleset_version": "2.0.0",
+      "reference": "adapter-electrochemical-testing.md",
+      "payload_schema": null,
+      "verification_status": "source-backed",
+      "routing_lexicon_ref": "adapter-routing-lexicon.json#/adapters/electrochemical-testing",
+      "field_contract_ref": "adapter-field-contracts.json#/adapters/electrochemical-testing"
+    },
+    {
+      "adapter_id": "composition-particle-surface",
+      "layer": "measurement-technique",
+      "status": "implemented",
+      "ruleset_version": "2.0.0",
+      "reference": "adapter-composition-particle-surface.md",
+      "payload_schema": null,
+      "verification_status": "source-backed",
+      "routing_lexicon_ref": "adapter-routing-lexicon.json#/adapters/composition-particle-surface",
+      "field_contract_ref": "adapter-field-contracts.json#/adapters/composition-particle-surface"
+    },
+    {
+      "adapter_id": "materials-simulation",
+      "layer": "simulation-method",
+      "status": "implemented",
+      "ruleset_version": "2.0.0",
+      "reference": "adapter-materials-simulation.md",
+      "payload_schema": null,
+      "verification_status": "source-backed",
+      "routing_lexicon_ref": "adapter-routing-lexicon.json#/adapters/materials-simulation",
+      "field_contract_ref": "adapter-field-contracts.json#/adapters/materials-simulation"
+    }
+  ],
+  "execution_standard": "adapter-execution-standard.md",
+  "routing_lexicon": "adapter-routing-lexicon.json",
+  "routing_lexicon_schema": "adapter-routing-lexicon.schema.json",
+  "field_contract_schema": "adapter-field-contracts.schema.json",
+  "registry_schema": "adapter-registry.schema.json",
+  "verification_status_definitions": {
+    "provisional": "Machine and synthetic checks only; no claim of human-adjudicated gold accuracy.",
+    "source-backed": "At least one accessible real source has been run and audited, without independent gold adjudication.",
+    "human-adjudicated": "A frozen source set and expected outputs were independently adjudicated under the benchmark protocol."
+  },
+  "source_backed_catalog": "source-backed-routing-cases.json",
+  "standards_and_sources": "standards-and-sources.md"
+}

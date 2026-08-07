@@ -1,0 +1,13 @@
+# Local validation and extraction outputs
+tmp/
+.tmp-*
+.pytest_cache/
+**/__pycache__/
+*.py[cod]
+**/.DS_Store
+**/._*
+**/__MACOSX/
+
+# Local release staging
+release/
+dist/

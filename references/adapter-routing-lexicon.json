@@ -1,0 +1,5643 @@
+{
+  "lexicon_version": "1.1.0",
+  "signal_semantics": {
+    "strong": "Result- or method-level concept that may satisfy a load gate after context and entity checks.",
+    "supporting": "Corroborating concept that strengthens a route but normally does not load the adapter alone.",
+    "weak": "High-recall lexical hint used only to retrieve a candidate adapter.",
+    "exclusion": "Concept that identifies a likely false sense, apparatus role, background source, or out-of-scope entity."
+  },
+  "matching_policy": {
+    "surface_terms_are_recall_only": true,
+    "semantic_match_required": true,
+    "load_requires_entity_binding": true,
+    "unresolved_route_status": "candidate",
+    "context_order": ["title", "abstract", "methods", "results", "figure-or-table", "conclusion", "references", "future-work"],
+    "maintenance_contract": "routing-maintenance-contract.md"
+  },
+  "adapters": {
+    "superconductivity": {
+      "ruleset_version": "2.0.0",
+      "canonical_label_zh": "超导",
+      "canonical_label_en": "Superconductivity",
+      "signals": [
+        {
+          "signal_id": "sc-superconducting-claim",
+          "concept": "direct superconducting claim",
+          "strength": "strong",
+          "terms_en": [
+            "superconductivity",
+            "superconductor",
+            "superconducting behavior",
+            "superconducting state",
+            "superconducting transition",
+            "bulk superconductivity",
+            "supercurrent"
+          ],
+          "terms_zh": [
+            "超导",
+            "超导体",
+            "超导行为",
+            "超导态",
+            "超导转变",
+            "体超导",
+            "超电流"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "sc-claim"
+        },
+        {
+          "signal_id": "sc-zero-resistance",
+          "concept": "zero-resistance transport",
+          "strength": "strong",
+          "terms_en": [
+            "zero resistance",
+            "zero resistivity",
+            "resistance below the noise floor"
+          ],
+          "terms_zh": [
+            "零电阻",
+            "零电阻率",
+            "电阻低于噪声底"
+          ],
+          "abbreviations": [],
+          "symbols": [
+            "R=0",
+            "rho=0"
+          ],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "sc-transport"
+        },
+        {
+          "signal_id": "sc-diamagnetic-response",
+          "concept": "Meissner or diamagnetic response",
+          "strength": "strong",
+          "terms_en": [
+            "Meissner effect",
+            "diamagnetic shielding",
+            "flux expulsion"
+          ],
+          "terms_zh": [
+            "迈斯纳效应",
+            "抗磁屏蔽",
+            "磁通排斥"
+          ],
+          "abbreviations": [
+            "ZFC",
+            "FC"
+          ],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "sc-magnetic"
+        },
+        {
+          "signal_id": "sc-thermodynamic-anomaly",
+          "concept": "thermodynamic superconducting transition",
+          "strength": "supporting",
+          "terms_en": [
+            "specific-heat jump",
+            "heat-capacity anomaly"
+          ],
+          "terms_zh": [
+            "比热跃变",
+            "热容异常"
+          ],
+          "abbreviations": [],
+          "symbols": [
+            "Delta C"
+          ],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "sc-thermodynamic"
+        },
+        {
+          "signal_id": "sc-characteristic-property",
+          "concept": "superconducting characteristic property",
+          "strength": "weak",
+          "terms_en": [
+            "critical field",
+            "critical current",
+            "superconducting gap",
+            "vortex pinning"
+          ],
+          "terms_zh": [
+            "临界场",
+            "临界电流",
+            "超导能隙",
+            "磁通钉扎"
+          ],
+          "abbreviations": [
+            "Hc1",
+            "Hc2",
+            "Jc"
+          ],
+          "symbols": [
+            "Tc"
+          ],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "sc-property"
+        },
+        {
+          "signal_id": "sc-apparatus-or-other-tc",
+          "concept": "apparatus or alternate-symbol use",
+          "strength": "exclusion",
+          "terms_en": [
+            "superconducting magnet",
+            "Curie temperature",
+            "crystallization temperature"
+          ],
+          "terms_zh": [
+            "超导磁体",
+            "居里温度",
+            "结晶温度"
+          ],
+          "abbreviations": [
+            "Tc"
+          ],
+          "symbols": [],
+          "valid_contexts": [
+            "apparatus",
+            "methods",
+            "results"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": false,
+          "independence_group": "sc-exclusion"
+        }
+      ],
+      "ambiguous_terms": [
+        {
+          "term": "Tc",
+          "possible_senses": [
+            "superconducting transition temperature",
+            "Curie temperature",
+            "crystallization temperature",
+            "critical temperature in another domain"
+          ],
+          "resolution_rule": "Resolve from the named phenomenon, measurement channel, units, and target entity; the symbol alone is weak."
+        },
+        {
+          "term": "Hc",
+          "possible_senses": [
+            "thermodynamic critical field",
+            "coercive field"
+          ],
+          "resolution_rule": "Require superconducting context and field-temperature or Meissner evidence."
+        },
+        {
+          "term": "Jc",
+          "possible_senses": [
+            "critical current density of a superconductor",
+            "generic current density"
+          ],
+          "resolution_rule": "Require an explicit superconducting criterion and geometry or model."
+        }
+      ],
+      "load_gate": {
+        "all_of": [
+          "source identity is resolved",
+          "at least one target entity is resolved",
+          "at least one method-level or result-level signal is bound to the target",
+          "all positive evidence is not fully explained by exclusion context"
+        ],
+        "any_of": [
+          "an explicit target-bound superconducting claim appears in a result-bearing context",
+          "two compatible independent evidence groups support the same target",
+          "a theoretical paper explicitly predicts superconductivity for the target and is labeled theoretical"
+        ],
+        "minimum_independent_groups": 1
+      },
+      "candidate_gate": [
+        "only weak or supporting vocabulary is available",
+        "target entity binding is unresolved",
+        "the accessible source is insufficient to resolve centrality or polarity",
+        "a strong-looking term has an unresolved alternate sense"
+      ],
+      "skip_gate": [
+        "all matches are apparatus, consumable, substrate, container, cited, negated, or future-work mentions",
+        "the source is sufficiently complete and the studied target is outside this adapter scope"
+      ],
+      "co_load_suggestions": [
+        "electrical-magnetic-transport",
+        "thermal-analysis",
+        "quantum-materials",
+        "materials-simulation"
+      ],
+      "reason_codes": {
+        "SC-LOAD-TARGET": "Target-bound method or result evidence satisfies the load gate.",
+        "SC-CANDIDATE-UNRESOLVED": "Domain possibility exists but binding, polarity, or centrality is unresolved.",
+        "SC-SKIP-EXCLUDED": "All matched occurrences are explained by exclusion context."
+      }
+    },
+    "metallic-materials": {
+      "ruleset_version": "2.0.0",
+      "canonical_label_zh": "金属与合金",
+      "canonical_label_en": "Metallic materials",
+      "signals": [
+        {
+          "signal_id": "met-alloy-identity",
+          "concept": "metal or alloy identity",
+          "strength": "strong",
+          "terms_en": [
+            "metallic material",
+            "metal specimen",
+            "printed metal",
+            "alloy grade",
+            "steel grade",
+            "superalloy",
+            "intermetallic",
+            "metallic glass"
+          ],
+          "terms_zh": [
+            "金属材料",
+            "金属试样",
+            "打印金属",
+            "合金牌号",
+            "钢号",
+            "高温合金",
+            "金属间化合物",
+            "金属玻璃"
+          ],
+          "abbreviations": [
+            "UNS"
+          ],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "met-identity"
+        },
+        {
+          "signal_id": "met-metallurgical-state",
+          "concept": "metallurgical state or microstructure",
+          "strength": "strong",
+          "terms_en": [
+            "temper condition",
+            "austenite",
+            "martensite",
+            "precipitation hardened",
+            "recrystallized"
+          ],
+          "terms_zh": [
+            "状态代号",
+            "奥氏体",
+            "马氏体",
+            "沉淀强化",
+            "再结晶"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "met-state"
+        },
+        {
+          "signal_id": "met-heat-or-melt",
+          "concept": "heat, melt, or product lineage",
+          "strength": "supporting",
+          "terms_en": [
+            "heat number",
+            "melt number",
+            "cast billet",
+            "wrought plate",
+            "forged bar"
+          ],
+          "terms_zh": [
+            "炉号",
+            "熔炼批次",
+            "铸锭",
+            "轧板",
+            "锻棒"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "met-lineage"
+        },
+        {
+          "signal_id": "met-generic-metal",
+          "concept": "generic metallic vocabulary",
+          "strength": "weak",
+          "terms_en": [
+            "metal",
+            "alloy",
+            "foil",
+            "wire",
+            "steel"
+          ],
+          "terms_zh": [
+            "金属",
+            "合金",
+            "箔",
+            "丝",
+            "钢"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "met-generic"
+        },
+        {
+          "signal_id": "met-apparatus",
+          "concept": "incidental metallic component",
+          "strength": "exclusion",
+          "terms_en": [
+            "sample holder",
+            "copper wire",
+            "stainless-steel fixture",
+            "current collector",
+            "metal substrate"
+          ],
+          "terms_zh": [
+            "样品架",
+            "铜导线",
+            "不锈钢夹具",
+            "集流体",
+            "金属基底"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "apparatus",
+            "sample-mounting",
+            "device-component"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": false,
+          "independence_group": "met-exclusion"
+        }
+      ],
+      "ambiguous_terms": [
+        {
+          "term": "steel",
+          "possible_senses": [
+            "target engineering alloy",
+            "apparatus or structural support",
+            "figurative adjective"
+          ],
+          "resolution_rule": "Load only when the steel entity itself has composition, process, structure, or property evidence."
+        },
+        {
+          "term": "foil",
+          "possible_senses": [
+            "target metallic product",
+            "current collector",
+            "substrate or electrode component"
+          ],
+          "resolution_rule": "Resolve the foil role in the entity hierarchy."
+        }
+      ],
+      "load_gate": {
+        "all_of": [
+          "source identity is resolved",
+          "at least one target entity is resolved",
+          "at least one method-level or result-level signal is bound to the target",
+          "all positive evidence is not fully explained by exclusion context"
+        ],
+        "any_of": [
+          "target metal/alloy identity plus a target-bound composition, process, microstructure, or property result",
+          "a target-bound metallurgical state is a study variable or conclusion"
+        ],
+        "minimum_independent_groups": 1
+      },
+      "candidate_gate": [
+        "only weak or supporting vocabulary is available",
+        "target entity binding is unresolved",
+        "the accessible source is insufficient to resolve centrality or polarity",
+        "a strong-looking term has an unresolved alternate sense"
+      ],
+      "skip_gate": [
+        "all matches are apparatus, consumable, substrate, container, cited, negated, or future-work mentions",
+        "the source is sufficiently complete and the studied target is outside this adapter scope"
+      ],
+      "co_load_suggestions": [
+        "materials-processing",
+        "mechanical-testing",
+        "electron-microscopy-microanalysis",
+        "diffraction-scattering",
+        "materials-simulation"
+      ],
+      "reason_codes": {
+        "MET-LOAD-TARGET": "Target-bound method or result evidence satisfies the load gate.",
+        "MET-CANDIDATE-UNRESOLVED": "Domain possibility exists but binding, polarity, or centrality is unresolved.",
+        "MET-SKIP-EXCLUDED": "All matched occurrences are explained by exclusion context."
+      }
+    },
+    "polymers": {
+      "ruleset_version": "2.0.0",
+      "canonical_label_zh": "高分子材料",
+      "canonical_label_en": "Polymers",
+      "signals": [
+        {
+          "signal_id": "pol-polymer-identity",
+          "concept": "polymer identity or architecture",
+          "strength": "strong",
+          "terms_en": [
+            "polymer composite",
+            "polymeric nanocomposite",
+            "polymer film",
+            "polymer matrix",
+            "homopolymer",
+            "copolymer",
+            "thermoplastic",
+            "thermoset",
+            "elastomer",
+            "polymer network"
+          ],
+          "terms_zh": [
+            "聚合物复合材料",
+            "高分子纳米复合材料",
+            "聚合物薄膜",
+            "聚合物基体",
+            "均聚物",
+            "共聚物",
+            "热塑性塑料",
+            "热固性树脂",
+            "弹性体",
+            "聚合物网络"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "pol-identity"
+        },
+        {
+          "signal_id": "pol-polymerization",
+          "concept": "polymerization or curing",
+          "strength": "strong",
+          "terms_en": [
+            "polymerization",
+            "crosslinking",
+            "curing reaction",
+            "degree of conversion"
+          ],
+          "terms_zh": [
+            "聚合",
+            "交联",
+            "固化反应",
+            "转化率"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "pol-reaction"
+        },
+        {
+          "signal_id": "pol-molar-distribution",
+          "concept": "molar-mass distribution",
+          "strength": "supporting",
+          "terms_en": [
+            "number-average molar mass",
+            "weight-average molar mass",
+            "molar-mass dispersity",
+            "gel permeation chromatography"
+          ],
+          "terms_zh": [
+            "数均摩尔质量",
+            "重均摩尔质量",
+            "摩尔质量分散度",
+            "凝胶渗透色谱"
+          ],
+          "abbreviations": [
+            "Mn",
+            "Mw",
+            "SEC",
+            "GPC"
+          ],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "pol-molar"
+        },
+        {
+          "signal_id": "pol-generic",
+          "concept": "generic polymer vocabulary",
+          "strength": "weak",
+          "terms_en": [
+            "polymer",
+            "resin",
+            "plastic",
+            "binder",
+            "film",
+            "gel"
+          ],
+          "terms_zh": [
+            "高分子",
+            "树脂",
+            "塑料",
+            "粘结剂",
+            "薄膜",
+            "凝胶"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "pol-generic"
+        },
+        {
+          "signal_id": "pol-consumable",
+          "concept": "incidental polymer component",
+          "strength": "exclusion",
+          "terms_en": [
+            "polymer vial",
+            "adhesive tape",
+            "glove",
+            "encapsulant only",
+            "incidental binder"
+          ],
+          "terms_zh": [
+            "塑料瓶",
+            "胶带",
+            "手套",
+            "仅作封装",
+            "非目标粘结剂"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "apparatus",
+            "sample-mounting",
+            "consumable",
+            "secondary-component"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": false,
+          "independence_group": "pol-exclusion"
+        }
+      ],
+      "ambiguous_terms": [
+        {
+          "term": "resin",
+          "possible_senses": [
+            "target thermoset precursor",
+            "generic trade-name material",
+            "mounting resin"
+          ],
+          "resolution_rule": "Require target role and formulation, cure, structure, or property evidence."
+        },
+        {
+          "term": "film",
+          "possible_senses": [
+            "polymer specimen",
+            "thin-film form of another material",
+            "protective consumable"
+          ],
+          "resolution_rule": "Resolve composition and target role before loading."
+        }
+      ],
+      "load_gate": {
+        "all_of": [
+          "source identity is resolved",
+          "at least one target entity is resolved",
+          "at least one method-level or result-level signal is bound to the target",
+          "all positive evidence is not fully explained by exclusion context"
+        ],
+        "any_of": [
+          "target polymer identity plus formulation, polymerization, cure, morphology, or property evidence",
+          "molar-mass or polymer-state evidence is bound to the target polymer"
+        ],
+        "minimum_independent_groups": 1
+      },
+      "candidate_gate": [
+        "only weak or supporting vocabulary is available",
+        "target entity binding is unresolved",
+        "the accessible source is insufficient to resolve centrality or polarity",
+        "a strong-looking term has an unresolved alternate sense"
+      ],
+      "skip_gate": [
+        "all matches are apparatus, consumable, substrate, container, cited, negated, or future-work mentions",
+        "the source is sufficiently complete and the studied target is outside this adapter scope"
+      ],
+      "co_load_suggestions": [
+        "materials-processing",
+        "thermal-analysis",
+        "mechanical-testing",
+        "spectroscopy",
+        "composition-particle-surface"
+      ],
+      "reason_codes": {
+        "POL-LOAD-TARGET": "Target-bound method or result evidence satisfies the load gate.",
+        "POL-CANDIDATE-UNRESOLVED": "Domain possibility exists but binding, polarity, or centrality is unresolved.",
+        "POL-SKIP-EXCLUDED": "All matched occurrences are explained by exclusion context."
+      }
+    },
+    "ceramics-glass-cement": {
+      "ruleset_version": "2.0.0",
+      "canonical_label_zh": "陶瓷、玻璃与胶凝材料",
+      "canonical_label_en": "Ceramics, glass, and cementitious materials",
+      "signals": [
+        {
+          "signal_id": "cer-inorganic-product",
+          "concept": "target inorganic nonmetallic product",
+          "strength": "strong",
+          "terms_en": [
+            "advanced ceramic",
+            "glass-ceramic",
+            "refractory",
+            "cement paste",
+            "mortar",
+            "concrete"
+          ],
+          "terms_zh": [
+            "先进陶瓷",
+            "玻璃陶瓷",
+            "耐火材料",
+            "水泥浆体",
+            "砂浆",
+            "混凝土"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "cer-identity"
+        },
+        {
+          "signal_id": "cer-forming-firing-curing",
+          "concept": "ceramic, glass, or cement process",
+          "strength": "strong",
+          "terms_en": [
+            "powder pressing",
+            "sintering",
+            "glass melting",
+            "annealing point",
+            "cement hydration",
+            "curing age"
+          ],
+          "terms_zh": [
+            "粉体压制",
+            "烧结",
+            "玻璃熔制",
+            "退火点",
+            "水泥水化",
+            "养护龄期"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "cer-process"
+        },
+        {
+          "signal_id": "cer-state",
+          "concept": "inorganic microstructure or state",
+          "strength": "supporting",
+          "terms_en": [
+            "green body",
+            "fired body",
+            "vitreous phase",
+            "clinker phase",
+            "water-cement ratio"
+          ],
+          "terms_zh": [
+            "生坯",
+            "烧结体",
+            "玻璃相",
+            "熟料相",
+            "水灰比"
+          ],
+          "abbreviations": [
+            "w/c",
+            "w/b"
+          ],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "cer-state"
+        },
+        {
+          "signal_id": "cer-generic",
+          "concept": "generic ceramic vocabulary",
+          "strength": "weak",
+          "terms_en": [
+            "ceramic",
+            "glass",
+            "cement",
+            "oxide",
+            "carbide",
+            "nitride",
+            "pellet"
+          ],
+          "terms_zh": [
+            "陶瓷",
+            "玻璃",
+            "水泥",
+            "氧化物",
+            "碳化物",
+            "氮化物",
+            "陶瓷片"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "cer-generic"
+        },
+        {
+          "signal_id": "cer-apparatus",
+          "concept": "incidental inorganic component",
+          "strength": "exclusion",
+          "terms_en": [
+            "alumina crucible",
+            "glass slide",
+            "ceramic holder",
+            "quartz window"
+          ],
+          "terms_zh": [
+            "氧化铝坩埚",
+            "玻璃载片",
+            "陶瓷样品架",
+            "石英窗口"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "apparatus",
+            "container",
+            "substrate",
+            "sample-mounting"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": false,
+          "independence_group": "cer-exclusion"
+        }
+      ],
+      "ambiguous_terms": [
+        {
+          "term": "glass",
+          "possible_senses": [
+            "target amorphous material",
+            "glass substrate or window",
+            "glass fiber reinforcement"
+          ],
+          "resolution_rule": "Resolve product role and whether glass-specific composition, process, state, or property is studied."
+        },
+        {
+          "term": "cement",
+          "possible_senses": [
+            "hydraulic binder",
+            "dental cement",
+            "adhesive cement",
+            "verb"
+          ],
+          "resolution_rule": "Require a material entity and application-consistent evidence."
+        }
+      ],
+      "load_gate": {
+        "all_of": [
+          "source identity is resolved",
+          "at least one target entity is resolved",
+          "at least one method-level or result-level signal is bound to the target",
+          "all positive evidence is not fully explained by exclusion context"
+        ],
+        "any_of": [
+          "target ceramic/glass/cement identity plus batch, forming, thermal history, curing, structure, or property evidence",
+          "a domain-specific state such as green body, glass network, clinker/hydrate, or refractory is a study object"
+        ],
+        "minimum_independent_groups": 1
+      },
+      "candidate_gate": [
+        "only weak or supporting vocabulary is available",
+        "target entity binding is unresolved",
+        "the accessible source is insufficient to resolve centrality or polarity",
+        "a strong-looking term has an unresolved alternate sense"
+      ],
+      "skip_gate": [
+        "all matches are apparatus, consumable, substrate, container, cited, negated, or future-work mentions",
+        "the source is sufficiently complete and the studied target is outside this adapter scope"
+      ],
+      "co_load_suggestions": [
+        "materials-processing",
+        "thermal-analysis",
+        "mechanical-testing",
+        "diffraction-scattering",
+        "electron-microscopy-microanalysis"
+      ],
+      "reason_codes": {
+        "CER-LOAD-TARGET": "Target-bound method or result evidence satisfies the load gate.",
+        "CER-CANDIDATE-UNRESOLVED": "Domain possibility exists but binding, polarity, or centrality is unresolved.",
+        "CER-SKIP-EXCLUDED": "All matched occurrences are explained by exclusion context."
+      }
+    },
+    "liquid-materials": {
+      "ruleset_version": "2.0.0",
+      "canonical_label_zh": "液体材料",
+      "canonical_label_en": "Liquid materials",
+      "signals": [
+        {
+          "signal_id": "liq-composition",
+          "concept": "target liquid composition",
+          "strength": "strong",
+          "terms_en": [
+            "ionic liquid",
+            "molten salt",
+            "liquid metal",
+            "mixed solvent",
+            "electrolyte formulation"
+          ],
+          "terms_zh": [
+            "离子液体",
+            "熔盐",
+            "液态金属",
+            "混合溶剂",
+            "电解液配方"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "liq-composition"
+        },
+        {
+          "signal_id": "liq-state-property",
+          "concept": "liquid state or transport property",
+          "strength": "strong",
+          "terms_en": [
+            "liquid-liquid equilibrium",
+            "viscosity",
+            "rheology",
+            "surface tension",
+            "vapor pressure"
+          ],
+          "terms_zh": [
+            "液液平衡",
+            "黏度",
+            "流变",
+            "表面张力",
+            "蒸气压"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "liq-state"
+        },
+        {
+          "signal_id": "liq-dispersion",
+          "concept": "dispersion or slurry state",
+          "strength": "supporting",
+          "terms_en": [
+            "dispersion stability",
+            "slurry",
+            "sedimentation",
+            "zeta potential"
+          ],
+          "terms_zh": [
+            "分散稳定性",
+            "浆料",
+            "沉降",
+            "Zeta 电位"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "liq-dispersion"
+        },
+        {
+          "signal_id": "liq-generic",
+          "concept": "generic liquid vocabulary",
+          "strength": "weak",
+          "terms_en": [
+            "solution",
+            "solvent",
+            "liquid",
+            "electrolyte",
+            "melt"
+          ],
+          "terms_zh": [
+            "溶液",
+            "溶剂",
+            "液体",
+            "电解液",
+            "熔体"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "liq-generic"
+        },
+        {
+          "signal_id": "liq-incidental-fluid",
+          "concept": "incidental fluid",
+          "strength": "exclusion",
+          "terms_en": [
+            "cleaning solvent",
+            "water bath",
+            "pressure medium",
+            "carrier liquid",
+            "immersion oil",
+            "electrochemical test electrolyte not studied"
+          ],
+          "terms_zh": [
+            "清洗溶剂",
+            "水浴",
+            "传压介质",
+            "载液",
+            "浸油",
+            "仅作测试环境而未研究的电解液"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "cleaning",
+            "apparatus",
+            "environment",
+            "sample-preparation-only"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": false,
+          "independence_group": "liq-exclusion"
+        }
+      ],
+      "ambiguous_terms": [
+        {
+          "term": "solution",
+          "possible_senses": [
+            "target formulated liquid",
+            "temporary preparation medium",
+            "mathematical solution"
+          ],
+          "resolution_rule": "Require a liquid entity with composition, state, process, or property evidence."
+        },
+        {
+          "term": "electrolyte",
+          "possible_senses": [
+            "target liquid material",
+            "battery component",
+            "electrochemical environment",
+            "solid electrolyte"
+          ],
+          "resolution_rule": "Route liquid form here and co-load application/measurement adapters as appropriate; solid electrolytes do not load this adapter."
+        }
+      ],
+      "load_gate": {
+        "all_of": [
+          "source identity is resolved",
+          "at least one target entity is resolved",
+          "at least one method-level or result-level signal is bound to the target",
+          "all positive evidence is not fully explained by exclusion context"
+        ],
+        "any_of": [
+          "target liquid formulation or phase state is explicitly resolved",
+          "a target-bound liquid thermophysical, transport, interfacial, or stability result is reported"
+        ],
+        "minimum_independent_groups": 1
+      },
+      "candidate_gate": [
+        "only weak or supporting vocabulary is available",
+        "target entity binding is unresolved",
+        "the accessible source is insufficient to resolve centrality or polarity",
+        "a strong-looking term has an unresolved alternate sense"
+      ],
+      "skip_gate": [
+        "all matches are apparatus, consumable, substrate, container, cited, negated, or future-work mentions",
+        "the source is sufficiently complete and the studied target is outside this adapter scope"
+      ],
+      "co_load_suggestions": [
+        "battery",
+        "electrochemical-testing",
+        "composition-particle-surface",
+        "thermal-analysis",
+        "polymers"
+      ],
+      "reason_codes": {
+        "LIQ-LOAD-TARGET": "Target-bound method or result evidence satisfies the load gate.",
+        "LIQ-CANDIDATE-UNRESOLVED": "Domain possibility exists but binding, polarity, or centrality is unresolved.",
+        "LIQ-SKIP-EXCLUDED": "All matched occurrences are explained by exclusion context."
+      }
+    },
+    "two-dimensional-materials": {
+      "ruleset_version": "2.0.0",
+      "canonical_label_zh": "二维材料",
+      "canonical_label_en": "Two-dimensional materials",
+      "signals": [
+        {
+          "signal_id": "twod-layer-count",
+          "concept": "defined one-to-few-layer material",
+          "strength": "strong",
+          "terms_en": [
+            "monolayer",
+            "bilayer",
+            "few-layer",
+            "single-layer graphene",
+            "two-dimensional material"
+          ],
+          "terms_zh": [
+            "单层",
+            "双层",
+            "少层",
+            "单层石墨烯",
+            "二维材料"
+          ],
+          "abbreviations": [
+            "1LG",
+            "2LG",
+            "FLG",
+            "2D"
+          ],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "twod-identity"
+        },
+        {
+          "signal_id": "twod-production-stack",
+          "concept": "2D production or stacking",
+          "strength": "strong",
+          "terms_en": [
+            "mechanical exfoliation",
+            "liquid-phase exfoliation",
+            "layer transfer",
+            "van der Waals heterostructure",
+            "twist angle"
+          ],
+          "terms_zh": [
+            "机械剥离",
+            "液相剥离",
+            "层转移",
+            "范德华异质结构",
+            "扭转角"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "twod-production"
+        },
+        {
+          "signal_id": "twod-dimension-evidence",
+          "concept": "thickness or layer-resolved evidence",
+          "strength": "supporting",
+          "terms_en": [
+            "layer number",
+            "flake thickness",
+            "Raman layer identification",
+            "atomic layer"
+          ],
+          "terms_zh": [
+            "层数",
+            "片层厚度",
+            "拉曼层数判定",
+            "原子层"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "twod-dimension"
+        },
+        {
+          "signal_id": "twod-generic",
+          "concept": "generic dimensional vocabulary",
+          "strength": "weak",
+          "terms_en": [
+            "2D",
+            "layered",
+            "nanosheet",
+            "flake",
+            "ultrathin"
+          ],
+          "terms_zh": [
+            "二维",
+            "层状",
+            "纳米片",
+            "薄片",
+            "超薄"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "twod-generic"
+        },
+        {
+          "signal_id": "twod-false-sense",
+          "concept": "non-material two-dimensional use",
+          "strength": "exclusion",
+          "terms_en": [
+            "two-dimensional plot",
+            "2D image",
+            "two-dimensional simulation",
+            "2D detector",
+            "bulk layered crystal only"
+          ],
+          "terms_zh": [
+            "二维图",
+            "二维图像",
+            "二维模拟",
+            "二维探测器",
+            "仅块体层状晶体"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "data-visualization",
+            "simulation-dimensionality",
+            "instrument",
+            "bulk-material"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": false,
+          "independence_group": "twod-exclusion"
+        }
+      ],
+      "ambiguous_terms": [
+        {
+          "term": "2D",
+          "possible_senses": [
+            "two-dimensional material",
+            "plot or image dimensionality",
+            "simulation dimensionality",
+            "detector geometry"
+          ],
+          "resolution_rule": "Require a physical sheet/flake/layer entity or explicit material definition."
+        },
+        {
+          "term": "graphene",
+          "possible_senses": [
+            "single-layer graphene",
+            "few-layer graphene",
+            "graphene oxide",
+            "graphitic additive"
+          ],
+          "resolution_rule": "Preserve the source term and layer evidence; do not normalize all graphene-related materials to graphene."
+        }
+      ],
+      "load_gate": {
+        "all_of": [
+          "source identity is resolved",
+          "at least one target entity is resolved",
+          "at least one method-level or result-level signal is bound to the target",
+          "all positive evidence is not fully explained by exclusion context"
+        ],
+        "any_of": [
+          "a target physical sheet, flake, layer, heterostructure, or 2D device entity is resolved with layer/form evidence",
+          "production or layer-dependent properties are central results"
+        ],
+        "minimum_independent_groups": 1
+      },
+      "candidate_gate": [
+        "only weak or supporting vocabulary is available",
+        "target entity binding is unresolved",
+        "the accessible source is insufficient to resolve centrality or polarity",
+        "a strong-looking term has an unresolved alternate sense"
+      ],
+      "skip_gate": [
+        "all matches are apparatus, consumable, substrate, container, cited, negated, or future-work mentions",
+        "the source is sufficiently complete and the studied target is outside this adapter scope"
+      ],
+      "co_load_suggestions": [
+        "quantum-materials",
+        "materials-processing",
+        "electron-microscopy-microanalysis",
+        "spectroscopy",
+        "electrical-magnetic-transport"
+      ],
+      "reason_codes": {
+        "TWOD-LOAD-TARGET": "Target-bound method or result evidence satisfies the load gate.",
+        "TWOD-CANDIDATE-UNRESOLVED": "Domain possibility exists but binding, polarity, or centrality is unresolved.",
+        "TWOD-SKIP-EXCLUDED": "All matched occurrences are explained by exclusion context."
+      }
+    },
+    "quantum-materials": {
+      "ruleset_version": "2.0.0",
+      "canonical_label_zh": "量子材料",
+      "canonical_label_en": "Quantum materials",
+      "signals": [
+        {
+          "signal_id": "qmat-emergent-phase",
+          "concept": "emergent quantum phase",
+          "strength": "strong",
+          "terms_en": [
+            "quantum spin liquid",
+            "heavy fermion",
+            "Mott insulator",
+            "quantum critical point",
+            "Kondo lattice"
+          ],
+          "terms_zh": [
+            "量子自旋液体",
+            "重费米子",
+            "莫特绝缘体",
+            "量子临界点",
+            "近藤晶格"
+          ],
+          "abbreviations": [
+            "QSL",
+            "QCP"
+          ],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "qmat-phase"
+        },
+        {
+          "signal_id": "qmat-topological",
+          "concept": "topological electronic phase",
+          "strength": "strong",
+          "terms_en": [
+            "topological insulator",
+            "Weyl semimetal",
+            "Dirac semimetal",
+            "quantum anomalous Hall",
+            "quantum spin Hall"
+          ],
+          "terms_zh": [
+            "拓扑绝缘体",
+            "外尔半金属",
+            "狄拉克半金属",
+            "量子反常霍尔",
+            "量子自旋霍尔"
+          ],
+          "abbreviations": [
+            "QAHE",
+            "QAH",
+            "QSH"
+          ],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "qmat-topology"
+        },
+        {
+          "signal_id": "qmat-quantized-transport",
+          "concept": "quantized electronic transport state",
+          "strength": "strong",
+          "terms_en": [
+            "quantum Hall effect",
+            "Shubnikov-de-Haas oscillation",
+            "Landau level quantization",
+            "fractional quantum Hall"
+          ],
+          "terms_zh": [
+            "量子霍尔效应",
+            "舒勃尼科夫-德哈斯振荡",
+            "朗道能级量子化",
+            "分数量子霍尔"
+          ],
+          "abbreviations": [
+            "QHE",
+            "SdH",
+            "FQHE"
+          ],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "qmat-quantized-transport"
+        },
+        {
+          "signal_id": "qmat-signature",
+          "concept": "quantum-state signature",
+          "strength": "supporting",
+          "terms_en": [
+            "topological invariant",
+            "Berry phase",
+            "edge state",
+            "surface state",
+            "non-Fermi liquid",
+            "moiré correlated state"
+          ],
+          "terms_zh": [
+            "拓扑不变量",
+            "贝里相位",
+            "边缘态",
+            "表面态",
+            "非费米液体",
+            "莫尔关联态"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "qmat-signature"
+        },
+        {
+          "signal_id": "qmat-generic",
+          "concept": "generic quantum vocabulary",
+          "strength": "weak",
+          "terms_en": [
+            "quantum",
+            "spin",
+            "band inversion",
+            "low-temperature anomaly",
+            "correlated"
+          ],
+          "terms_zh": [
+            "量子",
+            "自旋",
+            "能带反转",
+            "低温异常",
+            "关联"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "qmat-generic"
+        },
+        {
+          "signal_id": "qmat-other-quantum",
+          "concept": "non-material quantum use",
+          "strength": "exclusion",
+          "terms_en": [
+            "quantum chemistry method",
+            "quantum efficiency",
+            "quantum yield",
+            "quantum computer",
+            "instrument quantum limit"
+          ],
+          "terms_zh": [
+            "量子化学方法",
+            "量子效率",
+            "量子产率",
+            "量子计算机",
+            "仪器量子极限"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "method-name",
+            "device-metric",
+            "photochemistry",
+            "instrument"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": false,
+          "independence_group": "qmat-exclusion"
+        }
+      ],
+      "ambiguous_terms": [
+        {
+          "term": "quantum",
+          "possible_senses": [
+            "emergent material state",
+            "calculation method",
+            "optical efficiency/yield",
+            "instrument principle"
+          ],
+          "resolution_rule": "The word alone is weak; require a named phase/signature and target-bound evidence."
+        },
+        {
+          "term": "topological",
+          "possible_senses": [
+            "electronic topology",
+            "geometric morphology",
+            "network topology"
+          ],
+          "resolution_rule": "Require an electronic/magnetic invariant, state, or corresponding probe."
+        }
+      ],
+      "load_gate": {
+        "all_of": [
+          "source identity is resolved",
+          "at least one target entity is resolved",
+          "at least one method-level or result-level signal is bound to the target",
+          "all positive evidence is not fully explained by exclusion context"
+        ],
+        "any_of": [
+          "a named quantum phase or topological class is a target-bound result with measurement or calculation evidence",
+          "multiple probes or a probe-plus-model constrain an ordered state, excitation, topology, coherence, or phase diagram"
+        ],
+        "minimum_independent_groups": 1
+      },
+      "candidate_gate": [
+        "only weak or supporting vocabulary is available",
+        "target entity binding is unresolved",
+        "the accessible source is insufficient to resolve centrality or polarity",
+        "a strong-looking term has an unresolved alternate sense"
+      ],
+      "skip_gate": [
+        "all matches are apparatus, consumable, substrate, container, cited, negated, or future-work mentions",
+        "the source is sufficiently complete and the studied target is outside this adapter scope"
+      ],
+      "co_load_suggestions": [
+        "superconductivity",
+        "two-dimensional-materials",
+        "electrical-magnetic-transport",
+        "spectroscopy",
+        "materials-simulation"
+      ],
+      "reason_codes": {
+        "QMAT-LOAD-TARGET": "Target-bound method or result evidence satisfies the load gate.",
+        "QMAT-CANDIDATE-UNRESOLVED": "Domain possibility exists but binding, polarity, or centrality is unresolved.",
+        "QMAT-SKIP-EXCLUDED": "All matched occurrences are explained by exclusion context."
+      }
+    },
+    "materials-processing": {
+      "ruleset_version": "2.0.0",
+      "canonical_label_zh": "材料加工",
+      "canonical_label_en": "Materials processing",
+      "signals": [
+        {
+          "signal_id": "proc-parameterized-step",
+          "concept": "parameterized transformation step",
+          "strength": "strong",
+          "terms_en": [
+            "heat treatment schedule",
+            "solution treatment",
+            "quenching",
+            "hot rolling",
+            "cold working",
+            "sintering cycle",
+            "spark plasma sintering",
+            "slurry mixing",
+            "electrode coating",
+            "calendering"
+          ],
+          "terms_zh": [
+            "热处理制度",
+            "固溶处理",
+            "淬火",
+            "热轧",
+            "冷加工",
+            "烧结制度",
+            "放电等离子烧结",
+            "浆料混合",
+            "电极涂布",
+            "辊压"
+          ],
+          "abbreviations": [
+            "SPS"
+          ],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "proc-step"
+        },
+        {
+          "signal_id": "proc-additive-or-joining",
+          "concept": "additive manufacturing or joining process",
+          "strength": "strong",
+          "terms_en": [
+            "additive manufacturing",
+            "micro-scale additive manufacturing",
+            "3D printing",
+            "powder bed fusion",
+            "directed energy deposition",
+            "material extrusion",
+            "welding",
+            "brazing",
+            "diffusion bonding"
+          ],
+          "terms_zh": [
+            "增材制造",
+            "微尺度增材制造",
+            "三维打印",
+            "粉末床熔融",
+            "定向能量沉积",
+            "材料挤出",
+            "焊接",
+            "钎焊",
+            "扩散连接"
+          ],
+          "abbreviations": [
+            "PBF-LB",
+            "DED",
+            "AM"
+          ],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "proc-special"
+        },
+        {
+          "signal_id": "proc-lineage",
+          "concept": "input-output process lineage",
+          "strength": "supporting",
+          "terms_en": [
+            "process route",
+            "process chain",
+            "feedstock to specimen",
+            "post-processing",
+            "build orientation"
+          ],
+          "terms_zh": [
+            "工艺路线",
+            "工艺链",
+            "原料到试样",
+            "后处理",
+            "构建方向"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "proc-lineage"
+        },
+        {
+          "signal_id": "proc-generic",
+          "concept": "generic preparation vocabulary",
+          "strength": "weak",
+          "terms_en": [
+            "prepared",
+            "fabricated",
+            "treated",
+            "processed",
+            "synthesized"
+          ],
+          "terms_zh": [
+            "制备",
+            "制造",
+            "处理",
+            "加工",
+            "合成"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "proc-generic"
+        },
+        {
+          "signal_id": "proc-not-executed",
+          "concept": "non-executed or inaccessible process",
+          "strength": "exclusion",
+          "terms_en": [
+            "as received",
+            "procedure reported elsewhere",
+            "future processing",
+            "manufacturer proprietary process"
+          ],
+          "terms_zh": [
+            "原样使用",
+            "方法见其他文献",
+            "未来加工",
+            "厂家保密工艺"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "methods",
+            "cited-procedure",
+            "future-work",
+            "supplier-description"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": false,
+          "independence_group": "proc-exclusion"
+        }
+      ],
+      "ambiguous_terms": [
+        {
+          "term": "annealing",
+          "possible_senses": [
+            "material transformation process",
+            "instrument thermal equilibration",
+            "data-algorithm annealing"
+          ],
+          "resolution_rule": "Require a physical material input/output and actual temperature-time history."
+        },
+        {
+          "term": "fabricated",
+          "possible_senses": [
+            "actual documented process",
+            "unsupported summary verb"
+          ],
+          "resolution_rule": "Without steps, parameters, or an accessible referenced procedure, remain candidate."
+        }
+      ],
+      "load_gate": {
+        "all_of": [
+          "source identity is resolved",
+          "at least one target entity is resolved",
+          "at least one method-level or result-level signal is bound to the target",
+          "all positive evidence is not fully explained by exclusion context"
+        ],
+        "any_of": [
+          "an ordered target-material process with at least one reported parameter and input/output entity is present",
+          "a process variable or lineage is required to interpret a target result"
+        ],
+        "minimum_independent_groups": 1
+      },
+      "candidate_gate": [
+        "only weak or supporting vocabulary is available",
+        "target entity binding is unresolved",
+        "the accessible source is insufficient to resolve centrality or polarity",
+        "a strong-looking term has an unresolved alternate sense"
+      ],
+      "skip_gate": [
+        "all matches are apparatus, consumable, substrate, container, cited, negated, or future-work mentions",
+        "the source is sufficiently complete and the studied target is outside this adapter scope"
+      ],
+      "co_load_suggestions": [
+        "metallic-materials",
+        "polymers",
+        "ceramics-glass-cement",
+        "two-dimensional-materials",
+        "materials-simulation"
+      ],
+      "reason_codes": {
+        "PROC-LOAD-TARGET": "Target-bound method or result evidence satisfies the load gate.",
+        "PROC-CANDIDATE-UNRESOLVED": "Domain possibility exists but binding, polarity, or centrality is unresolved.",
+        "PROC-SKIP-EXCLUDED": "All matched occurrences are explained by exclusion context."
+      }
+    },
+    "battery": {
+      "ruleset_version": "2.0.0",
+      "canonical_label_zh": "电池",
+      "canonical_label_en": "Battery",
+      "signals": [
+        {
+          "signal_id": "bat-cell-hierarchy",
+          "concept": "battery cell or component hierarchy",
+          "strength": "strong",
+          "terms_en": [
+            "battery cell",
+            "battery electrode",
+            "lithium-ion battery",
+            "metal-ion battery",
+            "half-cell",
+            "full cell",
+            "coin cell",
+            "pouch cell",
+            "positive electrode",
+            "negative electrode",
+            "separator"
+          ],
+          "terms_zh": [
+            "电池单体",
+            "电池电极",
+            "锂离子电池",
+            "金属离子电池",
+            "半电池",
+            "全电池",
+            "扣式电池",
+            "软包电池",
+            "正极",
+            "负极",
+            "隔膜"
+          ],
+          "abbreviations": [
+            "LIB"
+          ],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "bat-cell"
+        },
+        {
+          "signal_id": "bat-cycling",
+          "concept": "battery cycling protocol and result",
+          "strength": "strong",
+          "terms_en": [
+            "galvanostatic charge-discharge",
+            "cycle life",
+            "capacity retention",
+            "C-rate",
+            "state of charge",
+            "state of health"
+          ],
+          "terms_zh": [
+            "恒流充放电",
+            "循环寿命",
+            "容量保持率",
+            "倍率",
+            "荷电状态",
+            "健康状态"
+          ],
+          "abbreviations": [
+            "GCD",
+            "SOC",
+            "SOH"
+          ],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "bat-cycling"
+        },
+        {
+          "signal_id": "bat-practical-context",
+          "concept": "battery balancing or inactive-material context",
+          "strength": "supporting",
+          "terms_en": [
+            "N/P ratio",
+            "electrolyte-to-capacity ratio",
+            "areal loading",
+            "formation cycle",
+            "calendar ageing"
+          ],
+          "terms_zh": [
+            "负正极容量比",
+            "电解液容量比",
+            "面载量",
+            "化成循环",
+            "日历老化"
+          ],
+          "abbreviations": [
+            "E/C"
+          ],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "bat-context"
+        },
+        {
+          "signal_id": "bat-generic",
+          "concept": "generic battery-component vocabulary",
+          "strength": "weak",
+          "terms_en": [
+            "cathode",
+            "anode",
+            "electrolyte",
+            "electrode",
+            "capacity"
+          ],
+          "terms_zh": [
+            "正极",
+            "负极",
+            "电解液",
+            "电极",
+            "容量"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "bat-generic"
+        },
+        {
+          "signal_id": "bat-other-use",
+          "concept": "non-target battery mention",
+          "strength": "exclusion",
+          "terms_en": [
+            "battery powered",
+            "battery of tests",
+            "cited battery electrode",
+            "backup battery"
+          ],
+          "terms_zh": [
+            "电池供电",
+            "一系列测试",
+            "引用的电池电极",
+            "备用电池"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "apparatus",
+            "figurative-language",
+            "cited-comparison"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": false,
+          "independence_group": "bat-exclusion"
+        }
+      ],
+      "ambiguous_terms": [
+        {
+          "term": "capacity",
+          "possible_senses": [
+            "battery charge capacity",
+            "adsorption capacity",
+            "heat capacity",
+            "production capacity"
+          ],
+          "resolution_rule": "Require charge/discharge context, units, electrode/cell basis, and cycle index."
+        },
+        {
+          "term": "anode/cathode",
+          "possible_senses": [
+            "battery electrode",
+            "electrochemical cell electrode",
+            "vacuum-tube/electronic component"
+          ],
+          "resolution_rule": "Require a rechargeable/primary cell hierarchy or battery objective."
+        }
+      ],
+      "load_gate": {
+        "all_of": [
+          "source identity is resolved",
+          "at least one target entity is resolved",
+          "at least one method-level or result-level signal is bound to the target",
+          "all positive evidence is not fully explained by exclusion context"
+        ],
+        "any_of": [
+          "a target battery cell/component hierarchy and a cycling, assembly, performance, ageing, or safety result are bound",
+          "cell configuration plus battery-specific protocol is central to the source"
+        ],
+        "minimum_independent_groups": 1
+      },
+      "candidate_gate": [
+        "only weak or supporting vocabulary is available",
+        "target entity binding is unresolved",
+        "the accessible source is insufficient to resolve centrality or polarity",
+        "a strong-looking term has an unresolved alternate sense"
+      ],
+      "skip_gate": [
+        "all matches are apparatus, consumable, substrate, container, cited, negated, or future-work mentions",
+        "the source is sufficiently complete and the studied target is outside this adapter scope"
+      ],
+      "co_load_suggestions": [
+        "electrochemical-testing",
+        "liquid-materials",
+        "polymers",
+        "materials-processing",
+        "thermal-analysis"
+      ],
+      "reason_codes": {
+        "BAT-LOAD-TARGET": "Target-bound method or result evidence satisfies the load gate.",
+        "BAT-CANDIDATE-UNRESOLVED": "Domain possibility exists but binding, polarity, or centrality is unresolved.",
+        "BAT-SKIP-EXCLUDED": "All matched occurrences are explained by exclusion context."
+      }
+    },
+    "photovoltaic-device": {
+      "ruleset_version": "2.0.0",
+      "canonical_label_zh": "光伏器件",
+      "canonical_label_en": "Photovoltaic device",
+      "signals": [
+        {
+          "signal_id": "pv-device",
+          "concept": "photovoltaic cell or module",
+          "strength": "strong",
+          "terms_en": [
+            "solar cell",
+            "photovoltaic device",
+            "single-junction cell",
+            "tandem solar cell",
+            "PV module"
+          ],
+          "terms_zh": [
+            "太阳电池",
+            "光伏器件",
+            "单结电池",
+            "叠层太阳电池",
+            "光伏组件"
+          ],
+          "abbreviations": [
+            "PV"
+          ],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "pv-device"
+        },
+        {
+          "signal_id": "pv-jv-performance",
+          "concept": "illuminated photovoltaic performance",
+          "strength": "strong",
+          "terms_en": [
+            "current-voltage under illumination",
+            "power conversion efficiency",
+            "open-circuit voltage",
+            "short-circuit current density",
+            "fill factor"
+          ],
+          "terms_zh": [
+            "光照电流电压",
+            "光电转换效率",
+            "开路电压",
+            "短路电流密度",
+            "填充因子"
+          ],
+          "abbreviations": [
+            "PCE",
+            "Voc",
+            "Jsc",
+            "FF"
+          ],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "pv-performance"
+        },
+        {
+          "signal_id": "pv-calibration-stability",
+          "concept": "PV calibration or stability protocol",
+          "strength": "supporting",
+          "terms_en": [
+            "AM1.5G",
+            "solar simulator class",
+            "stabilized power output",
+            "external quantum efficiency",
+            "maximum power point tracking"
+          ],
+          "terms_zh": [
+            "太阳模拟器等级",
+            "稳定功率输出",
+            "外量子效率",
+            "最大功率点跟踪"
+          ],
+          "abbreviations": [
+            "EQE",
+            "MPPT"
+          ],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "pv-protocol"
+        },
+        {
+          "signal_id": "pv-generic",
+          "concept": "generic photovoltaic vocabulary",
+          "strength": "weak",
+          "terms_en": [
+            "photovoltaic",
+            "solar absorber",
+            "photoactive layer",
+            "solar energy"
+          ],
+          "terms_zh": [
+            "光伏",
+            "太阳能吸收层",
+            "光活性层",
+            "太阳能"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "pv-generic"
+        },
+        {
+          "signal_id": "pv-other-photo",
+          "concept": "non-PV optical or power context",
+          "strength": "exclusion",
+          "terms_en": [
+            "photocatalysis",
+            "photoelectrochemical fuel production",
+            "photoanode for water oxidation",
+            "photodetector",
+            "quantum yield",
+            "solar panel powers the experiment",
+            "future PV application"
+          ],
+          "terms_zh": [
+            "光催化",
+            "光电化学燃料制备",
+            "用于水氧化的光阳极",
+            "光探测器",
+            "量子产率",
+            "太阳能板供电",
+            "未来光伏应用"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "other-application",
+            "apparatus",
+            "future-work"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": false,
+          "independence_group": "pv-exclusion"
+        }
+      ],
+      "ambiguous_terms": [
+        {
+          "term": "efficiency",
+          "possible_senses": [
+            "PV power conversion efficiency",
+            "quantum efficiency",
+            "energy efficiency of another device"
+          ],
+          "resolution_rule": "Require PV device stack, illumination, area basis, and the named metric."
+        },
+        {
+          "term": "solar",
+          "possible_senses": [
+            "photovoltaic device",
+            "solar-thermal use",
+            "photocatalysis",
+            "illumination source"
+          ],
+          "resolution_rule": "Require electrical power generation by a resolved device."
+        }
+      ],
+      "load_gate": {
+        "all_of": [
+          "source identity is resolved",
+          "at least one target entity is resolved",
+          "at least one method-level or result-level signal is bound to the target",
+          "all positive evidence is not fully explained by exclusion context"
+        ],
+        "any_of": [
+          "a resolved PV device stack and illuminated electrical performance are reported",
+          "PV calibration, stabilized output, or device stability is a central target result"
+        ],
+        "minimum_independent_groups": 1
+      },
+      "candidate_gate": [
+        "only weak or supporting vocabulary is available",
+        "target entity binding is unresolved",
+        "the accessible source is insufficient to resolve centrality or polarity",
+        "a strong-looking term has an unresolved alternate sense"
+      ],
+      "skip_gate": [
+        "all matches are apparatus, consumable, substrate, container, cited, negated, or future-work mentions",
+        "the source is sufficiently complete and the studied target is outside this adapter scope"
+      ],
+      "co_load_suggestions": [
+        "spectroscopy",
+        "electrical-magnetic-transport",
+        "materials-processing",
+        "two-dimensional-materials"
+      ],
+      "reason_codes": {
+        "PV-LOAD-TARGET": "Target-bound method or result evidence satisfies the load gate.",
+        "PV-CANDIDATE-UNRESOLVED": "Domain possibility exists but binding, polarity, or centrality is unresolved.",
+        "PV-SKIP-EXCLUDED": "All matched occurrences are explained by exclusion context."
+      }
+    },
+    "electrochemical-energy": {
+      "ruleset_version": "2.0.0",
+      "canonical_label_zh": "电化学能源转换",
+      "canonical_label_en": "Electrochemical energy conversion",
+      "signals": [
+        {
+          "signal_id": "ece-reaction",
+          "concept": "energy-conversion electrochemical reaction",
+          "strength": "strong",
+          "terms_en": [
+            "hydrogen evolution reaction",
+            "oxygen evolution reaction",
+            "oxygen reduction reaction",
+            "carbon dioxide reduction",
+            "nitrogen reduction reaction"
+          ],
+          "terms_zh": [
+            "析氢反应",
+            "析氧反应",
+            "氧还原反应",
+            "二氧化碳还原",
+            "氮还原反应"
+          ],
+          "abbreviations": [
+            "HER",
+            "OER",
+            "ORR",
+            "CO2RR",
+            "NRR"
+          ],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "ece-reaction"
+        },
+        {
+          "signal_id": "ece-reactor",
+          "concept": "electrolyzer or fuel-cell reactor",
+          "strength": "strong",
+          "terms_en": [
+            "water electrolyzer",
+            "fuel cell",
+            "membrane electrode assembly",
+            "flow cell",
+            "gas diffusion electrode"
+          ],
+          "terms_zh": [
+            "水电解槽",
+            "燃料电池",
+            "膜电极组件",
+            "流动电解池",
+            "气体扩散电极"
+          ],
+          "abbreviations": [
+            "MEA",
+            "GDE"
+          ],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "ece-reactor"
+        },
+        {
+          "signal_id": "ece-performance",
+          "concept": "electrocatalytic performance",
+          "strength": "supporting",
+          "terms_en": [
+            "overpotential",
+            "Tafel slope",
+            "Faradaic efficiency",
+            "turnover frequency",
+            "mass activity"
+          ],
+          "terms_zh": [
+            "过电位",
+            "塔菲尔斜率",
+            "法拉第效率",
+            "转换频率",
+            "质量活性"
+          ],
+          "abbreviations": [
+            "FE",
+            "TOF"
+          ],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "ece-performance"
+        },
+        {
+          "signal_id": "ece-generic",
+          "concept": "generic electrocatalysis vocabulary",
+          "strength": "weak",
+          "terms_en": [
+            "electrocatalyst",
+            "electrochemical energy",
+            "catalytic electrode",
+            "activity"
+          ],
+          "terms_zh": [
+            "电催化剂",
+            "电化学能源",
+            "催化电极",
+            "活性"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "ece-generic"
+        },
+        {
+          "signal_id": "ece-other-electrochem",
+          "concept": "non-energy-conversion electrochemical use",
+          "strength": "exclusion",
+          "terms_en": [
+            "battery cycling only",
+            "hydrogen storage only",
+            "electroplating",
+            "corrosion test",
+            "electrochemical cleaning",
+            "electrochemical sensor"
+          ],
+          "terms_zh": [
+            "仅电池循环",
+            "仅储氢",
+            "电镀",
+            "腐蚀测试",
+            "电化学清洗",
+            "电化学传感器"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "other-application",
+            "sample-preparation"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": false,
+          "independence_group": "ece-exclusion"
+        }
+      ],
+      "ambiguous_terms": [
+        {
+          "term": "activity",
+          "possible_senses": [
+            "electrocatalytic rate metric",
+            "chemical activity",
+            "generic performance adjective"
+          ],
+          "resolution_rule": "Require a named reaction, normalization basis, potential scale, and target electrode."
+        },
+        {
+          "term": "fuel cell",
+          "possible_senses": [
+            "target energy device",
+            "commercial power source used as apparatus"
+          ],
+          "resolution_rule": "Require reactor/component/performance evidence for the studied device."
+        }
+      ],
+      "load_gate": {
+        "all_of": [
+          "source identity is resolved",
+          "at least one target entity is resolved",
+          "at least one method-level or result-level signal is bound to the target",
+          "all positive evidence is not fully explained by exclusion context"
+        ],
+        "any_of": [
+          "a named energy-conversion reaction and target catalyst/electrode performance are bound",
+          "a fuel-cell or electrolyzer reactor and its operating result are central"
+        ],
+        "minimum_independent_groups": 1
+      },
+      "candidate_gate": [
+        "only weak or supporting vocabulary is available",
+        "target entity binding is unresolved",
+        "the accessible source is insufficient to resolve centrality or polarity",
+        "a strong-looking term has an unresolved alternate sense"
+      ],
+      "skip_gate": [
+        "all matches are apparatus, consumable, substrate, container, cited, negated, or future-work mentions",
+        "the source is sufficiently complete and the studied target is outside this adapter scope"
+      ],
+      "co_load_suggestions": [
+        "electrochemical-testing",
+        "composition-particle-surface",
+        "liquid-materials",
+        "materials-processing"
+      ],
+      "reason_codes": {
+        "ECE-LOAD-TARGET": "Target-bound method or result evidence satisfies the load gate.",
+        "ECE-CANDIDATE-UNRESOLVED": "Domain possibility exists but binding, polarity, or centrality is unresolved.",
+        "ECE-SKIP-EXCLUDED": "All matched occurrences are explained by exclusion context."
+      }
+    },
+    "hydrogen-storage": {
+      "ruleset_version": "2.0.0",
+      "canonical_label_zh": "储氢材料",
+      "canonical_label_en": "Hydrogen storage",
+      "signals": [
+        {
+          "signal_id": "h2s-storage-material",
+          "concept": "materials-based hydrogen storage",
+          "strength": "strong",
+          "terms_en": [
+            "hydrogen storage material",
+            "hydrogen storage capacity",
+            "metal hydride",
+            "complex hydride",
+            "chemical hydrogen storage",
+            "hydrogen sorbent"
+          ],
+          "terms_zh": [
+            "储氢材料",
+            "储氢容量",
+            "金属氢化物",
+            "复杂氢化物",
+            "化学储氢",
+            "储氢吸附剂"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "h2s-material"
+        },
+        {
+          "signal_id": "h2s-sorption",
+          "concept": "hydrogen sorption measurement",
+          "strength": "strong",
+          "terms_en": [
+            "pressure-composition-temperature isotherm",
+            "hydrogen absorption",
+            "hydrogen desorption",
+            "reversible hydrogen capacity",
+            "van't Hoff analysis"
+          ],
+          "terms_zh": [
+            "压力组成温度等温线",
+            "吸氢",
+            "放氢",
+            "可逆储氢容量",
+            "范特霍夫分析"
+          ],
+          "abbreviations": [
+            "PCT",
+            "PCI"
+          ],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "h2s-sorption"
+        },
+        {
+          "signal_id": "h2s-performance",
+          "concept": "storage performance context",
+          "strength": "supporting",
+          "terms_en": [
+            "gravimetric capacity",
+            "volumetric capacity",
+            "sorption kinetics",
+            "equilibrium pressure",
+            "cycle stability"
+          ],
+          "terms_zh": [
+            "质量储氢容量",
+            "体积储氢容量",
+            "吸放氢动力学",
+            "平衡压力",
+            "循环稳定性"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "h2s-performance"
+        },
+        {
+          "signal_id": "h2s-generic",
+          "concept": "generic hydrogen vocabulary",
+          "strength": "weak",
+          "terms_en": [
+            "hydrogen",
+            "hydride",
+            "adsorption",
+            "desorption",
+            "uptake"
+          ],
+          "terms_zh": [
+            "氢",
+            "氢化物",
+            "吸附",
+            "脱附",
+            "吸收量"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "h2s-generic"
+        },
+        {
+          "signal_id": "h2s-other-hydrogen",
+          "concept": "non-storage hydrogen use",
+          "strength": "exclusion",
+          "terms_en": [
+            "hydrogen carrier gas",
+            "hydrogen evolution catalyst",
+            "hydrogen embrittlement",
+            "hydrogen atmosphere",
+            "storage tank alloy only"
+          ],
+          "terms_zh": [
+            "氢载气",
+            "析氢催化剂",
+            "氢脆",
+            "氢气氛",
+            "仅储罐合金"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "environment",
+            "other-application",
+            "degradation",
+            "apparatus"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": false,
+          "independence_group": "h2s-exclusion"
+        }
+      ],
+      "ambiguous_terms": [
+        {
+          "term": "uptake",
+          "possible_senses": [
+            "hydrogen storage capacity",
+            "generic gas adsorption",
+            "biological uptake"
+          ],
+          "resolution_rule": "Require hydrogen identity, pressure/temperature, capacity basis, and target material."
+        },
+        {
+          "term": "hydride",
+          "possible_senses": [
+            "storage phase",
+            "intermediate reaction product",
+            "hydrogen embrittlement feature"
+          ],
+          "resolution_rule": "Require storage objective or sorption/thermodynamic evidence."
+        }
+      ],
+      "load_gate": {
+        "all_of": [
+          "source identity is resolved",
+          "at least one target entity is resolved",
+          "at least one method-level or result-level signal is bound to the target",
+          "all positive evidence is not fully explained by exclusion context"
+        ],
+        "any_of": [
+          "a target storage material and hydrogen sorption/capacity result are bound",
+          "storage thermodynamics, kinetics, reversibility, or cycling is a central result"
+        ],
+        "minimum_independent_groups": 1
+      },
+      "candidate_gate": [
+        "only weak or supporting vocabulary is available",
+        "target entity binding is unresolved",
+        "the accessible source is insufficient to resolve centrality or polarity",
+        "a strong-looking term has an unresolved alternate sense"
+      ],
+      "skip_gate": [
+        "all matches are apparatus, consumable, substrate, container, cited, negated, or future-work mentions",
+        "the source is sufficiently complete and the studied target is outside this adapter scope"
+      ],
+      "co_load_suggestions": [
+        "composition-particle-surface",
+        "thermal-analysis",
+        "diffraction-scattering",
+        "materials-simulation"
+      ],
+      "reason_codes": {
+        "H2S-LOAD-TARGET": "Target-bound method or result evidence satisfies the load gate.",
+        "H2S-CANDIDATE-UNRESOLVED": "Domain possibility exists but binding, polarity, or centrality is unresolved.",
+        "H2S-SKIP-EXCLUDED": "All matched occurrences are explained by exclusion context."
+      }
+    },
+    "thermoelectric": {
+      "ruleset_version": "2.0.0",
+      "canonical_label_zh": "热电材料与器件",
+      "canonical_label_en": "Thermoelectric materials and devices",
+      "signals": [
+        {
+          "signal_id": "te-zt",
+          "concept": "thermoelectric figure of merit",
+          "strength": "strong",
+          "terms_en": [
+            "thermoelectric figure of merit",
+            "dimensionless figure of merit"
+          ],
+          "terms_zh": [
+            "热电优值",
+            "无量纲热电优值"
+          ],
+          "abbreviations": [
+            "zT"
+          ],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "te-figure"
+        },
+        {
+          "signal_id": "te-coupled-transport",
+          "concept": "coupled thermoelectric transport",
+          "strength": "strong",
+          "terms_en": [
+            "Seebeck coefficient and electrical conductivity",
+            "power factor",
+            "thermal conductivity and Seebeck"
+          ],
+          "terms_zh": [
+            "塞贝克系数与电导率",
+            "功率因子",
+            "热导率与塞贝克系数"
+          ],
+          "abbreviations": [],
+          "symbols": [
+            "S",
+            "sigma",
+            "kappa"
+          ],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "te-transport"
+        },
+        {
+          "signal_id": "te-device",
+          "concept": "thermoelectric device performance",
+          "strength": "supporting",
+          "terms_en": [
+            "thermoelectric module",
+            "thermoelectric leg",
+            "temperature difference power generation",
+            "cooling coefficient of performance"
+          ],
+          "terms_zh": [
+            "热电模块",
+            "热电臂",
+            "温差发电",
+            "制冷性能系数"
+          ],
+          "abbreviations": [
+            "TEG",
+            "TEC",
+            "COP"
+          ],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "te-device"
+        },
+        {
+          "signal_id": "te-generic",
+          "concept": "generic thermoelectric vocabulary",
+          "strength": "weak",
+          "terms_en": [
+            "thermoelectric",
+            "Seebeck",
+            "thermal transport",
+            "electrical transport"
+          ],
+          "terms_zh": [
+            "热电",
+            "塞贝克",
+            "热输运",
+            "电输运"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "te-generic"
+        },
+        {
+          "signal_id": "te-instrument-or-other",
+          "concept": "non-target thermoelectric use",
+          "strength": "exclusion",
+          "terms_en": [
+            "thermocouple temperature sensor",
+            "Peltier cooler used as apparatus",
+            "spin Seebeck only",
+            "single thermal conductivity result"
+          ],
+          "terms_zh": [
+            "热电偶温度传感器",
+            "帕尔贴制冷器作为设备",
+            "仅自旋塞贝克",
+            "单独热导率结果"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "apparatus",
+            "other-phenomenon",
+            "single-property"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": false,
+          "independence_group": "te-exclusion"
+        }
+      ],
+      "ambiguous_terms": [
+        {
+          "term": "Seebeck",
+          "possible_senses": [
+            "thermoelectric material property",
+            "thermocouple principle",
+            "spin Seebeck phenomenon"
+          ],
+          "resolution_rule": "A single mention is supporting only; load when thermoelectric performance or a target thermoelectric state is central."
+        },
+        {
+          "term": "ZT",
+          "possible_senses": [
+            "thermoelectric figure of merit",
+            "unrelated acronym"
+          ],
+          "resolution_rule": "Require the defining transport quantities or an explicit thermoelectric definition."
+        }
+      ],
+      "load_gate": {
+        "all_of": [
+          "source identity is resolved",
+          "at least one target entity is resolved",
+          "at least one method-level or result-level signal is bound to the target",
+          "all positive evidence is not fully explained by exclusion context"
+        ],
+        "any_of": [
+          "zT or power factor is reported with target and temperature context",
+          "at least two coupled transport quantities or a thermoelectric device result are central"
+        ],
+        "minimum_independent_groups": 1
+      },
+      "candidate_gate": [
+        "only weak or supporting vocabulary is available",
+        "target entity binding is unresolved",
+        "the accessible source is insufficient to resolve centrality or polarity",
+        "a strong-looking term has an unresolved alternate sense"
+      ],
+      "skip_gate": [
+        "all matches are apparatus, consumable, substrate, container, cited, negated, or future-work mentions",
+        "the source is sufficiently complete and the studied target is outside this adapter scope"
+      ],
+      "co_load_suggestions": [
+        "electrical-magnetic-transport",
+        "thermal-analysis",
+        "materials-processing",
+        "materials-simulation"
+      ],
+      "reason_codes": {
+        "TE-LOAD-TARGET": "Target-bound method or result evidence satisfies the load gate.",
+        "TE-CANDIDATE-UNRESOLVED": "Domain possibility exists but binding, polarity, or centrality is unresolved.",
+        "TE-SKIP-EXCLUDED": "All matched occurrences are explained by exclusion context."
+      }
+    },
+    "diffraction-scattering": {
+      "ruleset_version": "2.0.0",
+      "canonical_label_zh": "衍射与散射",
+      "canonical_label_en": "Diffraction and scattering",
+      "signals": [
+        {
+          "signal_id": "dif-actual-measurement",
+          "concept": "actual diffraction or scattering measurement",
+          "strength": "strong",
+          "terms_en": [
+            "powder X-ray diffraction",
+            "single-crystal diffraction",
+            "neutron diffraction",
+            "small-angle X-ray scattering",
+            "total scattering"
+          ],
+          "terms_zh": [
+            "粉末 X 射线衍射",
+            "单晶衍射",
+            "中子衍射",
+            "小角 X 射线散射",
+            "总散射"
+          ],
+          "abbreviations": [
+            "XRD",
+            "PXRD",
+            "SAXS",
+            "WAXS",
+            "PDF"
+          ],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "dif-measurement"
+        },
+        {
+          "signal_id": "dif-analysis",
+          "concept": "diffraction/scattering analysis",
+          "strength": "strong",
+          "terms_en": [
+            "Rietveld refinement",
+            "Le Bail refinement",
+            "Pawley refinement",
+            "pair distribution function",
+            "reciprocal-space map"
+          ],
+          "terms_zh": [
+            "Rietveld 精修",
+            "Le Bail 精修",
+            "Pawley 精修",
+            "对分布函数",
+            "倒易空间图"
+          ],
+          "abbreviations": [
+            "RSM"
+          ],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "dif-analysis"
+        },
+        {
+          "signal_id": "dif-data-feature",
+          "concept": "target-bound scattering data",
+          "strength": "supporting",
+          "terms_en": [
+            "diffraction peak",
+            "scattering vector",
+            "diffractogram",
+            "structure factor",
+            "phase fraction"
+          ],
+          "terms_zh": [
+            "衍射峰",
+            "散射矢量",
+            "衍射图谱",
+            "结构因子",
+            "相分数"
+          ],
+          "abbreviations": [],
+          "symbols": [
+            "2theta",
+            "q"
+          ],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "dif-data"
+        },
+        {
+          "signal_id": "dif-generic",
+          "concept": "generic diffraction vocabulary",
+          "strength": "weak",
+          "terms_en": [
+            "diffraction",
+            "scattering",
+            "XRD confirmed",
+            "peak"
+          ],
+          "terms_zh": [
+            "衍射",
+            "散射",
+            "XRD 证实",
+            "峰"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "dif-generic"
+        },
+        {
+          "signal_id": "dif-nonmaterial",
+          "concept": "non-material diffraction use",
+          "strength": "exclusion",
+          "terms_en": [
+            "diffraction grating",
+            "diffraction-limited resolution",
+            "XRD sample holder",
+            "cited diffraction pattern"
+          ],
+          "terms_zh": [
+            "衍射光栅",
+            "衍射极限分辨率",
+            "XRD 样品架",
+            "引用的衍射图"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "apparatus",
+            "optics",
+            "cited-comparison"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": false,
+          "independence_group": "dif-exclusion"
+        }
+      ],
+      "ambiguous_terms": [
+        {
+          "term": "PDF",
+          "possible_senses": [
+            "pair distribution function",
+            "portable document format",
+            "probability density function"
+          ],
+          "resolution_rule": "Resolve from scattering context, q/r ranges, and structural analysis."
+        },
+        {
+          "term": "peak",
+          "possible_senses": [
+            "diffraction feature",
+            "spectral feature",
+            "thermal-analysis feature",
+            "generic maximum"
+          ],
+          "resolution_rule": "Require method and axis context."
+        }
+      ],
+      "load_gate": {
+        "all_of": [
+          "source identity is resolved",
+          "at least one target entity is resolved",
+          "at least one method-level or result-level signal is bound to the target",
+          "all positive evidence is not fully explained by exclusion context"
+        ],
+        "any_of": [
+          "an actual target-bound diffraction/scattering run or data artifact is reported",
+          "a structure, phase, size, correlation, or refinement result is derived from target-bound scattering data"
+        ],
+        "minimum_independent_groups": 1
+      },
+      "candidate_gate": [
+        "only weak or supporting vocabulary is available",
+        "target entity binding is unresolved",
+        "the accessible source is insufficient to resolve centrality or polarity",
+        "a strong-looking term has an unresolved alternate sense"
+      ],
+      "skip_gate": [
+        "all matches are apparatus, consumable, substrate, container, cited, negated, or future-work mentions",
+        "the source is sufficiently complete and the studied target is outside this adapter scope"
+      ],
+      "co_load_suggestions": [
+        "ceramics-glass-cement",
+        "metallic-materials",
+        "two-dimensional-materials",
+        "materials-simulation"
+      ],
+      "reason_codes": {
+        "DIF-LOAD-TARGET": "Target-bound method or result evidence satisfies the load gate.",
+        "DIF-CANDIDATE-UNRESOLVED": "Domain possibility exists but binding, polarity, or centrality is unresolved.",
+        "DIF-SKIP-EXCLUDED": "All matched occurrences are explained by exclusion context."
+      }
+    },
+    "electron-microscopy-microanalysis": {
+      "ruleset_version": "2.0.0",
+      "canonical_label_zh": "电子显微与微区分析",
+      "canonical_label_en": "Electron microscopy and microanalysis",
+      "signals": [
+        {
+          "signal_id": "em-imaging",
+          "concept": "actual electron microscopy imaging",
+          "strength": "strong",
+          "terms_en": [
+            "scanning electron microscopy",
+            "transmission electron microscopy",
+            "scanning transmission electron microscopy",
+            "high-resolution TEM"
+          ],
+          "terms_zh": [
+            "扫描电子显微镜",
+            "透射电子显微镜",
+            "扫描透射电子显微镜",
+            "高分辨透射电镜"
+          ],
+          "abbreviations": [
+            "SEM",
+            "TEM",
+            "STEM",
+            "HRTEM"
+          ],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "em-imaging"
+        },
+        {
+          "signal_id": "em-microanalysis",
+          "concept": "electron-beam microanalysis",
+          "strength": "strong",
+          "terms_en": [
+            "energy-dispersive X-ray spectroscopy",
+            "electron energy-loss spectroscopy",
+            "electron backscatter diffraction",
+            "selected-area electron diffraction"
+          ],
+          "terms_zh": [
+            "能量色散 X 射线谱",
+            "电子能量损失谱",
+            "电子背散射衍射",
+            "选区电子衍射"
+          ],
+          "abbreviations": [
+            "EDS",
+            "EDX",
+            "EELS",
+            "EBSD",
+            "SAED"
+          ],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "em-analysis"
+        },
+        {
+          "signal_id": "em-quantification",
+          "concept": "image or map quantification",
+          "strength": "supporting",
+          "terms_en": [
+            "orientation map",
+            "elemental map",
+            "segmentation",
+            "particle-size distribution",
+            "grain map"
+          ],
+          "terms_zh": [
+            "取向图",
+            "元素面分布",
+            "图像分割",
+            "粒径分布",
+            "晶粒图"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "em-quant"
+        },
+        {
+          "signal_id": "em-generic",
+          "concept": "generic microscopy vocabulary",
+          "strength": "weak",
+          "terms_en": [
+            "micrograph",
+            "electron image",
+            "microscopy",
+            "mapping"
+          ],
+          "terms_zh": [
+            "显微图",
+            "电子图像",
+            "显微观察",
+            "面扫描"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "em-generic"
+        },
+        {
+          "signal_id": "em-support",
+          "concept": "microscopy support or apparatus",
+          "strength": "exclusion",
+          "terms_en": [
+            "TEM grid",
+            "SEM stub",
+            "carbon coating for imaging",
+            "electron microscope cited only"
+          ],
+          "terms_zh": [
+            "TEM 载网",
+            "SEM 样品台",
+            "仅用于成像的喷碳",
+            "仅引用电子显微镜"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "sample-mounting",
+            "apparatus",
+            "cited-method"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": false,
+          "independence_group": "em-exclusion"
+        }
+      ],
+      "ambiguous_terms": [
+        {
+          "term": "mapping",
+          "possible_senses": [
+            "elemental/orientation map",
+            "generic spatial mapping",
+            "mathematical mapping"
+          ],
+          "resolution_rule": "Require an electron microscopy modality and target-bound artifact."
+        },
+        {
+          "term": "carbon coating",
+          "possible_senses": [
+            "target coating",
+            "conductive preparation layer"
+          ],
+          "resolution_rule": "Do not assign the preparation coating to target composition unless explicitly studied."
+        }
+      ],
+      "load_gate": {
+        "all_of": [
+          "source identity is resolved",
+          "at least one target entity is resolved",
+          "at least one method-level or result-level signal is bound to the target",
+          "all positive evidence is not fully explained by exclusion context"
+        ],
+        "any_of": [
+          "a target-bound electron image, spectrum, diffraction pattern, or map is available with an actual run",
+          "quantification or interpretation derives from target-bound electron microscopy data"
+        ],
+        "minimum_independent_groups": 1
+      },
+      "candidate_gate": [
+        "only weak or supporting vocabulary is available",
+        "target entity binding is unresolved",
+        "the accessible source is insufficient to resolve centrality or polarity",
+        "a strong-looking term has an unresolved alternate sense"
+      ],
+      "skip_gate": [
+        "all matches are apparatus, consumable, substrate, container, cited, negated, or future-work mentions",
+        "the source is sufficiently complete and the studied target is outside this adapter scope"
+      ],
+      "co_load_suggestions": [
+        "composition-particle-surface",
+        "diffraction-scattering",
+        "metallic-materials",
+        "two-dimensional-materials"
+      ],
+      "reason_codes": {
+        "EM-LOAD-TARGET": "Target-bound method or result evidence satisfies the load gate.",
+        "EM-CANDIDATE-UNRESOLVED": "Domain possibility exists but binding, polarity, or centrality is unresolved.",
+        "EM-SKIP-EXCLUDED": "All matched occurrences are explained by exclusion context."
+      }
+    },
+    "spectroscopy": {
+      "ruleset_version": "2.0.0",
+      "canonical_label_zh": "光谱与能谱",
+      "canonical_label_en": "Spectroscopy",
+      "signals": [
+        {
+          "signal_id": "spec-actual-technique",
+          "concept": "actual spectroscopy measurement",
+          "strength": "strong",
+          "terms_en": [
+            "Raman spectroscopy",
+            "infrared spectroscopy",
+            "X-ray photoelectron spectroscopy",
+            "X-ray absorption spectroscopy",
+            "nuclear magnetic resonance"
+          ],
+          "terms_zh": [
+            "拉曼光谱",
+            "红外光谱",
+            "X 射线光电子能谱",
+            "X 射线吸收谱",
+            "核磁共振"
+          ],
+          "abbreviations": [
+            "Raman",
+            "FTIR",
+            "XPS",
+            "XAS",
+            "NMR"
+          ],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "spec-measurement"
+        },
+        {
+          "signal_id": "spec-feature-analysis",
+          "concept": "spectral feature analysis",
+          "strength": "strong",
+          "terms_en": [
+            "peak fitting",
+            "binding-energy calibration",
+            "chemical shift",
+            "absorption edge",
+            "photoluminescence lifetime"
+          ],
+          "terms_zh": [
+            "峰拟合",
+            "结合能校准",
+            "化学位移",
+            "吸收边",
+            "光致发光寿命"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "spec-analysis"
+        },
+        {
+          "signal_id": "spec-data",
+          "concept": "target-bound spectrum or assignment",
+          "strength": "supporting",
+          "terms_en": [
+            "spectrum",
+            "band assignment",
+            "vibrational mode",
+            "oxidation-state assignment",
+            "optical transition"
+          ],
+          "terms_zh": [
+            "光谱",
+            "谱带归属",
+            "振动模式",
+            "氧化态归属",
+            "光学跃迁"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "spec-data"
+        },
+        {
+          "signal_id": "spec-generic",
+          "concept": "generic spectral vocabulary",
+          "strength": "weak",
+          "terms_en": [
+            "spectroscopy",
+            "spectral",
+            "band",
+            "peak",
+            "signal"
+          ],
+          "terms_zh": [
+            "光谱学",
+            "谱学",
+            "谱带",
+            "峰",
+            "信号"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "spec-generic"
+        },
+        {
+          "signal_id": "spec-apparatus",
+          "concept": "spectroscopy apparatus or cited result",
+          "strength": "exclusion",
+          "terms_en": [
+            "spectrometer window",
+            "optical filter",
+            "laser specification",
+            "literature spectrum"
+          ],
+          "terms_zh": [
+            "光谱仪窗口",
+            "滤光片",
+            "激光器参数",
+            "文献光谱"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "apparatus",
+            "source-description",
+            "cited-comparison"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": false,
+          "independence_group": "spec-exclusion"
+        }
+      ],
+      "ambiguous_terms": [
+        {
+          "term": "band",
+          "possible_senses": [
+            "spectral band",
+            "electronic band",
+            "mechanical band",
+            "range"
+          ],
+          "resolution_rule": "Resolve from the measurement axis, technique, and analysis object."
+        },
+        {
+          "term": "NMR",
+          "possible_senses": [
+            "nuclear magnetic resonance",
+            "unrelated acronym"
+          ],
+          "resolution_rule": "Require a spectroscopy method, nucleus, field, or spectrum."
+        }
+      ],
+      "load_gate": {
+        "all_of": [
+          "source identity is resolved",
+          "at least one target entity is resolved",
+          "at least one method-level or result-level signal is bound to the target",
+          "all positive evidence is not fully explained by exclusion context"
+        ],
+        "any_of": [
+          "an actual target-bound spectrum or spectroscopy run is reported",
+          "a target chemical, vibrational, electronic, optical, or magnetic-state result derives from spectral data"
+        ],
+        "minimum_independent_groups": 1
+      },
+      "candidate_gate": [
+        "only weak or supporting vocabulary is available",
+        "target entity binding is unresolved",
+        "the accessible source is insufficient to resolve centrality or polarity",
+        "a strong-looking term has an unresolved alternate sense"
+      ],
+      "skip_gate": [
+        "all matches are apparatus, consumable, substrate, container, cited, negated, or future-work mentions",
+        "the source is sufficiently complete and the studied target is outside this adapter scope"
+      ],
+      "co_load_suggestions": [
+        "composition-particle-surface",
+        "quantum-materials",
+        "two-dimensional-materials",
+        "materials-simulation"
+      ],
+      "reason_codes": {
+        "SPEC-LOAD-TARGET": "Target-bound method or result evidence satisfies the load gate.",
+        "SPEC-CANDIDATE-UNRESOLVED": "Domain possibility exists but binding, polarity, or centrality is unresolved.",
+        "SPEC-SKIP-EXCLUDED": "All matched occurrences are explained by exclusion context."
+      }
+    },
+    "thermal-analysis": {
+      "ruleset_version": "2.0.0",
+      "canonical_label_zh": "热分析",
+      "canonical_label_en": "Thermal analysis",
+      "signals": [
+        {
+          "signal_id": "ta-actual-technique",
+          "concept": "actual thermal-analysis run",
+          "strength": "strong",
+          "terms_en": [
+            "differential scanning calorimetry",
+            "thermogravimetric analysis",
+            "thermomechanical analysis",
+            "dynamic mechanical analysis",
+            "dilatometry"
+          ],
+          "terms_zh": [
+            "差示扫描量热",
+            "热重分析",
+            "热机械分析",
+            "动态力学分析",
+            "膨胀法"
+          ],
+          "abbreviations": [
+            "DSC",
+            "TGA",
+            "TG",
+            "TMA",
+            "DMA"
+          ],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "ta-measurement"
+        },
+        {
+          "signal_id": "ta-transition",
+          "concept": "thermal-analysis transition or mass-loss result",
+          "strength": "strong",
+          "terms_en": [
+            "glass-transition onset",
+            "melting enthalpy",
+            "crystallization peak",
+            "mass-loss step",
+            "residue fraction"
+          ],
+          "terms_zh": [
+            "玻璃化转变起始",
+            "熔融焓",
+            "结晶峰",
+            "失重台阶",
+            "残余质量分数"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "ta-result"
+        },
+        {
+          "signal_id": "ta-protocol",
+          "concept": "thermal-analysis program",
+          "strength": "supporting",
+          "terms_en": [
+            "heating rate",
+            "cooling cycle",
+            "purge gas",
+            "baseline correction",
+            "isoconversional analysis"
+          ],
+          "terms_zh": [
+            "升温速率",
+            "降温循环",
+            "吹扫气体",
+            "基线校正",
+            "等转化率分析"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "ta-protocol"
+        },
+        {
+          "signal_id": "ta-generic",
+          "concept": "generic thermal vocabulary",
+          "strength": "weak",
+          "terms_en": [
+            "thermal analysis",
+            "decomposition temperature",
+            "thermal stability"
+          ],
+          "terms_zh": [
+            "热分析",
+            "玻璃化温度",
+            "分解温度",
+            "热稳定性"
+          ],
+          "abbreviations": [],
+          "symbols": [
+            "Tg"
+          ],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "ta-generic"
+        },
+        {
+          "signal_id": "ta-process-heating",
+          "concept": "non-thermal-analysis heating or thermal property",
+          "strength": "exclusion",
+          "terms_en": [
+            "furnace heat treatment",
+            "synthesis heating schedule",
+            "reactor temperature control",
+            "thermocouple calibration",
+            "thermal conductivity measurement only",
+            "service temperature only"
+          ],
+          "terms_zh": [
+            "炉内热处理",
+            "合成升温程序",
+            "反应器控温",
+            "热电偶校准",
+            "仅热导率测量",
+            "仅服役温度"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "materials-processing",
+            "synthesis",
+            "apparatus",
+            "transport-property"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": false,
+          "independence_group": "ta-exclusion"
+        }
+      ],
+      "ambiguous_terms": [
+        {
+          "term": "Tg",
+          "possible_senses": [
+            "glass-transition temperature by DSC",
+            "glass-transition temperature by DMA",
+            "unresolved literature value"
+          ],
+          "resolution_rule": "Preserve method and criterion; DMA and DSC values are not interchangeable."
+        },
+        {
+          "term": "thermal stability",
+          "possible_senses": [
+            "TGA mass-loss resistance",
+            "service-temperature claim",
+            "generic adjective"
+          ],
+          "resolution_rule": "Require a defined measurand, method, and temperature/time criterion."
+        }
+      ],
+      "load_gate": {
+        "all_of": [
+          "source identity is resolved",
+          "at least one target entity is resolved",
+          "at least one method-level or result-level signal is bound to the target",
+          "all positive evidence is not fully explained by exclusion context"
+        ],
+        "any_of": [
+          "an actual target-bound DSC/TG/TMA/DMA/dilatometry run is reported",
+          "a thermal transition, mass-loss, thermomechanical, dynamic-mechanical, or kinetic result derives from that run"
+        ],
+        "minimum_independent_groups": 1
+      },
+      "candidate_gate": [
+        "only weak or supporting vocabulary is available",
+        "target entity binding is unresolved",
+        "the accessible source is insufficient to resolve centrality or polarity",
+        "a strong-looking term has an unresolved alternate sense"
+      ],
+      "skip_gate": [
+        "all matches are apparatus, consumable, substrate, container, cited, negated, or future-work mentions",
+        "the source is sufficiently complete and the studied target is outside this adapter scope"
+      ],
+      "co_load_suggestions": [
+        "polymers",
+        "ceramics-glass-cement",
+        "materials-processing",
+        "thermoelectric"
+      ],
+      "reason_codes": {
+        "TA-LOAD-TARGET": "Target-bound method or result evidence satisfies the load gate.",
+        "TA-CANDIDATE-UNRESOLVED": "Domain possibility exists but binding, polarity, or centrality is unresolved.",
+        "TA-SKIP-EXCLUDED": "All matched occurrences are explained by exclusion context."
+      }
+    },
+    "mechanical-testing": {
+      "ruleset_version": "2.0.0",
+      "canonical_label_zh": "力学测试",
+      "canonical_label_en": "Mechanical testing",
+      "signals": [
+        {
+          "signal_id": "mech-actual-test",
+          "concept": "actual mechanical test",
+          "strength": "strong",
+          "terms_en": [
+            "tensile test",
+            "compression test",
+            "flexural test",
+            "hardness test",
+            "nanoindentation"
+          ],
+          "terms_zh": [
+            "拉伸试验",
+            "压缩试验",
+            "弯曲试验",
+            "硬度试验",
+            "纳米压痕"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "mech-test"
+        },
+        {
+          "signal_id": "mech-durability-test",
+          "concept": "fatigue, creep, fracture, or wear test",
+          "strength": "strong",
+          "terms_en": [
+            "fatigue test",
+            "creep rupture",
+            "fracture toughness",
+            "crack-growth test",
+            "wear test"
+          ],
+          "terms_zh": [
+            "疲劳试验",
+            "蠕变断裂",
+            "断裂韧度",
+            "裂纹扩展试验",
+            "磨损试验"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "mech-durability"
+        },
+        {
+          "signal_id": "mech-curve-property",
+          "concept": "mechanical curve or criterion",
+          "strength": "supporting",
+          "terms_en": [
+            "stress-strain curve",
+            "yield criterion",
+            "S-N curve",
+            "load-displacement curve",
+            "runout"
+          ],
+          "terms_zh": [
+            "应力应变曲线",
+            "屈服判据",
+            "S-N 曲线",
+            "载荷位移曲线",
+            "未失效截止"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "mech-data"
+        },
+        {
+          "signal_id": "mech-generic",
+          "concept": "generic mechanical vocabulary",
+          "strength": "weak",
+          "terms_en": [
+            "strength",
+            "modulus",
+            "hardness",
+            "load",
+            "strain"
+          ],
+          "terms_zh": [
+            "强度",
+            "模量",
+            "硬度",
+            "载荷",
+            "应变"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "mech-generic"
+        },
+        {
+          "signal_id": "mech-nontest",
+          "concept": "non-test mechanical context",
+          "strength": "exclusion",
+          "terms_en": [
+            "clamping load",
+            "stack pressure",
+            "computed elastic constant only",
+            "mechanical support",
+            "mixing shear"
+          ],
+          "terms_zh": [
+            "夹紧载荷",
+            "堆叠压力",
+            "仅计算弹性常数",
+            "机械支撑",
+            "混合剪切"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "apparatus",
+            "environment",
+            "simulation-only",
+            "processing"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": false,
+          "independence_group": "mech-exclusion"
+        }
+      ],
+      "ambiguous_terms": [
+        {
+          "term": "strength",
+          "possible_senses": [
+            "measured mechanical strength",
+            "signal intensity",
+            "qualitative performance adjective"
+          ],
+          "resolution_rule": "Require test mode, specimen, geometry, conditions, and a property result."
+        },
+        {
+          "term": "load",
+          "possible_senses": [
+            "mechanical test load",
+            "material loading fraction",
+            "electrical load",
+            "process charge"
+          ],
+          "resolution_rule": "Resolve units and method context."
+        }
+      ],
+      "load_gate": {
+        "all_of": [
+          "source identity is resolved",
+          "at least one target entity is resolved",
+          "at least one method-level or result-level signal is bound to the target",
+          "all positive evidence is not fully explained by exclusion context"
+        ],
+        "any_of": [
+          "an actual target-bound mechanical test and specimen are resolved",
+          "a target mechanical property or failure result derives from a defined test mode"
+        ],
+        "minimum_independent_groups": 1
+      },
+      "candidate_gate": [
+        "only weak or supporting vocabulary is available",
+        "target entity binding is unresolved",
+        "the accessible source is insufficient to resolve centrality or polarity",
+        "a strong-looking term has an unresolved alternate sense"
+      ],
+      "skip_gate": [
+        "all matches are apparatus, consumable, substrate, container, cited, negated, or future-work mentions",
+        "the source is sufficiently complete and the studied target is outside this adapter scope"
+      ],
+      "co_load_suggestions": [
+        "metallic-materials",
+        "polymers",
+        "ceramics-glass-cement",
+        "materials-processing",
+        "electron-microscopy-microanalysis"
+      ],
+      "reason_codes": {
+        "MECH-LOAD-TARGET": "Target-bound method or result evidence satisfies the load gate.",
+        "MECH-CANDIDATE-UNRESOLVED": "Domain possibility exists but binding, polarity, or centrality is unresolved.",
+        "MECH-SKIP-EXCLUDED": "All matched occurrences are explained by exclusion context."
+      }
+    },
+    "electrical-magnetic-transport": {
+      "ruleset_version": "2.0.0",
+      "canonical_label_zh": "电学、磁学与输运",
+      "canonical_label_en": "Electrical, magnetic, and transport measurements",
+      "signals": [
+        {
+          "signal_id": "emt-electrical-run",
+          "concept": "actual electrical or Hall transport run",
+          "strength": "strong",
+          "terms_en": [
+            "four-probe resistivity",
+            "van der Pauw",
+            "Hall measurement",
+            "quantum Hall effect",
+            "Shubnikov-de-Haas oscillation",
+            "magnetoresistance",
+            "current-voltage characteristic"
+          ],
+          "terms_zh": [
+            "四探针电阻率",
+            "范德堡法",
+            "霍尔测量",
+            "量子霍尔效应",
+            "舒勃尼科夫-德哈斯振荡",
+            "磁阻",
+            "电流电压特性"
+          ],
+          "abbreviations": [
+            "I-V",
+            "MR",
+            "QHE",
+            "SdH"
+          ],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "emt-electrical"
+        },
+        {
+          "signal_id": "emt-magnetic-run",
+          "concept": "actual magnetic measurement",
+          "strength": "strong",
+          "terms_en": [
+            "SQUID magnetometry",
+            "vibrating sample magnetometry",
+            "magnetic susceptibility",
+            "magnetization loop",
+            "zero-field-cooled"
+          ],
+          "terms_zh": [
+            "SQUID 磁测量",
+            "振动样品磁强计",
+            "磁化率",
+            "磁滞回线",
+            "零场冷却"
+          ],
+          "abbreviations": [
+            "SQUID",
+            "VSM",
+            "ZFC",
+            "FC"
+          ],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "emt-magnetic"
+        },
+        {
+          "signal_id": "emt-transport-result",
+          "concept": "transport result and geometry",
+          "strength": "supporting",
+          "terms_en": [
+            "resistivity versus temperature",
+            "carrier concentration",
+            "mobility",
+            "thermal conductivity",
+            "Seebeck coefficient"
+          ],
+          "terms_zh": [
+            "电阻率温度曲线",
+            "载流子浓度",
+            "迁移率",
+            "热导率",
+            "塞贝克系数"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "emt-result"
+        },
+        {
+          "signal_id": "emt-generic",
+          "concept": "generic transport vocabulary",
+          "strength": "weak",
+          "terms_en": [
+            "resistance",
+            "conductivity",
+            "magnetic",
+            "transport",
+            "current"
+          ],
+          "terms_zh": [
+            "电阻",
+            "电导",
+            "磁性",
+            "输运",
+            "电流"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "emt-generic"
+        },
+        {
+          "signal_id": "emt-apparatus",
+          "concept": "electrical or magnetic apparatus component",
+          "strength": "exclusion",
+          "terms_en": [
+            "copper lead wire",
+            "superconducting magnet supplies field",
+            "electrical heater",
+            "contact metal only"
+          ],
+          "terms_zh": [
+            "铜引线",
+            "超导磁体供场",
+            "电加热器",
+            "仅接触金属"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "apparatus",
+            "sample-mounting",
+            "environment"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": false,
+          "independence_group": "emt-exclusion"
+        }
+      ],
+      "ambiguous_terms": [
+        {
+          "term": "conductivity",
+          "possible_senses": [
+            "electrical conductivity",
+            "ionic conductivity",
+            "thermal conductivity"
+          ],
+          "resolution_rule": "Resolve the transported quantity, geometry, frequency, and conditions."
+        },
+        {
+          "term": "magnetic",
+          "possible_senses": [
+            "target magnetic property",
+            "applied magnetic field",
+            "magnetic apparatus"
+          ],
+          "resolution_rule": "Require a measured target response for magnetic records."
+        }
+      ],
+      "load_gate": {
+        "all_of": [
+          "source identity is resolved",
+          "at least one target entity is resolved",
+          "at least one method-level or result-level signal is bound to the target",
+          "all positive evidence is not fully explained by exclusion context"
+        ],
+        "any_of": [
+          "an actual target-bound electrical, Hall, magnetic, dielectric, thermal, or thermoelectric transport run is reported",
+          "a transport property is derived with geometry and condition context"
+        ],
+        "minimum_independent_groups": 1
+      },
+      "candidate_gate": [
+        "only weak or supporting vocabulary is available",
+        "target entity binding is unresolved",
+        "the accessible source is insufficient to resolve centrality or polarity",
+        "a strong-looking term has an unresolved alternate sense"
+      ],
+      "skip_gate": [
+        "all matches are apparatus, consumable, substrate, container, cited, negated, or future-work mentions",
+        "the source is sufficiently complete and the studied target is outside this adapter scope"
+      ],
+      "co_load_suggestions": [
+        "superconductivity",
+        "thermoelectric",
+        "quantum-materials",
+        "two-dimensional-materials"
+      ],
+      "reason_codes": {
+        "EMT-LOAD-TARGET": "Target-bound method or result evidence satisfies the load gate.",
+        "EMT-CANDIDATE-UNRESOLVED": "Domain possibility exists but binding, polarity, or centrality is unresolved.",
+        "EMT-SKIP-EXCLUDED": "All matched occurrences are explained by exclusion context."
+      }
+    },
+    "electrochemical-testing": {
+      "ruleset_version": "2.0.0",
+      "canonical_label_zh": "电化学测试",
+      "canonical_label_en": "Electrochemical testing",
+      "signals": [
+        {
+          "signal_id": "echem-sweep-step",
+          "concept": "actual voltammetric or chrono method",
+          "strength": "strong",
+          "terms_en": [
+            "cyclic voltammetry",
+            "linear sweep voltammetry",
+            "chronoamperometry",
+            "chronopotentiometry",
+            "rotating disk electrode"
+          ],
+          "terms_zh": [
+            "循环伏安",
+            "线性扫描伏安",
+            "计时电流",
+            "计时电位",
+            "旋转圆盘电极"
+          ],
+          "abbreviations": [
+            "CV",
+            "LSV",
+            "CA",
+            "CP",
+            "RDE",
+            "RRDE"
+          ],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "echem-dc"
+        },
+        {
+          "signal_id": "echem-impedance-pulse",
+          "concept": "actual impedance or intermittent-titration method",
+          "strength": "strong",
+          "terms_en": [
+            "electrochemical impedance spectroscopy",
+            "galvanostatic intermittent titration",
+            "potentiostatic intermittent titration",
+            "corrosion polarization"
+          ],
+          "terms_zh": [
+            "电化学阻抗谱",
+            "恒流间歇滴定",
+            "恒电位间歇滴定",
+            "腐蚀极化"
+          ],
+          "abbreviations": [
+            "EIS",
+            "GITT",
+            "PITT"
+          ],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "echem-impedance"
+        },
+        {
+          "signal_id": "echem-cell-context",
+          "concept": "electrochemical cell and potential context",
+          "strength": "supporting",
+          "terms_en": [
+            "working electrode",
+            "reference electrode",
+            "counter electrode",
+            "potential scale",
+            "iR compensation"
+          ],
+          "terms_zh": [
+            "工作电极",
+            "参比电极",
+            "对电极",
+            "电位标尺",
+            "iR 补偿"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "echem-context"
+        },
+        {
+          "signal_id": "echem-generic",
+          "concept": "generic electrochemical vocabulary",
+          "strength": "weak",
+          "terms_en": [
+            "electrochemical",
+            "impedance",
+            "polarization",
+            "electrode",
+            "potential"
+          ],
+          "terms_zh": [
+            "电化学",
+            "阻抗",
+            "极化",
+            "电极",
+            "电位"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "echem-generic"
+        },
+        {
+          "signal_id": "echem-not-test",
+          "concept": "non-test electrochemical use",
+          "strength": "exclusion",
+          "terms_en": [
+            "electrochemical cleaning",
+            "electropolishing preparation",
+            "potentiostat listed for future work",
+            "cited EIS result"
+          ],
+          "terms_zh": [
+            "电化学清洗",
+            "电解抛光制样",
+            "未来使用电化学工作站",
+            "引用的 EIS 结果"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "sample-preparation",
+            "future-work",
+            "cited-comparison"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": false,
+          "independence_group": "echem-exclusion"
+        }
+      ],
+      "ambiguous_terms": [
+        {
+          "term": "CV",
+          "possible_senses": [
+            "cyclic voltammetry",
+            "coefficient of variation",
+            "curriculum vitae"
+          ],
+          "resolution_rule": "Require an electrochemical potential-current scan and cell context."
+        },
+        {
+          "term": "EIS",
+          "possible_senses": [
+            "electrochemical impedance spectroscopy",
+            "unrelated acronym"
+          ],
+          "resolution_rule": "Require frequency-dependent complex impedance or an explicit electrochemical method."
+        }
+      ],
+      "load_gate": {
+        "all_of": [
+          "source identity is resolved",
+          "at least one target entity is resolved",
+          "at least one method-level or result-level signal is bound to the target",
+          "all positive evidence is not fully explained by exclusion context"
+        ],
+        "any_of": [
+          "an actual target-bound electrochemical run with cell/electrode context is reported",
+          "a property or fit derives from target-bound electrochemical data"
+        ],
+        "minimum_independent_groups": 1
+      },
+      "candidate_gate": [
+        "only weak or supporting vocabulary is available",
+        "target entity binding is unresolved",
+        "the accessible source is insufficient to resolve centrality or polarity",
+        "a strong-looking term has an unresolved alternate sense"
+      ],
+      "skip_gate": [
+        "all matches are apparatus, consumable, substrate, container, cited, negated, or future-work mentions",
+        "the source is sufficiently complete and the studied target is outside this adapter scope"
+      ],
+      "co_load_suggestions": [
+        "battery",
+        "electrochemical-energy",
+        "liquid-materials",
+        "composition-particle-surface"
+      ],
+      "reason_codes": {
+        "ECHEM-LOAD-TARGET": "Target-bound method or result evidence satisfies the load gate.",
+        "ECHEM-CANDIDATE-UNRESOLVED": "Domain possibility exists but binding, polarity, or centrality is unresolved.",
+        "ECHEM-SKIP-EXCLUDED": "All matched occurrences are explained by exclusion context."
+      }
+    },
+    "composition-particle-surface": {
+      "ruleset_version": "2.0.0",
+      "canonical_label_zh": "组成、颗粒与表界面常规分析",
+      "canonical_label_en": "Composition, particle, and surface analysis",
+      "signals": [
+        {
+          "signal_id": "cps-composition",
+          "concept": "actual composition or separation analysis",
+          "strength": "strong",
+          "terms_en": [
+            "inductively coupled plasma mass spectrometry",
+            "X-ray fluorescence",
+            "elemental analysis",
+            "size-exclusion chromatography",
+            "gas chromatography"
+          ],
+          "terms_zh": [
+            "电感耦合等离子体质谱",
+            "X 射线荧光",
+            "元素分析",
+            "体积排阻色谱",
+            "气相色谱"
+          ],
+          "abbreviations": [
+            "ICP-MS",
+            "ICP-OES",
+            "XRF",
+            "SEC",
+            "GC",
+            "LC"
+          ],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "cps-composition"
+        },
+        {
+          "signal_id": "cps-particle-surface",
+          "concept": "actual particle or surface measurement",
+          "strength": "strong",
+          "terms_en": [
+            "dynamic light scattering",
+            "laser diffraction particle size",
+            "gas adsorption",
+            "BET surface area",
+            "contact angle"
+          ],
+          "terms_zh": [
+            "动态光散射",
+            "激光衍射粒度",
+            "气体吸附",
+            "BET 比表面积",
+            "接触角"
+          ],
+          "abbreviations": [
+            "DLS",
+            "BET"
+          ],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "cps-particle"
+        },
+        {
+          "signal_id": "cps-quantification",
+          "concept": "quantitative analysis context",
+          "strength": "supporting",
+          "terms_en": [
+            "calibration curve",
+            "detection limit",
+            "recovery",
+            "particle-size distribution",
+            "adsorption isotherm"
+          ],
+          "terms_zh": [
+            "校准曲线",
+            "检出限",
+            "回收率",
+            "粒径分布",
+            "吸附等温线"
+          ],
+          "abbreviations": [
+            "LOD",
+            "LOQ"
+          ],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "cps-quant"
+        },
+        {
+          "signal_id": "cps-generic",
+          "concept": "generic composition or surface vocabulary",
+          "strength": "weak",
+          "terms_en": [
+            "composition",
+            "particle size",
+            "surface area",
+            "porosity",
+            "density",
+            "wetting"
+          ],
+          "terms_zh": [
+            "组成",
+            "粒径",
+            "比表面积",
+            "孔隙",
+            "密度",
+            "润湿"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "cps-generic"
+        },
+        {
+          "signal_id": "cps-nontarget",
+          "concept": "calibration or environmental composition",
+          "strength": "exclusion",
+          "terms_en": [
+            "carrier gas composition",
+            "instrument calibration standard only",
+            "supplier nominal composition only",
+            "contact liquid not studied"
+          ],
+          "terms_zh": [
+            "载气组成",
+            "仅仪器校准标准",
+            "仅供应商名义成分",
+            "非目标接触液"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "apparatus",
+            "calibration-only",
+            "secondary-source",
+            "environment"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": false,
+          "independence_group": "cps-exclusion"
+        }
+      ],
+      "ambiguous_terms": [
+        {
+          "term": "BET",
+          "possible_senses": [
+            "Brunauer-Emmett-Teller surface-area analysis",
+            "unrelated acronym"
+          ],
+          "resolution_rule": "Require a gas adsorption isotherm, fit range, and target powder/porous entity."
+        },
+        {
+          "term": "composition",
+          "possible_senses": [
+            "target measured composition",
+            "nominal recipe",
+            "gas/environment composition"
+          ],
+          "resolution_rule": "Preserve measurement status and bind to the correct entity or environment."
+        }
+      ],
+      "load_gate": {
+        "all_of": [
+          "source identity is resolved",
+          "at least one target entity is resolved",
+          "at least one method-level or result-level signal is bound to the target",
+          "all positive evidence is not fully explained by exclusion context"
+        ],
+        "any_of": [
+          "an actual target-bound composition, chromatography, particle, adsorption, density, or wetting run is reported",
+          "a quantitative result derives from a named method with calibration/model context"
+        ],
+        "minimum_independent_groups": 1
+      },
+      "candidate_gate": [
+        "only weak or supporting vocabulary is available",
+        "target entity binding is unresolved",
+        "the accessible source is insufficient to resolve centrality or polarity",
+        "a strong-looking term has an unresolved alternate sense"
+      ],
+      "skip_gate": [
+        "all matches are apparatus, consumable, substrate, container, cited, negated, or future-work mentions",
+        "the source is sufficiently complete and the studied target is outside this adapter scope"
+      ],
+      "co_load_suggestions": [
+        "liquid-materials",
+        "polymers",
+        "battery",
+        "electron-microscopy-microanalysis"
+      ],
+      "reason_codes": {
+        "CPS-LOAD-TARGET": "Target-bound method or result evidence satisfies the load gate.",
+        "CPS-CANDIDATE-UNRESOLVED": "Domain possibility exists but binding, polarity, or centrality is unresolved.",
+        "CPS-SKIP-EXCLUDED": "All matched occurrences are explained by exclusion context."
+      }
+    },
+    "materials-simulation": {
+      "ruleset_version": "2.0.0",
+      "canonical_label_zh": "材料模拟",
+      "canonical_label_en": "Materials simulation",
+      "signals": [
+        {
+          "signal_id": "sim-electronic-atomistic",
+          "concept": "executed electronic or atomistic simulation",
+          "strength": "strong",
+          "terms_en": [
+            "density functional theory calculation",
+            "ab initio molecular dynamics",
+            "classical molecular dynamics",
+            "Monte Carlo simulation"
+          ],
+          "terms_zh": [
+            "密度泛函理论计算",
+            "第一性原理分子动力学",
+            "经典分子动力学",
+            "蒙特卡洛模拟"
+          ],
+          "abbreviations": [
+            "DFT",
+            "AIMD",
+            "MD",
+            "MC"
+          ],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "sim-atomistic"
+        },
+        {
+          "signal_id": "sim-meso-continuum",
+          "concept": "executed thermodynamic, mesoscale, or continuum simulation",
+          "strength": "strong",
+          "terms_en": [
+            "CALPHAD calculation",
+            "phase-field simulation",
+            "finite-element simulation",
+            "finite-volume simulation",
+            "discrete-element simulation"
+          ],
+          "terms_zh": [
+            "CALPHAD 计算",
+            "相场模拟",
+            "有限元模拟",
+            "有限体积模拟",
+            "离散元模拟"
+          ],
+          "abbreviations": [
+            "FEM",
+            "FVM",
+            "DEM"
+          ],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "sim-continuum"
+        },
+        {
+          "signal_id": "sim-provenance",
+          "concept": "simulation execution provenance",
+          "strength": "supporting",
+          "terms_en": [
+            "input file",
+            "code version",
+            "convergence criterion",
+            "boundary condition",
+            "training split",
+            "random seed"
+          ],
+          "terms_zh": [
+            "输入文件",
+            "代码版本",
+            "收敛判据",
+            "边界条件",
+            "训练集划分",
+            "随机种子"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "sim-provenance"
+        },
+        {
+          "signal_id": "sim-generic",
+          "concept": "generic calculation vocabulary",
+          "strength": "weak",
+          "terms_en": [
+            "calculated",
+            "simulated",
+            "modeled",
+            "predicted",
+            "machine learning"
+          ],
+          "terms_zh": [
+            "计算得到",
+            "模拟",
+            "建模",
+            "预测",
+            "机器学习"
+          ],
+          "abbreviations": [
+            "ML"
+          ],
+          "symbols": [],
+          "valid_contexts": [
+            "title",
+            "abstract",
+            "methods",
+            "results",
+            "figure-or-table",
+            "conclusion"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": true,
+          "independence_group": "sim-generic"
+        },
+        {
+          "signal_id": "sim-not-executed",
+          "concept": "non-executed or non-simulation model",
+          "strength": "exclusion",
+          "terms_en": [
+            "future simulation",
+            "software capability",
+            "cited calculation",
+            "analytic fit only",
+            "schematic model"
+          ],
+          "terms_zh": [
+            "未来模拟",
+            "软件功能",
+            "引用的计算",
+            "仅解析拟合",
+            "示意模型"
+          ],
+          "abbreviations": [],
+          "symbols": [],
+          "valid_contexts": [
+            "future-work",
+            "software-description",
+            "cited-comparison",
+            "analysis-only"
+          ],
+          "invalid_contexts": [
+            "references",
+            "cited-comparison",
+            "future-work",
+            "negated-claim"
+          ],
+          "requires_entity_binding": false,
+          "independence_group": "sim-exclusion"
+        }
+      ],
+      "ambiguous_terms": [
+        {
+          "term": "model",
+          "possible_senses": [
+            "executed numerical simulation",
+            "analytical fit",
+            "conceptual mechanism",
+            "machine-learning model"
+          ],
+          "resolution_rule": "Classify the model role and require actual inputs, execution, and outputs for simulation records."
+        },
+        {
+          "term": "calculated",
+          "possible_senses": [
+            "current-source simulation output",
+            "derived arithmetic value",
+            "cited result"
+          ],
+          "resolution_rule": "Require method, target, and execution provenance; arithmetic derivation belongs to property derivation, not simulation."
+        }
+      ],
+      "load_gate": {
+        "all_of": [
+          "source identity is resolved",
+          "at least one target entity is resolved",
+          "at least one method-level or result-level signal is bound to the target",
+          "all positive evidence is not fully explained by exclusion context"
+        ],
+        "any_of": [
+          "an actual simulation job has target-bound inputs, method details, and outputs",
+          "a materials-ML model has a defined dataset, split, task, validation, and target property"
+        ],
+        "minimum_independent_groups": 1
+      },
+      "candidate_gate": [
+        "only weak or supporting vocabulary is available",
+        "target entity binding is unresolved",
+        "the accessible source is insufficient to resolve centrality or polarity",
+        "a strong-looking term has an unresolved alternate sense"
+      ],
+      "skip_gate": [
+        "all matches are apparatus, consumable, substrate, container, cited, negated, or future-work mentions",
+        "the source is sufficiently complete and the studied target is outside this adapter scope"
+      ],
+      "co_load_suggestions": [
+        "metallic-materials",
+        "quantum-materials",
+        "materials-processing",
+        "diffraction-scattering"
+      ],
+      "reason_codes": {
+        "SIM-LOAD-TARGET": "Target-bound method or result evidence satisfies the load gate.",
+        "SIM-CANDIDATE-UNRESOLVED": "Domain possibility exists but binding, polarity, or centrality is unresolved.",
+        "SIM-SKIP-EXCLUDED": "All matched occurrences are explained by exclusion context."
+      }
+    }
+  }
+}

@@ -1,0 +1,330 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/materials-evidence-reasoner/4.6/input-schema.json",
+  "title": "Materials Experiment Intake Packet",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "created_at",
+    "path_base",
+    "root_input",
+    "received_inputs",
+    "normalized_tables",
+    "text_items",
+    "missing_information",
+    "summary"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "path_base": {
+      "const": "."
+    },
+    "root_input": {
+      "type": "string"
+    },
+    "decision_question": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "material_domain": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "received_inputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "path",
+          "name",
+          "extension",
+          "size_bytes",
+          "sha256",
+          "detected_kind",
+          "parse_status"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "extension": {
+            "type": "string"
+          },
+          "size_bytes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "sha256": {
+            "type": "string"
+          },
+          "detected_kind": {
+            "enum": [
+              "csv",
+              "tsv",
+              "xlsx",
+              "json",
+              "text",
+              "markdown",
+              "pdf",
+              "image",
+              "binary",
+              "directory",
+              "xml",
+              "html",
+              "docx",
+              "epub"
+            ]
+          },
+          "parse_status": {
+            "enum": [
+              "parsed",
+              "manifest-only",
+              "unsupported",
+              "failed"
+            ]
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "normalized_tables": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "input_id",
+          "table_id",
+          "source_name",
+          "row_count",
+          "columns",
+          "rows"
+        ],
+        "properties": {
+          "input_id": {
+            "type": "string"
+          },
+          "table_id": {
+            "type": "string"
+          },
+          "source_name": {
+            "type": "string"
+          },
+          "sheet_name": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "row_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "columns": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "raw_name",
+                "canonical_name",
+                "mapping_status"
+              ],
+              "properties": {
+                "raw_name": {
+                  "type": "string"
+                },
+                "canonical_name": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "mapping_status": {
+                  "enum": [
+                    "exact",
+                    "alias",
+                    "contextual-candidate",
+                    "unresolved"
+                  ]
+                },
+                "mapping_note": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            }
+          },
+          "rows": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "text_items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "input_id",
+          "text",
+          "extracted_pairs"
+        ],
+        "properties": {
+          "input_id": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          },
+          "extracted_pairs": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "raw_key",
+                "raw_value",
+                "canonical_name",
+                "mapping_status"
+              ],
+              "properties": {
+                "raw_key": {
+                  "type": "string"
+                },
+                "raw_value": {
+                  "type": "string"
+                },
+                "canonical_name": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "mapping_status": {
+                  "enum": [
+                    "exact",
+                    "alias",
+                    "contextual-candidate",
+                    "unresolved"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "missing_information": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "field",
+          "priority",
+          "reason",
+          "impact",
+          "suggested_input"
+        ],
+        "properties": {
+          "field": {
+            "type": "string"
+          },
+          "priority": {
+            "enum": [
+              "blocker",
+              "analysis-limiting",
+              "optional-enrichment"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          },
+          "impact": {
+            "type": "string"
+          },
+          "suggested_input": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "file_count",
+        "table_count",
+        "text_count",
+        "mapped_field_count",
+        "unresolved_field_count",
+        "readiness"
+      ],
+      "properties": {
+        "file_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "table_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "text_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "mapped_field_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unresolved_field_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "readiness": {
+          "enum": [
+            "ready",
+            "ready-with-caveats",
+            "blocked"
+          ]
+        }
+      }
+    }
+  }
+}

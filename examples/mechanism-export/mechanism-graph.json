@@ -1,0 +1,419 @@
+{
+  "exported_at": "2026-08-07T16:47:36.946142+00:00",
+  "source_run_id": "RUN-SYNTHETIC-CE-001",
+  "source_sha256": "a47368a582c18affd406e26edad941b35a48be5e2e80e5f2a496f1d80c1ffbaf",
+  "mechanism_graphs": [
+    {
+      "id": "MG1",
+      "title": "Synthetic Ion-Cu exposure and efficiency mechanism graph",
+      "namespace": "demo/project",
+      "material_system": "Ion-Cu sodium plating interface",
+      "version": "1.0",
+      "status": "draft",
+      "node_ids": [
+        "MN1",
+        "MN2",
+        "MN3",
+        "MN4",
+        "MN5"
+      ],
+      "edge_ids": [
+        "ME1",
+        "ME2",
+        "ME3",
+        "ME4"
+      ],
+      "condition_ids": [
+        "COND-A"
+      ],
+      "boundary_conditions": [
+        "Synthetic fixture only.",
+        "Ion-Cu under Cond-A.",
+        "Pre-test handling is part of the regime."
+      ],
+      "source_kinds": [
+        "combined",
+        "domain-inference"
+      ],
+      "created_from_run_ids": [
+        "RUN-SYNTHETIC-CE-001"
+      ],
+      "related_pspp_map_ids": [
+        "PSPP1"
+      ],
+      "related_anomaly_chain_ids": [
+        "CHAIN1"
+      ],
+      "evidence_ids": [
+        "E1",
+        "E2",
+        "E3",
+        "E4"
+      ],
+      "update_ids": [
+        "MU1"
+      ],
+      "limitations": [
+        "Surface chemistry and interfacial resistance are not directly measured."
+      ]
+    }
+  ],
+  "mechanism_nodes": [
+    {
+      "id": "MN1",
+      "graph_ids": [
+        "MG1"
+      ],
+      "node_type": "processing",
+      "statement": "Air exposure occurred before testing.",
+      "canonical_term": "pre-test air exposure",
+      "status": "observed",
+      "entity_ids": [
+        "SAMPLE1"
+      ],
+      "process_run_ids": [],
+      "condition_ids": [
+        "COND-A"
+      ],
+      "evidence_ids": [
+        "E3"
+      ],
+      "boundary_conditions": [
+        "Local handling workflow."
+      ],
+      "limitations": []
+    },
+    {
+      "id": "MN2",
+      "graph_ids": [
+        "MG1"
+      ],
+      "node_type": "structure",
+      "statement": "Surface oxide or contaminant coverage may differ from the fresh reference.",
+      "canonical_term": "altered surface coverage",
+      "status": "hypothesized",
+      "entity_ids": [
+        "SAMPLE1"
+      ],
+      "condition_ids": [
+        "COND-A"
+      ],
+      "evidence_ids": [],
+      "boundary_conditions": [
+        "Pre-test surface state."
+      ],
+      "limitations": [
+        "No surface-sensitive measurement."
+      ]
+    },
+    {
+      "id": "MN3",
+      "graph_ids": [
+        "MG1"
+      ],
+      "node_type": "mechanism",
+      "statement": "An altered surface layer may impede interfacial charge or ion transport.",
+      "canonical_term": "surface-layer transport impedance",
+      "status": "hypothesized",
+      "entity_ids": [
+        "SAMPLE1"
+      ],
+      "condition_ids": [
+        "COND-A"
+      ],
+      "evidence_ids": [],
+      "boundary_conditions": [
+        "Same cell architecture and electrolyte."
+      ],
+      "limitations": [
+        "Mechanistic mediator is inferred."
+      ]
+    },
+    {
+      "id": "MN4",
+      "graph_ids": [
+        "MG1"
+      ],
+      "node_type": "property",
+      "statement": "Interfacial resistance may be elevated.",
+      "canonical_term": "interfacial resistance",
+      "status": "hypothesized",
+      "entity_ids": [
+        "SAMPLE1"
+      ],
+      "property_record_ids": [],
+      "condition_ids": [
+        "COND-A"
+      ],
+      "evidence_ids": [],
+      "boundary_conditions": [
+        "Matched state of charge and geometry."
+      ],
+      "limitations": [
+        "No EIS or equivalent measurement."
+      ]
+    },
+    {
+      "id": "MN5",
+      "graph_ids": [
+        "MG1"
+      ],
+      "node_type": "performance",
+      "statement": "Coulombic efficiency is lower than the matched reference case.",
+      "canonical_term": "coulombic efficiency",
+      "status": "observed",
+      "entity_ids": [
+        "SAMPLE1"
+      ],
+      "property_record_ids": [
+        "PR2"
+      ],
+      "condition_ids": [
+        "COND-A"
+      ],
+      "evidence_ids": [
+        "E1",
+        "E2",
+        "E4"
+      ],
+      "boundary_conditions": [
+        "Cond-A."
+      ],
+      "limitations": [
+        "Single synthetic batch."
+      ]
+    }
+  ],
+  "mechanism_edges": [
+    {
+      "id": "ME1",
+      "graph_id": "MG1",
+      "from_node_id": "MN1",
+      "to_node_id": "MN2",
+      "relation_type": "induces",
+      "mechanism_description": "Air exposure may alter the surface chemical state.",
+      "validation_status": "hypothesis",
+      "source_kind": "combined",
+      "support_evidence_ids": [
+        "E3"
+      ],
+      "conflict_evidence_ids": [],
+      "validation_evidence_ids": [],
+      "supporting_observations": [
+        "Air exposure was reported before the low-CE run."
+      ],
+      "falsifiers": [
+        "Surface-sensitive analysis shows no difference from a fresh control."
+      ],
+      "condition_ids": [
+        "COND-A"
+      ],
+      "boundary_conditions": [
+        "Ion-Cu pre-test handling under Cond-A."
+      ],
+      "transferability": {
+        "level": "same-regime",
+        "rationale": "Only the synthetic Ion-Cu regime under Cond-A is considered.",
+        "required_matches": [
+          "material system",
+          "surface handling",
+          "cell architecture",
+          "measurement protocol"
+        ],
+        "known_mismatches": []
+      },
+      "version": "1.0",
+      "linked_hypothesis_ids": [
+        "H1"
+      ],
+      "linked_pspp_relationship_ids": [
+        "PRL1"
+      ],
+      "limitations": [
+        "No direct surface chemistry evidence."
+      ]
+    },
+    {
+      "id": "ME2",
+      "graph_id": "MG1",
+      "from_node_id": "MN2",
+      "to_node_id": "MN3",
+      "relation_type": "enables",
+      "mechanism_description": "A changed surface layer may create an interfacial transport barrier.",
+      "validation_status": "hypothesis",
+      "source_kind": "domain-inference",
+      "support_evidence_ids": [
+        "E2",
+        "E3"
+      ],
+      "conflict_evidence_ids": [],
+      "validation_evidence_ids": [],
+      "supporting_observations": [
+        "The low-CE run followed a different exposure history."
+      ],
+      "falsifiers": [
+        "Matched transport measurements show no change after exposure."
+      ],
+      "condition_ids": [
+        "COND-A"
+      ],
+      "boundary_conditions": [
+        "Same electrolyte, geometry, and current density."
+      ],
+      "transferability": {
+        "level": "same-regime",
+        "rationale": "Only the synthetic Ion-Cu regime under Cond-A is considered.",
+        "required_matches": [
+          "material system",
+          "surface handling",
+          "cell architecture",
+          "measurement protocol"
+        ],
+        "known_mismatches": []
+      },
+      "version": "1.0",
+      "linked_hypothesis_ids": [
+        "H1"
+      ],
+      "linked_pspp_relationship_ids": [
+        "PRL2"
+      ],
+      "limitations": [
+        "Evidence is indirect and synthetic."
+      ]
+    },
+    {
+      "id": "ME3",
+      "graph_id": "MG1",
+      "from_node_id": "MN3",
+      "to_node_id": "MN4",
+      "relation_type": "increases",
+      "mechanism_description": "The transport barrier may increase interfacial resistance.",
+      "validation_status": "hypothesis",
+      "source_kind": "domain-inference",
+      "support_evidence_ids": [
+        "E2",
+        "E4"
+      ],
+      "conflict_evidence_ids": [],
+      "validation_evidence_ids": [],
+      "supporting_observations": [
+        "The CE effect exceeds within-run repeatability, leaving a persistent mediator to test."
+      ],
+      "falsifiers": [
+        "Matched EIS or equivalent analysis shows no resistance difference."
+      ],
+      "condition_ids": [
+        "COND-A"
+      ],
+      "boundary_conditions": [
+        "Comparable cell state and impedance model."
+      ],
+      "transferability": {
+        "level": "same-regime",
+        "rationale": "Only the synthetic Ion-Cu regime under Cond-A is considered.",
+        "required_matches": [
+          "material system",
+          "surface handling",
+          "cell architecture",
+          "measurement protocol"
+        ],
+        "known_mismatches": []
+      },
+      "version": "1.0",
+      "linked_hypothesis_ids": [
+        "H1"
+      ],
+      "linked_pspp_relationship_ids": [
+        "PRL2"
+      ],
+      "limitations": [
+        "Resistance is not measured."
+      ]
+    },
+    {
+      "id": "ME4",
+      "graph_id": "MG1",
+      "from_node_id": "MN4",
+      "to_node_id": "MN5",
+      "relation_type": "decreases",
+      "mechanism_description": "Higher interfacial resistance may reduce plating/stripping efficiency.",
+      "validation_status": "hypothesis",
+      "source_kind": "combined",
+      "support_evidence_ids": [
+        "E1",
+        "E2",
+        "E4"
+      ],
+      "conflict_evidence_ids": [],
+      "validation_evidence_ids": [],
+      "supporting_observations": [
+        "The local CE is 3.1 percentage points below the reference while repeatability is 0.1 points."
+      ],
+      "falsifiers": [
+        "CE remains low after resistance is restored or matched."
+      ],
+      "condition_ids": [
+        "COND-A"
+      ],
+      "boundary_conditions": [
+        "Cond-A and matched cell architecture."
+      ],
+      "transferability": {
+        "level": "same-regime",
+        "rationale": "Only the synthetic Ion-Cu regime under Cond-A is considered.",
+        "required_matches": [
+          "material system",
+          "surface handling",
+          "cell architecture",
+          "measurement protocol"
+        ],
+        "known_mismatches": []
+      },
+      "version": "1.0",
+      "linked_hypothesis_ids": [
+        "H1"
+      ],
+      "linked_pspp_relationship_ids": [
+        "PRL3"
+      ],
+      "limitations": [
+        "Association does not prove the mediator."
+      ]
+    }
+  ],
+  "mechanism_updates": [
+    {
+      "id": "MU1",
+      "operation": "support-edge",
+      "target_graph_id": "MG1",
+      "target_edge_id": "ME1",
+      "status": "proposed",
+      "rationale": "After the planned paired surface-recovery experiment, update ME1 only if surface state and CE move together while the contamination alternative is controlled.",
+      "evidence_ids": [
+        "E2",
+        "E3",
+        "E4"
+      ],
+      "new_node_ids": [],
+      "new_edge_ids": [],
+      "proposed_validation_status": "supported",
+      "proposed_support_evidence_ids": [
+        "E2",
+        "E3",
+        "E4"
+      ],
+      "proposed_conflict_evidence_ids": [],
+      "proposed_boundary_conditions": [
+        "Synthetic Ion-Cu under Cond-A with the paired recovery protocol."
+      ],
+      "created_from_experience_update_ids": [
+        "EXP1"
+      ],
+      "persistence_status": "proposed-not-written",
+      "limitations": [
+        "The verification experiment has not been executed."
+      ]
+    }
+  ]
+}

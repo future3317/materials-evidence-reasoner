@@ -1,0 +1,303 @@
+{
+  "schema_version": "1.0",
+  "created_at": "2026-08-06T16:15:02.073231+00:00",
+  "path_base": ".",
+  "root_input": "../cross-domain-input.csv",
+  "decision_question": "比较跨域实验记录与文献，诊断偏差、误差来源和下一步实验",
+  "material_domain": null,
+  "received_inputs": [
+    {
+      "id": "IN-0001",
+      "path": "../cross-domain-input.csv",
+      "name": "cross-domain-input.csv",
+      "extension": ".csv",
+      "size_bytes": 753,
+      "sha256": "db4e75195ea3cdbafa22da6241ad7f0de73025e2bbdb9534b7cd3e3d791eba21",
+      "detected_kind": "csv",
+      "parse_status": "parsed",
+      "warnings": []
+    }
+  ],
+  "normalized_tables": [
+    {
+      "input_id": "IN-0001",
+      "table_id": "IN-0001-T1",
+      "source_name": "cross-domain-input.csv",
+      "sheet_name": null,
+      "row_count": 5,
+      "columns": [
+        {
+          "raw_name": "样品编号",
+          "canonical_name": "sample_id",
+          "mapping_status": "alias",
+          "mapping_note": null
+        },
+        {
+          "raw_name": "批次",
+          "canonical_name": "batch_id",
+          "mapping_status": "alias",
+          "mapping_note": null
+        },
+        {
+          "raw_name": "材料名称",
+          "canonical_name": "material_name",
+          "mapping_status": "alias",
+          "mapping_note": null
+        },
+        {
+          "raw_name": "工艺",
+          "canonical_name": "process_step",
+          "mapping_status": "alias",
+          "mapping_note": null
+        },
+        {
+          "raw_name": "性能",
+          "canonical_name": "property_name",
+          "mapping_status": "alias",
+          "mapping_note": null
+        },
+        {
+          "raw_name": "性能值",
+          "canonical_name": "property_value",
+          "mapping_status": "alias",
+          "mapping_note": null
+        },
+        {
+          "raw_name": "单位",
+          "canonical_name": "unit",
+          "mapping_status": "alias",
+          "mapping_note": null
+        },
+        {
+          "raw_name": "测试方法",
+          "canonical_name": "measurement_method",
+          "mapping_status": "alias",
+          "mapping_note": null
+        },
+        {
+          "raw_name": "温度",
+          "canonical_name": "process_temperature",
+          "mapping_status": "contextual-candidate",
+          "mapping_note": "可能是工艺温度、存储温度或测试温度；必须结合列邻域、工作表和任务语境决定。"
+        },
+        {
+          "raw_name": "速率",
+          "canonical_name": null,
+          "mapping_status": "contextual-candidate",
+          "mapping_note": "可能是扫描速率、应变速率、倍率、流量、沉积速率或升温速率；必须结合上下文。"
+        },
+        {
+          "raw_name": "重复数",
+          "canonical_name": "replicate_count",
+          "mapping_status": "alias",
+          "mapping_note": null
+        },
+        {
+          "raw_name": "备注",
+          "canonical_name": "notes",
+          "mapping_status": "alias",
+          "mapping_note": null
+        }
+      ],
+      "rows": [
+        {
+          "raw": {
+            "样品编号": "BAT-01",
+            "批次": "B24-07",
+            "材料名称": "NCM811",
+            "工艺": "高温烧结后组装扣式半电池",
+            "性能": "首次放电容量",
+            "性能值": "188",
+            "单位": "mAh/g",
+            "测试方法": "恒流充放电",
+            "温度": "25",
+            "速率": "0.5C",
+            "重复数": "3",
+            "备注": "倍率与温度需结合测试语境解析"
+          },
+          "canonical": {
+            "sample_id": "BAT-01",
+            "batch_id": "B24-07",
+            "material_name": "NCM811",
+            "process_step": "高温烧结后组装扣式半电池",
+            "property_name": "首次放电容量",
+            "property_value": "188",
+            "unit": "mAh/g",
+            "measurement_method": "恒流充放电",
+            "replicate_count": "3",
+            "notes": "倍率与温度需结合测试语境解析"
+          }
+        },
+        {
+          "raw": {
+            "样品编号": "MET-01",
+            "批次": "H18",
+            "材料名称": "316L",
+            "工艺": "激光选区熔化后去应力退火",
+            "性能": "屈服强度",
+            "性能值": "492",
+            "单位": "MPa",
+            "测试方法": "拉伸试验",
+            "温度": "23",
+            "速率": "1e-3/s",
+            "重复数": "5",
+            "备注": "构建方向未记录"
+          },
+          "canonical": {
+            "sample_id": "MET-01",
+            "batch_id": "H18",
+            "material_name": "316L",
+            "process_step": "激光选区熔化后去应力退火",
+            "property_name": "屈服强度",
+            "property_value": "492",
+            "unit": "MPa",
+            "measurement_method": "拉伸试验",
+            "replicate_count": "5",
+            "notes": "构建方向未记录"
+          }
+        },
+        {
+          "raw": {
+            "样品编号": "POL-01",
+            "批次": "P09",
+            "材料名称": "SiO2/环氧复合材料",
+            "工艺": "硅烷改性并固化",
+            "性能": "导热率",
+            "性能值": "1.85",
+            "单位": "W/(m·K)",
+            "测试方法": "稳态法",
+            "温度": "25",
+            "速率": "",
+            "重复数": "4",
+            "备注": "填料分散状态未记录"
+          },
+          "canonical": {
+            "sample_id": "POL-01",
+            "batch_id": "P09",
+            "material_name": "SiO2/环氧复合材料",
+            "process_step": "硅烷改性并固化",
+            "property_name": "导热率",
+            "property_value": "1.85",
+            "unit": "W/(m·K)",
+            "measurement_method": "稳态法",
+            "replicate_count": "4",
+            "notes": "填料分散状态未记录"
+          }
+        },
+        {
+          "raw": {
+            "样品编号": "CER-01",
+            "批次": "C11",
+            "材料名称": "氧化铝陶瓷",
+            "工艺": "无压烧结",
+            "性能": "三点弯曲强度",
+            "性能值": "421",
+            "单位": "MPa",
+            "测试方法": "三点弯曲",
+            "温度": "室温",
+            "速率": "0.5 mm/min",
+            "重复数": "5",
+            "备注": "试样尺寸未记录"
+          },
+          "canonical": {
+            "sample_id": "CER-01",
+            "batch_id": "C11",
+            "material_name": "氧化铝陶瓷",
+            "process_step": "无压烧结",
+            "property_name": "三点弯曲强度",
+            "property_value": "421",
+            "unit": "MPa",
+            "measurement_method": "三点弯曲",
+            "replicate_count": "5",
+            "notes": "试样尺寸未记录"
+          }
+        },
+        {
+          "raw": {
+            "样品编号": "SEM-01",
+            "批次": "W03",
+            "材料名称": "钙钛矿太阳能电池",
+            "工艺": "旋涂退火并制备器件",
+            "性能": "PCE",
+            "性能值": "21.4",
+            "单位": "%",
+            "测试方法": "J-V扫描",
+            "温度": "25",
+            "速率": "100 mV/s",
+            "重复数": "8",
+            "备注": "扫描方向未记录"
+          },
+          "canonical": {
+            "sample_id": "SEM-01",
+            "batch_id": "W03",
+            "material_name": "钙钛矿太阳能电池",
+            "process_step": "旋涂退火并制备器件",
+            "property_name": "PCE",
+            "property_value": "21.4",
+            "unit": "%",
+            "measurement_method": "J-V扫描",
+            "replicate_count": "8",
+            "notes": "扫描方向未记录"
+          }
+        }
+      ],
+      "warnings": [
+        "decoded with utf-8-sig",
+        "delimiter=','"
+      ]
+    }
+  ],
+  "text_items": [],
+  "missing_information": [
+    {
+      "field": "normalization_basis",
+      "priority": "analysis-limiting",
+      "reason": "未识别到分母或归一化基准。",
+      "impact": "按质量、面积、体积或活性物质归一化的数值可能不可比。",
+      "suggested_input": "说明分母、几何尺寸、活性组分比例或计算公式。"
+    },
+    {
+      "field": "measurement_repeat_id",
+      "priority": "analysis-limiting",
+      "reason": "当前任务需要偏差/误差归因，但未识别到重复级 ID。",
+      "impact": "只有均值或重复数时，无法区分测量重复性、样品差异和批次差异。",
+      "suggested_input": "为每个原始重复增加 measurement_repeat_id，保留未平均的测量值。"
+    },
+    {
+      "field": "instrument_and_calibration_provenance",
+      "priority": "analysis-limiting",
+      "reason": "缺少仪器/校准身份。",
+      "impact": "无法判断漂移、设备间差异或标准样问题是否主导偏差。",
+      "suggested_input": "提供 instrument_id、calibration_id/日期、标准样结果或校准有效期。"
+    },
+    {
+      "field": "analysis_version",
+      "priority": "optional-enrichment",
+      "reason": "未识别到软件、脚本、拟合或分析版本。",
+      "impact": "窗口、模型或处理版本变化可能形成数据定义偏差。",
+      "suggested_input": "提供分析软件/脚本版本、窗口、拟合模型和删点规则。"
+    },
+    {
+      "field": "actual_control_and_environment",
+      "priority": "optional-enrichment",
+      "reason": "只看到结果，未识别到工艺/测试实际控制日志。",
+      "impact": "设定值与实测值的差异可能解释协议或过程偏差。",
+      "suggested_input": "提供控制器实测值、环境日志或关键条件随时间记录。"
+    },
+    {
+      "field": "intermediate_structure_or_property",
+      "priority": "optional-enrichment",
+      "reason": "未从表头确认能够连接工艺与最终性能的中间结构/性质变量。",
+      "impact": "异常传播链可能停留在推测，下一实验难以精准区分机理。",
+      "suggested_input": "提供与首要机理相关的结构或中间性质表征；Agent 应先列信息缺口再选择方法。"
+    }
+  ],
+  "summary": {
+    "file_count": 1,
+    "table_count": 1,
+    "text_count": 0,
+    "mapped_field_count": 10,
+    "unresolved_field_count": 2,
+    "readiness": "ready-with-caveats"
+  }
+}

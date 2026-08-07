@@ -1,0 +1,7 @@
+interface:
+  display_name: "材料实验闭环推理器"
+  short_description: "文献基准、偏差诊断、证据机理图谱与最小验证"
+  default_prompt: "我上传了一篇材料文献。请先做 literature-first 审查，检查提取质量，提取带页码/图表定位的证据和条件，区分事实、derived、hypothesis 与 missing，并生成中文报告、source dashboard、可验证 JSON、结果 dashboard 和下一步验证计划。"
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/materials-evidence-reasoner/4.3/adapter-routing-lexicon.schema.json",
+  "title": "Materials Evidence Reasoner Adapter Routing Lexicon",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["lexicon_version", "signal_semantics", "matching_policy", "adapters"],
+  "properties": {
+    "lexicon_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "signal_semantics": {"type": "object", "minProperties": 1, "additionalProperties": {"type": "string"}},
+    "matching_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["surface_terms_are_recall_only", "semantic_match_required", "load_requires_entity_binding", "unresolved_route_status", "context_order", "maintenance_contract"],
+      "properties": {
+        "surface_terms_are_recall_only": {"const": true},
+        "semantic_match_required": {"const": true},
+        "load_requires_entity_binding": {"const": true},
+        "unresolved_route_status": {"const": "candidate"},
+        "context_order": {"$ref": "#/$defs/string_array"},
+        "maintenance_contract": {"type": "string", "minLength": 1}
+      }
+    },
+    "adapters": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {"$ref": "#/$defs/adapter"}
+    }
+  },
+  "$defs": {
+    "string_array": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "signal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "signal_id",
+        "concept",
+        "strength",
+        "terms_en",
+        "terms_zh",
+        "abbreviations",
+        "symbols",
+        "valid_contexts",
+        "invalid_contexts",
+        "requires_entity_binding",
+        "independence_group"
+      ],
+      "properties": {
+        "signal_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$"},
+        "concept": {"type": "string", "minLength": 1},
+        "strength": {"enum": ["strong", "supporting", "weak", "exclusion"]},
+        "terms_en": {"$ref": "#/$defs/string_array"},
+        "terms_zh": {"$ref": "#/$defs/string_array"},
+        "abbreviations": {"$ref": "#/$defs/string_array"},
+        "symbols": {"$ref": "#/$defs/string_array"},
+        "valid_contexts": {"$ref": "#/$defs/string_array"},
+        "invalid_contexts": {"$ref": "#/$defs/string_array"},
+        "requires_entity_binding": {"type": "boolean"},
+        "independence_group": {"type": "string", "minLength": 1}
+      }
+    },
+    "adapter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ruleset_version",
+        "canonical_label_zh",
+        "canonical_label_en",
+        "signals",
+        "ambiguous_terms",
+        "load_gate",
+        "candidate_gate",
+        "skip_gate",
+        "co_load_suggestions",
+        "reason_codes"
+      ],
+      "properties": {
+        "ruleset_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+        "canonical_label_zh": {"type": "string", "minLength": 1},
+        "canonical_label_en": {"type": "string", "minLength": 1},
+        "signals": {
+          "type": "array",
+          "minItems": 4,
+          "items": {"$ref": "#/$defs/signal"}
+        },
+        "ambiguous_terms": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["term", "possible_senses", "resolution_rule"],
+            "properties": {
+              "term": {"type": "string", "minLength": 1},
+              "possible_senses": {"$ref": "#/$defs/string_array"},
+              "resolution_rule": {"type": "string", "minLength": 1}
+            }
+          }
+        },
+        "load_gate": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["all_of", "any_of", "minimum_independent_groups"],
+          "properties": {
+            "all_of": {"$ref": "#/$defs/string_array"},
+            "any_of": {"$ref": "#/$defs/string_array"},
+            "minimum_independent_groups": {"type": "integer", "minimum": 1}
+          }
+        },
+        "candidate_gate": {"$ref": "#/$defs/string_array"},
+        "skip_gate": {"$ref": "#/$defs/string_array"},
+        "co_load_suggestions": {"$ref": "#/$defs/string_array"},
+        "reason_codes": {
+          "type": "object",
+          "minProperties": 3,
+          "additionalProperties": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  }
+}
