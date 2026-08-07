@@ -124,6 +124,7 @@ def static_code_profile(path: Path, output: Path, lexicon: dict[str, Any]) -> di
                     if isinstance(target, ast.Name) and target.id.isupper():
                         constants.append(target.id)
     references = sorted(set(re.findall(r"(?:read_csv|to_csv|open)\s*\(\s*['\"]([^'\"]+)", text)))
+    writes = sorted(set(re.findall(r"to_csv\s*\(\s*['\"]([^'\"]+)", text)))
     known_external = set(lexicon.get("code_signals", {}).get("model_libraries", []))
     known_external.update({"numpy", "pandas", "matplotlib", "torch", "warnings", "os", "sys", "datetime"})
     local_missing: list[str] = []
@@ -134,7 +135,24 @@ def static_code_profile(path: Path, output: Path, lexicon: dict[str, Any]) -> di
         local_pkg = path.parent / module / "__init__.py"
         if ("." not in module and ("from " + module) in text) and not local_py.exists() and not local_pkg.exists():
             local_missing.append(module)
-    in_place = any(name in {"labeled.csv", "curr_unlabeled.csv", "qbc_recommended.csv"} for name in references)
+    # Reading a file with an input-looking name is normal. Only a literal
+    # write to a protected starting record is an overwrite risk; generated
+    # artifacts such as qbc_recommended.csv and curr_unlabeled.csv are not
+    # reported as input mutation by themselves.
+    # ``init_unlabeled.csv`` is a generated candidate-pool artifact in the
+    # bundled example. The protected observation record is labeled.csv; its
+    # one-time creation in generate_initial_data.py is safe when guarded by
+    # ``if not exists``.
+    protected_inputs = {"labeled.csv"}
+    conditional_initial_write = bool(re.search(
+        r"if\s+not\s+os\.path\.exists\(\s*['\"]labeled\.csv['\"]", text
+    ))
+    in_place = any(Path(name).name in protected_inputs for name in writes) and not conditional_initial_write
+    # Also catch the original common bug where a safe output variable is
+    # reassigned to os.path.join('labeled.csv') before the write.
+    in_place = in_place or bool(re.search(
+        r"os\.path\.join\(\s*['\"](?:labeled|init_unlabeled)\.csv['\"]\s*\)", text
+    ))
     return {
         "path": rel(path, output),
         "name": path.name,
@@ -144,6 +162,7 @@ def static_code_profile(path: Path, output: Path, lexicon: dict[str, Any]) -> di
         "classes": sorted(set(classes)),
         "constants": sorted(set(constants)),
         "referenced_paths": references,
+        "write_targets": writes,
         "missing_local_imports": local_missing,
         "writes_in_place": in_place,
         "syntax_error": syntax_error,
