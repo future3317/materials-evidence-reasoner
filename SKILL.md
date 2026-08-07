@@ -351,7 +351,7 @@ python scripts/audit_mechanism_graph.py materials-result.json -o mechanism-audit
 
 单篇文献任务必须按 `references/literature-user-workflow.md` 完成交接：最终消息先给用户报告和文件链接，再说明先打开 source dashboard 检查提取质量、再读报告、最后使用结果 dashboard；明确哪些结论仍需人工回查，以及如何把 `materials-result.json` 与后续文献/本地实验一起交给 Agent。只有文献时不得声称已经完成复现或建立本地基线。
 
-如果输入含 Bayesian optimization/active learning 代码、候选池或推荐 CSV，先运行 `scripts/profile_active_learning.py`，读取 `references/active-learning-contract.md`。它生成的 profile/dashboard 是中间资产，不替代 `materials-result.json`。推荐点、acquisition score 和 QBC variance 默认保持 `model-derived`/`proposed`，只有独立实验或可信模拟记录才能升级为 measurement/property evidence。
+如果输入含 Bayesian optimization/active learning 代码、候选池或推荐 CSV，先运行 `scripts/profile_active_learning.py`，读取 `references/active-learning-contract.md`。它生成的 profile/dashboard 是中间资产，不替代 `materials-result.json`。推荐点、acquisition score 和 QBC variance 默认保持 `model-derived`/`proposed`，只有独立实验或可信模拟记录才能升级为 measurement/property evidence。若目录含合成目标函数或黑箱接口，必须明确它是流程基准而非材料实测；运行/更新脚本应将派生记录写入新的迭代目录，不覆盖原始输入。
 
 ## 9. 机器输出
 

@@ -81,6 +81,20 @@ def main() -> int:
         except (UnicodeDecodeError, SyntaxError) as exc:
             errors.append(f"invalid Python {path.relative_to(ROOT)}: {exc}")
 
+    # The checked-in active-learning example must be runnable as delivered and
+    # must keep its source records immutable by default.
+    for update_script in sorted(ROOT.rglob("run_sample_and_update.py")):
+        if "__MACOSX" in update_script.parts:
+            continue
+        active_dir = update_script.parent
+        if not (active_dir / "test_function.py").is_file():
+            errors.append(f"active-learning example is missing {active_dir.relative_to(ROOT) / 'test_function.py'}")
+        update_text = update_script.read_text(encoding="utf-8")
+        if "output_file = os.path.join('labeled.csv')" in update_text:
+            errors.append(f"active-learning update still overwrites labeled.csv: {update_script.relative_to(ROOT)}")
+        if "--output-dir" not in update_text or "def run(" not in update_text:
+            errors.append(f"active-learning update lacks explicit safe output contract: {update_script.relative_to(ROOT)}")
+
     skill_text = (ROOT / "SKILL.md").read_text(encoding="utf-8")
     if len(skill_text.splitlines()) > 500:
         errors.append("SKILL.md exceeds 500 lines")

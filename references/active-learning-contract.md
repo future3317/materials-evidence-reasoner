@@ -14,6 +14,22 @@
 | `*.py` | 方法/流程来源 | 输入、模型、采集函数、更新和写出路径 | 不能把代码注释或函数名当成已执行实验 |
 | `sample_distribution_*.png` | 选择诊断图 | 点的空间分布和可视化检查入口 | 不能替代原始 CSV 或数据来源 |
 
+## 复现完整性与写入边界
+
+仓库随附的主动学习示例包含 `test_function.py`。它实现的是与已提供 CSV 一致的
+Müller–Brown 合成目标函数 `max(0, -V(x, y))`，用于检查 QBC/贝叶斯优化流程是否能
+运行；它不是 Ti-6Al-4V 的实测性能模型，也不能把候选点变成实验事实。若用户替换
+为真实实验，应把该模块替换为有来源、单位、条件和测量谱系的目标函数或数据接口。
+
+`run_sample_and_update.py` 默认将新标签写入 `iterations/iteration_<timestamp>/`，不
+覆盖输入目录中的 `labeled.csv`。`run_all.py` 会先复制代码和起始记录到独立的
+`runs/run_<timestamp>/`，只在该运行副本内推进下一轮；因此原始数据可直接回滚和比较。
+若输出目录已存在，脚本会停止而不是混入旧运行结果。画像中的“写入风险”仍保留，
+因为其他用户提供的脚本可能有不同的副作用。
+
+如果推荐文件不在代码目录（例如随附示例把它放在相邻的“结果”目录），单轮采样时
+显式传入：`python run_sample_and_update.py --input-dir <code-dir> --qbc-file <qbc.csv> --output-dir <new-iteration>`。
+
 ## 最小交接要求
 
 Agent 应先运行：

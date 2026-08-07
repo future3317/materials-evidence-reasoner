@@ -267,7 +267,10 @@ class SourceExtractionTests(unittest.TestCase):
 
     def test_docx_figure_extraction_is_opt_in(self) -> None:
         import base64
-        from docx import Document
+        try:
+            from docx import Document
+        except ImportError:
+            self.skipTest("python-docx is optional for the source-extraction suite")
 
         png = base64.b64decode("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=")
         with tempfile.TemporaryDirectory() as directory:

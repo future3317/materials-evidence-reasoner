@@ -238,6 +238,18 @@ python scripts/profile_active_learning.py <active-learning-folder> --output acti
 - `active-learning-profile.md`：研究人员可先读的摘要；
 - `active-learning-dashboard.html`：Apple 风格离线分布图、推荐对比和复现提醒。
 
+仓库附带的 Ti-6Al-4V 示例还提供了 `test_function.py`，但它只是与现有 CSV 一致的
+Müller–Brown 合成目标函数，用来演示主动学习流程，不代表 Ti-6Al-4V 实测性能。
+运行完整示例时使用：
+
+```bash
+python "<active-learning-folder>/run_all.py" --iterations 10
+```
+
+脚本会在示例目录下创建 `runs/run_<timestamp>/` 工作副本，并把每轮的新标签写到
+`iterations/iteration_XX/`；原始 `labeled.csv`、候选池和代码不会被覆盖。单独测试
+QBC 采样时，可运行 `run_sample_and_update.py --input-dir <folder> --qbc-file <qbc.csv> --output-dir <folder>/iterations/test`。
+
 默认角色是：`labeled.csv`=已有标签记录、`init_unlabeled.csv`=候选空间、`recommended_*.csv`/`qbc_recommended.csv`=模型推荐、`.py`=方法来源、`sample_distribution_*.png`=选择诊断图。`z` 的来源、x/y 的物理含义和单位仍必须由研究者确认；`acquisition_value` 不是性能值，`qbc_variance` 不是实验不确定度。只有新增独立实验/可信模拟证据后，推荐点才能写入正式 `property_records`。详细合同见 `references/active-learning-contract.md` 与 `references/active-learning-field-lexicon.json`。
 
 可直接复制的 Agent 请求见 `examples/active-learning-request.md`；它与 `references/agent-output-contract.md` 对齐，要求先生成中间画像，再生成并校验 canonical `materials-result.json`。
