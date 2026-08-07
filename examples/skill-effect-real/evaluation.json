@@ -1,0 +1,111 @@
+{
+  "benchmark": {
+    "name": "real-llm-skill-ab",
+    "version": "1.0",
+    "model": "gpt-5.6-luna",
+    "input": "examples/error-budget-demo.csv",
+    "same_task": true,
+    "only_variable": "whether Materials Evidence Reasoner SKILL.md and package contracts were provided"
+  },
+  "modes": {
+    "without_skill": {
+      "label": "不用 Skill",
+      "metrics": {
+        "scientific_finding": 1.0,
+        "raw_data_and_units": 1.0,
+        "variance_decomposition": 1.0,
+        "uncertainty_boundary": 1.0,
+        "missing_information": 1.0,
+        "minimum_experiment": 1.0,
+        "evidence_traceability": 0.0,
+        "machine_contract": 0.0
+      },
+      "human_score": 1.0,
+      "audit_score": 0.0,
+      "validation_errors": [
+        "free-form output is intentionally non-canonical"
+      ],
+      "report_path": "examples/skill-effect-real/no-skill-report.md"
+    },
+    "with_skill": {
+      "label": "使用 Skill",
+      "metrics": {
+        "scientific_finding": 1.0,
+        "raw_data_and_units": 1.0,
+        "variance_decomposition": 1.0,
+        "uncertainty_boundary": 1.0,
+        "missing_information": 1.0,
+        "minimum_experiment": 1.0,
+        "evidence_traceability": 0.9375,
+        "machine_contract": 1.0
+      },
+      "human_score": 1.0,
+      "audit_score": 0.96875,
+      "validation_errors": [],
+      "report_path": "examples/skill-effect-real/with-skill-report.md"
+    }
+  },
+  "metrics": [
+    {
+      "id": "scientific_finding",
+      "label": "核心科学判断",
+      "description": "是否正确识别主要变异来源和结论边界",
+      "without_skill": 1.0,
+      "with_skill": 1.0
+    },
+    {
+      "id": "raw_data_and_units",
+      "label": "原始数值与单位",
+      "description": "是否保留原始测量值、单位和重复结构",
+      "without_skill": 1.0,
+      "with_skill": 1.0
+    },
+    {
+      "id": "variance_decomposition",
+      "label": "误差分解",
+      "description": "是否区分重复、样品和批次层级",
+      "without_skill": 1.0,
+      "with_skill": 1.0
+    },
+    {
+      "id": "uncertainty_boundary",
+      "label": "不确定度边界",
+      "description": "是否避免把描述性方差当成计量学结论",
+      "without_skill": 1.0,
+      "with_skill": 1.0
+    },
+    {
+      "id": "missing_information",
+      "label": "信息缺口",
+      "description": "是否指出会改变判断的缺失条件",
+      "without_skill": 1.0,
+      "with_skill": 1.0
+    },
+    {
+      "id": "minimum_experiment",
+      "label": "最小验证实验",
+      "description": "是否给出对照、判定规则和停止条件",
+      "without_skill": 1.0,
+      "with_skill": 1.0
+    },
+    {
+      "id": "evidence_traceability",
+      "label": "证据可回查",
+      "description": "是否有明确的来源、定位和证据绑定",
+      "without_skill": 0.0,
+      "with_skill": 0.9375
+    },
+    {
+      "id": "machine_contract",
+      "label": "机器接口",
+      "description": "是否能通过 canonical JSON 与引用校验",
+      "without_skill": 0.0,
+      "with_skill": 1.0
+    }
+  ],
+  "limitations": [
+    "This is one frozen task and one model run per mode, not a statistically powered benchmark.",
+    "Rubric scores indicate observable deliverable coverage; they do not prove scientific truth or causal correctness.",
+    "For a stronger evaluation, repeat across source-backed papers, domains, seeds, and independently adjudicated gold outputs."
+  ]
+}

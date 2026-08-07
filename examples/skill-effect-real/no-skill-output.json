@@ -1,0 +1,77 @@
+{
+  "task": "判断 Coulombic efficiency 重复测量数据的主要变异来源、结论边界和最小验证实验",
+  "input_file": "examples/error-budget-demo.csv",
+  "data_shape": {
+    "observations": 27,
+    "batches": 3,
+    "samples_per_batch": 3,
+    "repeats_per_sample": 3,
+    "grand_mean_percent": 92.4892593,
+    "minimum_percent": 92.05,
+    "maximum_percent": 92.95,
+    "range_percentage_points": 0.9
+  },
+  "raw_values_percent": {
+    "B1-S1": [92.42, 92.50, 92.56],
+    "B1-S2": [92.61, 92.68, 92.58],
+    "B1-S3": [92.31, 92.36, 92.40],
+    "B2-S1": [92.83, 92.76, 92.80],
+    "B2-S2": [92.69, 92.73, 92.78],
+    "B2-S3": [92.95, 92.89, 92.93],
+    "B3-S1": [92.12, 92.18, 92.15],
+    "B3-S2": [92.28, 92.22, 92.25],
+    "B3-S3": [92.05, 92.10, 92.08]
+  },
+  "batch_means_percent": {
+    "B1": 92.4911111,
+    "B2": 92.8177778,
+    "B3": 92.1588889,
+    "B2_minus_B3_percentage_points": 0.6588889
+  },
+  "nested_variance_calculation": {
+    "sum_of_squares": {
+      "total": 2.1943852,
+      "batch": 1.9536519,
+      "sample_within_batch": 0.2082667,
+      "repeat_residual": 0.0324667
+    },
+    "mean_squares": {
+      "batch": 0.9768259,
+      "sample_within_batch": 0.0347111,
+      "repeat_residual": 0.0018037
+    },
+    "estimated_variance_components_percent_squared": {
+      "batch": 0.1046794,
+      "sample_within_batch": 0.0109691,
+      "repeat_residual": 0.0018037
+    },
+    "variance_component_share_percent": {
+      "batch": 89.13,
+      "sample_within_batch": 9.34,
+      "repeat_residual": 1.54
+    },
+    "repeat_residual_sd_percentage_points": 0.0425,
+    "three_repeat_mean_error_sd_percentage_points_if_independent": 0.0245
+  },
+  "main_judgment": "在这 3 个已观测批次中，批次间差异是主要变异来源；其次是批次内样本差异；样本内重复测量残差最小。",
+  "supported_conclusions": [
+    "B2 均值最高、B3 均值最低，二者相差 0.6589 个百分点。",
+    "重复测量残差 SD 约 0.0425 个百分点，明显小于批次均值差异。",
+    "本数据的变异层级排序为批次 > 批次内样本 > 样本内重复。"
+  ],
+  "unsupported_conclusions": [
+    "不能据此把批次差异归因于某个具体材料、工艺、仪器、日期、操作者或环境机理。",
+    "不能据此证明绝对准确度或系统偏差。",
+    "不能把 92.4893% 当作未来所有批次的稳定总体均值。",
+    "不能把残差全部解释成纯仪器噪声。"
+  ],
+  "minimum_validation_experiment": {
+    "design": "3 个批次 × 每批 2 个样本 × 2 个独立测试运行/日期",
+    "total_tests": 12,
+    "allocation": "每个运行都包含 3 个批次的样本，运行内随机交错；每个批次—样本使用匹配的独立测试单元，或在非破坏条件下跨两次运行测量。",
+    "purpose": "把批次效应与测试运行/日期效应交叉，验证批次均值差异能否跨运行复现。",
+    "optional_control": "每个运行加入一个共同参考样品以监测仪器漂移；这是增强项，不是最低配置。",
+    "decision_rule": "若批次排序跨运行保持，批次差异更可信；若差异随运行改变或消失，优先排查运行、仪器、操作者和顺序因素。"
+  },
+  "method_note": "使用普通的平衡嵌套方差分解；批次只有 3 个，因此方差分量和外推仍有较大不确定性。未使用 canonical schema、evidence ID、PSPP 或 Mechanism Graph。"
+}

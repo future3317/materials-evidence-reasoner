@@ -1,0 +1,395 @@
+{
+  "schema_version": "4.6",
+  "run_id": "RUN-SKILL-EFFECT-REAL-CE-001",
+  "created_at": "2026-08-08T00:00:00+08:00",
+  "loop_state": "design-verification",
+  "decision_profile": "local-experiment",
+  "decision": {
+    "question": "判断 Coulombic efficiency 重复测量数据的主要变异来源、可支持与不可支持的结论，以及下一步最小验证实验。",
+    "status": "partially-answerable",
+    "summary": "在这份 27 行、3 批次、9 样品且每样品 3 次重复的 CSV 中，描述性方差组分显示批次间变异是当前可识别的主导层级；但缺少材料身份、测量协议和批次/仪器/时间元数据，因此不能把批次效应升级为材料或工艺因果结论。",
+    "evidence_strength": "medium",
+    "limitations": [
+      "结论只覆盖当前 CSV 的层级结构和数值，不代表已完成真实设备、材料或工艺验证。",
+      "analyze_error_budget.py 的方差组分是需设计复核的描述性 method-of-moments 近似，不是 GUM 或量具 R&R 结论。"
+    ]
+  },
+  "input_assessment": {
+    "readiness": "ready-with-caveats",
+    "received_inputs": [
+      {
+        "id": "IN-0001",
+        "name": "error-budget-demo.csv",
+        "kind": "csv",
+        "path": "../error-budget-demo.csv",
+        "sha256": "ca9849c4c2928b481a020a761cd059f997f78245ef23133e67f36bd3772a18f8",
+        "access_scope": "full",
+        "parse_status": "parsed",
+        "warnings": [
+          "prepare_intake.py mapped batch_id, sample_id and measurement_repeat_id; coulombic_efficiency_percent remained unresolved by the generic alias table.",
+          "The task wording and original header identify the target as Coulombic efficiency percent; this semantic mapping is retained as a task-scoped interpretation, not a silent intake rewrite."
+        ]
+      }
+    ],
+    "normalized_item_count": 16,
+    "blockers": [
+      {
+        "field": "material_identity",
+        "reason": "CSV contains batch/sample IDs but no material name, composition or batch lineage.",
+        "impact": "Blocks attributing the batch component to a material or process mechanism; it does not block the within-table variance partition.",
+        "suggested_input": "Provide the material identity and the mapping of B1/B2/B3 to independent material/process batches."
+      }
+    ],
+    "analysis_limitations": [
+      {
+        "field": "measurement_protocol",
+        "reason": "Method details, CE formula, cycle/SOC window, temperature, geometry and normalization denominator are absent.",
+        "impact": "Prevents direct comparison with an external literature or requirement baseline and leaves protocol-shift confounding unresolved.",
+        "suggested_input": "Attach the measurement SOP or run metadata without changing the original CSV."
+      },
+      {
+        "field": "measurement_system_metadata",
+        "reason": "Instrument/channel, calibration, operator, date, analysis software and exclusion rules are absent.",
+        "impact": "Batch-between variance may include shared instrument, operator, date or processing effects.",
+        "suggested_input": "Recover per-row or per-run instrument, calibration, operator, timestamp and processing-version fields."
+      }
+    ],
+    "optional_enrichment": [
+      {
+        "field": "raw_cycle_curves",
+        "reason": "Only CE summary values are present.",
+        "impact": "Raw charge/discharge curves could audit the CE window and outlier handling.",
+        "suggested_input": "Provide raw cycle-level curves if available."
+      }
+    ],
+    "recommended_next_inputs": [
+      {
+        "field": "batch_and_protocol_metadata",
+        "reason": "This is the smallest addition that can separate batch lineage from protocol co-variation.",
+        "impact": "Can determine whether the dominant batch component is interpretable as a batch factor or remains confounded.",
+        "suggested_input": "Material/batch lineage plus instrument, operator, date, calibration and CE calculation window for each run."
+      },
+      {
+        "field": "randomized_remeasurement_with_reference",
+        "reason": "A matched remeasurement tests whether the batch separation survives a fixed measurement system.",
+        "impact": "Can discriminate H1/H3 from H2 and quantify whether repeatability remains small.",
+        "suggested_input": "Repeat the existing 3-batch × 3-sample × 3-repeat structure under one locked protocol, with run-order randomization and an SOP-defined reference control."
+      }
+    ],
+    "notes": [
+      "prepare_intake.py reported blocked readiness for material identity; this canonical run proceeds only for the explicitly scoped internal variability question.",
+      "No literature, specification limit or external source was used."
+    ]
+  },
+  "condition_registry": [
+    {
+      "id": "COND-A",
+      "alias": "Cond-A",
+      "label": "CSV 内部 CE 重复层级（关键协议未报告）",
+      "condition_signature": {
+        "measurand": "coulombic_efficiency_percent",
+        "normalization": "percent as reported in the source header",
+        "replicate_structure": "measurement_repeat nested in sample nested in batch",
+        "temperature": "missing",
+        "protocol": "missing",
+        "material_identity": "missing"
+      },
+      "entity_ids": ["BATCH-B1", "BATCH-B2", "BATCH-B3"],
+      "measurement_run_ids": ["MR-CE-01"],
+      "process_run_ids": [],
+      "missing_conditions": [
+        "material identity and batch lineage",
+        "CE formula and charge/discharge or SOC window",
+        "temperature and environment",
+        "instrument, calibration, operator and timestamp",
+        "geometry and denominator/normalization details"
+      ],
+      "evidence_ids": ["E-CSV-META"],
+      "notes": ["Cond-A is an internal data-scope alias, not evidence that all physical test conditions matched."]
+    }
+  ],
+  "sources": [
+    {
+      "id": "S-CSV-01",
+      "source_type": "raw-data",
+      "title": "error-budget-demo.csv",
+      "file_name": "../error-budget-demo.csv",
+      "media_type": "text/csv",
+      "payload_status": "verified",
+      "sha256": "ca9849c4c2928b481a020a761cd059f997f78245ef23133e67f36bd3772a18f8",
+      "notes": ["唯一原始输入；未使用其他科学数据源。"]
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-CSV-META",
+      "source_id": "S-CSV-01",
+      "modality": "metadata",
+      "locator": {"section": "CSV header and table shape", "row": "1-28"},
+      "raw_content": "Header: batch_id,sample_id,measurement_repeat_id,coulombic_efficiency_percent; 27 numeric data rows; 3 batches (B1-B3), 3 samples per batch (S1-S3), 3 repeats per sample (R1-R3).",
+      "directness": "direct-primary",
+      "extraction_method": "spreadsheet",
+      "interpretation": "The raw file exposes a balanced nested identifier structure and a CE-percent column, but does not expose material identity or test metadata.",
+      "limitations": ["The generic intake alias table did not normalize the CE column name."],
+      "confidence": {"level": "high", "basis": ["direct-file-header", "deterministic-intake"]}
+    },
+    {
+      "id": "E-CSV-B1",
+      "source_id": "S-CSV-01",
+      "entity_ids": ["BATCH-B1", "SAMPLE-B1-S1", "SAMPLE-B1-S2", "SAMPLE-B1-S3"],
+      "modality": "raw-data",
+      "locator": {"section": "error-budget-demo.csv", "row": "2-10"},
+      "raw_content": "B1 rows: S1 92.42, 92.50, 92.56; S2 92.61, 92.68, 92.58; S3 92.31, 92.36, 92.40 (%).",
+      "directness": "direct-primary",
+      "extraction_method": "raw-data",
+      "interpretation": "All B1 raw repeat values retained as reported in the CSV.",
+      "confidence": {"level": "high", "basis": ["row-located-raw-data"]}
+    },
+    {
+      "id": "E-CSV-B2",
+      "source_id": "S-CSV-01",
+      "entity_ids": ["BATCH-B2", "SAMPLE-B2-S1", "SAMPLE-B2-S2", "SAMPLE-B2-S3"],
+      "modality": "raw-data",
+      "locator": {"section": "error-budget-demo.csv", "row": "11-19"},
+      "raw_content": "B2 rows: S1 92.83, 92.76, 92.80; S2 92.69, 92.73, 92.78; S3 92.95, 92.89, 92.93 (%).",
+      "directness": "direct-primary",
+      "extraction_method": "raw-data",
+      "interpretation": "All B2 raw repeat values retained as reported in the CSV.",
+      "confidence": {"level": "high", "basis": ["row-located-raw-data"]}
+    },
+    {
+      "id": "E-CSV-B3",
+      "source_id": "S-CSV-01",
+      "entity_ids": ["BATCH-B3", "SAMPLE-B3-S1", "SAMPLE-B3-S2", "SAMPLE-B3-S3"],
+      "modality": "raw-data",
+      "locator": {"section": "error-budget-demo.csv", "row": "20-28"},
+      "raw_content": "B3 rows: S1 92.12, 92.18, 92.15; S2 92.28, 92.22, 92.25; S3 92.05, 92.10, 92.08 (%).",
+      "directness": "direct-primary",
+      "extraction_method": "raw-data",
+      "interpretation": "All B3 raw repeat values retained as reported in the CSV.",
+      "confidence": {"level": "high", "basis": ["row-located-raw-data"]}
+    },
+    {
+      "id": "E-DERIVED-SUMMARY",
+      "source_id": "S-CSV-01",
+      "entity_ids": ["BATCH-B1", "BATCH-B2", "BATCH-B3"],
+      "modality": "raw-data",
+      "locator": {"section": "Derived from rows 2-28", "row": "2-28"},
+      "raw_content": "Derived arithmetic means: B1 92.491111%; B2 92.817778%; B3 92.158889%; all-row mean 92.489259%; all-row sample SD 0.290516 percentage points; batch-mean range 0.658889 percentage points.",
+      "directness": "derived-from-primary",
+      "extraction_method": "calculated",
+      "interpretation": "Descriptive summaries computed from the retained raw rows; these are derived values, not separately reported measurements.",
+      "limitations": ["No independent baseline or inferential model is supplied."],
+      "confidence": {"level": "medium", "basis": ["deterministic-arithmetic", "row-complete-input"]}
+    },
+    {
+      "id": "E-ANALYSIS-EB",
+      "source_id": "S-CSV-01",
+      "entity_ids": ["BATCH-B1", "BATCH-B2", "BATCH-B3"],
+      "modality": "metadata",
+      "locator": {"section": "scripts/analyze_error_budget.py output", "row": "derived artifact"},
+      "raw_content": "Descriptive variance components in percentage_points^2: measurement-repeatability 0.001803704 (1.5357%); sample-within-batch 0.010969136 (9.3392%); batch-between 0.104679424 (89.1251%); unallocated bounded residual 0.0; 2*SD 0.581031601 percentage points.",
+      "directness": "derived-from-primary",
+      "extraction_method": "calculated",
+      "interpretation": "The deterministic helper ranks the batch-between component as dominant under its declared nested method-of-moments assumptions.",
+      "limitations": ["The helper does not identify covariance, instrument, operator, date, process-control, environment, data-processing or model-fit effects."],
+      "confidence": {"level": "low", "basis": ["descriptive-method-of-moments", "requires-design-review"]}
+    }
+  ],
+  "entities": [
+    {"id":"BATCH-B1","entity_type":"batch","names":[{"raw_term":"B1","canonical_term":"B1","mapping_status":"exact","evidence_ids":["E-CSV-B1"]}],"parent_ids":[],"scope_status":"partially-resolved","evidence_ids":["E-CSV-B1"]},
+    {"id":"BATCH-B2","entity_type":"batch","names":[{"raw_term":"B2","canonical_term":"B2","mapping_status":"exact","evidence_ids":["E-CSV-B2"]}],"parent_ids":[],"scope_status":"partially-resolved","evidence_ids":["E-CSV-B2"]},
+    {"id":"BATCH-B3","entity_type":"batch","names":[{"raw_term":"B3","canonical_term":"B3","mapping_status":"exact","evidence_ids":["E-CSV-B3"]}],"parent_ids":[],"scope_status":"partially-resolved","evidence_ids":["E-CSV-B3"]},
+    {"id":"SAMPLE-B1-S1","entity_type":"sample","names":[{"raw_term":"B1/S1","canonical_term":"B1/S1","mapping_status":"exact","evidence_ids":["E-CSV-B1"]}],"parent_ids":["BATCH-B1"],"scope_status":"partially-resolved","evidence_ids":["E-CSV-B1"]},
+    {"id":"SAMPLE-B1-S2","entity_type":"sample","names":[{"raw_term":"B1/S2","canonical_term":"B1/S2","mapping_status":"exact","evidence_ids":["E-CSV-B1"]}],"parent_ids":["BATCH-B1"],"scope_status":"partially-resolved","evidence_ids":["E-CSV-B1"]},
+    {"id":"SAMPLE-B1-S3","entity_type":"sample","names":[{"raw_term":"B1/S3","canonical_term":"B1/S3","mapping_status":"exact","evidence_ids":["E-CSV-B1"]}],"parent_ids":["BATCH-B1"],"scope_status":"partially-resolved","evidence_ids":["E-CSV-B1"]},
+    {"id":"SAMPLE-B2-S1","entity_type":"sample","names":[{"raw_term":"B2/S1","canonical_term":"B2/S1","mapping_status":"exact","evidence_ids":["E-CSV-B2"]}],"parent_ids":["BATCH-B2"],"scope_status":"partially-resolved","evidence_ids":["E-CSV-B2"]},
+    {"id":"SAMPLE-B2-S2","entity_type":"sample","names":[{"raw_term":"B2/S2","canonical_term":"B2/S2","mapping_status":"exact","evidence_ids":["E-CSV-B2"]}],"parent_ids":["BATCH-B2"],"scope_status":"partially-resolved","evidence_ids":["E-CSV-B2"]},
+    {"id":"SAMPLE-B2-S3","entity_type":"sample","names":[{"raw_term":"B2/S3","canonical_term":"B2/S3","mapping_status":"exact","evidence_ids":["E-CSV-B2"]}],"parent_ids":["BATCH-B2"],"scope_status":"partially-resolved","evidence_ids":["E-CSV-B2"]},
+    {"id":"SAMPLE-B3-S1","entity_type":"sample","names":[{"raw_term":"B3/S1","canonical_term":"B3/S1","mapping_status":"exact","evidence_ids":["E-CSV-B3"]}],"parent_ids":["BATCH-B3"],"scope_status":"partially-resolved","evidence_ids":["E-CSV-B3"]},
+    {"id":"SAMPLE-B3-S2","entity_type":"sample","names":[{"raw_term":"B3/S2","canonical_term":"B3/S2","mapping_status":"exact","evidence_ids":["E-CSV-B3"]}],"parent_ids":["BATCH-B3"],"scope_status":"partially-resolved","evidence_ids":["E-CSV-B3"]},
+    {"id":"SAMPLE-B3-S3","entity_type":"sample","names":[{"raw_term":"B3/S3","canonical_term":"B3/S3","mapping_status":"exact","evidence_ids":["E-CSV-B3"]}],"parent_ids":["BATCH-B3"],"scope_status":"partially-resolved","evidence_ids":["E-CSV-B3"]}
+  ],
+  "process_runs": [],
+  "data_artifacts": [
+    {
+      "id": "DA-RAW-CE-01",
+      "artifact_level": "raw",
+      "source_ids": ["S-CSV-01"],
+      "entity_ids": ["BATCH-B1", "BATCH-B2", "BATCH-B3"],
+      "parent_artifact_ids": [],
+      "locator": "../error-budget-demo.csv rows 1-28",
+      "media_type": "text/csv",
+      "format": "CSV",
+      "byte_size": 475,
+      "checksum": {"algorithm":"sha256","value":"ca9849c4c2928b481a020a761cd059f997f78245ef23133e67f36bd3772a18f8"},
+      "access_status": "available",
+      "notes": ["Original file preserved outside the output directory; no row was deleted or imputed."],
+      "evidence_ids": ["E-CSV-META", "E-CSV-B1", "E-CSV-B2", "E-CSV-B3"]
+    }
+  ],
+  "analysis_steps": [
+    {
+      "id": "AS-EB-01",
+      "operation": "nested descriptive variance-components analysis",
+      "method": "scripts/analyze_error_budget.py",
+      "input_artifact_ids": ["DA-RAW-CE-01"],
+      "output_artifact_ids": [],
+      "parameters": [
+        {"name":"value_column","canonical_name":"coulombic_efficiency_percent","value":{"raw_value":"coulombic_efficiency_percent","value_status":"reported","extraction_method":"script-argument","evidence_ids":["E-CSV-META"],"confidence":{"level":"high","basis":["source-header"]}}},
+        {"name":"batch_column","canonical_name":"batch_id","value":{"raw_value":"batch_id","value_status":"reported","extraction_method":"script-argument","evidence_ids":["E-CSV-META"],"confidence":{"level":"high","basis":["source-header"]}}},
+        {"name":"sample_column","canonical_name":"sample_id","value":{"raw_value":"sample_id","value_status":"reported","extraction_method":"script-argument","evidence_ids":["E-CSV-META"],"confidence":{"level":"high","basis":["source-header"]}}},
+        {"name":"repeat_column","canonical_name":"measurement_repeat_id","value":{"raw_value":"measurement_repeat_id","value_status":"reported","extraction_method":"script-argument","evidence_ids":["E-CSV-META"],"confidence":{"level":"high","basis":["source-header"]}}},
+        {"name":"unit","value":{"raw_value":"percentage_points","value_status":"reported","extraction_method":"script-argument","evidence_ids":["E-CSV-META"],"confidence":{"level":"medium","basis":["task-scoped-unit-for-variance"]}}},
+        {"name":"coverage_factor","value":{"raw_value":2.0,"value_status":"reported","extraction_method":"script-default","evidence_ids":[],"confidence":{"level":"medium","basis":["deterministic-script-default"]}}}
+      ],
+      "software": {"name":"analyze_error_budget.py","version":"project script; version not separately reported"},
+      "manual_interventions": [],
+      "warnings": ["Method-of-moments approximation; covariance and crossed effects are not identified."],
+      "reproducibility_status": "partial",
+      "status": "reconstructed",
+      "evidence_ids": ["E-ANALYSIS-EB"]
+    },
+    {
+      "id": "AS-SUMMARY-01",
+      "operation": "batch and all-row descriptive summaries",
+      "method": "arithmetic mean and sample standard deviation over retained CSV rows",
+      "input_artifact_ids": ["DA-RAW-CE-01"],
+      "output_artifact_ids": [],
+      "parameters": [{"name":"grouping","value":{"raw_value":"batch_id and sample_id","value_status":"reported","extraction_method":"analysis-definition","evidence_ids":["E-CSV-META"],"confidence":{"level":"high","basis":["source-header"]}}}],
+      "manual_interventions": [],
+      "warnings": [],
+      "reproducibility_status": "reproducible",
+      "status": "reconstructed",
+      "evidence_ids": ["E-DERIVED-SUMMARY"]
+    }
+  ],
+  "measurement_runs": [
+    {
+      "id": "MR-CE-01",
+      "entity_ids": ["BATCH-B1", "BATCH-B2", "BATCH-B3"],
+      "method_raw": "Coulombic efficiency (inferred from source column and task scope)",
+      "method_canonical": "coulombic efficiency",
+      "technique_family": "electrochemical-testing",
+      "conditions": [
+        {"name":"condition_scope","canonical_name":"condition_scope","role":"scope","value":{"raw_value":"COND-A","value_status":"reported","extraction_method":"condition-registry","evidence_ids":["E-CSV-META"],"confidence":{"level":"medium","basis":["internal-scope-alias"]}}},
+        {"name":"temperature","canonical_name":"temperature","role":"missing","value":{"raw_value":"missing","value_status":"ambiguous","extraction_method":"intake-missingness","evidence_ids":["E-CSV-META"],"confidence":{"level":"low","basis":["not-reported"]}}},
+        {"name":"protocol","canonical_name":"protocol","role":"missing","value":{"raw_value":"missing","value_status":"ambiguous","extraction_method":"intake-missingness","evidence_ids":["E-CSV-META"],"confidence":{"level":"low","basis":["not-reported"]}}}
+      ],
+      "stimulus_program": [],
+      "raw_file_refs": ["../error-budget-demo.csv"],
+      "data_artifact_ids": ["DA-RAW-CE-01"],
+      "analysis_step_ids": ["AS-EB-01", "AS-SUMMARY-01"],
+      "source_ids": ["S-CSV-01"],
+      "limitations": ["Instrument, calibration, geometry, CE formula/window, temperature, operator and date are not reported."],
+      "evidence_ids": ["E-CSV-META"] ,
+      "status": "not-audited"
+    }
+  ],
+  "simulation_jobs": [],
+  "property_records": [
+    {
+      "id":"PR-CE-B1-FULL","entity_id":"BATCH-B1","measurement_run_id":"MR-CE-01","property_raw":"coulombic_efficiency_percent","property_canonical":"coulombic efficiency","measurand_definition":"Each CE-percent value in rows 2-10, without averaging.","value":{"raw_value":[92.42,92.50,92.56,92.61,92.68,92.58,92.31,92.36,92.40],"raw_unit":"%","normalized_value":[92.42,92.50,92.56,92.61,92.68,92.58,92.31,92.36,92.40],"normalized_unit":"%","value_status":"reported","extraction_method":"raw-data","evidence_ids":["E-CSV-B1"],"confidence":{"level":"high","basis":["row-located-raw-data"]}},"determination":"reported","conditions":[{"name":"condition_scope","value":{"raw_value":"COND-A","value_status":"reported","extraction_method":"condition-registry","evidence_ids":["E-CSV-META"],"confidence":{"level":"medium","basis":["internal-scope-alias"]}}}],"data_artifact_ids":["DA-RAW-CE-01"],"reporting_role":"full-series","directionality":"descriptive","applicability":"B1 rows only","limitations":["Measurement protocol and material identity missing."],"evidence_ids":["E-CSV-B1"]
+    },
+    {
+      "id":"PR-CE-B2-FULL","entity_id":"BATCH-B2","measurement_run_id":"MR-CE-01","property_raw":"coulombic_efficiency_percent","property_canonical":"coulombic efficiency","measurand_definition":"Each CE-percent value in rows 11-19, without averaging.","value":{"raw_value":[92.83,92.76,92.80,92.69,92.73,92.78,92.95,92.89,92.93],"raw_unit":"%","normalized_value":[92.83,92.76,92.80,92.69,92.73,92.78,92.95,92.89,92.93],"normalized_unit":"%","value_status":"reported","extraction_method":"raw-data","evidence_ids":["E-CSV-B2"],"confidence":{"level":"high","basis":["row-located-raw-data"]}},"determination":"reported","conditions":[{"name":"condition_scope","value":{"raw_value":"COND-A","value_status":"reported","extraction_method":"condition-registry","evidence_ids":["E-CSV-META"],"confidence":{"level":"medium","basis":["internal-scope-alias"]}}}],"data_artifact_ids":["DA-RAW-CE-01"],"reporting_role":"full-series","directionality":"descriptive","applicability":"B2 rows only","limitations":["Measurement protocol and material identity missing."],"evidence_ids":["E-CSV-B2"]
+    },
+    {
+      "id":"PR-CE-B3-FULL","entity_id":"BATCH-B3","measurement_run_id":"MR-CE-01","property_raw":"coulombic_efficiency_percent","property_canonical":"coulombic efficiency","measurand_definition":"Each CE-percent value in rows 20-28, without averaging.","value":{"raw_value":[92.12,92.18,92.15,92.28,92.22,92.25,92.05,92.10,92.08],"raw_unit":"%","normalized_value":[92.12,92.18,92.15,92.28,92.22,92.25,92.05,92.10,92.08],"normalized_unit":"%","value_status":"reported","extraction_method":"raw-data","evidence_ids":["E-CSV-B3"],"confidence":{"level":"high","basis":["row-located-raw-data"]}},"determination":"reported","conditions":[{"name":"condition_scope","value":{"raw_value":"COND-A","value_status":"reported","extraction_method":"condition-registry","evidence_ids":["E-CSV-META"],"confidence":{"level":"medium","basis":["internal-scope-alias"]}}}],"data_artifact_ids":["DA-RAW-CE-01"],"reporting_role":"full-series","directionality":"descriptive","applicability":"B3 rows only","limitations":["Measurement protocol and material identity missing."],"evidence_ids":["E-CSV-B3"]
+    },
+    {
+      "id":"PR-CE-B1-MEAN","entity_id":"BATCH-B1","measurement_run_id":"MR-CE-01","property_raw":"coulombic_efficiency_percent","property_canonical":"coulombic efficiency","measurand_definition":"Arithmetic mean of the 9 B1 reported values.","value":{"raw_value":92.49111111111112,"raw_unit":"%","normalized_value":92.49111111111112,"normalized_unit":"%","value_status":"derived","extraction_method":"calculated","derivation":{"operation":"batch arithmetic mean","formula":"sum(B1 values)/9","input_evidence_ids":["E-CSV-B1"]},"evidence_ids":["E-CSV-B1","E-DERIVED-SUMMARY"],"confidence":{"level":"medium","basis":["deterministic-arithmetic","complete-B1-rows"]}},"determination":"derived","conditions":[{"name":"condition_scope","value":{"raw_value":"COND-A","value_status":"reported","extraction_method":"condition-registry","evidence_ids":["E-CSV-META"],"confidence":{"level":"medium","basis":["internal-scope-alias"]}}}],"normalization_basis":{"source_unit":"%","target_unit":"%","conversion":"none"},"data_artifact_ids":["DA-RAW-CE-01"],"analysis_step_ids":["AS-SUMMARY-01"],"reporting_role":"representative","directionality":"descriptive","applicability":"B1 rows only","limitations":["Descriptive mean; no inferential uncertainty or external baseline."],"evidence_ids":["E-CSV-B1","E-DERIVED-SUMMARY"]
+    },
+    {
+      "id":"PR-CE-B2-MEAN","entity_id":"BATCH-B2","measurement_run_id":"MR-CE-01","property_raw":"coulombic_efficiency_percent","property_canonical":"coulombic efficiency","measurand_definition":"Arithmetic mean of the 9 B2 reported values.","value":{"raw_value":92.81777777777778,"raw_unit":"%","normalized_value":92.81777777777778,"normalized_unit":"%","value_status":"derived","extraction_method":"calculated","derivation":{"operation":"batch arithmetic mean","formula":"sum(B2 values)/9","input_evidence_ids":["E-CSV-B2"]},"evidence_ids":["E-CSV-B2","E-DERIVED-SUMMARY"],"confidence":{"level":"medium","basis":["deterministic-arithmetic","complete-B2-rows"]}},"determination":"derived","conditions":[{"name":"condition_scope","value":{"raw_value":"COND-A","value_status":"reported","extraction_method":"condition-registry","evidence_ids":["E-CSV-META"],"confidence":{"level":"medium","basis":["internal-scope-alias"]}}}],"normalization_basis":{"source_unit":"%","target_unit":"%","conversion":"none"},"data_artifact_ids":["DA-RAW-CE-01"],"analysis_step_ids":["AS-SUMMARY-01"],"reporting_role":"representative","directionality":"descriptive","applicability":"B2 rows only","limitations":["Descriptive mean; no inferential uncertainty or external baseline."],"evidence_ids":["E-CSV-B2","E-DERIVED-SUMMARY"]
+    },
+    {
+      "id":"PR-CE-B3-MEAN","entity_id":"BATCH-B3","measurement_run_id":"MR-CE-01","property_raw":"coulombic_efficiency_percent","property_canonical":"coulombic efficiency","measurand_definition":"Arithmetic mean of the 9 B3 reported values.","value":{"raw_value":92.1588888888889,"raw_unit":"%","normalized_value":92.1588888888889,"normalized_unit":"%","value_status":"derived","extraction_method":"calculated","derivation":{"operation":"batch arithmetic mean","formula":"sum(B3 values)/9","input_evidence_ids":["E-CSV-B3"]},"evidence_ids":["E-CSV-B3","E-DERIVED-SUMMARY"],"confidence":{"level":"medium","basis":["deterministic-arithmetic","complete-B3-rows"]}},"determination":"derived","conditions":[{"name":"condition_scope","value":{"raw_value":"COND-A","value_status":"reported","extraction_method":"condition-registry","evidence_ids":["E-CSV-META"],"confidence":{"level":"medium","basis":["internal-scope-alias"]}}}],"normalization_basis":{"source_unit":"%","target_unit":"%","conversion":"none"},"data_artifact_ids":["DA-RAW-CE-01"],"analysis_step_ids":["AS-SUMMARY-01"],"reporting_role":"representative","directionality":"descriptive","applicability":"B3 rows only","limitations":["Descriptive mean; no inferential uncertainty or external baseline."],"evidence_ids":["E-CSV-B3","E-DERIVED-SUMMARY"]
+    }
+  ],
+  "baseline_packages": [
+    {
+      "id":"BASE-CE-NONE","property_canonical":"coulombic efficiency","baseline_kind":"local-operating-baseline","status":"not-estimable","property_record_ids":[],"condition_signature":{"reason":"No independent local baseline or external reference was provided.","available_scope":"within-CSV hierarchy only"},"statistics":{},"independent_source_count":0,"applicability":"Cannot support external deviation or requirement comparison.","limitations":["The three batches are the analyzed data, not an independent baseline."],"evidence_ids":["E-CSV-META"]
+    }
+  ],
+  "comparability_assessments": [
+    {
+      "id":"CMP-CE-01","target_property_record_ids":["PR-CE-B1-MEAN","PR-CE-B2-MEAN","PR-CE-B3-MEAN"],"baseline_package_id":"BASE-CE-NONE","result":"conditionally-comparable","issues":[
+        {"field_path":"baseline_packages[BASE-CE-NONE]","level":"blocker","description":"No independent baseline or requirement limit exists for external comparison.","evidence_ids":["E-CSV-META"],"resolution":"Do not report better/worse or reproduction success; first add a matched reference or define the decision threshold."},
+        {"field_path":"measurement_runs[MR-CE-01].conditions","level":"material","description":"Temperature, electrochemical window, geometry, denominator and protocol are not reported.","evidence_ids":["E-CSV-META"],"resolution":"Recover the run metadata and lock the protocol for validation."},
+        {"field_path":"entities[batch]","level":"material","description":"B1-B3 are identifiers only; independent material/process lineage is unknown.","evidence_ids":["E-CSV-META"],"resolution":"Provide batch lineage and process history."}
+      ],"evidence_ids":["E-CSV-META","E-DERIVED-SUMMARY"]
+    }
+  ],
+  "deviation_episodes": [
+    {
+      "id":"DEV-CE-01","comparability_assessment_id":"CMP-CE-01","classification":"inconclusive","target_property_record_ids":["PR-CE-B1-MEAN","PR-CE-B2-MEAN","PR-CE-B3-MEAN"],"baseline_package_id":"BASE-CE-NONE","method":"Within-dataset batch/sample/repeat descriptive comparison; no external residual calculated.","engineering_meaning":"The batch means are separated in this dataset, but the current evidence cannot decide whether the separation is a material/process batch effect, a protocol/measurement-system confounder, or a combination.","blockers":["Material identity and independent batch lineage are missing.","Measurement protocol and measurement-system metadata are missing."],"evidence_ids":["E-DERIVED-SUMMARY","E-ANALYSIS-EB"],"error_budget_ids":["EB-REAL-1"],"anomaly_propagation_chain_ids":[]
+    }
+  ],
+  "error_budgets": [
+    {
+      "id":"EB-REAL-1","target_property_record_ids":["PR-CE-B1-MEAN","PR-CE-B2-MEAN","PR-CE-B3-MEAN"],"deviation_episode_id":"DEV-CE-01","method":"variance-components","replicate_structure":{"n_rows":27,"n_batches":3,"n_samples":9,"min_repeats_per_sample":3,"max_repeats_per_sample":3,"balanced":true,"nesting":"measurement repeats nested in samples nested in batches"},"assumptions":["Rows are independent conditional on the declared nested IDs.","Samples are nested in batches; crossed instrument/operator effects are not separated.","Component estimates are descriptive method-of-moments approximations.","Covariance and process-condition effects are included in unallocated variance unless modeled separately."],"components":[
+        {"id":"EC-DRAFT-1","category":"measurement-repeatability","label":"Pooled within-sample repeatability","contribution_basis":"variance","estimate_status":"quantified","estimate":{"raw_value":0.0018037037037037806,"raw_unit":"percentage_points^2","normalized_value":0.0018037037037037806,"normalized_unit":"percentage_points^2","value_status":"derived","extraction_method":"analyze_error_budget.py","derivation":{"operation":"nested descriptive variance component","formula":"see analyze_error_budget.py","input_evidence_ids":["E-CSV-B1","E-CSV-B2","E-CSV-B3"]},"evidence_ids":["E-ANALYSIS-EB"],"confidence":{"level":"low","basis":["descriptive-method-of-moments","requires-design-review"]}},"fraction_of_total":0.015356908857114797,"source_entity_ids":["BATCH-B1","BATCH-B2","BATCH-B3"],"measurement_run_ids":["MR-CE-01"],"model_ids":[],"correlation_notes":"Covariance is not identified by this helper.","limitations":["This is repeatability within the declared sample IDs, not a calibrated measurement uncertainty."],"evidence_ids":["E-ANALYSIS-EB"]},
+        {"id":"EC-DRAFT-2","category":"sample-within-batch","label":"Between-sample variance within batch","contribution_basis":"variance","estimate_status":"quantified","estimate":{"raw_value":0.010969135802468902,"raw_unit":"percentage_points^2","normalized_value":0.010969135802468902,"normalized_unit":"percentage_points^2","value_status":"derived","extraction_method":"analyze_error_budget.py","derivation":{"operation":"nested descriptive variance component","formula":"see analyze_error_budget.py","input_evidence_ids":["E-CSV-B1","E-CSV-B2","E-CSV-B3"]},"evidence_ids":["E-ANALYSIS-EB"],"confidence":{"level":"low","basis":["descriptive-method-of-moments","requires-design-review"]}},"fraction_of_total":0.09339228966150324,"source_entity_ids":["BATCH-B1","BATCH-B2","BATCH-B3"],"measurement_run_ids":["MR-CE-01"],"model_ids":[],"correlation_notes":"Covariance is not identified by this helper.","limitations":["Method-of-moments adjustment assumes nested samples and comparable repeat counts."],"evidence_ids":["E-ANALYSIS-EB"]},
+        {"id":"EC-DRAFT-3","category":"batch-between","label":"Between-batch variance","contribution_basis":"variance","estimate_status":"quantified","estimate":{"raw_value":0.1046794238683105,"raw_unit":"percentage_points^2","normalized_value":0.1046794238683105,"normalized_unit":"percentage_points^2","value_status":"derived","extraction_method":"analyze_error_budget.py","derivation":{"operation":"nested descriptive variance component","formula":"see analyze_error_budget.py","input_evidence_ids":["E-CSV-B1","E-CSV-B2","E-CSV-B3"]},"evidence_ids":["E-ANALYSIS-EB"],"confidence":{"level":"low","basis":["descriptive-method-of-moments","requires-design-review"]}},"fraction_of_total":0.8912508014813819,"source_entity_ids":["BATCH-B1","BATCH-B2","BATCH-B3"],"measurement_run_ids":["MR-CE-01"],"model_ids":[],"correlation_notes":"Batch is a grouping factor; this component does not identify its physical cause.","limitations":["Requires at least two batches; shared instrument/operator/date/process effects may be embedded."],"evidence_ids":["E-ANALYSIS-EB"]},
+        {"id":"EC-DRAFT-4","category":"unallocated","label":"Unallocated/designer-unidentified variance","contribution_basis":"variance","estimate_status":"bounded","estimate":{"raw_value":0.0,"raw_unit":"percentage_points^2","normalized_value":0.0,"normalized_unit":"percentage_points^2","value_status":"derived","extraction_method":"analyze_error_budget.py","derivation":{"operation":"nested descriptive variance component","formula":"see analyze_error_budget.py","input_evidence_ids":["E-CSV-B1","E-CSV-B2","E-CSV-B3"]},"evidence_ids":["E-ANALYSIS-EB"],"confidence":{"level":"low","basis":["descriptive-method-of-moments","requires-design-review"]}},"fraction_of_total":0.0,"source_entity_ids":["BATCH-B1","BATCH-B2","BATCH-B3"],"measurement_run_ids":["MR-CE-01"],"model_ids":[],"correlation_notes":"Covariance is not identified by this helper.","limitations":["Zero is a bounded residual from this calculation, not evidence that calibration, processing, environment or model variance is absent."],"evidence_ids":["E-ANALYSIS-EB"]}
+      ],"combined_uncertainty":{"raw_value":0.581031600515602,"raw_unit":"percentage_points","normalized_value":0.581031600515602,"normalized_unit":"percentage_points","value_status":"derived","extraction_method":"analyze_error_budget.py","derivation":{"operation":"coverage-factor times total observed standard deviation","formula":"2.0 * sqrt(total variance)","input_evidence_ids":["E-CSV-B1","E-CSV-B2","E-CSV-B3"]},"evidence_ids":["E-ANALYSIS-EB"],"confidence":{"level":"low","basis":["descriptive-method-of-moments","requires-design-review"]}},"dominant_component_ids":["EC-DRAFT-3"],"quantitative_fraction_complete":true,"effect_comparison":{"relation":"unknown","uncertainty_value":{"raw_value":0.581031600515602,"raw_unit":"percentage_points","normalized_value":0.581031600515602,"normalized_unit":"percentage_points","value_status":"derived","extraction_method":"analyze_error_budget.py","derivation":{"operation":"coverage-factor times observed standard deviation","formula":"2.0 * sqrt(total variance)","input_evidence_ids":["E-CSV-B1","E-CSV-B2","E-CSV-B3"]},"evidence_ids":["E-ANALYSIS-EB"],"confidence":{"level":"low","basis":["descriptive-method-of-moments"]}},"rationale":"No independent decision-relevant effect or requirement limit was supplied; compare only after defining that threshold."},"conclusion":"Under the declared nested descriptive model, batch-between variance is the largest identified component (89.1% of the common variance basis), followed by sample-within-batch (9.3%) and repeatability (1.5%). This ranks variance layers; it does not prove a material mechanism or explain a performance difference by the same percentages.","limitations":["Not a GUM-compliant or accreditation-grade uncertainty budget.","Unbalanced or crossed designs require a more appropriate statistical model.","No automatic causal attribution is made from variance components.","Instrument, calibration, operator, date, environment, data-processing and model-fit effects are not separately identified."],"evidence_ids":["E-ANALYSIS-EB"]
+    }
+  ],
+  "anomaly_propagation_chains": [],
+  "mechanism_graphs": [],
+  "mechanism_nodes": [],
+  "mechanism_edges": [],
+  "mechanism_updates": [],
+  "models": [],
+  "hypotheses": [
+    {"id":"H-CE-1","statement":"批次相关因素是当前 CE 变异的主导来源，但其物理身份仍未知。","mechanism_chain":["batch identity/process history → batch-level CE shift"],"support_evidence_ids":["E-ANALYSIS-EB","E-DERIVED-SUMMARY"],"counterevidence_ids":[],"unique_predictions":["在锁定测量系统并保留批次身份后，批次均值差异仍然存在且重复出现。"],"falsifiers":["锁定协议并随机化重测后批次差异消失。","批次元数据证明 B1-B3 只是测量日期/仪器标签而非独立批次。"],"status":"plausible","applicability":"仅限当前 3 批次、9 样品、3 次重复的 CSV 层级分析。","limitations":["没有材料身份、组成或工艺历史；不能宣称材料/工艺因果。"],"anomaly_propagation_chain_ids":[],"information_gap_ids":["IG-CE-2","IG-CE-3","IG-CE-4"],"linked_mechanism_edge_ids":[],"mechanism_match_status":"no-match","boundary_conditions":["Cond-A 内部数据范围；协议关键字段缺失。"],"graph_retrieval_notes":["未提供文献或既有机制图谱，因此保持为运行内假设。"]},
+    {"id":"H-CE-2","statement":"批次与仪器、操作者、日期或数据处理版本共变，造成表观 batch-between 变异。","mechanism_chain":["measurement-system metadata → batch label confounding → CE shift"],"support_evidence_ids":["E-ANALYSIS-EB"],"counterevidence_ids":[],"unique_predictions":["在同一仪器/操作者/分析版本、随机化运行顺序和参考控制下，批次效应明显缩小或改变。"],"falsifiers":["每批使用相同且独立记录的测量系统元数据，且随机化重测仍复现批次差异。"],"status":"plausible","applicability":"仅限当前数据；批次间协变量未测。","limitations":["当前 89.1% 只是方差层级估计，不能单独证明协议混杂。"],"anomaly_propagation_chain_ids":[],"information_gap_ids":["IG-CE-2","IG-CE-3","IG-CE-4"],"linked_mechanism_edge_ids":[],"mechanism_match_status":"no-match","boundary_conditions":["必须先锁定 CE 定义、窗口和测量系统。"],"graph_retrieval_notes":["无可用机制边；保持 hypothesis。"]},
+    {"id":"H-CE-3","statement":"同批样品间差异是真实的样品层异质性，但不是主导来源。","mechanism_chain":["sample state within batch → sample-level CE differences"],"support_evidence_ids":["E-ANALYSIS-EB"],"counterevidence_ids":[],"unique_predictions":["同一批次中不同样品的均值差异在重新随机化测量后仍保留，并超过锁定测量系统的重复性。"],"falsifiers":["同批样品差异在固定协议重测中消失，或完全由测量顺序/通道解释。"],"status":"speculative","applicability":"当前样品 ID 被视为批次内嵌套样品。","limitations":["样品身份、取样位置和制备历史未报告。"],"anomaly_propagation_chain_ids":[],"information_gap_ids":["IG-CE-2","IG-CE-3"],"linked_mechanism_edge_ids":[],"mechanism_match_status":"no-match","boundary_conditions":["批次内 3 个样品、每样品 3 次重复。"],"graph_retrieval_notes":["无可用机制边；保持 hypothesis。"]},
+    {"id":"H-CE-4","statement":"短期测量重复性是主要变异来源。","mechanism_chain":["measurement repeatability → CE scatter"],"support_evidence_ids":[],"counterevidence_ids":["E-ANALYSIS-EB"],"unique_predictions":["在固定批次和样品内重复测量应产生与批次间分离相当的变异。"],"falsifiers":["增加独立批次而不是重复次数后总变异显著增加。"],"status":"refuted","applicability":"仅在当前 nested descriptive model 下被反驳。","limitations":["不排除未识别的仪器/处理误差；只说明当前 repeatability component 不是最大识别层级。"],"anomaly_propagation_chain_ids":[],"information_gap_ids":["IG-CE-3","IG-CE-4"],"linked_mechanism_edge_ids":[],"mechanism_match_status":"no-match","boundary_conditions":["当前 3 次重复/样品。"],"graph_retrieval_notes":["无可用机制边。"]}
+  ],
+  "information_gaps": [
+    {"id":"IG-CE-1","decision_question":"能否把 batch-between 变异解释为材料/工艺批次效应？","unknown_variable":"材料身份、B1-B3 的独立批次谱系和工艺历史","stage":"material-attributes","current_state":"ambiguous","impact":"blocker","affected_hypothesis_ids":["H-CE-1","H-CE-2","H-CE-3"],"affected_deviation_episode_ids":["DEV-CE-01"],"minimal_measurement":{"target":"材料/批次/工艺谱系","candidate_method":"回收原始实验记录或 LIMS 批次记录","required_conditions":["B1-B3 与行级 sample_id 可一一对应"],"controls":[],"resolution_or_detection_requirement":"能区分独立材料批次与测量日期/仪器标签。","decision_use":"决定 H-CE-1 是否仍可作为批次因素假设。","alternatives":["若不可访问，接受材料归因不确定性并停止升级机制。"]},"discrimination_scope":"区分物料/工艺批次效应与协议标签混杂。","disposition":"request-input","resolution_evidence_ids":[],"evidence_ids":["E-CSV-META"],"limitations":["没有该信息时不建议做材料优化。"]},
+    {"id":"IG-CE-2","decision_question":"批次层级是否在固定测量系统下仍然存在？","unknown_variable":"每个批次的仪器、通道、操作者、日期、校准状态和运行顺序","stage":"measurement-data","current_state":"unmeasured","impact":"high","affected_hypothesis_ids":["H-CE-1","H-CE-2","H-CE-3"],"affected_deviation_episode_ids":["DEV-CE-01"],"minimal_measurement":{"target":"measurement-system covariates and randomized repeat CE","candidate_method":"SOP-locked randomized remeasurement with run metadata","required_conditions":["same CE formula/window for all runs","record instrument/channel/operator/date/calibration","randomized run order across batches","SOP-defined reference control"],"controls":["reference control","within-sample repeat"],"resolution_or_detection_requirement":"Metadata complete enough to model batch against measurement-system covariates; remeasurement repeatability lower than the observed batch-mean range if a batch effect is to be retained.","decision_use":"区分 H-CE-1/H-CE-3 与 H-CE-2。","alternatives":["若无法随机化或锁定协议，停止材料归因。"]},"discrimination_scope":"直接测试 batch effect 是否被 measurement-system confounding 解释。","disposition":"plan-measurement","resolution_evidence_ids":[],"evidence_ids":["E-ANALYSIS-EB"],"limitations":["当前无法从 CSV 反推出任何协变量。"]},
+    {"id":"IG-CE-3","decision_question":"样品层差异是否独立于短期重复噪声？","unknown_variable":"同批样品的取样位置/状态和独立重测后的样品均值稳定性","stage":"material-attributes","current_state":"unmeasured","impact":"high","affected_hypothesis_ids":["H-CE-1","H-CE-3"],"affected_deviation_episode_ids":["DEV-CE-01"],"minimal_measurement":{"target":"same-batch samples under randomized remeasurement","candidate_method":"保留 batch_id/sample_id 的配对重测并记录样品状态","required_conditions":["同一锁定协议","不改变样品 ID 与批次映射"],"resolution_or_detection_requirement":"能检测到超过锁定系统 repeatability 的样品均值差异。","decision_use":"判断 9.3% sample-within-batch 是否具有可重复的样品层含义。","alternatives":["若样品状态不可回溯，接受样品层解释不确定性。"]},"discrimination_scope":"区分真实样品异质性与读取/分析波动。","disposition":"plan-measurement","resolution_evidence_ids":[],"evidence_ids":["E-ANALYSIS-EB"],"limitations":["当前没有样品几何、位置或制备历史。"]},
+    {"id":"IG-CE-4","decision_question":"CE 数值是否在同一物理定义下可被重新比较？","unknown_variable":"CE 公式、循环/SOC 窗口、温度、归一化分母和排除规则","stage":"measurement-data","current_state":"ambiguous","impact":"high","affected_hypothesis_ids":["H-CE-1","H-CE-2","H-CE-4"],"affected_deviation_episode_ids":["DEV-CE-01"],"minimal_measurement":{"target":"protocol definition and raw cycle audit","candidate_method":"SOP/run-file audit followed by locked-protocol remeasurement","required_conditions":["same measurand definition across all batches","retain raw charge/discharge data"],"resolution_or_detection_requirement":"公式、窗口、单位和分母可逐行或逐运行追溯。","decision_use":"阻止把定义变化误判为材料/批次变异。","alternatives":["若定义无法确认，停止外部比较并仅保留 descriptive hierarchy。"]},"discrimination_scope":"先排除定义/协议伪差异，再解释 batch-between。","disposition":"plan-measurement","resolution_evidence_ids":[],"evidence_ids":["E-CSV-META"],"limitations":["原始曲线不在唯一输入 CSV 中。"]}
+  ],
+  "verification_plan": [
+    {
+      "id":"V-CE-01","hypothesis_ids":["H-CE-1","H-CE-2","H-CE-3","H-CE-4"],"action":"在不改变现有 3 批次 × 3 样品 × 3 重复层级的前提下，先锁定并记录 CE 定义/窗口/归一化，再对 B1-B3 做一次运行顺序随机化的配对重测，并加入现有 SOP 定义的参考控制。","minimal_change":"不新增材料处理；只固定测量协议、随机化 batch/sample 测量顺序、保存每行仪器/操作者/日期/校准/分析版本元数据，并保留原始曲线或行级输出。","controls":["SOP-defined reference control","same-sample repeat","randomized batch/sample run order","original CSV values as pre-remeasurement record"],"repeats":3,"expected_outcomes":["若 H-CE-1/H-CE-3：固定测量系统后批次或同批样品均值差异仍复现。","若 H-CE-2：批次差异明显缩小，且与仪器/操作者/日期/处理版本协变量一致。","若 H-CE-4：同样品重复散布接近或超过批次均值范围；否则 H-CE-4 继续被削弱。","若 CE 定义/窗口不一致：先标记 protocol-shift，不作材料归因。"],"decision_rule":"只有当 CE 定义、窗口、单位、分母和测量系统元数据完整，且随机化重测在参考控制合格时仍显示批次均值差异超过锁定系统的重复性范围，才保留 H-CE-1 作为主要候选；若差异随协变量消失，优先 H-CE-2；若两者都不稳定，结论保持 inconclusive。","cost":"低到中；依赖现有设备、SOP 和参考控制可用性。","risk":"样品重复测量可能引入老化或历史效应；需保留时间顺序并避免把后处理变化混入批次效应。","safety":"按现有电化学 SOP、设备额定值和合格人员要求执行；本记录不批准新危险条件。","status":"proposed","information_gap_ids":["IG-CE-2","IG-CE-3","IG-CE-4"],"priority_tier":"blocker-first","priority_rationale":"它同时处理测量系统、样品层和 CE 定义三个高影响缺口，且先于材料/工艺优化。","information_gain":{"resolves_unknowns":["batch-versus-protocol confounding","sample-within-batch stability","CE measurand comparability"],"hypotheses_discriminated":["H-CE-1","H-CE-2","H-CE-3","H-CE-4"],"decision_change":"决定是否可以把 batch-between 变异继续追溯到材料/工艺，或必须停留在协议/数据层。","basis":"paired randomized remeasurement plus metadata audit; qualitative decision value only","confidence":"medium"},"feasibility":"current-equipment","cost_band":"medium","sample_consumption":"重复现有 3×3×3 结构；具体样品消耗取决于现有 SOP 和样品可重复性。","stop_rule":"若参考控制不合格、CE 定义/窗口/分母不能锁定、关键元数据缺失，或随机化无法执行，则停止材料归因并只报告当前 descriptive variance hierarchy；若锁定后批次差异小于测量系统重复性范围，则停止 H-CE-1 的升级。"
+    }
+  ],
+  "experiment_sets": [
+    {"id":"SET-CE-MIN-01","objective":"用一次最小的元数据审计 + 随机化配对重测，区分 batch effect、measurement-system confounding、sample heterogeneity 和 repeatability。","verification_item_ids":["V-CE-01"],"information_gap_ids":["IG-CE-2","IG-CE-3","IG-CE-4"],"coverage_matrix":[{"verification_item_id":"V-CE-01","information_gap_ids":["IG-CE-2","IG-CE-3","IG-CE-4"],"hypothesis_ids":["H-CE-1","H-CE-2","H-CE-3","H-CE-4"]}],"selection_rationale":"同一配对设计覆盖三个高影响缺口和四个竞争假设，不先做无法解释原因的参数优化。","resource_summary":"需要现有电化学测量设备、可用 SOP、参考控制和行级运行元数据；不假设新增危险条件。","stop_rules":["协议/定义/元数据无法锁定时停止材料归因。","参考控制不合格时停止把重测结果用于机制升级。","若固定系统后批次差异不超过重复性范围，停止 H-CE-1 升级。","若成本或样品消耗超过可获得的决策价值，接受 inconclusive。"],"status":"proposed"}
+  ],
+  "adapter_decisions": [],
+  "domain_records": [],
+  "experience_updates": [
+    {"id":"EXP-CE-01","action":"no-change","namespace":"local-ce-error-budget","status":"proposed","facts":["当前 CSV 仅支持把 batch-between 识别为最大描述性方差层级。","在材料身份、工艺历史和测量系统被验证前，不把该层级写成可迁移的 PSPP 因果经验。"],"applicability":"仅限 RUN-SKILL-EFFECT-REAL-CE-001 与 Cond-A 内部数据范围。","conflicts":["H-CE-2 仍可解释部分或全部 batch-between 层级。"],"evidence_ids":["E-ANALYSIS-EB","E-CSV-META"],"version":"0.1-proposed","review_trigger":"完成 V-CE-01 并获得材料/批次/协议元数据后人工复核。","persistence_status":"proposed-not-written","pspp_map_ids":["PSPP-CE-01"],"mechanism_update_ids":[],"graph_operation_summary":"不追加或升级机制边；保留为待验证的 PSPP 草图。"}
+  ],
+  "pspp_maps": [
+    {"id":"PSPP-CE-01","title":"CE 批次变异的证据边界草图","entity_ids":["BATCH-B1","BATCH-B2","BATCH-B3"],"nodes":[
+      {"node_id":"PSPP-PROC-01","stage":"processing","statement":"B1-B3 是否对应不同工艺/历史未知。","status":"unknown","entity_ids":["BATCH-B1","BATCH-B2","BATCH-B3"],"process_run_ids":[],"property_record_ids":[],"evidence_ids":["E-CSV-META"],"boundary_conditions":["Cond-A"],"limitations":["没有 process_runs。"]},
+      {"node_id":"PSPP-STRUCT-01","stage":"structure","statement":"批次间结构/状态差异未知。","status":"unknown","entity_ids":["BATCH-B1","BATCH-B2","BATCH-B3"],"process_run_ids":[],"property_record_ids":[],"evidence_ids":[],"boundary_conditions":["Cond-A"],"limitations":["没有结构表征或样品状态记录。"]},
+      {"node_id":"PSPP-PROP-01","stage":"properties","statement":"材料性质中介变量未知；不能用 CE 观测替代 properties。","status":"unknown","entity_ids":["BATCH-B1","BATCH-B2","BATCH-B3"],"process_run_ids":[],"property_record_ids":[],"evidence_ids":[],"boundary_conditions":["Cond-A"],"limitations":["未测量电化学/界面性质。"]},
+      {"node_id":"PSPP-PERF-01","stage":"performance","statement":"CSV 报告的 Coulombic efficiency batch means 为 B1 92.4911%、B2 92.8178%、B3 92.1589%。","status":"observed","entity_ids":["BATCH-B1","BATCH-B2","BATCH-B3"],"process_run_ids":[],"property_record_ids":["PR-CE-B1-MEAN","PR-CE-B2-MEAN","PR-CE-B3-MEAN"],"evidence_ids":["E-DERIVED-SUMMARY"],"boundary_conditions":["Cond-A"],"limitations":["这是 performance-level 观测，不是材料性质或因果结论。"]}
+    ],"relationships":[
+      {"relation_id":"PSPP-R-01","from_node_id":"PSPP-PROC-01","to_node_id":"PSPP-STRUCT-01","statement":"不同工艺/历史可能改变批次结构或状态。","relation_status":"hypothesis","evidence_ids":[],"counterevidence_ids":[],"falsifiers":["批次工艺历史相同且独立结构表征无差异。"],"modifiers":["材料身份、工艺、储存和取样位置"],"boundary_conditions":["当前仅有 CE CSV"],"linked_mechanism_edge_ids":[]},
+      {"relation_id":"PSPP-R-02","from_node_id":"PSPP-STRUCT-01","to_node_id":"PSPP-PROP-01","statement":"批次结构/状态差异可能改变未测的电化学性质。","relation_status":"hypothesis","evidence_ids":[],"counterevidence_ids":[],"falsifiers":["结构与中介性质在批次间一致。"],"modifiers":["界面、缺陷、传输和反应状态"],"boundary_conditions":["未指定材料体系"],"linked_mechanism_edge_ids":[]},
+      {"relation_id":"PSPP-R-03","from_node_id":"PSPP-PROP-01","to_node_id":"PSPP-PERF-01","statement":"未测性质中介变量可能影响 CE，但当前数据未测得该链。","relation_status":"hypothesis","evidence_ids":[],"counterevidence_ids":[],"falsifiers":["固定协议重测后 CE 批次差异消失，或直接性质测量不随 CE 变化。"],"modifiers":["CE 定义、窗口、温度和测量系统"],"boundary_conditions":["Cond-A 内部范围"],"linked_mechanism_edge_ids":[]}
+    ],"coverage":{"processing":"missing","structure":"missing","properties":"missing","performance":"present","material_attributes":"missing"},"status":"insufficient-evidence","missing_stages":["processing","structure","properties","material-attributes"],"evidence_ids":["E-CSV-META","E-DERIVED-SUMMARY"],"limitations":["草图不构成 PSPP 因果关系；没有机制边或跨材料迁移。"]}
+  ],
+  "missing_information": [
+    {"field_path":"entities.material_identity","entity_ids":["BATCH-B1","BATCH-B2","BATCH-B3"],"reason":"not-reported","impact":"Blocks material/process attribution and any external transfer claim.","expected_source_parts":["batch record","sample lineage","process history"],"resolution":"Provide material identity and map B1-B3 to independent batches."},
+    {"field_path":"measurement_runs[MR-CE-01].conditions","entity_ids":["BATCH-B1","BATCH-B2","BATCH-B3"],"reason":"not-reported","impact":"Prevents condition-matched comparison and leaves protocol-shift confounding unresolved.","expected_source_parts":["measurement SOP","run metadata"],"resolution":"Recover CE formula/window, temperature, geometry, denominator and environment."},
+    {"field_path":"measurement_runs[MR-CE-01].instrument_and_calibration","entity_ids":["BATCH-B1","BATCH-B2","BATCH-B3"],"reason":"not-reported","impact":"Batch-between component may contain measurement-system covariates.","expected_source_parts":["instrument log","calibration record","operator/date metadata"],"resolution":"Add row/run-level instrument, channel, operator, timestamp, calibration and analysis version."},
+    {"field_path":"data_artifacts[DA-RAW-CE-01].raw_cycle_curves","entity_ids":["BATCH-B1","BATCH-B2","BATCH-B3"],"reason":"not-reported","impact":"Cannot audit CE window, exclusion rules or cycle-level anomalies.","expected_source_parts":["raw charge/discharge curves"],"resolution":"Provide raw curves if available; otherwise keep CE interpretation descriptive."}
+  ],
+  "artifact_manifest": [
+    {"id":"ART-JSON","artifact_type":"machine-json","path":"with-skill-output.json","description":"Canonical materials-evidence-reasoner 4.6 output.","generation_status":"generated","validation_status":"validated","notes":["Generated from the same evidence model as the report."]},
+    {"id":"ART-REPORT","artifact_type":"human-report","path":"with-skill-report.md","description":"Chinese action-priority report derived from the canonical JSON.","generation_status":"generated","validation_status":"validated","depends_on":["ART-JSON"]}
+  ],
+  "quality": {
+    "traceability":"pass","entity_and_scope":"partial","data_integrity":"pass","comparability":"partial","normalization":"partial","adapter_routing":"not-applicable","counterevidence":"partial","memory_governance":"pass","safety":"not-applicable","error_attribution":"partial","anomaly_chain":"not-applicable","information_gap_coverage":"pass","pspp_consistency":"partial","mechanism_graph_consistency":"not-applicable","json_valid":"tool-validated","notes":["No external literature, requirement limit or mechanism graph was used.","Batch-between dominance is a variance-layer result, not a causal attribution."]
+  }
+}

@@ -146,6 +146,24 @@ Skill 会先盘点输入，把缺失信息分成三类：不补充就无法可�
 
 按任务生成的辅助产物包括文献提取交接包、CSV、误差预算、离线 Dashboard、机制图谱导出和审计文件；它们都从同一份 JSON 派生，不成为新的事实来源。
 
+## 🔬 不用 Skill，和使用 Skill，差在哪里？
+
+仓库现在包含一次真实的 **GPT-5.6-luna 对照实验**：同一份 `examples/error-budget-demo.csv`、同一个科研问题、同一个模型，只改变是否加载 Materials Evidence Reasoner。无 Skill 组输出普通研究备忘录；使用 Skill 组读取 `SKILL.md`，运行输入盘点和误差预算工具，生成并通过 canonical JSON 校验。
+
+<p align="center">
+  <img src="docs/images/skill-effect-real-comparison.svg" alt="真实 GPT-5.6-luna 对照：不用 Skill 与使用 Skill 在八项科研交付维度的覆盖率" width="1000">
+</p>
+
+这次结果说明一个重要事实：在这份结构清楚的重复测量数据上，**不用 Skill 也可能得到正确的主要科学判断**；Skill 的主要增益是把判断变成有证据绑定、条件边界、信息缺口、可验证实验和机器接口的可交接资产。一次任务、每种模式一次运行，不足以宣称模型普遍提升；它只是一个真实、可复现的起点。
+
+查看完整离线评估：[`examples/skill-effect-real/evaluation.html`](examples/skill-effect-real/evaluation.html)；机器评分与校验状态见 [`examples/skill-effect-real/evaluation.json`](examples/skill-effect-real/evaluation.json)；两组原始输出见 [`examples/skill-effect-real/`](examples/skill-effect-real/)。重新运行评分：
+
+```bash
+python scripts/evaluate_real_skill_effect.py
+```
+
+底层的确定性合同回归仍保留在 `scripts/compare_skill_modes.py`，用于不依赖模型的包级冒烟测试。
+
 ## 🖥️ 界面预览
 
 所有页面都可以离线打开，数据只在浏览器内解析，不上传也不执行输入文件中的代码。视觉层采用克制留白、清晰层级、浅/深色适配、状态标签和可回查路径，帮助科研人员先看结论边界，再进入证据细节。
@@ -489,6 +507,8 @@ materials-evidence-reasoner/
 │   ├── smoke_test_source_dashboard.py # source review dashboard 的本地浏览器 smoke test
 │   ├── validate_output.py           # 输出 Schema、ID 和引用校验
 │   ├── normalize_output.py          # canonical/旧字段的确定性 viewer 兼容适配
+│   ├── compare_skill_modes.py       # 不依赖模型的合同消融回归
+│   ├── evaluate_real_skill_effect.py # 两个真实 Agent 输出的盲评分数与可视化
 │   ├── validate_package.py          # 整包校验
 │   └── run_adversarial_tests.py     # 对抗回归测试
 ├── tests/
@@ -504,6 +524,7 @@ materials-evidence-reasoner/
     ├── synthetic-closed-loop-report.md
     ├── synthetic-closed-loop-dashboard.html
     ├── error-budget-demo.csv/json/md
+    ├── skill-effect-real/            # 同输入、同模型的真实 Skill 对照输出
     ├── cross-domain-input.csv
     ├── literature-only-request.md
     └── cross-domain-intake/
