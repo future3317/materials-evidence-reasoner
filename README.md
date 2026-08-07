@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="docs/images/materials-evidence-reasoner-avatar.png" alt="Materials Evidence Reasoner Skill 头像" width="180">
+  <img src="docs/images/materials-evidence-reasoner-avatar.png" alt="Materials Evidence Reasoner Skill 头像" width="150">
 </p>
 
-# 🔬 Materials Evidence Reasoner
+<h1 align="center">Materials Evidence Reasoner</h1>
 
 <p align="center">
   <strong>把材料研发中的“结果不一样”，变成一条可追溯、可比较、可验证的证据链。</strong><br>
@@ -10,17 +10,31 @@
 </p>
 
 <p align="center">
-  <a href="LICENSE">MIT License</a> ·
+  <img src="https://img.shields.io/badge/schema-4.6-4f8fba" alt="Schema 4.6">
+  <img src="https://img.shields.io/badge/Python-3.10%2B-f0b429" alt="Python 3.10 plus">
+  <img src="https://img.shields.io/badge/license-MIT-6aa84f" alt="MIT License">
+  <img src="https://img.shields.io/badge/offline--first-yes-8e7dbe" alt="Offline first">
+</p>
+
+<p align="center">
   <a href="SKILL.md">Agent Skill</a> ·
   <a href="references/output-schema.json">Output Schema</a> ·
-  <a href="viewer/index.html">Offline Viewer</a>
+  <a href="viewer/index.html">Offline Viewer</a> ·
+  <a href="LICENSE">License</a>
 </p>
 
 材料研发真正困难的地方，通常不是“有没有一个答案”，而是不同来源的结果能不能放在同一条件下比较：论文里的最佳样品是否与本地样品同批次、同协议、同归一化方式？一次性能下降究竟来自材料、加工、结构、测量还是数据处理？下一项实验怎样用最少的资源区分主要原因？
 
 Materials Evidence Reasoner 是一个面向材料研发的证据推理 Skill 和配套工具包。它把论文、补充信息、专利、标准、TDS、实验记录、表格、曲线、表征图像和计算结果整理为可回查的数据资产；先经过条件注册和可比性判断，再进入偏差诊断、竞争机理、信息缺口和验证实验。它不会把模型推荐包装成实验事实，也不会因为文本相似就自动宣称普遍因果关系。
 
-### 🔁 它覆盖的闭环
+## 🧭 工作原理
+
+<p align="center">
+  <img src="docs/images/materials-evidence-overview.png" alt="Materials Evidence Reasoner 项目总览：从输入资料到可复用经验" width="1000">
+</p>
+<p align="center"><em>从“结果不一样”出发，经过条件、证据、可比性和验证，最后沉淀可复用经验。</em></p>
+
+可访问文本版流程：
 
 ```text
 输入资料 → 条件与证据整理 → 可比性判断 → 偏差诊断
@@ -28,59 +42,46 @@ Materials Evidence Reasoner 是一个面向材料研发的证据推理 Skill 和
         → PSPP 经验 / Mechanism Graph 更新
 ```
 
-## 🧭 图解：从资料到可复用经验
+## 🚀 30 秒看懂
 
-下面这张总览图把项目的目标、输入、七个工作阶段和最终经验沉淀放在了一张图里：
+<table>
+<tr>
+<td width="33%" valign="top">
 
-<p align="center">
-  <img src="docs/images/materials-evidence-overview.png" alt="Materials Evidence Reasoner 项目总览：从输入资料到可复用经验" width="1000">
-</p>
-<p align="center"><em>项目总览：先把“结果不一样”变成证据链，再把经过验证的经验沉淀下来。</em></p>
+### 📚 整理证据
 
-<details>
-<summary>展开其他三张图解</summary>
+论文、实验记录、Excel、曲线、图像和模拟结果统一进入可追溯证据链。
 
-<p align="center">
-  <img src="docs/images/materials-goal-and-inputs.png" alt="项目目标与可处理的输入资料" width="1000">
-</p>
-<p align="center"><em>目标与输入：论文、表格、曲线、图像、仪器导出、仿真结果和自然语言都可以作为起点。</em></p>
+</td>
+<td width="33%" valign="top">
 
-<p align="center">
-  <img src="docs/images/materials-quick-start-and-outputs.png" alt="最短使用流程与输出物分层" width="1000">
-</p>
-<p align="center"><em>最短使用流程：上传资料、说明判断目标、获得报告与下一步行动。</em></p>
+### 🔍 解释偏差
 
-<p align="center">
-  <img src="docs/images/materials-complete-loop.png" alt="完整闭环、输出分层与最小验证实验" width="1000">
-</p>
-<p align="center"><em>完整闭环：核心交付稳定，辅助产物按任务生成，最小实验由信息缺口驱动。</em></p>
+先判断是否真的可比，再区分测量、数据、工艺和材料原因。
 
-</details>
+</td>
+<td width="33%" valign="top">
 
-## ✅ 什么时候使用
+### 🧪 决定下一步
 
-### 适合使用的任务
+提出可证伪机理，并设计关闭关键信息缺口的最小实验集。
 
-用自然语言描述问题即可，不要求你先整理成 JSON 或选择分析模式。典型任务包括：
+</td>
+</tr>
+</table>
 
-- 📚 **读文献并建立参照。** 从论文、补充信息、专利、标准或 TDS 中提取材料、样品、工艺、测量条件、图表数值和证据位置，形成条件化文献先验；
-- 🧪 **整理本地实验。** 处理 Excel/CSV/JSON、仪器导出、原始曲线、SEM/TEM/XRD/Raman 等图片和模拟结果，保留样品、批次、测量运行及数据谱系；
-- ⚖️ **判断是否真的偏离。** 在文献、本地稳定工艺和规格限值之间建立清晰参照，检查单位、归一化、分母、测试协议、校准和误差，再判断结果是可比、预期波动还是异常；
-- 🧩 **解释材料异常。** 沿“材料属性—加工—结构—性质—性能”链追溯，提出 2–5 个相互可区分、能够被实验推翻的竞争机理；
-- 🧭 **决定下一步实验。** 找出影响决策的未知量，用尽量少的实验区分主要原因，并给出对照、判定规则和停止条件；
-- 🌱 **沉淀可复用经验。** 将经过证据与条件审查的 PSPP 关系和机制边界版本化保存，支持后续检索、冲突和修订。
+## 🚀 3 步开始
 
-### 不适合使用的任务
+**1. 上传资料**<br>
+论文 / Excel / CSV / 曲线 / 表征图像 / 仪器导出 / 仿真结果
 
-它不是通用论文摘要器、自动实验设备控制器或“凭相似文本发现新材料”的工具。它不会替你访问未授权数据、批准危险实验、证明普遍因果关系或保证实验成功；没有持久化工具和授权时，也不会声称企业知识已经写入。
+**2. 告诉 Agent 你想判断什么**<br>
+例如：判断是否复现失败、找出性能下降的原因、设计下一项验证实验。
 
-## 🚀 怎么用
+**3. 获取结果**<br>
+中文报告 · 机器事实源 JSON · 证据表 · 离线 Dashboard · 最小验证实验
 
-只需要给 Agent 两样东西：**你已有的资料**和**你要做的判断**。可以按下面三步开始：
-
-1. 上传或粘贴资料：论文/PDF、补充信息、专利、标准、TDS、表格、曲线、仪器导出、表征图像或计算结果；
-2. 说明决策：例如“判断是否复现失败”“找出这一批导热率下降的原因”“设计下一项验证实验”；
-3. 指定交付形式（可选）：默认生成中文报告和验证后的 JSON；需要时再生成关键 CSV、文献提取交接包和离线 HTML 仪表盘。
+> **不需要先学 Schema，也不需要先整理 JSON。** 直接给资料和判断目标即可。
 
 最短的请求可以是：
 
@@ -91,6 +92,59 @@ Materials Evidence Reasoner 是一个面向材料研发的证据推理 Skill 和
 ```
 
 Skill 会先盘点输入，把缺失信息分成三类：不补充就无法可靠比较或解释的 blocker、会降低结论强度但不阻断分析的限制项，以及可选增强信息。它不会用“典型值”替你填空；关键事实必须能回到来源、实验记录或用户明确提供的观测。
+
+## 🔬 可以解决什么问题
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+- 📚 读文献并建立条件化参照；
+- 🧪 整理本地实验与数据谱系；
+- ⚖️ 判断结果是可比、波动还是异常；
+- 🧩 沿材料属性—加工—结构—性质—性能链解释异常；
+- 🧭 用最少实验区分竞争原因；
+- 🌱 版本化沉淀 PSPP 与 Mechanism Graph 经验。
+
+</td>
+<td width="50%" valign="top">
+
+它不适合做通用论文摘要、自动实验设备控制或凭相似文本发现新材料。它不会访问未授权数据、批准危险实验、证明普遍因果关系或保证实验成功。
+
+</td>
+</tr>
+</table>
+
+## 🧭 更多图解
+
+三张补充图现在直接展示，不需要点击展开：
+
+### 目标与输入
+
+<p align="center">
+  <img src="docs/images/materials-goal-and-inputs.png" alt="项目目标与可处理的输入资料" width="1000">
+</p>
+
+### 最短使用流程与输出分层
+
+<p align="center">
+  <img src="docs/images/materials-quick-start-and-outputs.png" alt="最短使用流程与输出物分层" width="1000">
+</p>
+
+### 完整闭环与最小验证实验
+
+<p align="center">
+  <img src="docs/images/materials-complete-loop.png" alt="完整闭环、输出分层与最小验证实验" width="1000">
+</p>
+
+## 📦 输出物怎么分层
+
+跨任务稳定的核心交付只有两项：
+
+- `materials-report.md`：面向研究人员的行动优先中文报告；
+- `materials-result.json`：通过 Schema 和 `validate_output.py` 校验的机器事实源。
+
+按任务生成的辅助产物包括文献提取交接包、CSV、误差预算、离线 Dashboard、机制图谱导出和审计文件；它们都从同一份 JSON 派生，不成为新的事实来源。
 
 ## 🖥️ 界面预览
 
@@ -125,22 +179,8 @@ Agent 正确完成后，你按这个顺序使用结果：
 
 只有文献时，结果不会证明你的实验已经复现或失败；它提供的是条件化文献先验、证据台账、候选机理、信息缺口和验证入口。更完整的单篇文献请求见 `examples/literature-only-request.md`，用户阅读和后续提问规则见 `references/literature-user-workflow.md`。
 
-## 📦 输出物怎么分层
-
-跨任务稳定的核心交付只有两项：
-
-- `materials-report.md`：面向研究人员的行动优先中文报告；
-- `materials-result.json`：通过 `references/output-schema.json` 和 `validate_output.py` 校验的机器事实源。
-
-其他文件按任务和数据条件生成，都是辅助产物而不是新的事实来源：
-
-- `source-extraction/` 与 `source-dashboard.html`：文献 PDF/XML 的提取交接和质量复核；
-- `materials-dashboard.html`：JSON 的离线交互呈现层；
-- CSV、`error-budget-*`：证据、记录、误差和缺失信息的派生表；
-- `mechanism-export/`、`mechanism-audit.*`：机制图谱导出与治理审计；
-- `intake-*`、smoke test 和 viewer 文件：输入盘点或内部 QA 资产。
-
-聊天中默认只展示人类报告和文件链接，不把数千行 JSON 直接铺在正文里。所有呈现文件都必须由同一份已验证 JSON 派生，避免报告、表格与仪表盘各说各话。
+<details>
+<summary><strong>🛠️ 查看完整执行流程与知识维护</strong></summary>
 
 ## 🛠️ 推荐执行顺序
 
@@ -203,6 +243,11 @@ python scripts/evaluate_routing.py --self-test
 - **L3：Schema、适配器、脚本与查看器。** 提供确定性输入盘点、字段合同、校验、可视化和维护测试。
 
 用户不需要阅读全部 Schema 和 adapter；Agent 按任务加载。开发者也不应把 README 中的教学文案复制回 SKILL，避免执行注意力被稀释。
+
+</details>
+
+<details>
+<summary><strong>📊 查看离线可视化、报告与输入规范化</strong></summary>
 
 ## 📊 离线可视化
 
@@ -304,6 +349,11 @@ python scripts/smoke_test_source_dashboard.py source-extraction/source-dashboard
 
 该离线页面只展示环境、文件状态、警告、Markdown/JSON/CSV/页图/图像入口和证据边界，不生成科学结论。
 
+</details>
+
+<details>
+<summary><strong>🧪 查看文献与主动学习混合输入</strong></summary>
+
 ## 文献 + 主动学习混合输入
 
 当目录同时包含论文、Bayesian optimization/active learning 脚本、候选空间和推荐 CSV 时，不能只把 CSV 当作实验记录。先运行：
@@ -334,6 +384,11 @@ QBC 采样时，可运行 `run_sample_and_update.py --input-dir <folder> --qbc-f
 默认角色是：`labeled.csv`=已有标签记录、`init_unlabeled.csv`=候选空间、`recommended_*.csv`/`qbc_recommended.csv`=模型推荐、`.py`=方法来源、`sample_distribution_*.png`=选择诊断图。`z` 的来源、x/y 的物理含义和单位仍必须由研究者确认；`acquisition_value` 不是性能值，`qbc_variance` 不是实验不确定度。只有新增独立实验/可信模拟证据后，推荐点才能写入正式 `property_records`。详细合同见 `references/active-learning-contract.md` 与 `references/active-learning-field-lexicon.json`。
 
 可直接复制的 Agent 请求见 `examples/active-learning-request.md`；它与 `references/agent-output-contract.md` 对齐，要求先生成中间画像，再生成并校验 canonical `materials-result.json`。
+
+</details>
+
+<details>
+<summary><strong>🔬 查看误差预算、深度诊断与 Mechanism Graph</strong></summary>
 
 ## 误差预算与重复数据
 
@@ -388,6 +443,11 @@ python scripts/mechanism_graph.py apply materials-result.json --update-id MU-001
 - `examples/cross-domain-intake/intake-packet.json`：无损盘点和字段映射；
 - `examples/cross-domain-intake/intake-checklist.md`：缺失信息分级提醒；
 - `examples/cross-domain-intake/normalized-tables/`：保留原列的规范化副本。
+
+</details>
+
+<details>
+<summary><strong>🧰 查看目录结构、接口、安装与兼容性</strong></summary>
 
 ## 目录结构
 
@@ -491,6 +551,11 @@ Qwen Code 项目级安装示例：
 /materials-evidence-reasoner
 ```
 
+</details>
+
+<details>
+<summary><strong>✅ 查看设计原则、验证与术语</strong></summary>
+
 ## 设计原则
 
 - 文献值是有条件的先验，不是天然真值；
@@ -557,6 +622,8 @@ python scripts/run_adversarial_tests.py
 | `Mechanism Graph` | 跨实验复用的条件化机制关系层；每条边必须带证据、边界、falsifier、迁移限制、版本和状态。 |
 | `mechanism_update` | 对图谱提出追加、支持、冲突、修订边界或废弃等操作；只有审批并实际写入新 artifact 后才算生效。 |
 
+
+</details>
 
 ## 重要边界
 
