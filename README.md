@@ -164,6 +164,38 @@ python scripts/evaluate_real_skill_effect.py
 
 底层的确定性合同回归仍保留在 `scripts/compare_skill_modes.py`，用于不依赖模型的包级冒烟测试。
 
+## 📈 三模型 Skill A/B 评估汇总
+
+合作者进一步整理了 Kimi-K2.7-Code、GLM-5.2 和 GPT-5.6-luna 的 Skill A/B 结果。这里保留各模型的原始评分口径，不把不同 rubric 的分数硬合并：Kimi 与 GLM 使用 0–100 加权分，GPT-5.6-luna 使用“交付能力覆盖率”。
+
+<p align="center">
+  <img src="docs/images/skill-ab-uplift-summary.svg" alt="基于真实 A/B 结果重绘的 Skill 效果柱状图：Kimi 和 GLM 总分，以及 GPT 的核心判断、证据回查和机器接口覆盖率" width="1000">
+</p>
+<p align="center"><em>关键结果重绘：两种 0–100 总分口径分别提升 16 和 20 分；GPT-5.6-luna 的主要增益集中在证据回查和机器接口。</em></p>
+
+<p align="center">
+  <img src="docs/images/skill-ab-three-model-summary.png" alt="三模型 Skill A/B 评估四联图：跨模型总分、六维度增益、GPT rubric 覆盖率和成本收益" width="1000">
+</p>
+
+| 模型 | 评分口径 | 无 Skill 中位数 | 有 Skill 中位数 | 绝对提升 | 相对提升 |
+|---|---|---:|---:|---:|---:|
+| Kimi-K2.7-Code | 0–100，官方权重 | 59 | 75 | +16 | +27.1% |
+| GLM-5.2 | 0–100，报告内权重 | 58 | 78 | +20 | +34.5% |
+| GPT-5.6-luna | rubric 覆盖率，单次运行 | 核心判断 100%，证据/接口 0% | 核心判断 100%，证据 94%、接口 100% | 见下方 | 不直接换算 |
+
+GPT-5.6-luna 的细分结果与我们仓库中的真实双 Agent 实验一致：在结构清楚的数据上，无 Skill 也可能得到正确的科学判断；Skill 的增益主要集中在证据可回查、结构完整性、条件边界和机器接口。GLM 的报告还诚实记录了“数据可复用性”和“失败处理与复现”各下降 2 分，说明这不是只展示正向结果的宣传图。
+
+<p align="center">
+  <img src="docs/images/skill-ab-glm52-summary.png" alt="GLM-5.2 Skill A/B 总分对照：58 到 78，提升 20 分" width="760">
+</p>
+<p align="center">
+  <img src="docs/images/skill-ab-glm52-dimensions.png" alt="GLM-5.2 六维度中位数对比和六维度评分" width="760">
+</p>
+
+注意：Kimi 的六维度使用官方权重 30/20/15/15/10/10，GLM 报告使用 30/25/15/10/10/10；因此模型间可以分别报告总分和 uplift，但不应把维度级分数直接平均。Kimi 报告中的脚本耗时约 0.87 秒、推理时间约 4.2 秒到 8.7 秒为该次运行/预估值，不是所有模型和硬件的通用性能承诺。
+
+完整整理见 [`docs/three-model-skill-ab-evaluation.md`](docs/three-model-skill-ab-evaluation.md)，实验排查与下一轮主动学习建议见 [`docs/active-learning-troubleshooting-and-next-experiment.md`](docs/active-learning-troubleshooting-and-next-experiment.md)。这组结果仍是有限样本的外部评估，不替代 source-backed 金标准、多随机种子和独立人工复核。
+
 ## 🖥️ 界面预览
 
 所有页面都可以离线打开，数据只在浏览器内解析，不上传也不执行输入文件中的代码。视觉层采用克制留白、清晰层级、浅/深色适配、状态标签和可回查路径，帮助科研人员先看结论边界，再进入证据细节。
