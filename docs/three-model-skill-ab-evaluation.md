@@ -96,11 +96,11 @@ Skill 推理时间约为基线 2 倍（+4.5 s），换取 +16 分质量提升；
 
 ---
 
-## 图
+## 图（仓库重绘）
 
 | 文件 | 内容 |
 |---|---|
-| `图_三模型Skill_AB对照_学术风格四联图.png` | (a) 跨模型总分对比；(b) 两模型六维度增益分解；(c) GPT rubric 覆盖率；(d) 成本—收益权衡 |
+| `docs/images/skill-ab-two-model-results.svg` | (a) Kimi/GLM 总分对比；(b) 两模型六维度增益分解。README 只展示这张基于表格数据重新生成的无遮挡矢量图；GPT rubric 不混入本图。 |
 
 ---
 
