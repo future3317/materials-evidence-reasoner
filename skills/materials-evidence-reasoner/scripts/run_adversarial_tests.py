@@ -12,6 +12,7 @@ import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+PROJECT_ROOT = ROOT.parents[1]
 SCRIPTS = ROOT / "scripts"
 EXAMPLE = ROOT / "examples" / "synthetic-closed-loop.json"
 VIEWER = ROOT / "viewer" / "index.html"
@@ -359,7 +360,13 @@ def main() -> int:
 
     skill_lines = (ROOT / "SKILL.md").read_text(encoding="utf-8").splitlines()
     h.check(len(skill_lines) <= 500, "progressive-disclosure-size", f"SKILL.md has {len(skill_lines)} lines")
-    h.check((ROOT / "README.md").is_file() and (ROOT / "references" / "report-contract.md").is_file(), "three-layer-docs", "human and execution documents must be separate")
+    h.check(
+        (PROJECT_ROOT / "README.md").is_file()
+        and (ROOT / "SKILL.md").is_file()
+        and (ROOT / "references" / "report-contract.md").is_file(),
+        "three-layer-docs",
+        "human and execution documents must be separate",
+    )
 
     total = h.passed + len(h.failed)
     if h.failed:

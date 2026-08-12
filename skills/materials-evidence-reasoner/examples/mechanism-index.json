@@ -2,7 +2,7 @@
   "index_schema_version": "1.0",
   "source_run_id": "RUN-SYNTHETIC-CE-001",
   "source_sha256": "a47368a582c18affd406e26edad941b35a48be5e2e80e5f2a496f1d80c1ffbaf",
-  "generated_at": "2026-08-07T16:47:37.477669+00:00",
+  "generated_at": "2026-08-12T07:28:13.364280+00:00",
   "summary": {
     "schema_version": "4.6",
     "run_id": "RUN-SYNTHETIC-CE-001",

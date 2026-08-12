@@ -103,16 +103,6 @@ def main() -> int:
     if 'version: "4.6.12"' not in skill_text or 'schema-version: "4.6"' not in skill_text:
         errors.append("SKILL.md version declarations are stale")
 
-    # Submission scanners expect the Agent Skills layout even though the
-    # repository keeps a root copy for backwards-compatible local commands.
-    submission_skill = ROOT / "skills" / "materials-evidence-reasoner" / "SKILL.md"
-    if not submission_skill.is_file():
-        errors.append("submission skill entry is missing: skills/materials-evidence-reasoner/SKILL.md")
-    else:
-        submission_text = submission_skill.read_text(encoding="utf-8")
-        if submission_text.rstrip() != skill_text.rstrip():
-            errors.append("submission skill entry differs from root SKILL.md")
-
     aliases = load_json("output-field-aliases.json")
     if aliases.get("spec_version") != "1.0" or aliases.get("canonical_schema") != "output-schema.json":
         errors.append("output-field-aliases.json has an invalid canonical contract reference")
@@ -133,8 +123,7 @@ def main() -> int:
                     errors.append(f"output-field-aliases.json: {field_group_name}.{field_name} must be a unique non-empty list")
 
     required_files = (
-        "README.md",
-        "skills/materials-evidence-reasoner/SKILL.md",
+        "SKILL.md",
         "references/input-contract.md",
         "references/report-contract.md",
         "references/error-anomaly-pspp-contract.md",
@@ -182,6 +171,10 @@ def main() -> int:
         "examples/error-budget-demo.csv",
         "examples/error-budget-demo.json",
         "examples/error-budget-demo.md",
+        "examples/active-learning-ti64-lpbf/active-learning-code/test_function.py",
+        "examples/active-learning-ti64-lpbf/active-learning-code/run_sample_and_update.py",
+        "examples/active-learning-ti64-lpbf/active-learning-code/labeled.csv",
+        "examples/active-learning-ti64-lpbf/results/qbc_recommended.csv",
         "examples/mechanism-audit.json",
         "examples/mechanism-audit.md",
         "examples/mechanism-index.json",
@@ -189,13 +182,14 @@ def main() -> int:
         "examples/mechanism-export/mechanism-nodes.csv",
         "examples/mechanism-export/mechanism-edges.csv",
         "examples/mechanism-export/mechanism-graph.dot",
+        "tests/fixtures/legacy-result.json",
     )
     for relative in required_files:
         if not (ROOT / relative).is_file():
             errors.append(f"required 4.6 asset missing: {relative}")
 
 
-    readme_text = (ROOT / "README.md").read_text(encoding="utf-8")
+    documentation_text = skill_text
     for required_phrase in (
         "scripts/prepare_intake.py",
         "scripts/normalize_output.py",
@@ -220,10 +214,9 @@ def main() -> int:
         "scripts/smoke_test_viewer.py",
         "scripts/smoke_test_source_dashboard.py",
         "viewer/index.html",
-        "L1：README",
     ):
-        if required_phrase not in readme_text:
-            errors.append(f"README does not document required workflow asset: {required_phrase}")
+        if required_phrase not in documentation_text:
+            errors.append(f"SKILL.md does not document required workflow asset: {required_phrase}")
 
     report_path = ROOT / "examples/synthetic-closed-loop-report.md"
     if report_path.is_file():

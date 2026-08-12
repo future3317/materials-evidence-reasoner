@@ -49,6 +49,13 @@ Agent 必须把本目录视为一个可执行 Skill 包，而不是只读取本�
 - `references/active-learning-contract.md`：主动学习/贝叶斯优化输入的角色、证据等级和验证边界。
 - `references/active-learning-field-lexicon.json`：主动学习字段和文件角色的可维护候选语义。
 
+### 可执行包内工具
+
+- `scripts/validate_knowledge_assets.py`：校验外部词典、注册表、别名和适配器资产；
+- `references/task-intent-lexicon.schema.json`：任务意图词典的结构约束；
+- `scripts/analyze_error_budget.py`：在重复层级明确时生成描述性误差预算；
+- `scripts/smoke_test_viewer.py`：用本地浏览器检查离线 viewer 的交互与呈现。
+
 ### 按任务读取
 
 - 结构化 JSON：`references/output-schema.json`；

@@ -12,7 +12,7 @@ from normalize_output import normalize_viewer_data  # noqa: E402
 
 
 def test_legacy_result_is_readable_without_inventing_ids() -> None:
-    source = json.loads((ROOT / "result(3).json").read_text(encoding="utf-8-sig"))
+    source = json.loads((ROOT / "tests" / "fixtures" / "legacy-result.json").read_text(encoding="utf-8-sig"))
     normalized = normalize_viewer_data(source)
 
     hypothesis = normalized["hypotheses"][0]

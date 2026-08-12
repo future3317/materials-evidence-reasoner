@@ -11,16 +11,13 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPTS = ROOT / "scripts"
+ACTIVE_LEARNING = ROOT / "examples" / "active-learning-ti64-lpbf"
 
 
 def _bundled_active_learning_dir() -> Path:
-    matches = [
-        path.parent
-        for path in ROOT.rglob("run_sample_and_update.py")
-        if "__MACOSX" not in path.parts
-    ]
-    assert len(matches) == 1
-    return matches[0]
+    code_dir = ACTIVE_LEARNING / "active-learning-code"
+    assert (code_dir / "run_sample_and_update.py").is_file()
+    return code_dir
 
 
 def test_bundled_synthetic_function_matches_checked_in_observations() -> None:
@@ -44,11 +41,7 @@ def test_sample_update_writes_iteration_without_mutating_labeled(tmp_path: Path)
     input_dir = tmp_path / "input"
     input_dir.mkdir()
     shutil.copy2(source, input_dir / "labeled.csv")
-    qbc_file = next(
-        path
-        for path in ROOT.rglob("qbc_recommended.csv")
-        if "__MACOSX" not in path.parts
-    )
+    qbc_file = ACTIVE_LEARNING / "results" / "qbc_recommended.csv"
     output = tmp_path / "iteration"
     result = subprocess.run(
         [

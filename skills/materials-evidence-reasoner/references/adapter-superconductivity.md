@@ -1,6 +1,6 @@
 # Superconductivity Adapter
 
-Adapter ID: `superconductivity`  
+Adapter ID: `superconductivity`
 
 <!-- BEGIN GENERATED ROUTING CONTRACT: superconductivity -->
 ## 机器可执行路由合同

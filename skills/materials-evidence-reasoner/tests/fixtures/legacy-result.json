@@ -1,0 +1,23 @@
+{
+  "schema_version": "4.5",
+  "hypotheses": [
+    {
+      "hypothesis_id": "hyp_crack_defects",
+      "title": "HC coating microcracks dominate",
+      "supporting_evidence": ["Observed in three independent batches"],
+      "falsifier": "No change after coating densification",
+      "evidence_status": "medium"
+    }
+  ],
+  "verification_plan": [
+    {
+      "experiment_id": "ver_exp_A_optimize_coating",
+      "title": "Optimize coating densification",
+      "target_hypotheses": ["hyp_crack_defects"],
+      "expected_outcomes": {
+        "if_hyp_crack_defects_true": "CE loss decreases"
+      },
+      "decision_rules": ["Escalate if the response is unchanged"]
+    }
+  ]
+}
