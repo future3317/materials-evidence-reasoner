@@ -499,6 +499,7 @@ python scripts/mechanism_graph.py apply materials-result.json --update-id MU-001
 
 ```text
 materials-evidence-reasoner/
+├── skills/materials-evidence-reasoner/SKILL.md # 提交规范要求的标准 Skill 入口
 ├── SKILL.md                         # Agent 主控制协议
 ├── README.md                        # 人类使用入口
 ├── agents/openai.yaml               # 可选界面元数据

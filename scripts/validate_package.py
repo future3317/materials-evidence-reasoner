@@ -103,6 +103,16 @@ def main() -> int:
     if 'version: "4.6.12"' not in skill_text or 'schema-version: "4.6"' not in skill_text:
         errors.append("SKILL.md version declarations are stale")
 
+    # Submission scanners expect the Agent Skills layout even though the
+    # repository keeps a root copy for backwards-compatible local commands.
+    submission_skill = ROOT / "skills" / "materials-evidence-reasoner" / "SKILL.md"
+    if not submission_skill.is_file():
+        errors.append("submission skill entry is missing: skills/materials-evidence-reasoner/SKILL.md")
+    else:
+        submission_text = submission_skill.read_text(encoding="utf-8")
+        if submission_text.rstrip() != skill_text.rstrip():
+            errors.append("submission skill entry differs from root SKILL.md")
+
     aliases = load_json("output-field-aliases.json")
     if aliases.get("spec_version") != "1.0" or aliases.get("canonical_schema") != "output-schema.json":
         errors.append("output-field-aliases.json has an invalid canonical contract reference")
@@ -124,6 +134,7 @@ def main() -> int:
 
     required_files = (
         "README.md",
+        "skills/materials-evidence-reasoner/SKILL.md",
         "references/input-contract.md",
         "references/report-contract.md",
         "references/error-anomaly-pspp-contract.md",
